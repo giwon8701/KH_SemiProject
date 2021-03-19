@@ -1,5 +1,5 @@
 <%@page import="java.util.List"%>
-<%@page import="com.member.dto.CalDto"%>
+<%@page import="com.hf.dto.CalDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>

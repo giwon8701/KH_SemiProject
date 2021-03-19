@@ -1,10 +1,10 @@
-package com.member.biz;
+package com.hf.biz;
 
 import java.util.List;
 
-import com.member.dao.CalDao;
-import com.member.dao.CalDaoImpl;
-import com.member.dto.CalDto;
+import com.hf.dao.CalDao;
+import com.hf.dao.CalDaoImpl;
+import com.hf.dto.CalDto;
 
 public class CalBizImpl implements CalBiz {
 	

@@ -1,4 +1,4 @@
-package com.member.controller;
+package com.hf.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.member.biz.CalBiz;
-import com.member.biz.CalBizImpl;
+import com.hf.biz.CalBiz;
+import com.hf.biz.CalBizImpl;
 
 import net.sf.json.JSONObject;
 

@@ -1,4 +1,4 @@
-package com.register.controller;
+package com.hf.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

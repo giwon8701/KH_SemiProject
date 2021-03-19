@@ -1,4 +1,4 @@
-package com.register.biz;
+package com.hf.biz;
 
 public interface RegisterBiz {
 

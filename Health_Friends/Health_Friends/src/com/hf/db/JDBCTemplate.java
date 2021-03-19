@@ -1,4 +1,4 @@
-package com.member.db;
+package com.hf.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

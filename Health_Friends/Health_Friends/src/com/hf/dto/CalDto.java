@@ -1,4 +1,4 @@
-package com.member.dto;
+package com.hf.dto;
 
 import java.util.Date;
 

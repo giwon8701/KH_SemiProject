@@ -1,8 +1,8 @@
-package com.member.biz;
+package com.hf.biz;
 
 import java.util.List;
 
-import com.member.dto.CalDto;
+import com.hf.dto.CalDto;
 
 public interface CalBiz {
 	

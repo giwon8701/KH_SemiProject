@@ -1,4 +1,4 @@
-package com.register.dto;
+package com.hf.dto;
 
 public class RegisterDto {
 	

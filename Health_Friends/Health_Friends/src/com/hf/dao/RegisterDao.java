@@ -1,4 +1,4 @@
-package com.register.dao;
+package com.hf.dao;
 
 public interface RegisterDao {
 

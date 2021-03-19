@@ -1,8 +1,8 @@
-package com.member.dao;
+package com.hf.dao;
 
 import java.util.List;
 
-import com.member.dto.CalDto;
+import com.hf.dto.CalDto;
 
 public interface CalDao {
 	

@@ -1,10 +1,10 @@
-package com.member.common;
+package com.hf.common;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import com.member.dto.CalDto;
+import com.hf.dto.CalDto;
 
 public class Util {
 	
