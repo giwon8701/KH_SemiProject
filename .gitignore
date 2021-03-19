@@ -2,6 +2,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,java
 
 ### Eclipse ###
+Health_Friends/Servers
 .classpath
 .project
 .metadata
