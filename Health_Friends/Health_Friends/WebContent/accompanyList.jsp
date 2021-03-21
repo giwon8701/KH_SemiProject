@@ -1,3 +1,4 @@
+<%@page import="com.hf.dto.RegisterDto"%>
 <%@page import="java.util.List"%>
 <%@page import="com.hf.dto.CalDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -9,30 +10,48 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.boardlist{
+	position: relative;
+	padding: 5em 0;
+}
+#accompanyList_PostList{
+	position: relative;
+	padding: 2em 0;
+}
+</style>
 </head>
 <body>
+
+	<%@include file="header.jsp" %>
+<%--게시판목록 --%>	
+	<section class="boardlist">
+		<a href="">동행 구해요</a>
+		<a href="">후기</a>
+		<a href="">공지사항</a>
+	</section>
+	<br/>
+	
+	<a href="">글작성</a>
+	
+<%--게시글리스트 --%>
+	<section id="accompanyList_PostList">
+		<table border="1">
 <% 
-	List<CalDto> list = (List<CalDto>) request.getAttribute("list");
+		List<RegisterDto> list = (List<RegisterDto>) request.getAttribute("list");
+	
+//			for (RegisterDto dto : list){
 %>
-	<table border="1">
-		<tr>
-			<th><a href="">동행 구해요</a></th>
-			<th><a href="">후기</a></th>
-			<th><a href="">공지사항</a></th>
-		</tr>
-		<tr>
-			<td>게시글 쓰기</td>
-		</tr>
+			<tr>
+				<td>값이 없어 오류나는 것 같아</td>
+				<td>임시 주적 넣어둠</td>
+			</tr>
 <% 
-	for (CalDto dto : list){
+//			}
 %>
-		<tr>
-			<td>게시글</td>
-		</tr>
-<% 
-	}
-%>
-	</table>
+		</table>
+	</section>
+	<%@include file="footer.jsp" %>  
 
 </body>
 </html>
