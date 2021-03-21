@@ -15,7 +15,7 @@
 	position: relative;
 	padding: 5em 0;
 }
-#accompanyList_PostList{
+#accompanyBoard_list{
 	position: relative;
 	padding: 2em 0;
 }
@@ -35,7 +35,7 @@
 	<a href="">글작성</a>
 	
 <%--게시글리스트 --%>
-	<section id="accompanyList_PostList">
+	<section id="accompanyBoard_list">
 		<table border="1">
 <% 
 		List<RegisterDto> list = (List<RegisterDto>) request.getAttribute("list");

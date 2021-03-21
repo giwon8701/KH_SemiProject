@@ -9,12 +9,12 @@
 <title>Insert title here</title>
 <style type="text/css">
 
-#accompanyList_writePost{
+#accompanyBoard_writePost{
 	position: relative;
 	padding: 8em 0;
 }
 
-#accompanyList_writeContent > input{
+#accompanyBoard_writeContent > input{
 	width: 500px;
 	height: 700px;
 }
@@ -24,9 +24,9 @@
 <body>
 	<%@include file="header.jsp" %>
 	
-	<section id="accompanyList_writePost">
+	<section id="accompanyBoard_writePost">
 		<form action="" method="post">
-			<input type="hidden" name="command" value="accompanyList_wirteRes"/>
+			<input type="hidden" name="command" value="accompanyBoard_wirteRes"/>
 			<table border="1">
 				<tr>
 					<th colspan="3">동행구해요</th>
@@ -51,7 +51,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3" id="accompanyList_writeContent">
+					<td colspan="3" id="accompanyBoard_writeContent">
 						<input type="text" placeholder="오늘은 어떤 운동을 하고싶으신가요? 게시글 내용을 적어주세요"/>
 					</td>
 				</tr>
