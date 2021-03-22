@@ -9,21 +9,18 @@
 <title>Insert title here</title>
 <style type="text/css">
 
-#phothoReview_writePost{
-	position: relative;
-	padding: 20em;
-}
-
-#accompanyBoard_writeContent > input{
-	width: 400px;
-	height: 500px;
-}
-
 </style>
 </head>
 <body>
+<%---
 	<%@include file="header.jsp" %>
-	
+ --%>	
+ 	<section class="boardlist">
+		<a href="">동행 구해요</a>
+		<a href="">후기</a>
+		<a href="">공지사항</a>
+	</section>
+ 	
 	<section id="photoReview_writePost">
 		<form action="" method="post">
 			<input type="hidden" name="command" value=""/>
@@ -50,8 +47,9 @@
 			</table>
 		</form>
 	</section>
-	
+<%---	
 	<%@include file="footer.jsp" %>
+--%>
 </body>
 </html>
 

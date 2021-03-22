@@ -12,18 +12,16 @@
 <title>Insert title here</title>
 <style type="text/css">
 .boardlist{
-	position: relative;
-	padding: 5em 0;
-}
-#accompanyBoard_list{
-	position: relative;
-	padding: 2em 0;
+
 }
 </style>
 </head>
 <body>
 
+<%--
 	<%@include file="header.jsp" %>
+ --%>
+ 
 <%--게시판목록 --%>	
 	<section class="boardlist">
 		<a href="">동행 구해요</a>
@@ -51,7 +49,10 @@
 %>
 		</table>
 	</section>
-	<%@include file="footer.jsp" %>  
+
+<%--
+	<%@include file="footer.jsp" %>
+ --%>  
 
 </body>
 </html>
