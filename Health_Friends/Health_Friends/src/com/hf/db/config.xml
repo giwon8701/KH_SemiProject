@@ -4,6 +4,10 @@
 
 	<properties resource="com/hf/db/db.properties"></properties>
 	
+	<typeAliases>
+		<typeAlias type="com.hf.dto.AccompanyBoardDto" alias="AccompanyBoardDto" />
+	</typeAliases>
+	
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC"/>
@@ -17,7 +21,7 @@
 	</environments>
 	
 	<mappers>
-		<mapper resource="com/hf/db/board-mapper.xml"/>
+		<mapper resource="com/hf/db/Board-mapper.xml"/>
 	</mappers>
 	
 </configuration>

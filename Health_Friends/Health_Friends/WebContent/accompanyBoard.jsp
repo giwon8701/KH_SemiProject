@@ -1,6 +1,7 @@
-<%@page import="com.hf.dto.RegisterDto"%>
+<%@page import="com.hf.biz.AccompanyBoardBizImpl"%>
+<%@page import="com.hf.biz.AccompanyBoardBiz"%>
+<%@page import="com.hf.dto.AccompanyBoardDto"%>
 <%@page import="java.util.List"%>
-<%@page import="com.hf.dto.CalDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
@@ -9,13 +10,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>AccompanyBoard</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+
+</script>
 <style type="text/css">
 .boardlist{
 
 }
 </style>
 </head>
+<%
+	AccompanyBoardBiz biz = new AccompanyBoardBizImpl();
+	List<AccompanyBoardDto> list = biz.selectList();
+%>
 <body>
 
 <%--
@@ -36,16 +45,22 @@
 	<section id="accompanyBoard_list">
 		<table border="1">
 <% 
-		List<RegisterDto> list = (List<RegisterDto>) request.getAttribute("list");
-	
-//			for (RegisterDto dto : list){
+			if (list.size() == 0){
 %>
-			<tr>
-				<td>값이 없어 오류나는 것 같아</td>
-				<td>임시 주적 넣어둠</td>
-			</tr>
+				<tr>
+					<td>------작성된 글이 없습니다------</td>
+				</tr>
 <% 
-//			}
+			} else{
+				for (AccompanyBoardDto dto : list){
+%>
+				<tr>
+					<td><%=dto.getPostTitle() %></td>
+					<td>----</td>
+				</tr>
+<%
+				}
+			}
 %>
 		</table>
 	</section>
@@ -56,3 +71,18 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
