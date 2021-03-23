@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import com.hf.dto.CalDto;
+import com.hf.dto.IndividualDto;
 
 public class Util {
 	
@@ -23,7 +23,7 @@ public class Util {
 				    + mdate.substring(8, 10) + ":"
 				    + mdate.substring(10) + ":00";
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 HH시mm분");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd HH:mm");
 		Timestamp tm = Timestamp.valueOf(temp);
 		todates = sdf.format(tm);
 	}
@@ -51,14 +51,14 @@ public class Util {
 	}
 	
 	// 일정 제목이 긴 경우, 뒷부분을 ...으로
-	public static String getCalView(int i, List<CalDto> list) {
+	public static String getCalView(int i, List<IndividualDto> list) {
 		String d = isTwo(i+"");
 		String res = "";
 		
-		for(CalDto dto : list) {
-			if(dto.getMdate().substring(6, 8).equals(d)) {
+		for(IndividualDto dto : list) {
+			if(dto.getIndividual_mdate().substring(6, 8).equals(d)) {
 				res += "<p>"
-					 + ((dto.getTitle().length() > 6) ? dto.getTitle().substring(0, 6) + "..." : dto.getTitle())
+					 + ((dto.getIndividual_title().length() > 6) ? dto.getIndividual_title().substring(0, 6) + "..." : dto.getIndividual_title())
 					 + "</p>";
 			}
 		}

@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%-- footer --%>
 
 	<!-- Footer -->
 		<footer id="footer">

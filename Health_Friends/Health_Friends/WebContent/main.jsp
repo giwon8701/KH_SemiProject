@@ -9,6 +9,7 @@
 <title>우리 동네 운동 메이트</title>
 </head>
 <body>
+<%--메인페이지! --%>
 
 	<%@include file="header.jsp" %>
 
