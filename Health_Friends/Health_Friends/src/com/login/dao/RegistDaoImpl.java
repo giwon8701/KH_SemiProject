@@ -5,8 +5,9 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.board.db.SqlMapConfig;
-import com.board.dto.RegistDto;
+import com.common.SqlMapConfig;
+import com.login.dto.RegistDto;
+
 
 public class RegistDaoImpl extends SqlMapConfig implements RegistDao {
 

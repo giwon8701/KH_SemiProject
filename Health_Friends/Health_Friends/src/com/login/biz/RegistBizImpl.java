@@ -2,9 +2,10 @@ package com.login.biz;
 
 import java.util.List;
 
-import com.board.dao.RegistDao;
-import com.board.dao.RegistDaoImpl;
-import com.board.dto.RegistDto;
+import com.login.dao.RegistDao;
+import com.login.dao.RegistDaoImpl;
+import com.login.dto.RegistDto;
+
 
 public class RegistBizImpl implements RegistBiz {
 	

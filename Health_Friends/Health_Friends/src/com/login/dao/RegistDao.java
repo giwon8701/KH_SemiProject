@@ -2,7 +2,8 @@ package com.login.dao;
 
 import java.util.List;
 
-import com.board.dto.RegistDto;
+import com.login.dto.RegistDto;
+
 
 public interface RegistDao {
 	

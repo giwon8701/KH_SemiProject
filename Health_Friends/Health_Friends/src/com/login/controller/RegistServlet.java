@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.board.biz.RegistBiz;
-import com.board.biz.RegistBizImpl;
-import com.board.common.Util;
-import com.board.dto.RegistDto;
+import com.login.biz.RegistBiz;
+import com.login.biz.RegistBizImpl;
+import com.login.dto.RegistDto;
+import com.mypage.common.Util;
 
 /**
  * Servlet implementation class RegisterServlet
