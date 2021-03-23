@@ -91,11 +91,11 @@
 						<col width="100px">
 
 						<tr>
-							<td><a href=""><img src="images/pic01.jpg" class="profile"></a></td>
+							<td><a href=""><img src="../../images/pic01.jpg" class="profile"></a></td>
 							<td rowspan="2">경로</td>
 							<td rowspan="2">게시글</td>
-							<td><img src="images/icon/running.png"></td>
-							<td><img src="images/icon/man.png"></td>
+							<td><img src="../../images/icon/running.png"></td>
+							<td><img src="../../images/icon/man.png"></td>
 							<td rowspan="2">찾는중</td>
 							<td rowspan="2">글 등록시간</td>
 							</tr>
