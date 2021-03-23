@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="registmapper">
+
+	
+	<select id="registCheck" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM MEMBER
+		<trim prefix="WHERE" prefixOverrides="OR">
+		<if test="member_id != null">MEMBER_ID = #{member_id}</if>
+		<if test="member_phone != null">OR MEMBER_PHONE = #{member_phone}</if>
+		<if test="member_email != null">OR MEMBER_EMAIL = #{member_email}</if>
+		</trim>
+	</select>
+	
+	<insert id="regist" parameterType="registDto">
+		INSERT INTO MEMBER VALUES(
+			MEMBERNOSEQ.NEXTVAL, #{member_id}, #{member_pw}, #{member_name}, #{member_addr}, #{member_birthday},
+			#{member_gender}, #{member_email}, #{member_phone}, 'Y', 0, 'USER'
+		)
+	</insert>
+	
+	<select id="memberList" parameterType="registDto" resultType="registDto">
+		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_ADDR, MEMBER_BIRTHDAY, MEMBER_GENDER, MEMBER_EMAIL, MEMBER_PHONE, MEMBER_ENABLED, MEMBER_REVIEW, MEMBER_ROLE
+		FROM MEMBER
+		WHERE MEMBER_ID = #{member_id}
+		AND MEMBER_PW = #{member_pw}
+	</select>
+	
+	<select id="login" parameterType="registDto" resultType="int">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE MEMBER_ID = #{member_id}
+		AND MEMBER_PW = #{member_pw}
+	</select>
+	
+</mapper>

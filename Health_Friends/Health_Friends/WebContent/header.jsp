@@ -25,8 +25,8 @@
 			<input type="text" size="50" placeholder="동네 이름 또는 운동명을 검색해 보세요!" class="header-search">
 			
 			
-			<a href="">로그인</a>
-			<a href="">회원가입</a>
+			<a href="regist.do?command=login">로그인</a>
+			<a href="regist.do?command=registForm">회원가입</a>
 		</header>
 </body>
 </html>
