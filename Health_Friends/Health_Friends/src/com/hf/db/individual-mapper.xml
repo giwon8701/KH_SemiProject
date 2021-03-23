@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="individualmapper">
+
+	<resultMap type="individualDto" id="individualMap">
+		<result property="individual_no" column="INDIVIDUAL_NO" />
+		<result property="profile_no" column="PROFILE_NO" />
+		<result property="individual_id" column="INDIVIDUAL_ID" />
+		<result property="individual_title" column="INDIVIDUAL_TITLE" />
+		<result property="individual_content" column="INDIVIDUAL_CONTENT" />
+		<result property="individual_mdate" column="INDIVIDUAL_MDATE" />
+		<result property="individual_regdate" column="INDIVIDUAL_REGDATE" />
+	</resultMap>
+
+	
+	<select id="individualList" resultType="individualDto">
+		SELECT INDIVIDUAL_NO, PROFILE_NO, INDIVIDUAL_ID, INDIVIDUAL_TITLE, INDIVIDUAL_CONTENT, INDIVIDUAL_MDATE, INDIVIDUAL_REGDATE
+		FROM INDIVIDUAL
+		WHERE INDIVIDUAL_ID = #{individual_id}
+		AND SUBSTR(INDIVIDUAL_MDATE, 1, 8) = #{yyyyMMdd}
+		ORDER BY INDIVIDUAL_NO DESC
+	</select>
+	
+	<select id="individualSelectOne" resultType="individualDto">
+		SELECT INDIVIDUAL_NO, PROFILE_NO, INDIVIDUAL_ID, INDIVIDUAL_TITLE, INDIVIDUAL_CONTENT, INDIVIDUAL_MDATE, INDIVIDUAL_REGDATE
+		FROM INDIVIDUAL
+		WHERE INDIVIDUAL_NO = #{individual_no}
+		ORDER BY INDIVIDUAL_NO DESC
+	</select>
+	
+	
+	<insert id="individualInsert" parameterType="individualDto">
+		INSERT INTO INDIVIDUAL
+		VALUES(INDIVIDUALSEQ.NEXTVAL, 1, #{individual_id}, #{individual_title}, #{individual_content}, #{individual_mdate}, SYSDATE)
+	</insert>
+	
+	<update id="individualUpdate" parameterType="individualDto">
+		UPDATE INDIVIDUAL
+		SET INDIVIDUAL_TITLE = #{individual_title}, INDIVIDUAL_CONTENT = #{individual_content}
+		WHERE INDIVIDUAL_NO = #{individual_no}
+	</update>
+	
+	<delete id="individualDelete" parameterType="int">
+		DELETE FROM INDIVIDUAL
+		WHERE INDIVIDUAL_NO = #{individual_no}
+	</delete>
+
+</mapper>

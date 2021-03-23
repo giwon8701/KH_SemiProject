@@ -10,6 +10,7 @@
 </head>
 <link href="./assets/css/main.css" rel="stylesheet" type="text/css">
 <body>
+<%--header 로그인 상황에 따라 다르게 나와야함...! --%>
 		<!-- Header -->
 		<header id="header" class="alt">
 			<div class="logo"><a href="index.html">우리 동네 <span>운동 친구</span></a></div>
