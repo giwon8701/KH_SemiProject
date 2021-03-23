@@ -1,16 +1,20 @@
-<%@page import="com.hf.biz.AccompanyBoardBizImpl"%>
-<%@page import="com.hf.biz.AccompanyBoardBiz"%>
-<%@page import="com.hf.dto.AccompanyBoardDto"%>
+<%@page import="com.hf.biz.BoardBizImpl"%>
+<%@page import="com.hf.biz.BoardBiz"%>
+<%@page import="com.hf.dto.BoardDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% request.setCharacterEncoding("UTF-8"); %>
-<% response.setContentType("text/html; charset=UTF-8"); %>    
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
+<%
+	response.setContentType("text/html; charset=UTF-8");
+%>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>AccompanyBoard</title>
+<title>Board</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 
@@ -22,8 +26,9 @@
 </style>
 </head>
 <%
-	AccompanyBoardBiz biz = new AccompanyBoardBizImpl();
-	List<AccompanyBoardDto> list = biz.selectList();
+	BoardBiz biz = new BoardBizImpl();
+	List<BoardDto> list = biz.selectList();
+	System.out.print(list);
 %>
 <body>
 
@@ -42,7 +47,7 @@
 	<a href="">글작성</a>
 	
 <%--게시글리스트 --%>
-	<section id="accompanyBoard_list">
+	<section id="Board_list">
 		<table border="1">
 <% 
 			if (list.size() == 0){
@@ -52,7 +57,7 @@
 				</tr>
 <% 
 			} else{
-				for (AccompanyBoardDto dto : list){
+				for (BoardDto dto : list){
 %>
 				<tr>
 					<td><%=dto.getPostTitle() %></td>

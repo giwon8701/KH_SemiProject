@@ -5,20 +5,20 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.hf.db.SqlMapConfig;
-import com.hf.dto.AccompanyBoardDto;
+import com.hf.db.SqlMapConfig_yeon;
+import com.hf.dto.BoardDto;
 
-public class AccompanyBoardDaoImpl extends SqlMapConfig implements AccompanyBoardDao {
+public class BoardDaoImpl extends SqlMapConfig_yeon implements BoardDao {
 	
 	@Override
-	public List<AccompanyBoardDto> selectList() {
+	public List<BoardDto> selectList() {
 		SqlSession session = null;
 		
-		List<AccompanyBoardDto> list = new ArrayList<AccompanyBoardDto>();
+		List<BoardDto> list = new ArrayList<BoardDto>();
 		
 		try {
 			session = getSqlSessionFactory().openSession(false);
-			list = session.selectList("accompanyBoardMapper.selectList");
+			list = session.selectList("BoardMapper.selectList");
 			System.out.println(list);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -29,17 +29,17 @@ public class AccompanyBoardDaoImpl extends SqlMapConfig implements AccompanyBoar
 	}
 
 	@Override
-	public AccompanyBoardDto selectOne(int postNo) {
+	public BoardDto selectOne(int postNo) {
 		return null;
 	}
 
 	@Override
-	public int insert(AccompanyBoardDto dto) {
+	public int insert(BoardDto dto) {
 		return 0;
 	}
 
 	@Override
-	public int update(AccompanyBoardDto dto) {
+	public int update(BoardDto dto) {
 		return 0;
 	}
 

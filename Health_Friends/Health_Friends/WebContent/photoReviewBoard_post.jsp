@@ -40,7 +40,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3" id="accompanyBoard_writeContent">
+					<td colspan="3" id="Board_writeContent">
 						<input type="text" placeholder="사진에 대한 설명과 운동후기를 적어주세요"/>
 					</td>
 				</tr>

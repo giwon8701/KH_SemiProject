@@ -8,13 +8,13 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.session.defaults.DefaultSqlSessionFactory;
 
-public class SqlMapConfig {
+public class SqlMapConfig_yeon {
 
 	private SqlSessionFactory sqlSessionFactory;
 	
 	public SqlSessionFactory getSqlSessionFactory() {
 		
-		String resource = "com/hf/db/config.xml";
+		String resource = "com/hf/db/config_yeon.xml";
 		Reader reader = null;
 		
 		try {

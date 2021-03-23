@@ -12,6 +12,9 @@
 </style>
 </head>
 <body>
+
+		<%--동행게시판 --%>
+
 <%--
 	<%@include file="header.jsp" %>
  --%>	
@@ -21,9 +24,9 @@
 		<a href="">공지사항</a>
 	</section>
  
-	<section id="accompanyBoard_writePost">
+	<section id="Board_writePost">
 		<form action="" method="post">
-			<input type="hidden" name="command" value="accompanyBoard_wirteRes"/>
+			<input type="hidden" name="command" value="Board_wirteRes"/>
 			<table border="1">
 				<tr>
 					<th colspan="3">동행구해요</th>
@@ -48,7 +51,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3" id="accompanyBoard_writeContent">
+					<td colspan="3" id="Board_writeContent">
 						<input type="text" placeholder="오늘은 어떤 운동을 하고싶으신가요? 게시글 내용을 적어주세요"/>
 					</td>
 				</tr>

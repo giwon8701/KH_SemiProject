@@ -5,7 +5,7 @@
 	<properties resource="com/hf/db/db.properties"></properties>
 	
 	<typeAliases>
-		<typeAlias type="com.hf.dto.AccompanyBoardDto" alias="AccompanyBoardDto" />
+		<typeAlias type="com.hf.dto.BoardDto" alias="BoardDto" />
 	</typeAliases>
 	
 	<environments default="development">

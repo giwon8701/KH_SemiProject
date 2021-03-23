@@ -1,14 +1,14 @@
 package com.hf.dto;
 
-public class AccompanyBoardDto {
+public class BoardDto {
 	
 	private int postId;
 	private String postTitle;
 	
-	public AccompanyBoardDto() {
+	public BoardDto() {
 	}
 
-	public AccompanyBoardDto(int postId, String postTitle) {
+	public BoardDto(int postId, String postTitle) {
 		this.postId = postId;
 		this.postTitle = postTitle;
 	}
