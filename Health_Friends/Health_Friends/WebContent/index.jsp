@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<jsp:forward page="main.jsp"></jsp:forward>
+	<jsp:forward page="./views/common/main.jsp"></jsp:forward>
 
 </body>
 </html>
