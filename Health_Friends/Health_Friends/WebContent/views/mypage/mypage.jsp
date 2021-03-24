@@ -1,10 +1,10 @@
 <%@page	import="org.apache.commons.collections.bag.SynchronizedSortedBag"%>
-<%@page import="com.board.dto.IndividualDto"%>
+<%@page import="com.mypage.dto.IndividualDto"%>
 <%@page import="java.util.List"%>
-<%@page import="com.board.common.Util"%>
-<%@page import="com.board.biz.IndividualBizImpl"%>
-<%@page import="com.board.biz.IndividualBiz"%>
-<%@page import="com.board.dao.IndividualDao"%>
+<%@page import="com.mypage.common.Util"%>
+<%@page import="com.mypage.biz.IndividualBizImpl"%>
+<%@page import="com.mypage.biz.IndividualBiz"%>
+<%@page import="com.mypage.dao.IndividualDao"%>
 <%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -149,7 +149,7 @@
 		</div>
 	</div>
 
-	<%@ include file="footer.jsp" %>
+	<%@ include file="../common/footer.jsp" %>
 
 </body>
 </html>

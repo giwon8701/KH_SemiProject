@@ -2,7 +2,7 @@ package com.mypage.biz;
 
 import java.util.List;
 
-import com.board.dto.IndividualDto;
+import com.mypage.dto.IndividualDto;
 
 public interface IndividualBiz {
 	

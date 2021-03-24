@@ -2,9 +2,9 @@ package com.mypage.biz;
 
 import java.util.List;
 
-import com.board.dao.IndividualDao;
-import com.board.dao.IndividualDaoImpl;
-import com.board.dto.IndividualDto;
+import com.mypage.dao.IndividualDao;
+import com.mypage.dao.IndividualDaoImpl;
+import com.mypage.dto.IndividualDto;
 
 public class IndividualBizImpl implements IndividualBiz {
 	

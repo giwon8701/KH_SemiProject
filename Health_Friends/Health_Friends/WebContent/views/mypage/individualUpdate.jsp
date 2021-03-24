@@ -14,7 +14,7 @@
 <%
 	int individual_no = Integer.parseInt(request.getParameter("individual_no"));
 %>
-	<jsp:useBean id="util" class="com.board.common.Util"></jsp:useBean>
+	<jsp:useBean id="util" class="com.mypage.common.Util"></jsp:useBean>
 
 	<h1>일정 수정 하기</h1>
 	
@@ -51,6 +51,6 @@
 		</table>
 	</form>
 
-<%@ include file="footer.jsp" %>
+<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

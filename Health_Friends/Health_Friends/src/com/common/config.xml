@@ -2,12 +2,12 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-	<properties resource="com/hf/db/db.properties"></properties>
+	<properties resource="./db.properties"></properties>
 
 	<typeAliases>
-		<typeAlias type="com.hf.dto.IndividualDto" alias="individualDto" />
-		<typeAlias type="com.hf.dto.BoardDto" alias="BoardDto" />
-		<typeAlias type="com.hf.dto.RegistDto" alias="registDto"/>
+		<typeAlias type="com.mypage.dto.IndividualDto" alias="individualDto" />
+		<typeAlias type="com.board.dto.BoardDto" alias="BoardDto" />
+		<typeAlias type="com.login.dto.RegistDto" alias="registDto"/>
 	</typeAliases>
 
 	<environments default="development">
@@ -24,8 +24,8 @@
 
 
 	<mappers>
-		<mapper resource="com/hf/db/individual-mapper.xml" />
-		<mapper resource="com/hf/db/Board-mapper.xml"/>
-		<mapper resource="com/hf/db/regist-mapper.xml" />
+		<mapper resource="com/mypage/db/individual-mapper.xml" />
+		<mapper resource="com/board/db/Board-mapper.xml"/>
+		<mapper resource="com/login/db/regist-mapper.xml" />
 	</mappers>
 </configuration>

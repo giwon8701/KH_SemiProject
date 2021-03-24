@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import com.board.dto.IndividualDto;
+import com.mypage.dto.IndividualDto;
 
 public class Util {
 	
