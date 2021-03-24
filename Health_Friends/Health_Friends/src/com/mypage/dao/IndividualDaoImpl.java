@@ -7,8 +7,8 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.board.db.SqlMapConfig;
-import com.board.dto.IndividualDto;
+import com.common.SqlMapConfig;
+import com.mypage.dto.IndividualDto;
 
 public class IndividualDaoImpl extends SqlMapConfig implements IndividualDao {
 

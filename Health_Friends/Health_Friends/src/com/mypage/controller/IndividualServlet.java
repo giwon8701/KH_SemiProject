@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.board.biz.IndividualBiz;
-import com.board.biz.IndividualBizImpl;
-import com.board.common.Util;
-import com.board.dto.IndividualDto;
+import com.mypage.biz.IndividualBiz;
+import com.mypage.biz.IndividualBizImpl;
+import com.mypage.common.Util;
+import com.mypage.dto.IndividualDto;
 
 @WebServlet("/individual.do")
 public class IndividualServlet extends HttpServlet {

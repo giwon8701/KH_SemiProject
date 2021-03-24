@@ -31,8 +31,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.search.dto.SearchDto;
-import com.sun.tools.javac.launcher.Main;
+import com.shopping.dto.SearchDto;
 
 @WebServlet("/SearchTest")
 public class SearchServlet extends HttpServlet {
@@ -73,9 +72,13 @@ public class SearchServlet extends HttpServlet {
 			int lprice = recordsArray.get(i).getAsJsonObject().get("lprice").getAsInt();
 			String brand = recordsArray.get(i).getAsJsonObject().get("brand").getAsString();
 			String category3 = recordsArray.get(i).getAsJsonObject().get("category3").getAsString();
-
-			SearchDto dto = new SearchDto(title, image, lprice, brand, category3);
+			SearchDto dto = null;
+			if (category3 == "운동화") {
+				dto = new SearchDto(title, image, lprice, brand, category3);
 			list.add(dto);
+			} else {
+				
+			}
 
 			Gson gson = new Gson();
 			String jsonString = gson.toJson(dto);

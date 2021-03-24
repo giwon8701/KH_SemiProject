@@ -1,4 +1,4 @@
-package com.board.dto;
+package com.shopping.dto;
 
 public class SearchDto {
 

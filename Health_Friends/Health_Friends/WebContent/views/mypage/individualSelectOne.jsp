@@ -1,6 +1,6 @@
-<%@page import="com.board.biz.IndividualBizImpl"%>
-<%@page import="com.board.biz.IndividualBiz"%>
-<%@page import="com.board.dto.IndividualDto"%>
+<%@page import="com.mypage.biz.IndividualBizImpl"%>
+<%@page import="com.mypage.biz.IndividualBiz"%>
+<%@page import="com.mypage.dto.IndividualDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("UTF-8"); %>
@@ -18,7 +18,7 @@
 	IndividualBiz biz = new IndividualBizImpl();
 	IndividualDto dto = biz.individualSelectOne(individual_no);
 %>
-	<jsp:useBean id="util" class="com.board.common.Util"></jsp:useBean>
+	<jsp:useBean id="util" class="com.mypage.common.Util"></jsp:useBean>
 	
 	<h1>일정 자세히 보기</h1>
 	

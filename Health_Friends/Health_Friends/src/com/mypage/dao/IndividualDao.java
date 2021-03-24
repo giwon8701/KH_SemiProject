@@ -2,7 +2,7 @@ package com.mypage.dao;
 
 import java.util.List;
 
-import com.board.dto.IndividualDto;
+import com.mypage.dto.IndividualDto;
 
 public interface IndividualDao {
 								

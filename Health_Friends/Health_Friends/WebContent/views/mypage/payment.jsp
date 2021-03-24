@@ -12,7 +12,7 @@
 </head>
 <body>
 <%-- 결제페이지인데 추후에 조금더 자세하게 수정해야함! --%>
-<%@ include file="header.jsp" %>
+<%@ include file="../common/header.jsp" %>
 
 <%
 	//임시로 강제 변수 생성
@@ -80,6 +80,6 @@
         
     });
     </script>
-<%@ include file="footer.jsp" %>
+<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

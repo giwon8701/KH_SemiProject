@@ -5,10 +5,10 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.board.db.SqlMapConfig_yeon;
 import com.board.dto.BoardDto;
+import com.common.SqlMapConfig;
 
-public class BoardDaoImpl extends SqlMapConfig_yeon implements BoardDao {
+public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 	
 	@Override
 	public List<BoardDto> selectList() {

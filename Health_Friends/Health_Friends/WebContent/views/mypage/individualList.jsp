@@ -1,4 +1,4 @@
-<%@page import="com.board.dto.IndividualDto"%>
+<%@page import="com.mypage.dto.IndividualDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -24,7 +24,7 @@
 	
 %>
 
-	<jsp:useBean id="util" class="com.board.common.Util"></jsp:useBean>
+	<jsp:useBean id="util" class="com.mypage.common.Util"></jsp:useBean>
 
 	<h1>약속 일정</h1>
 	
@@ -78,6 +78,6 @@
 
 
 
-<%@ include file="footer.jsp" %>
+<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

@@ -13,7 +13,7 @@ public class SqlMapConfig {
 	
 	public SqlSessionFactory getSqlSessionFactory() {
 		
-		String resource = "com/hf/db/config.xml";
+		String resource = "./config.xml";
 		Reader reader = null;
 		
 		try {
