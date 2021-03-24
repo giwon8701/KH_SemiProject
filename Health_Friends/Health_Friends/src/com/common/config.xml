@@ -2,7 +2,7 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-	<properties resource="./db.properties"></properties>
+	<properties resource="com/common/db.properties"></properties>
 
 	<typeAliases>
 		<typeAlias type="com.mypage.dto.IndividualDto" alias="individualDto" />
