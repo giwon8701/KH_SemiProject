@@ -14,6 +14,10 @@ public interface RegistDao {
 	public int registMember(RegistDto dto);
 	
 	//로그인
-	public List<RegistDto> login(RegistDto logindto);
+	public int login(RegistDto logindto);
+	
+	//회원정보
+	public RegistDto selectOne(RegistDto logindto);
+	
 
 }

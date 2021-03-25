@@ -16,22 +16,12 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 	
-	$("#loginForm").submit(function(){
-		if($("[name=memberId]").val() == null || $("[name=memberId]").val() == "" || $("[name=memberPw]").val() == null || $("[name=memberPw]").val() == ""){
-			
-			$("#loginchk").text("아이디와 비밀번호를 확인해주세요");
-			
-			return false;
-		}	
-	});
-	
-	
 	
 </script>
 </head>
   <%
     String clientId = "WSSex0InjkcHuJcQW5ov";//애플리케이션 클라이언트 아이디값";
-    String redirectURI = URLEncoder.encode("http://localhost:8787/Health_Friends/navercallback.jsp", "UTF-8");
+    String redirectURI = URLEncoder.encode("http://localhost:8787/Health_Friends/naver.do", "UTF-8");
     SecureRandom random = new SecureRandom();
     String state = new BigInteger(130, random).toString();
     String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
@@ -44,7 +34,7 @@
 
 <!-- 로그인 화면 jsp -->
 
-	<form action="regist.do" method="post" id="loginForm">
+	<form action="../../src/com/login/controller/regist.do" method="post" id="loginForm">
 		<input type="hidden" name="command" value="loginres">
 		<table>
 			<tr>

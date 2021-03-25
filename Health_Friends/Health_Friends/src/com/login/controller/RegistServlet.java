@@ -39,7 +39,7 @@ public class RegistServlet extends HttpServlet {
 		String command = request.getParameter("command");
 		
 		if(command.equals("registForm")) {
-			response.sendRedirect("registForm.jsp");
+			response.sendRedirect("./views/login/registForm.jsp");
 			
 		} else if(command.equals("idCheck")) {
 			String memberId = request.getParameter("memberId");
@@ -79,12 +79,12 @@ public class RegistServlet extends HttpServlet {
 			
 			int res = biz.registMember(dto);
 			if(res > 0) {
-				jsResponse(response, "index.jsp", "가입에 성공하였습니다. 로그인 해주세요.");
+				jsResponse(response, "./index.jsp", "가입에 성공하였습니다. 로그인 해주세요.");
 			} else {
-				jsResponse(response, "index.jsp", "가입 실패");
+				jsResponse(response, "./index.jsp", "가입 실패");
 			}
 		} else if(command.equals("login")) {
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("./views/login/login.jsp");
 		} else if(command.equals("loginres")){
 			String memberId = request.getParameter("memberId");
 			String memberPw = util.getHash(request.getParameter("memberPw"));
@@ -93,29 +93,33 @@ public class RegistServlet extends HttpServlet {
 			logindto.setMember_id(memberId);
 			logindto.setMember_pw(memberPw);
 			
-			List<RegistDto> list = biz.login(logindto);
+			int res = biz.login(logindto);
 			
-			if(list != null){
+			if(res > 0){
 				
-				RegistDto dto = list.get(0);
+				RegistDto Ldto = biz.selectOne(logindto);
 				
-				System.out.println(dto.getMember_id());
-				System.out.println(dto.getMember_pw());
+				System.out.println(Ldto.getMember_id());
+				System.out.println(Ldto.getMember_pw());
 				
 				HttpSession session = request.getSession();
-				session.setAttribute("dto", dto);
+				session.setAttribute("dto", Ldto);
 				session.setMaxInactiveInterval(10 * 60);
 				
-				
-				response.sendRedirect("index.jsp");
+				if(Ldto.getMember_role().equals("ADMIN")) {
+					//관리자 메인페이지
+				} else if(Ldto.getMember_role().equals("USER")) {
+					//일반회원 메인페이지
+				} else {
+					//프리미엄 회원 메인페이지
+				}
+				response.sendRedirect("./index.jsp");
 			} else {
 				jsResponse(response, "regist.do?command=login", "아이디와 비밀번호를 확인해주세요.");
 			}
 		}
 				
 				
-				
-		
 	}
 	
 	private void dispatch(HttpServletRequest request, HttpServletResponse response, String path) throws ServletException, IOException {

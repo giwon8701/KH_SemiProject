@@ -22,8 +22,13 @@ public class RegistBizImpl implements RegistBiz {
 	}
 	
 	@Override
-	public List<RegistDto> login(RegistDto logindto) {
+	public int login(RegistDto logindto) {
 		return dao.login(logindto);
 	};
+	
+	@Override
+	public RegistDto selectOne(RegistDto logindto) {
+		return dao.selectOne(logindto);
+	}
 
 }

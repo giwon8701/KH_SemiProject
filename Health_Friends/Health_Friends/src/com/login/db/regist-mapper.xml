@@ -4,7 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="registmapper">
 
-	
 	<select id="registCheck" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM MEMBER
 		<trim prefix="WHERE" prefixOverrides="OR">
@@ -21,7 +20,7 @@
 		)
 	</insert>
 	
-	<select id="memberList" parameterType="registDto" resultType="registDto">
+	<select id="selectOne" parameterType="registDto" resultType="registDto">
 		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_ADDR, MEMBER_BIRTHDAY, MEMBER_GENDER, MEMBER_EMAIL, MEMBER_PHONE, MEMBER_ENABLED, MEMBER_REVIEW, MEMBER_ROLE
 		FROM MEMBER
 		WHERE MEMBER_ID = #{member_id}
@@ -32,6 +31,17 @@
 		SELECT COUNT(*) FROM MEMBER
 		WHERE MEMBER_ID = #{member_id}
 		AND MEMBER_PW = #{member_pw}
+	</select>
+	
+	
+	<select id="loginId" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE MEMBER_ID = #{member_id}
+	</select>
+	
+	<select id="loginPw" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE MEMBER_PW = #{member_pw}
 	</select>
 	
 </mapper>

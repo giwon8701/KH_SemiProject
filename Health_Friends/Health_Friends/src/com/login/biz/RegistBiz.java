@@ -13,6 +13,8 @@ public interface RegistBiz {
 	//회원가입
 	public int registMember(RegistDto dto);
 	
-	public List<RegistDto> login(RegistDto logindto);
+	public int login(RegistDto logindto);
+	
+	public RegistDto selectOne(RegistDto logindto);
 
 }
