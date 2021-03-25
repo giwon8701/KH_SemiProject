@@ -1,7 +1,6 @@
 package com.login.dao;
 
 
-import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -54,7 +53,7 @@ public class RegistDaoImpl extends SqlMapConfig implements RegistDao {
 		try(SqlSession session = getSqlSessionFactory().openSession(true);){
 			
 			cnt = session.selectOne("registmapper.login", logindto);
-			
+			System.out.println(logindto.getMember_id());
 			if(cnt > 0) {
 				cnt = 1;
 			} else {

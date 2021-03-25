@@ -34,14 +34,5 @@
 	</select>
 	
 	
-	<select id="loginId" parameterType="String" resultType="int">
-		SELECT COUNT(*) FROM MEMBER
-		WHERE MEMBER_ID = #{member_id}
-	</select>
-	
-	<select id="loginPw" parameterType="String" resultType="int">
-		SELECT COUNT(*) FROM MEMBER
-		WHERE MEMBER_PW = #{member_pw}
-	</select>
 	
 </mapper>

@@ -30,7 +30,6 @@ public class RegistServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
-
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -54,6 +53,13 @@ public class RegistServlet extends HttpServlet {
 
 			int cnt = biz.registCheck(memberPhone);
 			
+			PrintWriter out = response.getWriter();
+			out.println(cnt);
+			
+		} else if(command.equals("emailCheck")) {
+			String memberEmail = request.getParameter("memberEmail");
+			
+			int cnt = biz.registCheck(memberEmail);
 			PrintWriter out = response.getWriter();
 			out.println(cnt);
 			
@@ -94,13 +100,9 @@ public class RegistServlet extends HttpServlet {
 			logindto.setMember_pw(memberPw);
 			
 			int res = biz.login(logindto);
-			
 			if(res > 0){
 				
 				RegistDto Ldto = biz.selectOne(logindto);
-				
-				System.out.println(Ldto.getMember_id());
-				System.out.println(Ldto.getMember_pw());
 				
 				HttpSession session = request.getSession();
 				session.setAttribute("dto", Ldto);
@@ -108,15 +110,22 @@ public class RegistServlet extends HttpServlet {
 				
 				if(Ldto.getMember_role().equals("ADMIN")) {
 					//관리자 메인페이지
+					response.sendRedirect("./index.jsp");
 				} else if(Ldto.getMember_role().equals("USER")) {
 					//일반회원 메인페이지
+					response.sendRedirect("./index.jsp");
 				} else {
 					//프리미엄 회원 메인페이지
-				}
-				response.sendRedirect("./index.jsp");
+					response.sendRedirect("./index.jsp");
+				} 
+				
 			} else {
 				jsResponse(response, "regist.do?command=login", "아이디와 비밀번호를 확인해주세요.");
 			}
+		} else if(command.equals("logout")){
+			HttpSession session = request.getSession();
+			session.invalidate();
+			response.sendRedirect("./index.html");
 		}
 				
 				

@@ -11,6 +11,7 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
 <script type="text/javascript">
 	
 	function chkPW() {
@@ -30,34 +31,38 @@
 	
 	function idCheck(){
 		var newId = $("#id").val();
-		var queryString = "?command=idCheck&memberId="+newId;
-		$.ajax({
-			url: "regist.do"+queryString,
-			dataType: "text",
-			success: function(data){
-				if(data == 0){
-					$("#idchk").text("사용가능한 아이디입니다.");
+		if($.trim(newId) != "" || $.trim(newId) != null){
+			var queryString = "?command=idCheck&memberId="+newId;
+			$.ajax({
+				url: "../../regist.do"+queryString,
+				dataType: "text",
+				success: function(data){
+					if(data == 0){
+						$("#idchk").text("사용가능한 아이디입니다.");
+			            $("#idchk").css("color", "blue");
+			            $("#id").prop("title", "y");
+					} else if(data == 1) {
+						$("#idchk").text("이미 사용중인 아이디입니다.");
+			            $("#idchk").css("color", "red");
+			            $("#id").prop("title", "n");
+			            $("#id").focus();
+					}
+				},
+				error: function(){
+					$("#idchk").text("통신오류");
 		            $("#idchk").css("color", "blue");
-		            $("#id").prop("title", "y");
-				} else if(data == 1) {
-					$("#idchk").text("이미 사용중인 아이디입니다.");
-		            $("#idchk").css("color", "red");
-		            $("#id").prop("title", "n");
-		            $("#id").focus();
 				}
-			},
-			error: function(){
-				$("#idchk").text("통신오류");
-	            $("#idchk").css("color", "blue");
-			}
-		});
+			});
+		} else{
+			$("#idchk").text("아이디를 입력해주세요");
+		}
 	}
 	
 	function phoneChk(){
 		var newPhone = $("#phone").val();
 		var queryString = "?command=phoneCheck&memberPhone="+newPhone;
 		$.ajax({
-			url: "regist.do"+queryString,
+			url: "../../regist.do"+queryString,
 			dataType: "text",
 			success: function(data){
 				if(data == 0){
@@ -75,6 +80,32 @@
 			error: function(){
 				$("#phonechk").text("통신오류");
 	            $("#phonechk").css("color", "blue");
+			}
+		});
+	}
+	
+	function emailChk(){
+		var newEmail = $("#email").val();
+		var queryString = "?command=emailCheck&memberEmail="+newEmail;
+		$.ajax({
+			url: "../../regist.do"+queryString,
+			dataType: "text",
+			success: function(data){
+				if(data == 0){
+					$("#emailchk").text("등록 가능한 이메일입니다.");
+		            $("#emailchk").css("color", "blue");
+		            $("#email").prop("title", "y");
+		            
+				} else if(data == 1) {
+					$("#emailchk").text("이미 사용중인 이메일입니다.");
+		            $("#emailchk").css("color", "red");
+		            $("#email").prop("title", "n");
+		            $("#email").focus();
+				}
+			},
+			error: function(){
+				$("#emailchk").text("통신오류");
+	            $("#emailchk").css("color", "blue");
 			}
 		});
 	}
@@ -110,6 +141,18 @@
         }).open();
 	}
 	
+	/*function onSubmit(){
+		$(".g-recaptcha").css("display","none");
+		$("#submitbtn").css("display","");
+	}*/
+	
+	function onSubmit(){
+		if($("#id").prop("title") == "y" && $("#phone").prop("title") == "y" && $("#email").prop("title") == "y" && $("#pwchk").prop("title") == "y"){
+			$("#registform").submit();
+		} else{
+			alert("입력하신 정보를 다시 확인해주세요.");
+		}
+	}
 	
 	
 
@@ -118,12 +161,13 @@
 <body>
 
 <!-- 회원가입 페이지 -->
-
+<!-- 물어볼거 : radio null 값 처리하는 법 -->
+<!-- 각 chk 공백 잡는법 -->
 
 	<h1>우리동네 운동친구</h1>
 	<h2>회원가입</h2>
 
-	<form action="regist.do" method="post">
+	<form action="../../regist.do" method="post" id="registform">
 	<input type="hidden" name="command" value="registres">
 		<table>
 			<tr align="center">
@@ -148,7 +192,7 @@
 			<tr>
 				<td colspan="2">
 					<label for="pw">비밀번호</label><br>
-					<input type="password" id="pw" name="memberPw" placeholder="비밀번호(숫자,영문,특수문자 조합 최소8자)" required="required" onchange="chkPW()">
+					<input type="password" id="pw" name="memberPw" placeholder="비밀번호" required="required" onchange="chkPW()">
 				</td>
 			</tr>
 			<tr>
@@ -185,16 +229,23 @@
 			<tr>
 				<td colspan="2">
 					<label for="email">이메일</label><br>
-					<input type="text" id="email" name="memberEmail" title="n" placeholder="이메일" required="required"></td>
+					<input type="text" id="email" name="memberEmail" title="n" placeholder="이메일" required="required" onchange="emailChk()"></td>
+			</tr>
+			<tr>
+				<td id="emailchk" style="font-size:10px; text-align: start"></td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="회원가입">
+					<button class="g-recaptcha" 
+        					data-sitekey="6LdY0Y0aAAAAAC55f1G3fyahKgyATLdZ1BZq_yt5" 
+        					data-callback='onSubmit' 
+        					data-action='submit'>회원가입</button>
 				</td>
 			</tr>
+			
+			
 		</table>
 	</form>
-	
 
 	<%@include file="../common/footer.jsp" %>
 
