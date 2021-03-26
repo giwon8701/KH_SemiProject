@@ -39,10 +39,13 @@
 						success : function(msg) {
 
 							var list = msg.result;
+							
+							$('#start').html("");
+							
 							for (var i = 0; i < list.length; i++) {
 								
 								$('#start').append(
-										'<div class="col-md-3 col-sm-6"> <div class="product-grid3"> <div class="product-image3"> <a href="' + list[i].link + '" target=_sub > <img class="pic" src="' + list[i].image + '" + ""> </a> </div> <div class="product-content"> <h3 class="title">' + list[i].title + '</a> </h3> <div class="price">' + list[i].lprice + '원 </div> </div> </div> </div>');
+										'<div class="col-md-3 col-sm-6"> <div class="product-grid3"> <div class="product-image3"> <a href="' + list[i].link + '" target=_sub > <img class="pic" src="' + list[i].image + '" + ""> </a> </div> <div class="product-content"> <h3 class="title">' + list[i].title + '</a> </h3> <div class="price"> 최저가 : ' + list[i].lprice + '원 </div> </div> </div> </div>');
 							}
 						},
 						error : function() {
@@ -73,7 +76,7 @@
 
 .product-grid3 .product-image3 img {
 	width: 100%;
-	height: auto;
+	height: 240px;
 }
 
 .product-grid3 .pic-1 {
