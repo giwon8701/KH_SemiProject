@@ -4,16 +4,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,17 +19,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.shopping.dto.SearchDto;
+
 
 @WebServlet("/SearchTest")
 public class SearchServlet extends HttpServlet {
@@ -48,13 +42,13 @@ public class SearchServlet extends HttpServlet {
 		String clientSecret = "TaDZyyf7Z7";
 
 		String apiURL = "https://openapi.naver.com/v1/search/shop.json?query=" + search + "&display=100&start=1000";
-
+		
 		Map<String, String> requestHeaders = new HashMap<>();
 		requestHeaders.put("X-Naver-Client-Id", clientId);
 		requestHeaders.put("X-Naver-Client-Secret", clientSecret);
 		String responseBody = get(apiURL, requestHeaders);
 		System.out.println(responseBody);
-
+		
 		JsonElement element = JsonParser.parseString(responseBody);
 
 		JsonObject jsonData = element.getAsJsonObject();
@@ -68,17 +62,14 @@ public class SearchServlet extends HttpServlet {
 		for (int i = 0; i < recordsArray.size(); i++) {
 
 			String title = recordsArray.get(i).getAsJsonObject().get("title").getAsString();
+			String link = recordsArray.get(i).getAsJsonObject().get("link").getAsString();
 			String image = recordsArray.get(i).getAsJsonObject().get("image").getAsString();
 			int lprice = recordsArray.get(i).getAsJsonObject().get("lprice").getAsInt();
 			String brand = recordsArray.get(i).getAsJsonObject().get("brand").getAsString();
 			String category3 = recordsArray.get(i).getAsJsonObject().get("category3").getAsString();
-			SearchDto dto = null;
-			if (category3 == "운동화") {
-				dto = new SearchDto(title, image, lprice, brand, category3);
-			list.add(dto);
-			} else {
-				
-			}
+			
+			SearchDto dto = new SearchDto(title, link, image, lprice, brand, category3);
+			list.add(dto);            
 
 			Gson gson = new Gson();
 			String jsonString = gson.toJson(dto);
