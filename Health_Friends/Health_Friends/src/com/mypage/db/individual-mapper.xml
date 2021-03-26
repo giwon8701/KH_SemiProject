@@ -46,5 +46,13 @@
 		DELETE FROM INDIVIDUAL
 		WHERE INDIVIDUAL_NO = #{individual_no}
 	</delete>
+	
+	<delete id="individualMultiDelete" parameterType="map">
+		DELETE FROM INDIVIDUAL
+		WHERE INDIVIDUAL_NO IN
+		<foreach collection="individual_nos" item="individual_no" open="(" separator="," close=")">
+			#{individual_no}
+		</foreach>
+	</delete>
 
 </mapper>

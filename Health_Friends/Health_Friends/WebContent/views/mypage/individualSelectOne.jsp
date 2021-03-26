@@ -1,3 +1,4 @@
+<%@page import="java.util.Calendar"%>
 <%@page import="com.mypage.biz.IndividualBizImpl"%>
 <%@page import="com.mypage.biz.IndividualBiz"%>
 <%@page import="com.mypage.dto.IndividualDto"%>
@@ -14,6 +15,37 @@
 <body>
 <%--캘린더 게시판 하나선택하여 자세히보기 --%>
 <%
+	Calendar cal = Calendar.getInstance();
+
+	int year = cal.get(Calendar.YEAR);
+	int month = cal.get(Calendar.MONTH) + 1;
+
+	String paramYear = request.getParameter("year");
+	String paramMonth = request.getParameter("month");
+	
+	if (paramYear != null) {
+		year = Integer.parseInt(paramYear);
+	}
+	if (paramMonth != null) {
+		month = Integer.parseInt(paramMonth);
+	}
+
+	if (month > 12) {
+		month = 1;
+		year++;
+	}
+
+	if (month < 1) {
+		month = 12;
+		year--;
+	}
+
+	cal.set(year, month - 1, 1);
+	int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+	int lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+	int date = Integer.parseInt(request.getParameter("date"));
+	
 	int individual_no = Integer.parseInt(request.getParameter("individual_no"));
 	IndividualBiz biz = new IndividualBizImpl();
 	IndividualDto dto = biz.individualSelectOne(individual_no);
@@ -47,7 +79,7 @@
 				<td colspan="2" align="right">
 					<input type="button" value="수정" onclick="location.href='individual.do?command=individualUpdate&individual_no=${dto.individual_no }'">
 					<input type="button" value="삭제" onclick="location.href='individual.do?command=individualDelete&individual_no=${dto.individual_no }'">
-					<input type="button" value="목록" onclick="location.href='mypage.jsp'">
+					<input type="button" value="목록" onclick="location.href='individual.do?command=individualList&year=<%=year%>&month=<%=month%>&date=<%=date%>'">
 				</td>
 			</tr>
 		</table>

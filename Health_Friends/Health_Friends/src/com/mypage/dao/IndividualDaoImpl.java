@@ -96,6 +96,26 @@ public class IndividualDaoImpl extends SqlMapConfig implements IndividualDao {
 		}
 		return res;
 	}
+	
+	
+	@Override
+	public int individualMultiDelete(String[] individual_nos) {
+		int count = 0;
+		
+		Map<String, String[]> map = new HashMap<String, String[]>();
+		map.put("individual_nos", individual_nos);
+		
+		try(SqlSession session = getSqlSessionFactory().openSession(false);){
+			count = session.delete(namespace+"individualMultiDelete", map);
+			if(count == individual_nos.length) {
+				session.commit();
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return count;
+	}
 
 
 	@Override
