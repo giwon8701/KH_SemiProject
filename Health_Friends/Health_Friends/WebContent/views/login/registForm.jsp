@@ -173,7 +173,7 @@
 			<tr align="center">
 				<td>
 					<label for="f">여</label><br>
-					<input type="radio" id="f" name="memberGender" value="F">
+					<input type="radio" id="f" name="memberGender" value="F" checked="checked">
 				</td>
 				<td>
 					<label for="m">남</label><br>
