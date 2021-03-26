@@ -125,7 +125,7 @@
 						for (int i = 1; i <= lastDay; i++) {
 						%>
 						<td><a class="countview"
-							href="individual.do?command=individualList&year=<%=year%>&month=<%=month%>&date=<%=i%>"
+							href="../../individual.do?command=individualList&year=<%=year%>&month=<%=month%>&date=<%=i%>"
 							style="color: <%=Util.fontColor(i, dayOfWeek)%>"><%=i%></a></td>
 						<%
 							if ((dayOfWeek - 1 + i) % 7 == 0) {
