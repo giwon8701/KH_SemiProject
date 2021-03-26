@@ -36,6 +36,11 @@ public class IndividualBizImpl implements IndividualBiz {
 	}
 	
 	@Override
+	public int individualMultiDelete(String[] individual_nos) {
+		return dao.individualMultiDelete(individual_nos);
+	}
+
+	@Override
 	public List<IndividualDto> individualViewList(String individual_id, String yyyyMM) {
 		return null;
 	}
@@ -45,10 +50,6 @@ public class IndividualBizImpl implements IndividualBiz {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-
-
-
 
 
 

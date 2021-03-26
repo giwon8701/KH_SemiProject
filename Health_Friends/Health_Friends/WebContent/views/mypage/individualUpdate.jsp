@@ -1,3 +1,4 @@
+<%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("UTF-8"); %>
@@ -12,6 +13,36 @@
 <%--캘린더 게시판 게시글 수정 --%>
 
 <%
+	Calendar cal = Calendar.getInstance();
+	
+	int year = cal.get(Calendar.YEAR);
+	int month = cal.get(Calendar.MONTH) + 1;
+	
+	String paramYear = request.getParameter("year");
+	String paramMonth = request.getParameter("month");
+	
+	if (paramYear != null) {
+		year = Integer.parseInt(paramYear);
+	}
+	if (paramMonth != null) {
+		month = Integer.parseInt(paramMonth);
+	}
+	
+	if (month > 12) {
+		month = 1;
+		year++;
+	}
+	
+	if (month < 1) {
+		month = 12;
+		year--;
+	}
+	
+	cal.set(year, month - 1, 1);
+	int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+	int lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+	
+
 	int individual_no = Integer.parseInt(request.getParameter("individual_no"));
 %>
 	<jsp:useBean id="util" class="com.mypage.common.Util"></jsp:useBean>
@@ -21,6 +52,8 @@
 	<form action="individual.do" method="post">
 		<input type="hidden" name="command" value="individualUpdateres">
 		<input type="hidden" name="individual_no" value="${dto.individual_no }">
+		<input type="hidden" name="year" value="<%=year %>">
+		<input type="hidden" name="month" value="<%=month %>">
 		
 		<table border="1">
 			<tr>
@@ -45,7 +78,7 @@
 			<tr>
 				<td colspan="2" align="right">
 					<input type="submit" value="수정">
-					<input type="button" value="취소" onclick="location.href='individual.do?command=update&seq=${dto.individual_no}'">
+					<input type="button" value="취소" onclick="location.href='../../individual.do?command=indivipdate&seq=${dto.individual_no}'">
 				</td>
 			</tr>
 		</table>

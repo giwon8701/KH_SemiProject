@@ -11,6 +11,7 @@ public interface IndividualDao {
 	public int individualInsert(IndividualDto dto);
 	public int individualUpdate(IndividualDto dto);
 	public int individualDelete(int individual_no);
+	public int individualMultiDelete(String[] individual_nos);
 	public List<IndividualDto> individualViewList(String individual_id, String yyyyMM);
 	public int individualViewCount(String individual_id, String yyyyMMdd);
 
