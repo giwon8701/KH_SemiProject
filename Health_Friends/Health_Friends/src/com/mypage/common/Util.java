@@ -66,7 +66,7 @@ public class Util {
 	}
 	
 	// 비밀번호 hashcode로 변경
-	public String getHash(String input) {
+	public static String getHash(String input) {
 		StringBuilder result = new StringBuilder();
 		try {
 			MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -81,5 +81,18 @@ public class Util {
 			e.getMessage();
 		}
 		return result.toString();
+	}
+	
+	//naver 생일값 분리
+	public static String getYear(String input) {
+		return input.substring(0, 4);
+	}
+	
+	public static String getMm(String input) {
+		return input.substring(4, 6);
+	}
+	
+	public static String getDd(String input) {
+		return input.substring(6);
 	}
 }

@@ -1,6 +1,7 @@
 package com.login.biz;
 
 import java.util.List;
+import java.util.Map;
 
 import com.login.dao.RegistDao;
 import com.login.dao.RegistDaoImpl;
@@ -22,8 +23,13 @@ public class RegistBizImpl implements RegistBiz {
 	}
 	
 	@Override
-	public List<RegistDto> login(RegistDto logindto) {
+	public int login(RegistDto logindto) {
 		return dao.login(logindto);
 	};
+	
+	@Override
+	public RegistDto selectOne(RegistDto logindto) {
+		return dao.selectOne(logindto);
+	}
 
 }
