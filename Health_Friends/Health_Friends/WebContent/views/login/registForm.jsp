@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
@@ -31,7 +33,9 @@
 	
 	function idCheck(){
 		var newId = $("#id").val();
-		if($.trim(newId) != "" || $.trim(newId) != null){
+		if($.trim(newId) == "" || $.trim(newId) == null){
+			$("#idchk").text("아이디를 입력해주세요").css("color","red");
+		} else{
 			var queryString = "?command=idCheck&memberId="+newId;
 			$.ajax({
 				url: "../../regist.do"+queryString,
@@ -53,61 +57,67 @@
 		            $("#idchk").css("color", "blue");
 				}
 			});
-		} else{
-			$("#idchk").text("아이디를 입력해주세요");
 		}
 	}
 	
 	function phoneChk(){
 		var newPhone = $("#phone").val();
-		var queryString = "?command=phoneCheck&memberPhone="+newPhone;
-		$.ajax({
-			url: "../../regist.do"+queryString,
-			dataType: "text",
-			success: function(data){
-				if(data == 0){
-					$("#phonechk").text("등록 가능한 번호입니다.");
+		if($.trim(newPhone) == "" || $.trim(newPhone) == null){
+			$("#phonechk").text("전화 번호를 입력해주세요").css("color", "red");
+		} else{
+			var queryString = "?command=phoneCheck&memberPhone="+newPhone;
+			$.ajax({
+				url: "../../regist.do"+queryString,
+				dataType: "text",
+				success: function(data){
+					if(data == 0){
+						$("#phonechk").text("등록 가능한 번호입니다.");
+			            $("#phonechk").css("color", "blue");
+			            $("#phone").prop("title", "y");
+			            
+					} else if(data == 1) {
+						$("#phonechk").text("이미 사용중인 번호입니다.");
+			            $("#phonechk").css("color", "red");
+			            $("#phone").prop("title", "n");
+			            $("#phone").focus();
+					}
+				},
+				error: function(){
+					$("#phonechk").text("통신오류");
 		            $("#phonechk").css("color", "blue");
-		            $("#phone").prop("title", "y");
-		            
-				} else if(data == 1) {
-					$("#phonechk").text("이미 사용중인 번호입니다.");
-		            $("#phonechk").css("color", "red");
-		            $("#phone").prop("title", "n");
-		            $("#phone").focus();
 				}
-			},
-			error: function(){
-				$("#phonechk").text("통신오류");
-	            $("#phonechk").css("color", "blue");
-			}
-		});
+			});
+		}
 	}
 	
 	function emailChk(){
 		var newEmail = $("#email").val();
-		var queryString = "?command=emailCheck&memberEmail="+newEmail;
-		$.ajax({
-			url: "../../regist.do"+queryString,
-			dataType: "text",
-			success: function(data){
-				if(data == 0){
-					$("#emailchk").text("등록 가능한 이메일입니다.");
+		if($.trim(newEmail) == "" || $.trim(newEmail) == null){
+			$("#emailchk").text("이메일을 입력해주세요").css("color", "red");
+		} else{
+			var queryString = "?command=emailCheck&memberEmail="+newEmail;
+			$.ajax({
+				url: "../../regist.do"+queryString,
+				dataType: "text",
+				success: function(data){
+					if(data == 0){
+						$("#emailchk").text("등록 가능한 이메일입니다.");
+			            $("#emailchk").css("color", "blue");
+			            $("#email").prop("title", "y");
+			            
+					} else if(data == 1) {
+						$("#emailchk").text("이미 사용중인 이메일입니다.");
+			            $("#emailchk").css("color", "red");
+			            $("#email").prop("title", "n");
+			            $("#email").focus();
+					}
+				},
+				error: function(){
+					$("#emailchk").text("통신오류");
 		            $("#emailchk").css("color", "blue");
-		            $("#email").prop("title", "y");
-		            
-				} else if(data == 1) {
-					$("#emailchk").text("이미 사용중인 이메일입니다.");
-		            $("#emailchk").css("color", "red");
-		            $("#email").prop("title", "n");
-		            $("#email").focus();
 				}
-			},
-			error: function(){
-				$("#emailchk").text("통신오류");
-	            $("#emailchk").css("color", "blue");
-			}
-		});
+			});
+		}
 	}
 	
 	function addrCheck(){
@@ -161,8 +171,6 @@
 <body>
 
 <!-- 회원가입 페이지 -->
-<!-- 물어볼거 : radio null 값 처리하는 법 -->
-<!-- 각 chk 공백 잡는법 -->
 
 	<h1>우리동네 운동친구</h1>
 	<h2>회원가입</h2>
@@ -177,7 +185,7 @@
 				</td>
 				<td>
 					<label for="m">남</label><br>
-					<input type="radio" id="m" name="memberGender" value="M">
+					<input type="radio" id="m" name="memberGender" value="M" >
 				</td>
 			</tr>
 			<tr>
@@ -215,12 +223,28 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="date" id="birth" name="memberBirthday" required="required">
+					<label for="birth">생년월일</label><br>
+					<select name="year" id="birth" required="required">
+						<c:forEach var="i" begin="1910" end="2021" step="1">
+							<option value="${i }"><c:out value="${i }"></c:out></option>
+						</c:forEach>
+					</select>년
+					<select name="mm" id="birth" required="required">
+						<c:forEach var="i" begin="01" end="12" step="1">
+							<option value="${i }"><c:out value="${i }"></c:out></option>
+						</c:forEach>
+					</select>월
+					<select name="dd" id="birth" required="required">
+						<c:forEach var="i" begin="01" end="31" step="1">
+							<option value="${i }"><c:out value="${i }"></c:out></option>
+						</c:forEach>
+					</select>일
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input type="tel" id="phone" name="memberPhone" title="n" placeholder="전화번호" onchange="phoneChk()">
+					<label for="phone">전화번호</label><br>
+					<input type="tel" id="phone" name="memberPhone" title="n" placeholder="전화번호" onchange="phoneChk()" required="required">
 				</td>
 			</tr>
 			<tr>

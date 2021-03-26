@@ -110,8 +110,8 @@ public class NaverServlet extends HttpServlet {
 			dto.setMember_birthday(member_birthday);
 			dto.setMember_phone(member_phone);
 			
-			System.out.println(dto.getMember_email());
-			System.out.println(dto.getMember_id());
+			//System.out.println(dto.getMember_email());
+			//System.out.println(dto.getMember_id());
 			
 			//가입 유무 확인
 			RegistDao dao = new RegistDaoImpl();
@@ -127,7 +127,6 @@ public class NaverServlet extends HttpServlet {
 				dispatch(request, response, "/views/login/naverRegistForm.jsp");
 			}
 
-			
 	      }
 	    } catch (Exception e) {
 	      System.out.println(e);

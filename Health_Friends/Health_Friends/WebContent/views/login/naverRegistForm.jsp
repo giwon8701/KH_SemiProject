@@ -1,3 +1,5 @@
+<%@page import="com.login.dto.RegistDto"%>
+<%@page import="com.mypage.common.Util" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -15,29 +17,21 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 	$(function(){
-		if(${dto.member_id} != null || ${dto.member_id} != ""){
-			$("#id").prop("value", ${dto.member_id});
-		}
-		
-		if(${dto.member_name} != null || ${dto.member_id} != ""){
-			$("#name").prop("value", ${dto.member_name});
-		}
-		
-		if(${dto.member_email} != null || ${dto.member_id} != ""){
-			$("#email").prop("value", ${dto.member_email});
-			$("#email").prop("readonly", "readonly");
-		}
-		
-		if(${dto.member_birthday} != null || ${dto.member_id} != ""){
-			$("#birth").prop("value", ${dto.member_birthday});
-		}
-		
-		if(${dto.member_phone} != null || ${dto.member_id} != ""){
-			$("#phone").prop("value", {dto.member_phone});
-		}
+		$.ajax({
+						
+		});
 	});
 </script>
 <body>
+
+<%
+	RegistDto dto = (RegistDto)request.getAttribute("dto");
+	String birthday = dto.getMember_birthday();
+	
+	int year = Integer.parseInt(Util.getYear(birthday));
+	int mm = Integer.parseInt(Util.getMm(birthday));
+	int dd = Integer.parseInt(Util.getDd(birthday));
+%>
 
 	<h1>우리동네 운동친구</h1>
 	<h2>추가 정보 입력</h2>
@@ -59,13 +53,17 @@
 					</tr>
 				</c:when>
 				<c:otherwise>
-					<input type="hidden" name="memberGender" value="${dto.member_gender }"/>
+					<tr align="center">
+						<td>
+							<input type="text" readonly="readonly" name="memberGender" value="${dto.member_gender }"/>
+						</td>
+					</tr>
 				</c:otherwise>
 			</c:choose>
 			<tr>
 				<td colspan="2">
 					<label for="id">아이디</label><br>
-					<input type="text" id="id" name="memberId" title="n" placeholder="아이디입력" required="required" onchange="idCheck()">
+					<input type="text" id="id" name="memberId" title="n" value="${dto.member_id }" readonly="readonly" required="required" onchange="idCheck()">
 				</td>
 			</tr>
 			<tr>
@@ -87,22 +85,52 @@
 			</tr>
 			<tr>
 				<td>
+					<label for="addr">주소</label><br>
 					<input type="text" id="addr" name="memberAddr" placeholder="주소를 입력해주세요" readonly="readonly" required="required" onclick="addrCheck()">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="text" id="name" name="memberName" placeholder="이름" required="required">
+					<label for="name">이름</label><br>
+					<input type="text" id="name" name="memberName" value="${dto.member_name }" readonly="readonly" required="required">
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input type="date" id="birth" name="memberBirthday" required="required">
+					<label for="birth">생년월일</label><br>
+					<select name="year" id="birth" required="required">
+						<%
+							for(int i = 1910; i < 2022; i++){
+						%>
+							<option value="<%=i %>" <%=( year == i)?"selected":"" %>><%=i %></option>
+						<%								
+							}
+						%>
+					</select>년
+					<select name="mm" id="birth" required="required">
+						<%
+							for(int i = 1; i < 13; i++){
+						%>
+							<option value="<%=i %>" <%=(mm == i)?"selected":"" %>><%=i %></option>
+						<%								
+							}
+						%>
+					</select>월
+					<select name="dd" id="birth" required="required">
+						<%
+							for(int i = 1; i < 32; i++){
+						%>
+							<option value="<%=i %>" <%=(dd == i)?"selected":"" %>><%=i %></option>
+						<%								
+							}
+						%>
+					</select>일
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input type="tel" id="phone" name="memberPhone" title="n" placeholder="전화번호" onchange="phoneChk()">
+					<label for="phone">전화번호</label><br>
+					<input type="tel" id="phone" name="memberPhone" title="n" value="${dto.member_phone }" readonly="readonly" onchange="phoneChk()">
 				</td>
 			</tr>
 			<tr>
@@ -111,7 +139,7 @@
 			<tr>
 				<td colspan="2">
 					<label for="email">이메일</label><br>
-					<input type="text" id="email" name="memberEmail" title="n" placeholder="이메일" required="required"></td>
+					<input type="text" id="email" name="memberEmail" title="n" value="${dto.member_email }" readonly="readonly" required="required"></td>
 			</tr>
 			<tr>
 				<td colspan="2">

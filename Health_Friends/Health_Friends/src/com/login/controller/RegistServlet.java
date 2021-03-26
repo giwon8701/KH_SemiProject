@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import com.login.biz.RegistBiz;
 import com.login.biz.RegistBizImpl;
 import com.login.dto.RegistDto;
-import com.mypage.common.Util;
+import static com.mypage.common.Util.*;
 
 /**
  * Servlet implementation class RegisterServlet
@@ -25,7 +25,6 @@ public class RegistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     RegistBiz biz = new RegistBizImpl();
-    Util util = new Util();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
@@ -66,9 +65,15 @@ public class RegistServlet extends HttpServlet {
 		} else if(command.equals("registres")) {
 			String memberGender = request.getParameter("memberGender");
 			String memberId = request.getParameter("memberId");
-			String memberPw = util.getHash(request.getParameter("memberPw"));
+			String memberPw = getHash(request.getParameter("memberPw"));
 			String memberName = request.getParameter("memberName");
-			String memberBirthday = request.getParameter("memberBirthday");
+			
+			String year = request.getParameter("year");
+			String mm = request.getParameter("mm");
+			String dd = request.getParameter("dd");
+			
+			String memberBirthday = year + isTwo(mm) + isTwo(dd);
+			
 			String memberPhone = request.getParameter("memberPhone");
 			String memberEmail = request.getParameter("memberEmail");
 			String memberAddr = request.getParameter("memberAddr");
@@ -93,7 +98,7 @@ public class RegistServlet extends HttpServlet {
 			response.sendRedirect("./views/login/login.jsp");
 		} else if(command.equals("loginres")){
 			String memberId = request.getParameter("memberId");
-			String memberPw = util.getHash(request.getParameter("memberPw"));
+			String memberPw = getHash(request.getParameter("memberPw"));
 			
 			RegistDto logindto = new RegistDto();
 			logindto.setMember_id(memberId);
