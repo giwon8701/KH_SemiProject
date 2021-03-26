@@ -10,8 +10,7 @@
 
 	<select id="selectList" resultMap="BoardMap">
 		SELECT POST_ID, POST_TITLE
-		FROM BOARD
+		FROM ACCOMPANYBOARD
 	</select>
-	
 	
 </mapper>
