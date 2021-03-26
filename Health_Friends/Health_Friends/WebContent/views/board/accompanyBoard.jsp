@@ -1,13 +1,11 @@
+<%@page import="com.board.dto.BoardDto"%>
 <%@page import="com.board.biz.BoardBizImpl"%>
 <%@page import="com.board.biz.BoardBiz"%>
-<%@page import="com.board.dto.BoardDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-%>
-<%
 	response.setContentType("text/html; charset=UTF-8");
 %>    
 <!DOCTYPE html>
@@ -28,7 +26,6 @@
 <%
 	BoardBiz biz = new BoardBizImpl();
 	List<BoardDto> list = biz.selectList();
-	System.out.print(list);
 %>
 <body>
 
