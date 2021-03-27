@@ -6,6 +6,7 @@
 <%
 	response.setContentType("text/html; charset=UTF-8");
 %>
+<%-- 안녕~ --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +34,7 @@
 	<textarea id="messageTextArea" rows="10" cols="50" disabled="disabled"></textarea>
 	<script type="text/javascript">
 		/// 서버의 broadsocket의 서블릿으로 웹 소켓을 한다.
-		var webSocket = new WebSocket("ws://localhost:8080/ChatExample/broadsocket");
+		var webSocket = new WebSocket("ws://localhost:8787/Health_Friends/broadsocket");
 		// 콘솔 텍스트 영역
 		var messageTextArea = document.getElementById("messageTextArea");
 		
