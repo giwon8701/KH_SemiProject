@@ -82,8 +82,8 @@
 						<td>
 							<ol>
 								<li><a href="">회원정보 수정</a></li>
-								<li><a href="payment.do?command=payment">프리미엄 등록</a></li>
-								<li><a href="">프리미엄 취소</a></li>
+								<li><a href="paymentGuide.jsp">프리미엄 등록</a></li>
+								<li><a href="../../payment.do?command=paymentDowndate&buyer_email=kwg940930@naver.com">프리미엄 취소</a></li>
 							</ol>
 						</td>
 					</tr>
