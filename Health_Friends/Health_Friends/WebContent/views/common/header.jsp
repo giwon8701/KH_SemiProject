@@ -19,11 +19,12 @@
 		<header id="header" class="alt">
 			<div class="logo"><a href="../../index.jsp">우리 동네 <span>운동 친구</span></a></div>
 			<div class="header-list">
-				<a href="">게시판1</a>
-				<a href="">게시판2</a>
-				<a href="">게시판3</a>
-				<a href="">게시판4</a>
-				<a href="">게시판5</a>
+				<a href="">소개</a>
+				<a href="">공지사항</a>
+				<a href="">동행게시판</a>
+				<a href="">후기게시판</a>
+				<a href="shopping.do?command=shopping">쇼핑</a>
+				<a href="">고객센터</a>
 			</div>
 
 			<input type="text" size="50" placeholder="동네 이름 또는 운동명을 검색해 보세요!" class="header-search">

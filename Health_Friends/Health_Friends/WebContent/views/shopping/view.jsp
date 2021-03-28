@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
-<%
-	response.setContentType("text/html; charset=%{encoding}");
-%>
+pageEncoding="UTF-8"%>
+<%request.setCharacterEncoding("UTF-8");%>
+<%response.setContentType("text/html; charset=UTF-8");%>
 
 <!DOCTYPE html>
 <html>
@@ -21,18 +16,19 @@
 	function goSearch() {
 
 		var search01 = $("#txt_search").val();
-		var search = encodeURIComponent(search01);
+		var keyword = encodeURIComponent(search01);
 
-		if (!search) {
+		if (!keyword) {
 			alert("먼저 검색어를 입력해 주십시오");
 			return false;
 		}
-		if (search) {
+		if (keyword) {
 			$.ajax({
-						url : "../../SearchTest",
+						url : "../../shopping.do",
 						method : "GET",
 						data : {
-							"search" : search,
+							"command" : "search",
+							"keyword" : keyword,
 							"responseBody" : "responseBody"
 						},
 						dataType : "json",
@@ -204,7 +200,7 @@
 </style>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width" , initial-scale="1">
+<meta name="viewport" content="width=device-width" initial-scale="1">
 
 <title>쇼핑 검색 페이지</title>
 
