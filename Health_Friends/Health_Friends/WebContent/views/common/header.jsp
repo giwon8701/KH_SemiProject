@@ -12,9 +12,7 @@
 </head>
 <link href="assets/css/main.css" rel="stylesheet" type="text/css">
 <body>
-<% RegistDto dto = (RegistDto) session.getAttribute("dto"); 
-System.out.println(dto.getMember_id());
-%>
+<% RegistDto dto = (RegistDto) session.getAttribute("dto"); %>
 
 <%--header 로그인 상황에 따라 다르게 나와야함...! --%>
 		<!-- Header -->
