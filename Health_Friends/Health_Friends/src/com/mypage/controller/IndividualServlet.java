@@ -1,7 +1,10 @@
 package com.mypage.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +17,8 @@ import com.mypage.biz.IndividualBiz;
 import com.mypage.biz.IndividualBizImpl;
 import com.mypage.common.Util;
 import com.mypage.dto.IndividualDto;
+
+import net.sf.json.JSONObject;
 
 @WebServlet("/individual.do")
 public class IndividualServlet extends HttpServlet {
@@ -41,7 +46,7 @@ public class IndividualServlet extends HttpServlet {
 				
 				request.setAttribute("list", list);
 				
-				dispatch("individualList.jsp", request, response);
+				dispatch("./views/mypage/individualList.jsp", request, response);
 				
 			} else if(command.equals("individualSelectOne")) {
 				int individual_no = Integer.parseInt(request.getParameter("individual_no"));
@@ -49,7 +54,7 @@ public class IndividualServlet extends HttpServlet {
 				IndividualDto dto = biz.individualSelectOne(individual_no);
 				
 				request.setAttribute("dto", dto);
-				dispatch("individualSelectOne.jsp", request, response);
+				dispatch("./views/mypage/individualSelectOne.jsp", request, response);
 				
 			} else if(command.equals("individualInsert")) {
 				
@@ -74,7 +79,7 @@ public class IndividualServlet extends HttpServlet {
 				
 				int res = biz.individualInsert(dto);
 				if(res > 0) {
-					response.sendRedirect("mypage.jsp");
+					response.sendRedirect("./views/mypage/mypage.jsp");
 				} else {
 					request.setAttribute("msg", "일정 추가 실패");
 					dispatch("error.jsp", request, response);
@@ -86,7 +91,7 @@ public class IndividualServlet extends HttpServlet {
 				
 				request.setAttribute("dto", dto);
 				
-				dispatch("individualUpdate.jsp", request, response);
+				dispatch("./views/mypage/individualUpdate.jsp", request, response);
 				
 			} else if(command.equals("individualUpdateres")){
 				int individual_no = Integer.parseInt(request.getParameter("individual_no"));
@@ -98,6 +103,7 @@ public class IndividualServlet extends HttpServlet {
 				dto.setIndividual_title(individual_title);
 				dto.setIndividual_content(individual_content);
 				int res = biz.individualUpdate(dto);
+				
 				
 				if(res > 0){
 					
@@ -113,16 +119,50 @@ public class IndividualServlet extends HttpServlet {
 				int res = biz.individualDelete(individual_no);
 				
 				if(res > 0){
-					dispatch("mypage.jsp", request, response);
+					response.sendRedirect("./views/mypage/mypage.jsp");
 				} else {
-					dispatch("cal.do?command=individualSelectOne&individual_no="+individual_no, request, response);
+					dispatch("individual.do?command=individualSelectOne&individual_no="+individual_no, request, response);
 				} 
 				
+			} else if(command.equals("individualMultiDelete")) {
+				String year = request.getParameter("year");
+				String month = request.getParameter("month");
+				String date = request.getParameter("date");
+				
+				String[] individual_nos = request.getParameterValues("chk");
+				
+				if(individual_nos == null || individual_nos.length ==0) {
+					response.sendRedirect("individual.do?command=individualList&year="+year+"&month="+month+"&date="+date);
+				} else {
+					int res = biz.individualMultiDelete(individual_nos);
+					if(res > 0) {
+						response.sendRedirect("individual.do?command=individualList&year="+year+"&month="+month+"&date="+date);
+					} else {
+						response.sendRedirect("individual.do?command=individualList&year="+year+"&month="+month+"&date="+date);
+					}
+				}
+				
+			} else if(command.equals("individualCount")) {
+				String individual_id = request.getParameter("individual_id");
+				String yyyyMMdd = request.getParameter("yyyyMMdd");
+				System.out.printf("individual_id : %s / yyyyMMdd : %s \n", individual_id, yyyyMMdd);
+				
+				int count = biz.individualCount(individual_id, yyyyMMdd);
+				System.out.println("count : " + count);
+				
+				Map<String, Integer> map = new HashMap<String, Integer>();
+				map.put("count", count);
+				
+				JSONObject obj = JSONObject.fromObject(map);
+				
+				PrintWriter out = response.getWriter();
+				obj.write(out);
+				
+				
 			}
-			
 		} catch (Exception e) {
 			request.setAttribute("msg", "command 오류");
-			dispatch("error.jsp", request, response);
+			dispatch("./views/common/error.jsp", request, response);
 		} 
 	}
 

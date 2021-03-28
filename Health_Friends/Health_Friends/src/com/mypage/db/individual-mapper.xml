@@ -46,5 +46,20 @@
 		DELETE FROM INDIVIDUAL
 		WHERE INDIVIDUAL_NO = #{individual_no}
 	</delete>
+	
+	<delete id="individualMultiDelete" parameterType="map">
+		DELETE FROM INDIVIDUAL
+		WHERE INDIVIDUAL_NO IN
+		<foreach collection="individual_nos" item="individual_no" open="(" separator="," close=")">
+			#{individual_no}
+		</foreach>
+	</delete>
+	
+	<select id="individualCount" parameterType="map">
+		SELECT COUNT(*) 
+		FROM INDIVIDUAL 
+		WHERE INDIVIDUAL_ID = #{individual_id}
+		AND SUBSTR(INDIVIDUAL_MDATE, 1, 8) = #{individual_mdate}
+	</select>
 
 </mapper>

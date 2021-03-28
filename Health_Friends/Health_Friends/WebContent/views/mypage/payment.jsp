@@ -12,12 +12,11 @@
 </head>
 <body>
 <%-- 결제페이지인데 추후에 조금더 자세하게 수정해야함! --%>
-<%@ include file="../common/header.jsp" %>
 
 <%
 	//임시로 강제 변수 생성
 	String name = "강씨네";
-	String email = "hf@kh.co.kr";
+	String email = "kwg940930@naver.com";
 	String phone = "010-1234-1111";
 	String address = "서울 어딘가...";
 	int totalPrice = 1000000;
@@ -26,7 +25,7 @@
     <script>
     $(function(){
         var IMP = window.IMP; // 생략가능
-        IMP.init('imp30454386'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+        IMP.init('imp30454386'); // 부여받은 "가맹점 식별코드"를 사용
         var msg;
         
         IMP.request_pay({
@@ -39,17 +38,23 @@
             buyer_name : '<%=name%>',
             buyer_tel : '<%=phone%>',
             buyer_addr : '<%=address%>',
-            buyer_postcode : '123-456',
+            buyer_postcode : '123-456'
             //m_redirect_url : 'http://www.naver.com'
         }, function(rsp) {
             if ( rsp.success ) {
                 //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
-                jQuery.ajax({
-                    url: "/payments/complete", //cross-domain error가 발생하지 않도록 주의
+                $.ajax({
+                    url: '../../payment.do?command=paymentUpdate', //cross-domain error가 발생하지 않도록 주의
                     type: 'POST',
                     dataType: 'json',
                     data: {
-                        imp_uid : rsp.imp_uid
+                        imp_uid : rsp.imp_uid,
+                        amount : <%=totalPrice%>,
+                        buyer_email : '<%=email%>',
+                        buyer_name : '<%=name%>',
+                        buyer_tel : '<%=phone%>',
+                        buyer_addr : '<%=address%>',
+                        buyer_postcode : '123-456'
                         //기타 필요한 데이터가 있으면 추가 전달
                     }
                 }).done(function(data) {
@@ -68,18 +73,20 @@
                     }
                 });
                 //성공시 이동할 페이지
-                location.href='<%=request.getContextPath()%>/mypage.jsp?msg='+msg;
+                alert('결제가 완료되었습니다.');
+                location="mypage.jsp"
+                //window.close();
             } else {
                 msg = '결제에 실패하였습니다.\n';
                 msg += '에러내용 : ' + rsp.error_msg;
                 //실패시 이동할 페이지
-                location.href="<%=request.getContextPath()%>/mypage.jsp";
                 alert(msg);
+                location.href="paymentGuide.jsp";
+                //window.close();
             }
         });
         
     });
     </script>
-<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

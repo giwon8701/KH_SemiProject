@@ -52,7 +52,7 @@
 
 	<h1>일정 작성</h1>
 	
-	<form action="individual.do" method="post">
+	<form action="../../individual.do" method="post">
 		<input type="hidden" name="command" value="individualInsert">
 		
 		<table border="1">
@@ -125,7 +125,7 @@
 			<tr>
 				<td colspan="2">
 					<input type="submit" value="일정작성">
-					<input type="button" value="취소" onclick="location.href='mypage.jsp'">
+					<input type="button" value="취소" onclick="location.href='../../individual.do?command=individualList&year=<%=year%>&month=<%=month%>&date=<%=date%>'">
 				</td>
 			</tr>
 		</table>

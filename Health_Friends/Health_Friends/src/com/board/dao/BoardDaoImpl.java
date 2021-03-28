@@ -13,8 +13,8 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 	@Override
 	public List<BoardDto> selectList() {
 		SqlSession session = null;
-		
 		List<BoardDto> list = new ArrayList<BoardDto>();
+		System.out.println(list);
 		
 		try {
 			session = getSqlSessionFactory().openSession(false);
