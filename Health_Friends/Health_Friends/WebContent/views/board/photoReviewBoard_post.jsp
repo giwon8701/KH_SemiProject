@@ -6,9 +6,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Insert title here</title><script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+<script src="/Health_Friends/assets/api/se2/js/HuskyEZCreator.js" type="text/javascript"></script>
+<script src="/Health_Friends/assets/api/se2/init.js" type="text/javascript"></script>
 <style type="text/css">
-
+	table{
+		width: 600px;
+	}
+	tr > th{
+		text-align: left;
+	}
 </style>
 </head>
 <body>
@@ -41,10 +48,11 @@
 				</tr>
 				<tr>
 					<td colspan="3" id="Board_writeContent">
-						<input type="text" placeholder="사진에 대한 설명과 운동후기를 적어주세요"/>
+						<textarea id="se2" name="se2" class="smarteditor2"></textarea>
 					</td>
 				</tr>
 			</table>
+			<input type="submit" value="글작성">
 		</form>
 	</section>
 <%---	

@@ -13,5 +13,5 @@ public interface IndividualBiz {
 	public IndividualDto individualSelectOne(int individual_no);
 	public int individualUpdate(IndividualDto dto);
 	public int individualDelete(int individual_seq);
-	
+	public int individualMultiDelete(String[] individual_nos);	
 }
