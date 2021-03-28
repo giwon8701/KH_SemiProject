@@ -94,6 +94,44 @@ public class RegistServlet extends HttpServlet {
 			} else {
 				jsResponse(response, "./index.jsp", "가입 실패");
 			}
+		} else if(command.equals("naverregistres")) {
+			String memberGender = request.getParameter("memberGender");
+			String memberId = request.getParameter("memberId");
+			String memberPw = getHash(request.getParameter("memberPw"));
+			String memberName = request.getParameter("memberName");
+			
+			String year = request.getParameter("year");
+			String mm = request.getParameter("mm");
+			String dd = request.getParameter("dd");
+			
+			String memberBirthday = year + isTwo(mm) + isTwo(dd);
+			
+			String memberPhone = request.getParameter("memberPhone");
+			String memberEmail = request.getParameter("memberEmail");
+			String memberAddr = request.getParameter("memberAddr");
+			
+			RegistDto dto = new RegistDto();
+			dto.setMember_birthday(memberBirthday);
+			dto.setMember_email(memberEmail);
+			dto.setMember_gender(memberGender);
+			dto.setMember_id(memberId);
+			dto.setMember_pw(memberPw);
+			dto.setMember_name(memberName);
+			dto.setMember_addr(memberAddr);
+			dto.setMember_phone(memberPhone);
+			
+			int res = biz.registMember(dto);
+			if(res > 0) {
+				RegistDto Ldto = biz.selectByEmail(memberEmail);
+				
+				HttpSession session = request.getSession();
+				session.setAttribute("dto", Ldto);
+				session.setMaxInactiveInterval(10 * 60);
+				
+				jsResponse(response, "./index.jsp", memberName + "님, 환영합니다.");
+			} else {
+				jsResponse(response, "./index.jsp", "가입 실패");
+			}
 		} else if(command.equals("login")) {
 			response.sendRedirect("./views/login/login.jsp");
 		} else if(command.equals("loginres")){
@@ -130,7 +168,7 @@ public class RegistServlet extends HttpServlet {
 		} else if(command.equals("logout")){
 			HttpSession session = request.getSession();
 			session.invalidate();
-			response.sendRedirect("./index.html");
+			response.sendRedirect("./index.jsp");
 		}
 				
 				

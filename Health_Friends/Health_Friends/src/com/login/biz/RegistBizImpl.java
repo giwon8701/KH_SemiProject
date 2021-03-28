@@ -32,4 +32,8 @@ public class RegistBizImpl implements RegistBiz {
 		return dao.selectOne(logindto);
 	}
 
+	@Override
+	public RegistDto selectByEmail(String email) {
+		return dao.selectByEmail(email);
+	};
 }

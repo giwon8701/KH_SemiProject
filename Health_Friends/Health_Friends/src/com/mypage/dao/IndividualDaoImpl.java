@@ -118,16 +118,29 @@ public class IndividualDaoImpl extends SqlMapConfig implements IndividualDao {
 	}
 
 
-	@Override
-	public List<IndividualDto> individualViewList(String id, String yyyyMM) {
-		return null;
-	}
-
-
 
 	@Override
-	public int individualViewCount(String id, String yyyyMMdd) {
-		return 0;
+	public int individualCount(String individual_id, String yyyyMMdd) {
+		
+		SqlSession session = null;
+		
+		int count = 0;
+		
+		Map<String, String> map = new HashMap<>();
+		
+		map.put("individual_id", individual_id);
+		map.put("yyyyMMdd", yyyyMMdd);
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			count = session.selectOne("individualmapper.individualCount", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	
+		return count;
 	}
 
 

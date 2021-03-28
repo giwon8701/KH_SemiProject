@@ -17,5 +17,7 @@ public interface RegistBiz {
 	public int login(RegistDto logindto);
 	
 	public RegistDto selectOne(RegistDto logindto);
+	
+	public RegistDto selectByEmail(String email);
 
 }

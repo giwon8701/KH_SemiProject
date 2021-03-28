@@ -78,5 +78,17 @@ public class RegistDaoImpl extends SqlMapConfig implements RegistDao {
 		
 		return dto;
 	};
+	
+	@Override
+	public RegistDto selectByEmail(String email) {
+		
+		RegistDto dto = new RegistDto();
+		
+		try(SqlSession session = getSqlSessionFactory().openSession(true);){
+			dto = session.selectOne("registmapper.selectByEmail", email);
+		}
+		
+		return dto;
+	}
 
 }
