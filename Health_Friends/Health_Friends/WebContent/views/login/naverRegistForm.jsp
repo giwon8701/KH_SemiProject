@@ -84,7 +84,7 @@
 			<tr>
 				<td colspan="2">
 					<label for="id">아이디</label><br>
-					<input type="text" id="id" name="memberId" title="n" value="${dto.member_id }" readonly="readonly" required="required" onchange="idCheck()">
+					<input type="text" id="id" name="memberId" title="n" value="${dto.member_id }" required="required" onchange="idCheck()">
 				</td>
 			</tr>
 			<tr>

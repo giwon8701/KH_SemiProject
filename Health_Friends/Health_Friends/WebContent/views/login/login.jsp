@@ -67,8 +67,8 @@
 				<td colspan="2" id="loginchk"></td>
 			</tr>
 			<tr>
-				<td><input type="button" value="아이디찾기" onclick=""></td>
-				<td><input type="button" value="비밀번호찾기" onclick=""></td>
+				<td><input type="button" value="아이디찾기" onclick="location.href='../../regist.do?command=idSearch'"></td>
+				<td><input type="button" value="비밀번호찾기" onclick="location.href='../../regist.do?command=pwSearch'"></td>
 			</tr>
 			<tr>
 				<td colspan="4"><button class="g-recaptcha" 

@@ -19,5 +19,11 @@ public interface RegistBiz {
 	public RegistDto selectOne(RegistDto logindto);
 	
 	public RegistDto selectByEmail(String email);
+	
+	public RegistDto idSearch(RegistDto dto);
+	
+	public int pwSearch(RegistDto dto);
+	
+	public int pwReset(RegistDto dto);
 
 }

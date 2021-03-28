@@ -39,5 +39,29 @@
 		WHERE MEMBER_EMAIL = #{member_email}
 	</select>
 	
+	<select id="idSearchCnt" parameterType="registDto" resultType="int">
+		SELECT COUNT(MEMBER_ID)
+		FROM MEMBER
+		WHERE MEMBER_NAME = #{member_name} AND MEMBER_EMAIL = #{member_email}
+	</select>
+	
+	<select id="idSearch" parameterType="registDto" resultType="registDto">
+		SELECT MEMBER_ID , MEMBER_NAME, MEMBER_EMAIL
+		FROM MEMBER
+		WHERE MEMBER_NAME = #{member_name} AND MEMBER_EMAIL = #{member_email}
+	</select>
+	
+	<select id="pwSearchCnt" parameterType="registDto" resultType="int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE MEMBER_ID = #{member_id} AND MEMBER_NAME = #{member_name} AND MEMBER_EMAIL = #{member_email}
+	</select>
+	
+	<update id="pwReset" parameterType="registDto">
+		UPDATE MEMBER
+		SET MEMBER_PW = #{member_pw}
+		WHERE MEMBER_ID = #{member_id} AND MEMBER_EMAIL = #{member_email}
+	</update>
+	
 	
 </mapper>

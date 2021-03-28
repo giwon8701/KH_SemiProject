@@ -90,5 +90,54 @@ public class RegistDaoImpl extends SqlMapConfig implements RegistDao {
 		
 		return dto;
 	}
+	
+	
+	@Override
+	public RegistDto idSearch(RegistDto dto) {
+		
+		int cnt = 0;
+		RegistDto Ldto = null;
+		
+		try(SqlSession session = getSqlSessionFactory().openSession(true);){
+			cnt = session.selectOne("registmapper.idSearchCnt", dto);
+			if(cnt > 0) {
+				Ldto = session.selectOne("registmapper.idSearch", dto);
+			}
+			
+		}
+		
+		return Ldto;
+	}
+	
+	@Override
+	public int pwSearch(RegistDto dto) {
+		int cnt = -1;
+		try(SqlSession session = getSqlSessionFactory().openSession(true);){
+			cnt = session.selectOne("registmapper.pwSearchCnt", dto);
+			if(cnt == 1) {
+				cnt = 1;
+			} else {
+				cnt = 0;
+			}
+		}
+		
+		return cnt;
+	}
+	
+	@Override
+	public int pwReset(RegistDto dto) {
+		int res = -1;
+		try(SqlSession session = getSqlSessionFactory().openSession(false);){
+			res = session.update("registmapper.pwReset", dto);
+			
+			if(res > 0) {
+				session.commit();
+			} else {
+				res = 0;
+			}
+		}
+		
+		return res;
+	}
 
 }
