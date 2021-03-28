@@ -1,3 +1,4 @@
+<%@page import="com.login.dto.RegistDto"%>
 <%@page	import="org.apache.commons.collections.bag.SynchronizedSortedBag"%>
 <%@page import="com.mypage.dto.IndividualDto"%>
 <%@page import="java.util.List"%>
@@ -39,19 +40,45 @@
 	cal.set(year, month - 1, 1);
 	int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
 	int lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+	
+
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>마이페이지</title>
+<%--
+	캘린더 게시판에 글이 있는 날짜 background color 바꿔주고 싶은데 어렵네요 ㅠ
+	
+	String individual_id = "cine";
+	String yyyyMMdd = year + Util.isTwo(month) + isTwo(date);
+	
+	IndividualBiz biz = new IndividualBizImpl();
+	int count = biz.individualCount(individual_id, yyyyMMdd);
+--%>
 <link href="./assets/css/mypage.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="assets/js/chart.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	function js(){
+		var year = $(".y").text().trim();
+		var month = $(".m").text().trim();
+		var date = countView.text().trim();
+		var yyyyMMdd = year + isTwo(month) + isTwo(date);
+		
+		if(count > 0){
+			document.getElementsByClassName("countBackground").style.backgroundColor="gray";
+		}
+	}
+</script>
 </head>
 <body>
 <%--마이페이지! --%>
 <style>
+<% RegistDto dto = (RegistDto) session.getAttribute("dto"); %>
+<% System.out.println(dto.getMember_id());%>
 *{border: 1px dotted red;}
 </style>
 	<div class="mypage-main-div">
@@ -64,7 +91,7 @@
 					</tr>
 
 					<tr>
-						<td>닉네임</td>
+						<td><%=dto.getMember_id() %></td>
 					</tr>
 
 					<tr>
@@ -100,11 +127,12 @@
 
 				<table id="calendar">
 					<caption>
-						<a href="mypage.jsp?year=<%=year - 1%>&month=<%=month%> ">◁</a> <a
-							href="mypage.jsp?year=<%=year%>&month=<%=month - 1%> ">◀</a> <span
-							class="y"><%=year%></span>년 <span class="m"><%=month%></span>월 <a
-							href="mypage.jsp?year=<%=year%>&month=<%=month + 1%> ">▶</a> <a
-							href="mypage.jsp?year=<%=year + 1%>&month=<%=month%> ">▷</a>
+						<a href="mypage.jsp?year=<%=year - 1%>&month=<%=month%> ">◁</a>
+						<a href="mypage.jsp?year=<%=year%>&month=<%=month - 1%> ">◀</a> 
+						<span class="y"><%=year%></span>년 
+						<span class="m"><%=month%></span>월 
+						<a href="mypage.jsp?year=<%=year%>&month=<%=month + 1%> ">▶</a>
+						<a href="mypage.jsp?year=<%=year + 1%>&month=<%=month%> ">▷</a>
 					</caption>
 
 					<tr>
@@ -124,7 +152,7 @@
 							}
 						for (int i = 1; i <= lastDay; i++) {
 						%>
-						<td><a class="countview"
+						<td class="countBackground"><a class="countview"
 							href="../../individual.do?command=individualList&year=<%=year%>&month=<%=month%>&date=<%=i%>"
 							style="color: <%=Util.fontColor(i, dayOfWeek)%>"><%=i%></a></td>
 						<%

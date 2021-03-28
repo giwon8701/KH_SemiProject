@@ -130,7 +130,7 @@ public class RegistServlet extends HttpServlet {
 		} else if(command.equals("logout")){
 			HttpSession session = request.getSession();
 			session.invalidate();
-			response.sendRedirect("./index.html");
+			response.sendRedirect("./index.jsp");
 		}
 				
 				
