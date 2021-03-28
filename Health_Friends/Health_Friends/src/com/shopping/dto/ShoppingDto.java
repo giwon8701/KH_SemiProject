@@ -1,6 +1,6 @@
 package com.shopping.dto;
 
-public class SearchDto {
+public class ShoppingDto {
 
 	private String title;
 	private String link;
@@ -9,11 +9,11 @@ public class SearchDto {
 	private String brand;
 	private String category3;
 	
-	public SearchDto() {
+	public ShoppingDto() {
 		
 	}
 	
-	public SearchDto(String title, String link, String image, int lprice, String brand, String category3) {
+	public ShoppingDto(String title, String link, String image, int lprice, String brand, String category3) {
 		this.title = title;
 		this.link = link;
 		this.image = image;
