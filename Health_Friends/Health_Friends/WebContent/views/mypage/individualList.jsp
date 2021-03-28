@@ -11,6 +11,33 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#muldelform").submit(function(){
+			if($("#muldelform input:checked").length == 0){
+				alert("하나 이상 체크해 주세요");
+				return false;
+			}
+		});
+		
+		$("input[name=chk]").click(function(){
+	        if($("input[name=chk]").length == $("input[name=chk]:checked").length){
+	            $("input[name=all]").prop("checked",true);
+	        }else{
+	            $("input[name=all]").prop("checked",false);
+	        }
+	    });
+
+	});
+	
+	function allCheck(bool){
+		var chks = document.getElementsByName("chk");
+		for(var i = 0; i < chks.length; i++){
+			chks[i].checked = bool;
+		}
+	}
+</script>
 </head>
 <body>
 <%--캘린더 게시판 해당날짜 리스트 --%>
@@ -29,7 +56,10 @@
 	<h1>약속 일정</h1>
 	
 	<form action="individual.do" method="post">
-		<input type="hidden" name="command" value="individualMuldel">
+		<input type="hidden" name="command" value="individualMultiDelete">
+		<input type="hidden" name="year" value="<%=year %>">
+		<input type="hidden" name="month" value="<%=month %>">
+		<input type="hidden" name="date" value="<%=date %>">
 		<table border="1">
 			<tr>
 				<th><input type="checkbox" name="all" onclick="allCheck(this.checked);"></th>
@@ -68,9 +98,9 @@
 			</c:choose>
 			<tr>
 				<td colspan="5" align="right">
-					<input type="button" value="작성" onclick="location.href='individualInsert.jsp?insert.jsp?year=<%=year %>&month=<%=month %>&date=<%=date %>'">
+					<input type="button" value="작성" onclick="location.href='./views/mypage/individualInsert.jsp?year=<%=year %>&month=<%=month %>&date=<%=date %>'">
 					<input type="submit" value="삭제">
-					<input type="button" value="마이페이지" onclick="location.href='mypage.jsp'">
+					<input type="button" value="마이페이지" onclick="location.href='./views/mypage/mypage.jsp'">
 				</td>
 			</tr>
 		</table>

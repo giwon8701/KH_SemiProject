@@ -1,6 +1,7 @@
 package com.login.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.login.dto.RegistDto;
 
@@ -14,6 +15,14 @@ public interface RegistDao {
 	public int registMember(RegistDto dto);
 	
 	//로그인
-	public List<RegistDto> login(RegistDto logindto);
+	public int login(RegistDto logindto);
+	
+	//회원정보
+	public RegistDto selectOne(RegistDto logindto);
+	
+	//이메일로 회원정보 가져오기
+	public RegistDto selectByEmail(String email);
+	
+	
 
 }

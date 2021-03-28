@@ -36,19 +36,14 @@ public class IndividualBizImpl implements IndividualBiz {
 	}
 	
 	@Override
-	public List<IndividualDto> individualViewList(String individual_id, String yyyyMM) {
-		return null;
+	public int individualMultiDelete(String[] individual_nos) {
+		return dao.individualMultiDelete(individual_nos);
 	}
 
 	@Override
-	public int individualViewCount(String individual_id, String yyyyMMdd) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int individualCount(String individual_id, String yyyyMMdd) {
+		return dao.individualCount(individual_id, yyyyMMdd);
 	}
-
-
-
-
 
 
 
