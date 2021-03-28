@@ -17,10 +17,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import com.login.biz.RegistBiz;
+import com.login.biz.RegistBizImpl;
 import com.login.dao.RegistDao;
 import com.login.dao.RegistDaoImpl;
 import com.login.dto.RegistDto;
@@ -98,9 +101,9 @@ public class NaverServlet extends HttpServlet {
 			String member_email = (String)resObj.get("email");
 			String member_gender = (String)resObj.get("gender");
 			String birthmmdd = (String)resObj.get("birthday"); //mm-dd 01234
-			String birthyear = (String)resObj.get("birthyear"); 
-			String member_birthday = birthyear + birthmmdd.substring(0, 2) + birthmmdd.substring(3);
-			String member_phone = (String)resObj.get("mobile");
+			String member_birthday = birthmmdd.substring(0, 2) + birthmmdd.substring(3);
+			String phone = (String)resObj.get("mobile");
+			String member_phone = phone.replace("-", "");
 			
 			RegistDto dto = new RegistDto();
 			dto.setMember_id(member_id);
@@ -114,11 +117,16 @@ public class NaverServlet extends HttpServlet {
 			//System.out.println(dto.getMember_id());
 			
 			//가입 유무 확인
-			RegistDao dao = new RegistDaoImpl();
-			int regist = dao.registCheck(member_email);
+			RegistBiz biz = new RegistBizImpl();
+			int regist = biz.registCheck(member_email);
 			
 			if(regist > 0) {
 				//로그인 처리
+				RegistDto Ldto = biz.selectByEmail(member_email);
+				
+				HttpSession session = request.getSession();
+				session.setAttribute("dto", Ldto);
+				session.setMaxInactiveInterval(10 * 60);
 				
 				jsResponse(response, "./index.jsp", member_name+"님, 환영합니다.");
 			} else {

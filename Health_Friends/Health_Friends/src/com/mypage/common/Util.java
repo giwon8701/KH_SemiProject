@@ -84,15 +84,11 @@ public class Util {
 	}
 	
 	//naver 생일값 분리
-	public static String getYear(String input) {
-		return input.substring(0, 4);
-	}
-	
 	public static String getMm(String input) {
-		return input.substring(4, 6);
+		return input.substring(0, 2);
 	}
 	
 	public static String getDd(String input) {
-		return input.substring(6);
+		return input.substring(2);
 	}
 }

@@ -20,5 +20,9 @@ public interface RegistDao {
 	//회원정보
 	public RegistDto selectOne(RegistDto logindto);
 	
+	//이메일로 회원정보 가져오기
+	public RegistDto selectByEmail(String email);
+	
+	
 
 }

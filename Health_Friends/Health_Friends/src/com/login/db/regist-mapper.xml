@@ -33,6 +33,11 @@
 		AND MEMBER_PW = #{member_pw}
 	</select>
 	
+	<select id="selectByEmail" parameterType="String" resultType="registDto">
+		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_ADDR, MEMBER_BIRTHDAY, MEMBER_GENDER, MEMBER_EMAIL, MEMBER_PHONE, MEMBER_ENABLED, MEMBER_REVIEW, MEMBER_ROLE
+		FROM MEMBER
+		WHERE MEMBER_EMAIL = #{member_email}
+	</select>
 	
 	
 </mapper>
