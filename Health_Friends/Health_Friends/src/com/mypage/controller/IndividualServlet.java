@@ -1,7 +1,10 @@
 package com.mypage.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +17,8 @@ import com.mypage.biz.IndividualBiz;
 import com.mypage.biz.IndividualBizImpl;
 import com.mypage.common.Util;
 import com.mypage.dto.IndividualDto;
+
+import net.sf.json.JSONObject;
 
 @WebServlet("/individual.do")
 public class IndividualServlet extends HttpServlet {
@@ -137,8 +142,24 @@ public class IndividualServlet extends HttpServlet {
 					}
 				}
 				
+			} else if(command.equals("individualCount")) {
+				String individual_id = request.getParameter("individual_id");
+				String yyyyMMdd = request.getParameter("yyyyMMdd");
+				System.out.printf("individual_id : %s / yyyyMMdd : %s \n", individual_id, yyyyMMdd);
+				
+				int count = biz.individualCount(individual_id, yyyyMMdd);
+				System.out.println("count : " + count);
+				
+				Map<String, Integer> map = new HashMap<String, Integer>();
+				map.put("count", count);
+				
+				JSONObject obj = JSONObject.fromObject(map);
+				
+				PrintWriter out = response.getWriter();
+				obj.write(out);
+				
+				
 			}
-			
 		} catch (Exception e) {
 			request.setAttribute("msg", "command 오류");
 			dispatch("./views/common/error.jsp", request, response);
