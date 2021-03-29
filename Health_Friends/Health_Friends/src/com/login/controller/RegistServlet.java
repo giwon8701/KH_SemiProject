@@ -160,7 +160,7 @@ public class RegistServlet extends HttpServlet {
 				} else {
 					//프리미엄 회원 메인페이지
 					response.sendRedirect("./index.jsp");
-				} 
+				}
 				
 			} else {
 				jsResponse(response, "regist.do?command=login", "아이디와 비밀번호를 확인해주세요.");
