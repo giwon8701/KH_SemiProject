@@ -33,10 +33,39 @@ public class PaymentServlet extends HttpServlet {
 		
 		if(command.equals("payment")){
 			response.sendRedirect("./views/mypage/payment.jsp");
+			
+			
+		} else if(command.equals("paymentRoleUp")) {
+			String member_role = request.getParameter("member_role");
+			
+			if(member_role.equals("PREMIUM")) {
+				jsResponse(response, "./views/mypage/mypage.jsp", "이미 프리미엄 회원입니다!");
+			} else if(member_role.equals("USER")) {
+				jsResponse(response, "./views/mypage/paymentGuide.jsp", "프리미엄 회원 등록 전 약관을 잘 읽어주세요!");
+			} else {
+				jsResponse(response, "./views/mypage/mypage.jsp", "관리자입니다!");
+			}
+			
+			
+			
+		} else if(command.equals("paymentRoleDown")) {
+			String member_role = request.getParameter("member_role");
+				System.out.println(member_role);
+			
+			if(member_role.equals("USER")) {
+				jsResponse(response, "./views/mypage/mypage.jsp", "프리미엄 회원이 아닙니다!");
+			} else if(member_role.equals("PREMIUM")) {
+				System.out.println(member_role);
+				jsResponse(response, "./views/mypage/paymentCancel.jsp", "프리미엄 회원 탈퇴 전 약관을 잘 읽어주세요!");
+			} else {
+				jsResponse(response, "./views/mypage/myapge.jsp", "관리자입니다!");
+			}
+			
+			
 		} else if(command.equals("paymentUpdate")) {
 			
 			
-			String member_email = request.getParameter("buyer_email");
+			String member_email = request.getParameter("member_email");
 			
 			RegistDto dto = new RegistDto();
 			
@@ -47,23 +76,23 @@ public class PaymentServlet extends HttpServlet {
 			
 		} else if(command.equals("paymentDowndate")) {
 			
-			String member_email = request.getParameter("buyer_email");
+			String member_email = request.getParameter("member_email");
 			
 			RegistDto dto = new RegistDto();
-			
+			System.out.println(member_email);
 			dto.setMember_email(member_email);
-			
-			System.out.println(dto.getMember_email());
 			
 			int res = biz.paymentDowndate(dto);
 			
-			if(res>0) {
-				response.sendRedirect("./views/mypage/mypage.jsp");
-			} else {
-				System.out.println("실패!");
-				response.sendRedirect("./views/mypage/mypage.jsp");
-			}
+			response.sendRedirect("./views/mypage/mypage.jsp");
 		}
 	}
-
+	
+	private void jsResponse(HttpServletResponse response, String url, String msg) throws IOException {
+		String s = "<script type='text/javascript'>"
+				+ "alert('"+ msg +"');"
+				+ "location.href='" + url + "';"
+				+ "</script>";
+		response.getWriter().print(s);
+	}
 }
