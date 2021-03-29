@@ -87,7 +87,8 @@ public class RegistDaoImpl extends SqlMapConfig implements RegistDao {
 		RegistDto dto = new RegistDto();
 		
 		try(SqlSession session = getSqlSessionFactory().openSession(true);){
-			dto = session.selectOne("registmapper.selectOne", email);
+			dto.setMember_email(email);
+			dto = session.selectOne("registmapper.selectOne", dto);
 		}  catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -99,9 +100,10 @@ public class RegistDaoImpl extends SqlMapConfig implements RegistDao {
 	public RegistDto selectById(String id) {
 		
 		RegistDto dto = new RegistDto();
-		System.out.println("id" + id);
+		System.out.println("id : " + id);
 		try(SqlSession session = getSqlSessionFactory().openSession(true);){
-			dto = session.selectOne("registmapper.selectOne", id);
+			dto.setMember_id(id);
+			dto = session.selectOne("registmapper.selectOne", dto);
 			System.out.println("dao: " + dto.getMember_id());
 		}  catch (Exception e) {
 			e.printStackTrace();
