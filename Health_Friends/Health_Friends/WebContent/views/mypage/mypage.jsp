@@ -76,9 +76,9 @@
 </head>
 <body>
 <%--마이페이지! --%>
-	
+
 <% RegistDto dto = (RegistDto) session.getAttribute("dto"); %>
-	
+
 	<div class="mypage-main-div">
 		<div class="mypage-second-div1">
 			<div class="mypage-profile-div">
