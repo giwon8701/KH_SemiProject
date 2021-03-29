@@ -38,6 +38,11 @@ public class RegistBizImpl implements RegistBiz {
 	};
 	
 	@Override
+	public RegistDto selectById(String id) {
+		return dao.selectById(id);
+	};
+	
+	@Override
 	public RegistDto idSearch(RegistDto dto) {
 		return dao.idSearch(dto);
 	}
@@ -50,5 +55,10 @@ public class RegistBizImpl implements RegistBiz {
 	@Override
 	public int pwReset(RegistDto dto) {
 		return dao.pwReset(dto);
+	}
+	
+	@Override
+	public int updateRegist(RegistDto dto) {
+		return dao.updateRegist(dto);
 	}
 }

@@ -52,8 +52,8 @@ public class RegistDaoImpl extends SqlMapConfig implements RegistDao {
 		
 		try(SqlSession session = getSqlSessionFactory().openSession(true);){
 			
-			cnt = session.selectOne("registmapper.login", logindto);
-			System.out.println(logindto.getMember_id());
+			cnt = session.selectOne("registmapper.selectCnt", logindto);
+			//System.out.println(logindto.getMember_id());
 			if(cnt > 0) {
 				cnt = 1;
 			} else {
@@ -74,6 +74,8 @@ public class RegistDaoImpl extends SqlMapConfig implements RegistDao {
 		
 		try(SqlSession session = getSqlSessionFactory().openSession(true);){
 			dto = session.selectOne("registmapper.selectOne", logindto);
+		}  catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		return dto;
@@ -85,12 +87,28 @@ public class RegistDaoImpl extends SqlMapConfig implements RegistDao {
 		RegistDto dto = new RegistDto();
 		
 		try(SqlSession session = getSqlSessionFactory().openSession(true);){
-			dto = session.selectOne("registmapper.selectByEmail", email);
+			dto = session.selectOne("registmapper.selectOne", email);
+		}  catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		return dto;
 	}
 	
+	@Override
+	public RegistDto selectById(String id) {
+		
+		RegistDto dto = new RegistDto();
+		System.out.println("id" + id);
+		try(SqlSession session = getSqlSessionFactory().openSession(true);){
+			dto = session.selectOne("registmapper.selectOne", id);
+			System.out.println("dao: " + dto.getMember_id());
+		}  catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
 	
 	@Override
 	public RegistDto idSearch(RegistDto dto) {
@@ -99,11 +117,13 @@ public class RegistDaoImpl extends SqlMapConfig implements RegistDao {
 		RegistDto Ldto = null;
 		
 		try(SqlSession session = getSqlSessionFactory().openSession(true);){
-			cnt = session.selectOne("registmapper.idSearchCnt", dto);
+			cnt = session.selectOne("registmapper.selectCnt", dto);
 			if(cnt > 0) {
-				Ldto = session.selectOne("registmapper.idSearch", dto);
+				Ldto = session.selectOne("registmapper.selectOne", dto);
 			}
 			
+		}  catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		return Ldto;
@@ -113,12 +133,14 @@ public class RegistDaoImpl extends SqlMapConfig implements RegistDao {
 	public int pwSearch(RegistDto dto) {
 		int cnt = -1;
 		try(SqlSession session = getSqlSessionFactory().openSession(true);){
-			cnt = session.selectOne("registmapper.pwSearchCnt", dto);
+			cnt = session.selectOne("registmapper.selectCnt", dto);
 			if(cnt == 1) {
 				cnt = 1;
 			} else {
 				cnt = 0;
 			}
+		}  catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		return cnt;
@@ -132,9 +154,28 @@ public class RegistDaoImpl extends SqlMapConfig implements RegistDao {
 			
 			if(res > 0) {
 				session.commit();
+				res = 1;
 			} else {
 				res = 0;
 			}
+		}  catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	
+	@Override
+	public int updateRegist(RegistDto dto) {
+		int res = -1;
+		try(SqlSession session = getSqlSessionFactory().openSession(false);){
+			res = session.update("registmapper.updateRegist", dto);
+			System.out.println("res: " + res);
+			if(res > 0) {
+				session.commit();
+			}
+		}  catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		return res;
