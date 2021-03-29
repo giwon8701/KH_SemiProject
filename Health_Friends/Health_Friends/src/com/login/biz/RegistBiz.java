@@ -29,5 +29,7 @@ public interface RegistBiz {
 	public int pwReset(RegistDto dto);
 	
 	public int updateRegist(RegistDto dto);
+	
+	public int deleteRegist(String member_id);
 
 }
