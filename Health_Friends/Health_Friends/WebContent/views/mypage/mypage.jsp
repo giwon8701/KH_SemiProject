@@ -105,8 +105,8 @@
 						<td>
 							<ol>
 								<li><a href="../../mypage.do?command=registUpdate">회원정보 수정</a></li>
-								<li><a href="paymentGuide.jsp">프리미엄 등록</a></li>
-								<li><a href="../../payment.do?command=paymentDowndate&buyer_email=kwg940930@naver.com">프리미엄 취소</a></li>
+								<li><a href="../../payment.do?command=paymentRoleUp&member_role=<%=dto.getMember_role()%>">프리미엄 등록</a></li>
+								<li><a href="../../payment.do?command=paymentRoleDown&member_role=<%=dto.getMember_role()%>">프리미엄 탈퇴</a></li>
 							</ol>
 						</td>
 					</tr>
