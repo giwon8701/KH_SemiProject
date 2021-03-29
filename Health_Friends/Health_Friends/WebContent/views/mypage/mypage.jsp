@@ -103,11 +103,11 @@
 					</tr>
 					<tr>
 						<td>
-							<ol>
+							<ul>
 								<li><a href="../../mypage.do?command=registUpdate">회원정보 수정</a></li>
 								<li><a href="../../payment.do?command=paymentRoleUp&member_role=<%=dto.getMember_role()%>">프리미엄 등록</a></li>
 								<li><a href="../../payment.do?command=paymentRoleDown&member_role=<%=dto.getMember_role()%>">프리미엄 탈퇴</a></li>
-							</ol>
+							</ul>
 						</td>
 					</tr>
 				</table>
