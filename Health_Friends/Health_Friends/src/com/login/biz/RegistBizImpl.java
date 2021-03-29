@@ -36,4 +36,29 @@ public class RegistBizImpl implements RegistBiz {
 	public RegistDto selectByEmail(String email) {
 		return dao.selectByEmail(email);
 	};
+	
+	@Override
+	public RegistDto selectById(String id) {
+		return dao.selectById(id);
+	};
+	
+	@Override
+	public RegistDto idSearch(RegistDto dto) {
+		return dao.idSearch(dto);
+	}
+	
+	@Override
+	public int pwSearch(RegistDto dto) {
+		return dao.pwSearch(dto);
+	}
+	
+	@Override
+	public int pwReset(RegistDto dto) {
+		return dao.pwReset(dto);
+	}
+	
+	@Override
+	public int updateRegist(RegistDto dto) {
+		return dao.updateRegist(dto);
+	}
 }

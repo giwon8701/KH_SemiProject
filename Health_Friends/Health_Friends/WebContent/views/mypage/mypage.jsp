@@ -87,11 +87,9 @@
 						<td>프로필사진</td>
 						<td rowspan="2">프로필수정</td>
 					</tr>
-
 					<tr>
 						<td><%=dto.getMember_id() %></td>
 					</tr>
-
 					<tr>
 						<td colspan="2">자기소개란!</td>
 					</tr>
