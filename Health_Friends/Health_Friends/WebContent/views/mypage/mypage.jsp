@@ -76,10 +76,9 @@
 </head>
 <body>
 <%--마이페이지! --%>
-<style>
+	
 <% RegistDto dto = (RegistDto) session.getAttribute("dto"); %>
-*{border: 1px dotted red;}
-</style>
+	
 	<div class="mypage-main-div">
 		<div class="mypage-second-div1">
 			<div class="mypage-profile-div">
@@ -107,7 +106,7 @@
 					<tr>
 						<td>
 							<ul>
-								<li><a href="">회원정보 수정</a></li>
+								<li><a href="../../mypage.do?command=registUpdate">회원정보 수정</a></li>
 								<li><a href="../../payment.do?command=paymentRoleUp&member_role=<%=dto.getMember_role()%>">프리미엄 등록</a></li>
 								<li><a href="../../payment.do?command=paymentRoleDown&member_role=<%=dto.getMember_role()%>">프리미엄 탈퇴</a></li>
 							</ul>
