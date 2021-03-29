@@ -49,11 +49,6 @@
 	    }).open();
 	}
 
-	$(function(){
-		$.ajax({
-						
-		});
-	});
 </script>
 <body>
 
@@ -68,7 +63,7 @@
 	<h1>우리동네 운동친구</h1>
 	<h2>추가 정보 입력</h2>
 
-	<form action="../../regist.do" method="post">
+	<form action="regist.do" method="post">
 	<input type="hidden" name="command" value="naverregistres">
 		<table>
 			<tr align="center">

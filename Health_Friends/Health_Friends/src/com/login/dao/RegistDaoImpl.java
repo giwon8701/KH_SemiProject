@@ -36,6 +36,7 @@ public class RegistDaoImpl extends SqlMapConfig implements RegistDao {
 		
 		try(SqlSession session = getSqlSessionFactory().openSession(false);) {
 			res = session.insert("registmapper.regist", dto);
+			System.out.println("res : " + res);
 			if(res>0) {
 				session.commit();
 			}

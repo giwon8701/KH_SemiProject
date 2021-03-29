@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
-
+	console.log("test");
 	function chkPW() {
 	    if ($("#pw").val() != '' && $("#pwchk").val() != '') {
 	        if ($("#pw").val() == $("#pwchk").val()) {
@@ -37,9 +37,13 @@
 			$("#pw").focus();
 		} else {
 			$.ajax({
-				url: "../../mypage.do"+queryString,
-				
-				dataType: "text",
+				url: "mypage.do",
+				data : {
+					"command" : "pwResetRes",
+					"member_id" : member_id,
+					"member_pw" : member_pw
+				},
+				dataType: "json",
 				success: function(data){
 					if(data > 0){
 						alert("비밀번호를 수정하였습니다.");
@@ -83,6 +87,5 @@
 				</td>
 			</tr>
 		</table>
-	
 </body>
 </html>
