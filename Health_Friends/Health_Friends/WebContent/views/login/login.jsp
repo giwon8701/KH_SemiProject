@@ -16,19 +16,6 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="https://www.google.com/recaptcha/api.js"></script>
 <script type="text/javascript">
-	/**
-	$(function(){
-		$("#loginForm").submit(function(e){
-			if($("[name=memberId]").val() == null || $("[name=memberId]").val() == "" || $("[name=memberPw]").val() == null || $("[name=memberPw]").val() == ""){
-				
-				$("#loginchk").text("아이디와 비밀번호를 입력해주세요.");
-				$("#loginchk").css("font-size", "10px").css("color", "red");
-				e.preventDefault();
-				return;
-			}
-		});
-	}); **/
-	
 	
 	function onSubmit(){
 		if($("[name=memberId]").val() == null || $("[name=memberId]").val() == "" || $("[name=memberPw]").val() == null || $("[name=memberPw]").val() == ""){
@@ -39,7 +26,6 @@
 		} else{
 			$("#loginForm").submit();
 		}
-		
 	}
 	
 	

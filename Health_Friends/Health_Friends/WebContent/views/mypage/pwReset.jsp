@@ -24,7 +24,7 @@
 	        }
 	    }
 	}
-	/**
+	
 	function pwReset(){
 		var member_id = $("#id").val();
 		var member_pw = $("#pw").val();
@@ -37,8 +37,7 @@
 			$("#pw").focus();
 		} else {
 			$.ajax({
-				type: 'POST'
-				url: "../../mypage.do"+"?command=mypage",
+				url: "mypage.do" + queryString,
 				dataType: "text",
 				success: function(data){
 					if(data > 0){
@@ -52,26 +51,8 @@
 			});
 		}
 	}
-	**/
 	
-	function pwReset(){
-		var member_id = $("#id").val();
-		var member_pw = $("#pw").val();
-		var queryString = "?command=pwResetRes&member_id=" + member_id + "&member_pw=" + member_pw;
-		$.ajax({
-			url: "../../mypage.do"+"?command=pwResetRes" + queryString,
-			dataType: "text",
-			success: function(data){
-				if(data > 0){
-					alert("비밀번호를 수정하였습니다.");
-					close();
-				}
-			},
-			error: function(data){
-				alert("통신오류");
-			}
-		});
-	}
+	
 	
 	
 </script>
