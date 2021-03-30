@@ -28,5 +28,6 @@
 		<mapper resource="com/board/db/Board-mapper.xml"/>
 		<mapper resource="com/login/db/regist-mapper.xml" />
 		<mapper resource="com/mypage/db/payment-mapper.xml" />
+		<mapper resource="com/mypage/db/profile-mapper.xml" />
 	</mappers>
 </configuration>

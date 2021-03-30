@@ -7,8 +7,8 @@
 <%@page import="com.mypage.biz.IndividualBiz"%>
 <%@page import="com.mypage.dao.IndividualDao"%>
 <%@page import="java.util.Calendar"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%	request.setCharacterEncoding("UTF-8");%>
 <%	response.setContentType("text/html; charset=UTF-8");%>
 <%
@@ -40,23 +40,12 @@
 	cal.set(year, month - 1, 1);
 	int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
 	int lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-	
-
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>마이페이지</title>
-<%--
-	캘린더 게시판에 글이 있는 날짜 background color 바꿔주고 싶은데 어렵네요 ㅠ
-	
-	String individual_id = "cine";
-	String yyyyMMdd = year + Util.isTwo(month) + isTwo(date);
-	
-	IndividualBiz biz = new IndividualBizImpl();
-	int count = biz.individualCount(individual_id, yyyyMMdd);
---%>
 <link href="./assets/css/mypage.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="assets/js/chart.js"></script>
@@ -73,6 +62,12 @@
 		}
 	}
 </script>
+<style type="text/css">
+	#profile-img{
+		width: 150px;
+		height: 150px;
+	}
+</style>
 </head>
 <body>
 <%--마이페이지! --%>
@@ -82,16 +77,48 @@
 	<div class="mypage-main-div">
 		<div class="mypage-second-div1">
 			<div class="mypage-profile-div">
-				<table>
+				<table border="1">
 					<tr>
-						<td>프로필사진</td>
-						<td rowspan="2">프로필수정</td>
+						<td colspan="2">
+							<c:choose>
+								<c:when test="${dto.getMember_picture_path() == null}">
+									대표 포로필 사진이 존재하지 않습니다<br>프로필 사진을 등록해주세요!
+								</c:when>
+								<c:otherwise>
+									<img src="../../profileimg/<%=dto.getMember_picture_path()%>" id="profile-img" />
+									<%System.out.println(dto.getMember_picture_path()); %>
+								</c:otherwise>
+							</c:choose>
+						</td>
+						<td rowspan="4">
+							<form action="../../profile.do?member_email=<%=dto.getMember_email()%>" method="post" enctype="multipart/form-data">
+								<input type="file" name="filename" size='40'><br>
+								<input type="submit" value="프사변경">
+							</form>
+						</td>
 					</tr>
 					<tr>
-						<td><%=dto.getMember_id() %></td>
+						<th colspan="2" align="center"><%=dto.getMember_id() %></th>
 					</tr>
 					<tr>
-						<td colspan="2">자기소개란!</td>
+						<th>회원등급</th>
+						<th>매너점수</th>
+					</tr>
+					<tr>
+						<td align="center"><%=dto.getMember_role() %></td>
+						<td align="center">
+							<c:choose>
+								<c:when test="${dto.getMember_review() == 0}">
+									----------
+								</c:when>
+								<c:otherwise>
+									<%=dto.getMember_review() %>
+								</c:otherwise>
+							</c:choose>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3">자기소개란!</td>
 					</tr>
 
 				</table>
@@ -188,9 +215,6 @@
 	if(mm<10) {
 	    mm='0'+mm
 	} 
-	
-	
-	
 	
 	var ctx = document.getElementById("myChart").getContext('2d');
 	/*
