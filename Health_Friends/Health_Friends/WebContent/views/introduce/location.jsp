@@ -33,10 +33,9 @@
 		
 .jumbotron {
 	background-image:
-		url('https://cdn.crowdpic.net/list-thumb/thumb_l_37B48B380D5AEB177BF931C56704AA5C.jpg');
+		url("https://cdn.crowdpic.net/list-thumb/thumb_l_37B48B380D5AEB177BF931C56704AA5C.jpg");
 	background-size: cover;
 	text-shadow: block 0.2em 0.2em 0.2em;
-	color: black;
 }
 
 #main01, #main02 {
@@ -191,12 +190,7 @@ $('.btn_gotop').click(function(){
 	<br>
 
 	<div class="container">
-		<h3>우리 동네 운동 메이트 주소</h3>
-		<h4>새주소 : 서울시 강남구 KH정보교육원 QClass</h4>
-		<h4>기존 주소 : </h4>
-		<h4>연락처 : 000-0000-0000</h4>
-		<h4>fax : 000-0000-0000</h4>
-		<h4>email : honggildong@gmail.com</h4>
+
 	</div>
 
 	<br>
@@ -209,10 +203,15 @@ $('.btn_gotop').click(function(){
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-4">
-					<img src=./image/bus.png alt="버스" height="160" width="160">
+							<h3>우리 동네 운동 메이트 주소</h3>
+		<h4>새주소 : 서울시 강남구 KH정보교육원 QClass</h4>
+		<h4>기존 주소 : </h4>
+		<h4>연락처 : 000-0000-0000</h4>
+		<h4>fax : 000-0000-0000</h4>
+		<h4>email : honggildong@gmail.com</h4>
 				</div>
 				<div class="col-sm-8" style="background-color: lavenderblush;">
-					<h3 class="subheading" id="bus">버스 이용시에는</h3>
+					<h3 class="subheading" id="bus">버스 이용시</h3>
 					<br>
 					<p class="text-info" id="bus_text">
 						버스 역삼역 포스코 P&S타워 정류장 하자 <br> <br> <img src=""> 146
@@ -227,10 +226,9 @@ $('.btn_gotop').click(function(){
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-4">
-					<img src=./image/metro.png alt="지하철" height="160" width="160">
 				</div>
 				<div class="col-sm-8" style="background-color: lavenderblush;">
-					<h3 class="subheading" id="subway">지하철 이용시에는</h3>
+					<h3 class="subheading" id="subway">지하철 이용시</h3>
 					<br>
 					<p class="text-info" id="bus_text">지하철 2호선 역삼역 3번 출구에서 나온 후 도보 100m 이동</p>
 					<br>

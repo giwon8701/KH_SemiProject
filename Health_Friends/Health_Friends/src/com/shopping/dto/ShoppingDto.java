@@ -8,12 +8,21 @@ public class ShoppingDto {
 	private int lprice;
 	private String brand;
 	private String category3;
+<<<<<<< Updated upstream:Health_Friends/Health_Friends/src/com/shopping/dto/ShoppingDto.java
 	
 	public ShoppingDto() {
 		
 	}
 	
 	public ShoppingDto(String title, String link, String image, int lprice, String brand, String category3) {
+=======
+	public SearchDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public SearchDto(String title, String link, String image, int lprice, String brand, String category3) {
+		super();
+>>>>>>> Stashed changes:Health_Friends/Health_Friends/src/com/shopping/dto/SearchDto.java
 		this.title = title;
 		this.link = link;
 		this.image = image;

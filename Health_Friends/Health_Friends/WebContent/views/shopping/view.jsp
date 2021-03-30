@@ -173,7 +173,7 @@ pageEncoding="UTF-8"%>
 }
 
 .product-grid3 .price {
-	color: blue;
+	color: violet;
 	font-size: 16px;
 	float: right;
 	letter-spacing: 1px;
@@ -208,15 +208,16 @@ pageEncoding="UTF-8"%>
 
 <body>
 
-<div style=background-color:#FAFAD2>
-<br><br>
+<div style="text-align:center"> 
+<img src="https://image.freepik.com/free-vector/people-doing-different-actions_52683-2299.jpg" style="width: 850px; height: 550px">
+<br>
 	<div style="width: 100%; margin-top: 40px; text-align: center">
 		<input type="text" name="txt_search" id="txt_search"
 			style="width: 300px; height: 38px; vertical-align: top"
 			placeholder=" 검색어를 입력하세요">
 		<button type="button" class="btn btn-info" onclick="goSearch();">검색하기</button>	
 	</div>
-	<br><br><br><br>
+	<br><br><br>
 </div>
 
 <br><br>
