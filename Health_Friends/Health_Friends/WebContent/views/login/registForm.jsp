@@ -22,10 +22,14 @@
 	        	$("#same").text("비밀번호가 일치합니다");
 	        	$("#same").css("color", "blue");
 	        	$("#pwchk").prop("title", "y");
+	        	$("#pw").css("background-color", "skyblue");
+	        	$("#pwchk").css("background-color", "skyblue");
 	          
 	        } else {
 	        	$("#same").text("비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
 	            $("#same").css("color", "red");
+	            $("#pw").css("background-color", "red");
+	            $("#pwchk").css("background-color", "red");
 	            $("#pwchk").prop("title", "n");
 	        }
 	    }
@@ -45,9 +49,11 @@
 						$("#idchk").text("사용가능한 아이디입니다.");
 			            $("#idchk").css("color", "blue");
 			            $("#id").prop("title", "y");
+			            $("#id").css("background-color", "skyblue");
 					} else if(data == 1) {
 						$("#idchk").text("이미 사용중인 아이디입니다.");
 			            $("#idchk").css("color", "red");
+			            $("#id").css("background-color", "red");
 			            $("#id").prop("title", "n");
 			            $("#id").focus();
 					}
@@ -74,12 +80,14 @@
 						$("#phonechk").text("등록 가능한 번호입니다.");
 			            $("#phonechk").css("color", "blue");
 			            $("#phone").prop("title", "y");
+			            $("#phone").css("background-color", "skyblue");
 			            
 					} else if(data == 1) {
 						$("#phonechk").text("이미 사용중인 번호입니다.");
 			            $("#phonechk").css("color", "red");
 			            $("#phone").prop("title", "n");
 			            $("#phone").focus();
+			            $("#phone").css("background-color", "red");
 					}
 				},
 				error: function(){
@@ -104,12 +112,14 @@
 						$("#emailchk").text("등록 가능한 이메일입니다.");
 			            $("#emailchk").css("color", "blue");
 			            $("#email").prop("title", "y");
+			            $("#email").css("background-color", "skyblue");
 			            
 					} else if(data == 1) {
 						$("#emailchk").text("이미 사용중인 이메일입니다.");
 			            $("#emailchk").css("color", "red");
 			            $("#email").prop("title", "n");
 			            $("#email").focus();
+			            $("#email").css("background-color", "red");
 					}
 				},
 				error: function(){
@@ -121,7 +131,6 @@
 	}
 	
 	function addrCheck(){
-		//open("regist.do?command=addrcheck", "", "width=200, height=200");
 		
 		new daum.Postcode({
             oncomplete: function(data) {

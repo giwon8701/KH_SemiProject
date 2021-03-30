@@ -76,11 +76,9 @@
 </head>
 <body>
 <%--마이페이지! --%>
-<style>
+
 <% RegistDto dto = (RegistDto) session.getAttribute("dto"); %>
-<% System.out.println(dto.getMember_id());%>
-*{border: 1px dotted red;}
-</style>
+
 	<div class="mypage-main-div">
 		<div class="mypage-second-div1">
 			<div class="mypage-profile-div">
@@ -89,11 +87,9 @@
 						<td>프로필사진</td>
 						<td rowspan="2">프로필수정</td>
 					</tr>
-
 					<tr>
 						<td><%=dto.getMember_id() %></td>
 					</tr>
-
 					<tr>
 						<td colspan="2">자기소개란!</td>
 					</tr>
@@ -107,11 +103,11 @@
 					</tr>
 					<tr>
 						<td>
-							<ol>
-								<li><a href="">회원정보 수정</a></li>
-								<li><a href="paymentGuide.jsp">프리미엄 등록</a></li>
-								<li><a href="../../payment.do?command=paymentDowndate&buyer_email=kwg940930@naver.com">프리미엄 취소</a></li>
-							</ol>
+							<ul>
+								<li><a href="../../mypage.do?command=registUpdate">회원정보 수정</a></li>
+								<li><a href="../../payment.do?command=paymentRoleUp&member_role=<%=dto.getMember_role()%>">프리미엄 등록</a></li>
+								<li><a href="../../payment.do?command=paymentRoleDown&member_role=<%=dto.getMember_role()%>">프리미엄 탈퇴</a></li>
+							</ul>
 						</td>
 					</tr>
 				</table>

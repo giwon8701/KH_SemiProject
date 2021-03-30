@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
-<%
-	response.setContentType("text/html; charset=%{encoding}");
-%>
+pageEncoding="UTF-8"%>
+<%request.setCharacterEncoding("UTF-8");%>
+<%response.setContentType("text/html; charset=UTF-8");%>
 
 <!DOCTYPE html>
 <html>
@@ -21,18 +16,19 @@
 	function goSearch() {
 
 		var search01 = $("#txt_search").val();
-		var search = encodeURIComponent(search01);
+		var keyword = encodeURIComponent(search01);
 
-		if (!search) {
+		if (!keyword) {
 			alert("먼저 검색어를 입력해 주십시오");
 			return false;
 		}
-		if (search) {
+		if (keyword) {
 			$.ajax({
-						url : "../../SearchTest",
+						url : "../../shopping.do",
 						method : "GET",
 						data : {
-							"search" : search,
+							"command" : "search",
+							"keyword" : keyword,
 							"responseBody" : "responseBody"
 						},
 						dataType : "json",
@@ -45,7 +41,7 @@
 							for (var i = 0; i < list.length; i++) {
 								
 								$('#start').append(
-										'<div class="col-md-3 col-sm-6"> <div class="product-grid3"> <div class="product-image3"> <a href="' + list[i].link + '" target=_sub > <img class="pic" src="' + list[i].image + '" + ""> </a> </div> <div class="product-content"> <h3 class="title">' + list[i].title + '</a> </h3> <div class="price"> 최저가 : ' + list[i].lprice + '원 </div> </div> </div> </div>');
+										'<div class="col-md-3 col-sm-6"> <div class="product-grid3"> <div class="product-image3"> <a href="' + list[i].link + '" target=_sub > <img class="pic" src="' + list[i].image + '" + ""> </a> </div> <div class="product-content"> <h3 class="title">' + list[i].title + '</a> </h3> <div class="price"> 최저가 : ' + list[i].lprice + '원 </div> <br> </div> </div> </div>');
 							}
 						},
 						error : function() {
@@ -54,6 +50,19 @@
 					});
 		}
 	}
+	
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 300){
+			$('.btn_gotop').show();
+		} else{
+			$('.btn_gotop').hide();
+		}
+	});
+
+	$('.btn_gotop').click(function(){
+		$('html, body').animate({scrollTop:0},400);
+		return false;
+	});
 	
 </script>
 
@@ -153,7 +162,7 @@
 }
 
 .product-grid3 .title {
-	font-size: 14px;
+	font-size: 18px;
 	text-transform: capitalize;
 	margin: 0 0 7px;
 	transition: all .3s ease 0s
@@ -164,7 +173,7 @@
 }
 
 .product-grid3 .price {
-	color: #000;
+	color: blue;
 	font-size: 16px;
 	float: right;
 	letter-spacing: 1px;
@@ -173,10 +182,25 @@
 	display: inline-block
 }
 
+.btn_gotop {
+	display:none;
+	position:fixed;
+	bottom:30px;
+	right:30px;
+	z-index:999;
+	border:1px solid #ccc;
+	outline:none;
+	background-color:white;
+	color:#333;
+	cursor:pointer;
+	padding:15px 20px;
+	border-radius:100%;
+}
+
 </style>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width" , initial-scale="1">
+<meta name="viewport" content="width=device-width" initial-scale="1">
 
 <title>쇼핑 검색 페이지</title>
 
@@ -201,11 +225,19 @@
 	<h6>검색결과는 아래에 출력됩니다.</h6>
 	<br><br>
 	<div class=container>
+	
+		<div class="row" id="main"></div>
 
 		<div class="row" id="start"></div>
 
 	</div>
 </div>
+
+	<!-- 상단으로 이동하기 버튼 -->
+	<a href="#" class="btn_gotop">
+	  <span class="glyphicon glyphicon-chevron-up">
+	  </span>
+	</a>
 
 </body>
 </html>

@@ -24,70 +24,71 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.shopping.dto.SearchDto;
+import com.shopping.dto.ShoppingDto;
 
-
-@WebServlet("/SearchTest")
-public class SearchServlet extends HttpServlet {
+@WebServlet("/shopping.do")
+public class ShoppingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		
-		String search = request.getParameter("search");
 
-		String clientId = "_3AIU523fsl3259zT1M3";
-		String clientSecret = "TaDZyyf7Z7";
+		String command = request.getParameter("command");
+		String keyword = request.getParameter("keyword");
 
-		String apiURL = "https://openapi.naver.com/v1/search/shop.json?query=" + search + "&display=100&start=1000";
-		
-		Map<String, String> requestHeaders = new HashMap<>();
-		requestHeaders.put("X-Naver-Client-Id", clientId);
-		requestHeaders.put("X-Naver-Client-Secret", clientSecret);
-		String responseBody = get(apiURL, requestHeaders);
-		System.out.println(responseBody);
-		
-		JsonElement element = JsonParser.parseString(responseBody);
-
-		JsonObject jsonData = element.getAsJsonObject();
-
-		JsonElement items = jsonData.get("items");
-		JsonArray recordsArray = items.getAsJsonArray();
-
-		List<SearchDto> list = new ArrayList<SearchDto>();
-		JsonArray resultArray = new JsonArray();
-
-		for (int i = 0; i < recordsArray.size(); i++) {
-
-			String title = recordsArray.get(i).getAsJsonObject().get("title").getAsString();
-			String link = recordsArray.get(i).getAsJsonObject().get("link").getAsString();
-			String image = recordsArray.get(i).getAsJsonObject().get("image").getAsString();
-			int lprice = recordsArray.get(i).getAsJsonObject().get("lprice").getAsInt();
-			String brand = recordsArray.get(i).getAsJsonObject().get("brand").getAsString();
-			String category3 = recordsArray.get(i).getAsJsonObject().get("category3").getAsString();
+		if (command.equals("shopping")) {
+			response.sendRedirect("./views/shopping/view.jsp");
 			
-			SearchDto dto = new SearchDto(title, link, image, lprice, brand, category3);
-			list.add(dto);            
+		} else if (command.equals("search")) {
+			String clientId = "_3AIU523fsl3259zT1M3";
+			String clientSecret = "TaDZyyf7Z7";
 
-			Gson gson = new Gson();
-			String jsonString = gson.toJson(dto);
-			resultArray.add(JsonParser.parseString(jsonString));
+			String apiURL = "https://openapi.naver.com/v1/search/shop.json?query=" + keyword + "&display=100&start=1000";
+
+			Map<String, String> requestHeaders = new HashMap<>();
+			requestHeaders.put("X-Naver-Client-Id", clientId);
+			requestHeaders.put("X-Naver-Client-Secret", clientSecret);
+			String responseBody = get(apiURL, requestHeaders);
+			System.out.println(responseBody);
+
+			JsonElement element = JsonParser.parseString(responseBody);
+
+			JsonObject jsonData = element.getAsJsonObject();
+			JsonElement items = jsonData.get("items");
+			JsonArray recordsArray = items.getAsJsonArray();
+
+			List<ShoppingDto> list = new ArrayList<ShoppingDto>();
+			JsonArray resultArray = new JsonArray();
+
+			for (int i = 0; i < recordsArray.size(); i++) {
+				String title = recordsArray.get(i).getAsJsonObject().get("title").getAsString();
+				String link = recordsArray.get(i).getAsJsonObject().get("link").getAsString();
+				String image = recordsArray.get(i).getAsJsonObject().get("image").getAsString();
+				int lprice = recordsArray.get(i).getAsJsonObject().get("lprice").getAsInt();
+				String brand = recordsArray.get(i).getAsJsonObject().get("brand").getAsString();
+				String category3 = recordsArray.get(i).getAsJsonObject().get("category3").getAsString();
+
+				ShoppingDto dto = new ShoppingDto(title, link, image, lprice, brand, category3);
+				list.add(dto);
+
+				Gson gson = new Gson();
+				String jsonString = gson.toJson(dto);
+				resultArray.add(JsonParser.parseString(jsonString));
+			}
+
+			JsonObject result = new JsonObject();
+			result.add("result", resultArray);
+
+			response.getWriter().append(result + "");
 		}
 
-		JsonObject result = new JsonObject();
-		result.add("result", resultArray);
-
-		response.getWriter().append(result + "");
-		
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-	
+
 	private static String get(String apiUrl, Map<String, String> requestHeaders) {
 		HttpURLConnection con = connect(apiUrl);
 		try {

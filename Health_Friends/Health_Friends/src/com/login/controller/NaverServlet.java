@@ -95,8 +95,9 @@ public class NaverServlet extends HttpServlet {
 			Object responseBodyObj = parsing.parse(responseBody);
 			JSONObject jsonResponseBodyObj = (JSONObject)responseBodyObj;
 			JSONObject resObj = (JSONObject) jsonResponseBodyObj.get("response");
-			
-			String member_id = resObj.get("id").toString();
+
+			//String member_id = resObj.get("id").toString();
+			String member_id = resObj.get("email").toString().split("@")[0];
 			String member_name = (String)resObj.get("name");
 			String member_email = (String)resObj.get("email");
 			String member_gender = (String)resObj.get("gender");

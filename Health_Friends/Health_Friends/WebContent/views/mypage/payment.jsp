@@ -1,3 +1,4 @@
+<%@page import="com.login.dto.RegistDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("UTF-8"); %>
@@ -12,14 +13,9 @@
 </head>
 <body>
 <%-- 결제페이지인데 추후에 조금더 자세하게 수정해야함! --%>
-
+<% RegistDto dto = (RegistDto) session.getAttribute("dto"); %>
 <%
-	//임시로 강제 변수 생성
-	String name = "강씨네";
-	String email = "kwg940930@naver.com";
-	String phone = "010-1234-1111";
-	String address = "서울 어딘가...";
-	int totalPrice = 1000000;
+	int Price = 9900;
 %>
 
     <script>
@@ -33,12 +29,11 @@
             pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),
             name : 'Health Friends Premium',
-            amount : <%=totalPrice%>,
-            buyer_email : '<%=email%>',
-            buyer_name : '<%=name%>',
-            buyer_tel : '<%=phone%>',
-            buyer_addr : '<%=address%>',
-            buyer_postcode : '123-456'
+            amount : <%=Price%>,
+            member_email : '<%=dto.getMember_email()%>',
+            member_name : '<%=dto.getMember_name()%>',
+            member_tel : '<%=dto.getMember_phone()%>',
+            member_addr : '<%=dto.getMember_addr()%>'
             //m_redirect_url : 'http://www.naver.com'
         }, function(rsp) {
             if ( rsp.success ) {
@@ -49,12 +44,11 @@
                     dataType: 'json',
                     data: {
                         imp_uid : rsp.imp_uid,
-                        amount : <%=totalPrice%>,
-                        buyer_email : '<%=email%>',
-                        buyer_name : '<%=name%>',
-                        buyer_tel : '<%=phone%>',
-                        buyer_addr : '<%=address%>',
-                        buyer_postcode : '123-456'
+                        amount : <%=Price%>,
+                        member_email : '<%=dto.getMember_email()%>',
+                        member_name : '<%=dto.getMember_name()%>',
+                        member_tel : '<%=dto.getMember_phone()%>',
+                        member_addr : '<%=dto.getMember_addr()%>'
                         //기타 필요한 데이터가 있으면 추가 전달
                     }
                 }).done(function(data) {
