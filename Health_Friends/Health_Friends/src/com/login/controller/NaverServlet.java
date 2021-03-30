@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -95,8 +96,9 @@ public class NaverServlet extends HttpServlet {
 			Object responseBodyObj = parsing.parse(responseBody);
 			JSONObject jsonResponseBodyObj = (JSONObject)responseBodyObj;
 			JSONObject resObj = (JSONObject) jsonResponseBodyObj.get("response");
-			
-			String member_id = resObj.get("id").toString();
+
+			//String member_id = resObj.get("id").toString();
+			String member_id = resObj.get("email").toString().split("@")[0];
 			String member_name = (String)resObj.get("name");
 			String member_email = (String)resObj.get("email");
 			String member_gender = (String)resObj.get("gender");
@@ -131,6 +133,13 @@ public class NaverServlet extends HttpServlet {
 				jsResponse(response, "./index.jsp", member_name+"님, 환영합니다.");
 			} else {
 				//추가정보 입력창으로 이동
+				PrintWriter out = response.getWriter();
+				String msg = "회원정보가 존재하지 않습니다! 간편 회원가입 페이지로 이동합니다.";
+				String s = "<script type='text/javascript'>"
+						 + "alert('" + msg + "');"
+						 + "</script>";
+				out.println(s);
+				
 				request.setAttribute("dto", dto);
 				dispatch(request, response, "/views/login/naverRegistForm.jsp");
 			}

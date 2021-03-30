@@ -49,11 +49,6 @@
 	    }).open();
 	}
 
-	$(function(){
-		$.ajax({
-						
-		});
-	});
 </script>
 <body>
 
@@ -68,7 +63,7 @@
 	<h1>우리동네 운동친구</h1>
 	<h2>추가 정보 입력</h2>
 
-	<form action="../../regist.do" method="post">
+	<form action="regist.do" method="post">
 	<input type="hidden" name="command" value="naverregistres">
 		<table>
 			<tr align="center">
@@ -84,7 +79,7 @@
 			<tr>
 				<td colspan="2">
 					<label for="id">아이디</label><br>
-					<input type="text" id="id" name="memberId" title="n" value="${dto.member_id }" readonly="readonly" required="required" onchange="idCheck()">
+					<input type="text" id="id" name="memberId" title="n" value="${dto.member_id }" required="required" onchange="idCheck()">
 				</td>
 			</tr>
 			<tr>
