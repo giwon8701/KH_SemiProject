@@ -32,7 +32,7 @@ public class MypageServlet extends HttpServlet {
 		RegistBiz biz = new RegistBizImpl();
 		
 		// 나중에 까먹지 말고 삭제할것
-		System.out.println("{" + command + "}");
+		System.out.println("mypage.do : {" + command + "}");
 		
 		
 		if(command.equals("mypage")){

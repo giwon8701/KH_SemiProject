@@ -39,6 +39,7 @@ public class RegistServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		String command = request.getParameter("command");
+		System.out.println("["+command+"]");
 		
 		if(command.equals("registForm")) {
 			response.sendRedirect("./views/login/registForm.jsp");
@@ -83,13 +84,13 @@ public class RegistServlet extends HttpServlet {
 			String memberAddr = request.getParameter("memberAddr");
 			
 			RegistDto dto = new RegistDto();
-			dto.setMember_birthday(memberBirthday);
-			dto.setMember_email(memberEmail);
-			dto.setMember_gender(memberGender);
 			dto.setMember_id(memberId);
 			dto.setMember_pw(memberPw);
 			dto.setMember_name(memberName);
 			dto.setMember_addr(memberAddr);
+			dto.setMember_birthday(memberBirthday);
+			dto.setMember_gender(memberGender);
+			dto.setMember_email(memberEmail);
 			dto.setMember_phone(memberPhone);
 			
 			int res = biz.registMember(dto);
