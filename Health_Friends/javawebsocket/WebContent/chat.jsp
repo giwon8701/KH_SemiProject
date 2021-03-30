@@ -20,7 +20,7 @@ function openSocket() {
 	var name = $('#name').val();
 	
 	// 웹소켓 객체 생성하여 소켓서버에 연결 요청하기. 채팅에 사용할 이름도 함께 보냄.
-	sock = new WebSocket('ws://localhost:8787/echo/' + name);
+	sock = new WebSocket('ws://localhost:8787/javawebsocket/echo/' + name);
 	
 	// 서버와 연결이 완료된후 자동호출됨
 	sock.onopen = function (event) {
