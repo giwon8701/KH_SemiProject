@@ -114,7 +114,7 @@
 			</div>
 		</div>
 		<div class="mypage-second-div2">
-			<div id="chart_div" class="mypage-graph-div" style="widt:500px; height: 180px;"></div>
+			<div style="width:800px"><canvas id="myChart"></canvas></div>
 			<div class="mypage-calendar-div">
 
 
@@ -172,7 +172,60 @@
 			<div class="mypage-follw-div">팔로우</div>
 		</div>
 	</div>
-
+	
+	
+<script type="text/javascript">
+	
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();
+	
+	if(dd<10) {
+	    dd='0'+dd
+	} 
+	
+	if(mm<10) {
+	    mm='0'+mm
+	} 
+	
+	
+	
+	
+	var ctx = document.getElementById("myChart").getContext('2d');
+	/*
+	- Chart를 생성하면서, 
+	- ctx를 첫번째 argument로 넘겨주고, 
+	- 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줌
+	*/
+	var myChart = new Chart(ctx, {
+	    type: 'line',
+	    data: {
+	        labels: [yyyy+'/'+mm+'/'+(dd-6), yyyy+'/'+mm+'/'+(dd-5), yyyy+'/'+mm+'/'+(dd-4), yyyy+'/'+mm+'/'+(dd-3), yyyy+'/'+mm+'/'+(dd-2), yyyy+'/'+mm+'/'+(dd-1), yyyy+'/'+mm+'/'+dd],
+	        datasets: [{
+	            label: '운동시간(분)',
+	            data: [33, 15, 53, 45, 29, 31, 67],
+	            backgroundColor: [
+	                'rgba(255, 99, 132, 0.2)'
+	            ],
+	            borderColor: [
+	                'rgba(255,99,132,1)'
+	            ],
+	            borderWidth: 1
+	        }]
+	    },
+	    options: {
+	        maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+	        scales: {
+	            yAxes: [{
+	                ticks: {
+	                    beginAtZero:true
+	                }
+	            }]
+	        }
+	    }
+	});
+</script>
 	<%@ include file="../common/footer.jsp" %>
 
 </body>
