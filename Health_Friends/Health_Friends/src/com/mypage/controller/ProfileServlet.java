@@ -1,5 +1,6 @@
 package com.mypage.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
 
@@ -9,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.login.dto.RegistDto;
 import com.mypage.biz.ProfileBiz;
@@ -23,7 +25,6 @@ public class ProfileServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		
 		String member_email = request.getParameter("member_email");
 
 		ProfileBiz biz = new ProfileBizImpl();
@@ -34,9 +35,14 @@ public class ProfileServlet extends HttpServlet {
 		String encType = "UTF-8";
 		String savefile = "profileimg";
 		ServletContext scontext = getServletContext();
+		
 		realFolder = scontext.getRealPath(savefile);
+		File folder = new File(realFolder);
 		
 		try {
+			if (!folder.exists()) {
+				folder.mkdir();
+			}
 			MultipartRequest multi = new MultipartRequest(request, realFolder, maxSize, encType, new DefaultFileRenamePolicy());
 
 			Enumeration<?> files = multi.getFileNames();
@@ -55,6 +61,12 @@ public class ProfileServlet extends HttpServlet {
 		dto.setMember_picture_path(filename);
 		
 		int res = biz.profileUpdate(dto);
+		
+		HttpSession session = request.getSession();
+		// 세션에 담겨있는 로그인정보 가져옴
+		RegistDto loginSessionDto = (RegistDto)session.getAttribute("dto");
+		loginSessionDto.setMember_picture_path(filename);
+		session.setAttribute("dto", loginSessionDto);
 	
 		System.out.println(res);
 		

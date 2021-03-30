@@ -50,6 +50,7 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="assets/js/chart.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<% RegistDto dto = (RegistDto) session.getAttribute("dto"); %>
 <script type="text/javascript">
 	function js(){
 		var year = $(".y").text().trim();
@@ -61,6 +62,7 @@
 			document.getElementsByClassName("countBackground").style.backgroundColor="gray";
 		}
 	}
+	
 </script>
 <style type="text/css">
 	#profile-img{
@@ -72,7 +74,6 @@
 <body>
 <%--마이페이지! --%>
 
-<% RegistDto dto = (RegistDto) session.getAttribute("dto"); %>
 
 	<div class="mypage-main-div">
 		<div class="mypage-second-div1">
@@ -82,10 +83,12 @@
 						<td colspan="2">
 							<c:choose>
 								<c:when test="${dto.getMember_picture_path() == null}">
-									대표 포로필 사진이 존재하지 않습니다<br>프로필 사진을 등록해주세요!
+									대표 프로필 사진이 존재하지 않습니다<br>프로필 사진을 등록해주세요!
 								</c:when>
 								<c:otherwise>
-									<img src="../../profileimg/<%=dto.getMember_picture_path()%>" id="profile-img" />
+ 
+									<img src="../../profileimg/<%=dto.getMember_picture_path()%>?" id="profile-img" />
+
 									<%System.out.println(dto.getMember_picture_path()); %>
 								</c:otherwise>
 							</c:choose>
