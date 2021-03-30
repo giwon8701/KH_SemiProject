@@ -14,8 +14,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
 <script type="text/javascript">
-	
+	/**
 	$(function(){
 		$("#loginForm").submit(function(e){
 			if($("[name=memberId]").val() == null || $("[name=memberId]").val() == "" || $("[name=memberPw]").val() == null || $("[name=memberPw]").val() == ""){
@@ -26,11 +27,19 @@
 				return;
 			}
 		});
-	});
+	}); **/
 	
 	
 	function onSubmit(){
-		$("#registform").submit();
+		if($("[name=memberId]").val() == null || $("[name=memberId]").val() == "" || $("[name=memberPw]").val() == null || $("[name=memberPw]").val() == ""){
+			
+			$("#loginchk").text("아이디와 비밀번호를 입력해주세요.");
+			$("#loginchk").css("font-size", "10px").css("color", "red");
+			
+		} else{
+			$("#loginForm").submit();
+		}
+		
 	}
 	
 	
@@ -67,8 +76,8 @@
 				<td colspan="2" id="loginchk"></td>
 			</tr>
 			<tr>
-				<td><input type="button" value="아이디찾기" onclick=""></td>
-				<td><input type="button" value="비밀번호찾기" onclick=""></td>
+				<td><input type="button" value="아이디찾기" onclick="location.href='../../regist.do?command=idSearch'"></td>
+				<td><input type="button" value="비밀번호찾기" onclick="location.href='../../regist.do?command=pwSearch'"></td>
 			</tr>
 			<tr>
 				<td colspan="4"><button class="g-recaptcha" 

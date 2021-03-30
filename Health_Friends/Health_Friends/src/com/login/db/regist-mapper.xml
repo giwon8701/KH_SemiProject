@@ -13,6 +13,16 @@
 		</trim>
 	</select>
 	
+	<select id="selectCnt" parameterType="registDto" resultType="int">
+		SELECT COUNT(*) FROM MEMBER
+		<trim prefix="WHERE" prefixOverrides="AND">
+		<if test="member_id != null">MEMBER_ID = #{member_id}</if>
+		<if test="member_name != null">AND MEMBER_NAME = #{member_name}</if>
+		<if test="member_email != null">AND MEMBER_EMAIL = #{member_email}</if>
+		<if test="member_pw != null">AND MEMBER_PW = #{member_pw}</if>
+		</trim>
+	</select>
+	
 	<insert id="regist" parameterType="registDto">
 		INSERT INTO MEMBER VALUES(
 			MEMBERNOSEQ.NEXTVAL, #{member_id}, #{member_pw}, #{member_name}, #{member_addr}, #{member_birthday},
@@ -23,21 +33,28 @@
 	<select id="selectOne" parameterType="registDto" resultType="registDto">
 		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_ADDR, MEMBER_BIRTHDAY, MEMBER_GENDER, MEMBER_EMAIL, MEMBER_PHONE, MEMBER_ENABLED, MEMBER_REVIEW, MEMBER_ROLE
 		FROM MEMBER
+		<trim prefix="WHERE" prefixOverrides="AND">
+		<if test="member_id != null">MEMBER_ID = #{member_id}</if>
+		<if test="member_name != null">AND MEMBER_NAME = #{member_name}</if>
+		<if test="member_email != null">AND MEMBER_EMAIL = #{member_email}</if>
+		<if test="member_pw != null">AND MEMBER_PW = #{member_pw}</if>
+		</trim>
+	</select>
+	
+	<update id="pwReset" parameterType="registDto">
+		UPDATE MEMBER
+		SET MEMBER_PW = #{member_pw}
+		WHERE MEMBER_ID = #{member_id} AND MEMBER_EMAIL = #{member_email}
+	</update>
+	
+	<update id="updateRegist" parameterType="registDto">
+		UPDATE MEMBER
+		<trim prefix="SET" suffixOverrides=",">
+		<if test="member_pw != null">MEMBER_PW = #{member_pw},</if>
+		<if test="member_phone != null">MEMBER_PHONE = #{member_phone},</if>
+		<if test="member_addr != null">MEMBER_ADDR = #{member_addr}</if>
+		</trim>
 		WHERE MEMBER_ID = #{member_id}
-		AND MEMBER_PW = #{member_pw}
-	</select>
-	
-	<select id="login" parameterType="registDto" resultType="int">
-		SELECT COUNT(*) FROM MEMBER
-		WHERE MEMBER_ID = #{member_id}
-		AND MEMBER_PW = #{member_pw}
-	</select>
-	
-	<select id="selectByEmail" parameterType="String" resultType="registDto">
-		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_ADDR, MEMBER_BIRTHDAY, MEMBER_GENDER, MEMBER_EMAIL, MEMBER_PHONE, MEMBER_ENABLED, MEMBER_REVIEW, MEMBER_ROLE
-		FROM MEMBER
-		WHERE MEMBER_EMAIL = #{member_email}
-	</select>
-	
+	</update>
 	
 </mapper>

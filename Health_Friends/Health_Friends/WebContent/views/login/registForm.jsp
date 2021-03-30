@@ -131,7 +131,6 @@
 	}
 	
 	function addrCheck(){
-		//open("regist.do?command=addrcheck", "", "width=200, height=200");
 		
 		new daum.Postcode({
             oncomplete: function(data) {
