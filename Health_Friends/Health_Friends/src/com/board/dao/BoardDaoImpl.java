@@ -12,14 +12,13 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 	
 	@Override
 	public List<BoardDto> selectList() {
-		SqlSession session = null;
 		List<BoardDto> list = new ArrayList<BoardDto>();
-		System.out.println(list);
+		
+		SqlSession session = null;
 		
 		try {
 			session = getSqlSessionFactory().openSession(false);
-			list = session.selectList("BoardMapper.selectList");
-			System.out.println(list);
+			list = session.selectList("boardmapper.selectList");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -29,7 +28,7 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 	}
 
 	@Override
-	public BoardDto selectOne(int postNo) {
+	public BoardDto selectOne(int postId) {
 		return null;
 	}
 
@@ -44,12 +43,12 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 	}
 
 	@Override
-	public int delete(int postNo) {
+	public int delete(int postId) {
 		return 0;
 	}
 
 	@Override
-	public int multiDelete(String[] postNos) {
+	public int multiDelete(String[] postIds) {
 		return 0;
 	}
 

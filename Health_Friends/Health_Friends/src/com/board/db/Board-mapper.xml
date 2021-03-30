@@ -4,13 +4,33 @@
 <mapper namespace="BoardMapper">
 	
 	<resultMap  type="BoardDto" id="BoardMap">
+		<result property="postUserNo" column="POST_USER_NO"/>
 		<result property="postId" column="POST_ID"/>
+		<result property="postNo" column="POST_NO"/>
+		<result property="postBoardName" column="POST_BOARD_NAME"/>
+		<result property="postCategoryName" column="POST_CATEGORY_NAME"/>
 		<result property="postTitle" column="POST_TITLE"/>
+		<result property="postContent" column="POST_CONTENT"/>
+		<result property="postMdate" column="POST_MDATE"/>
+		<result property="postRegdate" column="POST_REGDATE"/>
+		<result property="postHit" column="POST_HIT"/>
+		<result property="postCommentHit" column="POST_COMMENT_HIT"/>
+		<result property="postLike" column="POST_LIKE"/>
+		<result property="postDelflag" column="POST_DELFLAG"/>
+		<result property="postLatitude" column="POST_LATITUDE"/>
+		<result property="postLongitude" column="POST_LONGITUDE"/>
 	</resultMap>	
 
 	<select id="selectList" resultMap="BoardMap">
-		SELECT POST_ID, POST_TITLE
-		FROM ACCOMPANYBOARD
+		SELECT POST_USER_NO, POST_ID.NEXTVAL, POST_NO,POST_BOARD_NAME,POST_CATEGORY_NAME,POST_TITLE,POST_CONTENT
+		,POST_MDATE,POST_REGDATE,POST_HIT,POST_COMMENT_HIT,POST_LIKE,POST_DELFLAG,POST_LATITUDE,POST_LONGITUDE
+		FROM POST
 	</select>
+	
+	<insert id="" parameterType="BoardDto">
+		INSERT INTO POST VALUES
+		(#{postUserNo}, POST_ID.NEXTVAL, #{postNo},#{postBoardName},#{postCategoryName},#{postTitle},#{postContent}
+		,#{postMdate},#{postRegdate},#{postHit},#{postCommentHit},#{postLike},#{postDelflag},#{postLatitude},#{postLongitude})
+	</insert>
 	
 </mapper>

@@ -119,7 +119,7 @@
 							});
 						</script>
 						</td>
-						<td>,ㅡ 
+						<td>
 							약속시간	<br/>
 							<!-- 달력API -->
 						 	<link href='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.css' rel='stylesheet' />
@@ -129,13 +129,15 @@
 						        var calendarEl = document.getElementById('calendar');
 						        var calendar = new FullCalendar.Calendar(calendarEl, {
 						        	 dateClick: function(date, jsEvent, view) {
-						        		 alert("--");
+						        		 alert('Clicked on: ');
 						        	 }
 						        });
 						        calendar.render();
 						      });
+						      function onchangeDay(yy,mm,dd,ss){ 
+						    	  $("#nows").html(yy+"년"+mm+"월"+dd+"일("+ss+"요일)"); 
+						    	 }
 						    </script>
-						    
 					    <div id='calendar'></div>
 					</td>
 				</tr>
@@ -153,6 +155,7 @@
 --%>
 </body>
 </html>
+
 
 
 
