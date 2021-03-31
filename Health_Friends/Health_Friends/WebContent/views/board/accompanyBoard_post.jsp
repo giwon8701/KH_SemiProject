@@ -134,9 +134,6 @@
 						        });
 						        calendar.render();
 						      });
-						      function onchangeDay(yy,mm,dd,ss){ 
-						    	  $("#nows").html(yy+"년"+mm+"월"+dd+"일("+ss+"요일)"); 
-						    	 }
 						    </script>
 					    <div id='calendar'></div>
 					</td>
@@ -147,7 +144,8 @@
 					</td>
 				</tr>
 			</table>
-			<input type="submit" value="글작성">
+			<input type="submit" value="등록">
+			<input type="button" value="취소" onclick="location.href='board.do?command=list'" />
 		</form>
 	</section>
 <%--	

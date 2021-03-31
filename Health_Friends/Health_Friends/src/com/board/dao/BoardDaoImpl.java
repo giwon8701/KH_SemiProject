@@ -18,7 +18,7 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 		
 		try {
 			session = getSqlSessionFactory().openSession(false);
-			list = session.selectList("boardmapper.selectList");
+			list = session.selectList("BoardMapper.selectList");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -34,7 +34,16 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 
 	@Override
 	public int insert(BoardDto dto) {
-		return 0;
+		
+		int res = 0;
+		
+		try(SqlSession session = getSqlSessionFactory().openSession(true)){
+			res = session.insert("BoardMapper.insert", dto);
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 
 	@Override
