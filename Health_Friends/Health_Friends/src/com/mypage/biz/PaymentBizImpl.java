@@ -1,9 +1,12 @@
 package com.mypage.biz;
 
+import java.util.List;
+
 import com.common.SqlMapConfig;
 import com.login.dto.RegistDto;
 import com.mypage.dao.PaymentDao;
 import com.mypage.dao.PaymentDaoImpl;
+import com.mypage.dto.PaymentDto;
 
 public class PaymentBizImpl extends SqlMapConfig implements PaymentBiz {
 
@@ -18,6 +21,16 @@ public class PaymentBizImpl extends SqlMapConfig implements PaymentBiz {
 	@Override
 	public int paymentDowndate(RegistDto dto) {
 		return dao.paymentDowndate(dto);
+	}
+
+	@Override
+	public int paymentInsert(PaymentDto dto) {
+		return dao.paymentInsert(dto);
+	}
+
+	@Override
+	public List<PaymentDto> paymentList() {
+		return dao.paymentList();
 	}
 
 }
