@@ -45,7 +45,8 @@
 					</td>
 				</tr>
 			</table>
-			<input type="submit" value="글작성">
+			<input type="submit" value="등록">
+			<input type="button" value="취소" onclick="location.href='board.do?command=list'" />
 		</form>
 	</section>
 <%--	

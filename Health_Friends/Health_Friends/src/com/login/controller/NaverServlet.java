@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -50,8 +51,8 @@ public class NaverServlet extends HttpServlet {
 	    apiURL += "&redirect_uri=" + redirectURI;
 	    apiURL += "&code=" + code;
 	    apiURL += "&state=" + state;
-	    String access_token = "";
-	    String refresh_token = "";
+	    String access_token = "";	//사용자를 인증하고 API 호출 권한을 부여
+	    String refresh_token = "";	// 사용자가 매번 계정 정보를 입력하거나 카카오톡으로 로그인하지 않고도 액세스 토큰을 발급받을 수 있게
 	    System.out.println("apiURL="+apiURL);
 	    try {
 	      URL url = new URL(apiURL);
@@ -132,6 +133,13 @@ public class NaverServlet extends HttpServlet {
 				jsResponse(response, "./index.jsp", member_name+"님, 환영합니다.");
 			} else {
 				//추가정보 입력창으로 이동
+				PrintWriter out = response.getWriter();
+				String msg = "회원정보가 존재하지 않습니다! 간편 회원가입 페이지로 이동합니다.";
+				String s = "<script type='text/javascript'>"
+						 + "alert('" + msg + "');"
+						 + "</script>";
+				out.println(s);
+				
 				request.setAttribute("dto", dto);
 				dispatch(request, response, "/views/login/naverRegistForm.jsp");
 			}

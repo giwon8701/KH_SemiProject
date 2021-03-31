@@ -16,8 +16,8 @@ public class BoardBizImpl implements BoardBiz {
 	}
 
 	@Override
-	public BoardDto selectOne(int postNo) {
-		return dao.selectOne(postNo);
+	public BoardDto selectOne(int postId) {
+		return dao.selectOne(postId);
 	}
 
 	@Override
@@ -31,13 +31,12 @@ public class BoardBizImpl implements BoardBiz {
 	}
 
 	@Override
-	public int delete(int postNo) {
-		return dao.delete(postNo);
+	public int delete(int postId) {
+		return dao.delete(postId);
 	}
 
 	@Override
-	public int multiDelete(String[] postNos) {
-		return dao.multiDelete(postNos);
+	public int multiDelete(String[] postIds) {
+		return dao.multiDelete(postIds);
 	}
-
 }
