@@ -16,9 +16,9 @@
 	<%@include file="header.jsp" %>
  --%>	
 	<section class="boardlist">
-		<a href="">동행 구해요</a>
-		<a href="">후기</a>
-		<a href="">공지사항</a>
+		<a href="accompanyBoard.jsp">동행 구해요</a>
+		<a href="photoReviewBoard.jsp">후기</a>
+		<a href="noticeBoard.jsp">공지사항</a>/a>
 	</section>
 	
 	<h2>고객센터</h2>
