@@ -30,13 +30,33 @@ public class BoardServlet extends HttpServlet {
 				List<BoardDto> list = biz.selectList();
 				request.setAttribute("list", list);
 				dispatch(request, response, "accompanyBoard.jsp");
+				
 			}else if(command.equals("insert")) {
 				response.sendRedirect("./views/board/accompanyBoard_post.jsp");
+				
+			}else if(command.equals("insertres")) {
+				String postId = request.getParameter("postId");
+				String postCategoryName = request.getParameter("chooseExercise");
+				String postTitle = request.getParameter("postTitle");
+				String postContent = request.getParameter("content");
+				String postMdate = request.getParameter("postMdate");
+				String postRegdate = null;
+				String postLatitude = request.getParameter("MapAddress");
+				// 날짜값 전달아직 구현 못함
+				BoardDto dto = new BoardDto(0, postId, 0, null, postCategoryName, postTitle, postContent, postMdate, postRegdate, 
+						null, 0, 0, 0, postLatitude, 0);
+				
+				int res = biz.insert(dto);
+				if (res > 0) {
+					response.sendRedirect("board.do?command=list");
+				} else {
+					response.sendRedirect("board.do?command=insert");
+				} 
 			} 
 			
 			
 		} catch(Exception e){
-			System.out.println("오류입니다.");
+			response.sendRedirect("./views/common/error.jsp");
 		}
 	}
 
