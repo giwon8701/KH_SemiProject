@@ -105,7 +105,7 @@
 		const result = res.result;
 		
 		let list = result.map((item.idx) => '<div class="col-md-3 col-sm-6"> <div class="product-grid3"> <div class="product-image3"> <a href="' + item.link + '" target=_sub > <img class="pic" src="' + item.image + '" + ""> </a> </div> <div class="product-content"> <h3 class="title">' + item.title + '</a> </h3> <div class="price"> 최저가 : ' + item.lprice + '원 </div> <br> </div> </div> </div>' 
-				);
+				).join('');
 		list[0]
 		
 		document.getElementById("start").innerHTML += list.slice(0, 19);
