@@ -42,6 +42,7 @@ pageEncoding="UTF-8"%>
 								
 								$('#start').append(
 										'<div class="col-md-3 col-sm-6"> <div class="product-grid3"> <div class="product-image3"> <a href="' + list[i].link + '" target=_sub > <img class="pic" src="' + list[i].image + '" + ""> </a> </div> <div class="product-content"> <h3 class="title">' + list[i].title + '</a> </h3> <div class="price"> 최저가 : ' + list[i].lprice + '원 </div> <br> </div> </div> </div>');
+		
 							}
 						},
 						error : function() {
@@ -51,19 +52,29 @@ pageEncoding="UTF-8"%>
 		}
 	}
 	
-	$(window).scroll(function(){
-		if ($(this).scrollTop() > 300){
-			$('.btn_gotop').show();
-		} else{
-			$('.btn_gotop').hide();
-		}
-	});
+	var count = 0;
+	window.onscroll = function(e) {
+		
+	if(list.length > 19) {
+    	if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+    	
+    	//실행할 로직 (콘텐츠 추가)
+        count++;
+    	}
+    }
+};
 
-	$('.btn_gotop').click(function(){
-		$('html, body').animate({scrollTop:0},400);
-		return false;
-	});
-	
+    // 화면 위로 보내기
+	function scrollFunction() { 
+    	var btn = document.getElementById('btn');
+    		if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) { btn.style.display = "block"; 
+    		} else { btn.style.display = "none"; } 
+    } 
+    
+	function GoTop() { 
+		window.scrollTo({top:0, behavior:'smooth'}); 
+	}
+
 </script>
 
 <style type="text/css">
@@ -173,7 +184,7 @@ pageEncoding="UTF-8"%>
 }
 
 .product-grid3 .price {
-	color: blue;
+	color: violet;
 	font-size: 16px;
 	float: right;
 	letter-spacing: 1px;
@@ -182,19 +193,30 @@ pageEncoding="UTF-8"%>
 	display: inline-block
 }
 
-.btn_gotop {
-	display:none;
-	position:fixed;
-	bottom:30px;
-	right:30px;
-	z-index:999;
-	border:1px solid #ccc;
-	outline:none;
-	background-color:white;
-	color:#333;
-	cursor:pointer;
-	padding:15px 20px;
-	border-radius:100%;
+.top{
+    margin-bottom: 50px;
+}
+
+#btn{
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    font-size: 20px;
+    padding: 15px;
+    background-color: white;
+    color: rgb(0, 183, 255);
+    cursor: pointer;
+    transition: 0.5s;
+    display: none;
+    border: 1px solid;
+}
+
+#btn:hover{
+    background-color:rgb(0, 183, 255);
+    color: white;
+    border: 2px solid;
 }
 
 </style>
@@ -208,15 +230,16 @@ pageEncoding="UTF-8"%>
 
 <body>
 
-<div style=background-color:#FAFAD2>
-<br><br>
+<div style="text-align:center"> 
+<img src="https://image.freepik.com/free-vector/people-doing-different-actions_52683-2299.jpg" style="width: 850px; height: 550px">
+<br>
 	<div style="width: 100%; margin-top: 40px; text-align: center">
 		<input type="text" name="txt_search" id="txt_search"
 			style="width: 300px; height: 38px; vertical-align: top"
 			placeholder=" 검색어를 입력하세요">
 		<button type="button" class="btn btn-info" onclick="goSearch();">검색하기</button>	
 	</div>
-	<br><br><br><br>
+	<br><br><br>
 </div>
 
 <br><br>
@@ -233,11 +256,10 @@ pageEncoding="UTF-8"%>
 	</div>
 </div>
 
-	<!-- 상단으로 이동하기 버튼 -->
-	<a href="#" class="btn_gotop">
-	  <span class="glyphicon glyphicon-chevron-up">
-	  </span>
-	</a>
+<!-- 상단으로 이동하기 버튼 -->
+<div class="top"> 
+	<button id="btn" onClick="GoTop()">▲</button> 
+</div> 
 
 </body>
 </html>

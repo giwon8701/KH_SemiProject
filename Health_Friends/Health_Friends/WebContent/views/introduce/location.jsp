@@ -26,59 +26,135 @@
 * {
 	font-family: 'Noto Sans KR', sans-serif;
 }
-
-#bus, subway {
-
-}
 		
 .jumbotron {
 	background-image:
-		url('https://cdn.crowdpic.net/list-thumb/thumb_l_37B48B380D5AEB177BF931C56704AA5C.jpg');
+		url("https://cdn.crowdpic.net/list-thumb/thumb_l_37B48B380D5AEB177BF931C56704AA5C.jpg");
 	background-size: cover;
 	text-shadow: block 0.2em 0.2em 0.2em;
-	color: black;
 }
 
 #main01, #main02 {
 	color: white;
 }
 
+.contact {
+	width: 1130px;
+	margin: 0 auto;
+	padding-bottom: 20px;
+}
 
-#bus_text {
+table {
+	border-spacing: 0;
+	border-collapse: initial;
+}
+
+tbody {
+	display: table-row-group;
+	verticle-align: middle;
+	border-color: inherit;
+}
+
+tr {
+	display: table-row;
+	vertical-align: inherit;
+	border-color: inherit;
+}
+
+.contact th {
+	border-bottom: 1px solid grey;
+	color: black;
+	width: 200px;
+	font-weight: 500;
+	background: #ffffe0;
+	text-align: center;
+
+}
+
+.container .contact. td {
+	font-weight: 400;
 	font-size: 20px;
 }
 
-.btn_gotop {
-	display:none;
-	position:fixed;
-	bottom:30px;
-	right:30px;
-	z-index:999;
-	border:1px solid #ccc;
-	outline:none;
-	background-color:white;
-	color:#333;
-	cursor:pointer;
-	padding:15px 20px;
-	border-radius:100%;
+.contact td {
+	border-bottom: 1px solid grey;
+	color: black;
+	padding-left: 34px;
+	padding: 15px 0 15px 34px;
 }
+
+.top{
+    margin-bottom: 50px;
+}
+
+#btn {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    font-size: 20px;
+    padding: 15px;
+    background-color: white;
+    color: rgb(0, 183, 255);
+    cursor: pointer;
+    transition: 0.5s;
+    display: none;
+    border: 1px solid;
+}
+
+#btn:hover {
+    background-color:rgb(0, 183, 255);
+    color: white;
+    border: 2px solid;
+}
+
+.way01, .way02 {
+	margin-top: 20px;
+	transition: transform 0.7s, opacity 2.5s;
+}
+
+.col-sm-6 > img {
+	float:left;
+}
+
 
 </style>
 
 <script>
 
-$(window).scroll(function(){
-	if ($(this).scrollTop() > 300){
-		$('.btn_gotop').show();
-	} else{
-		$('.btn_gotop').hide();
-	}
-});
+// 글자 위로 올라오는 기능
+function isElementUnderBottom(elem, triggerDiff) {
+  const { top } = elem.getBoundingClientRect();
+  const { innerHeight } = window;
+  return top > innerHeight + (triggerDiff || 0);
+}
 
-$('.btn_gotop').click(function(){
-	$('html, body').animate({scrollTop:0},400);
-	return false;
-});
+function handleScroll() {
+  const elems = document.querySelectorAll('.way01, .way02');
+  elems.forEach(elem => {
+    if (isElementUnderBottom(elem, 20)) {
+      elem.style.opacity = "0";
+      elem.style.transform = 'translateY(70px)';
+
+    } else {
+      elem.style.opacity = "1";
+      elem.style.transform = 'translateY(0px)';
+
+    }
+  })
+}
+
+// 화면 위로 보내기
+function scrollFunction() { 
+	var btn = document.getElementById('btn');
+		if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) { btn.style.display = "block"; 
+		} else { btn.style.display = "none"; } 
+} 
+
+function GoTop() { 
+	window.scrollTo({top:0, behavior:'smooth'}); 
+}
 
 </script>
 
@@ -111,8 +187,8 @@ $('.btn_gotop').click(function(){
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">오시는 길<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#move01">지도 보러가기</a></li>
-							<li><a href="#move02">교통 보러가기</a></li>
+							<li><a href="#move01">지도 보기</a></li>
+							<li><a href="#move02">교통 보기</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -144,23 +220,26 @@ $('.btn_gotop').click(function(){
 			<h1 class="text-center" id="main01">오시는 길</h1>
 			<br>
 			<h3 class="text-center" id="main02">우리 동네 운동메이트는
-				서울시 강남구 역삼역에 위치하고 있습니다.</h3>
+				<span style="color:#F08080">서울시 강남구 역삼역</span>에 위치하고 있습니다.</h3>
 			<br>
 			<p class="text-center">
 				<a class="btn btn-primary btn-lg" href="#move02" role="buttothn">교통
-					보러가기
+					보기
 				</a>
 			</p>
 		</div>
 	</div>
+	<br>
 	<a name="move01"></a>
 	<div class="container">
 		<h2>지도로 찾기</h2>
+		<br>
 		<div id="map" style="width: auto; height: 500px;"></div>
 	</div>
 
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6920574193fbd921283dd9d416ec4e77"></script>
+	
 	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
@@ -191,54 +270,87 @@ $('.btn_gotop').click(function(){
 	<br>
 
 	<div class="container">
-		<h3>우리 동네 운동 메이트 주소</h3>
-		<h4>새주소 : 서울시 강남구 KH정보교육원 QClass</h4>
-		<h4>기존 주소 : </h4>
-		<h4>연락처 : 000-0000-0000</h4>
-		<h4>fax : 000-0000-0000</h4>
-		<h4>email : honggildong@gmail.com</h4>
+	
+	<div class="address">
+		<h2>서울특별시 강남구 테헤란로 14길 6 <span style="color:hotpink">남도빌딩 2F, 3F, 4F, 5F, 6F</span></h2>
+		<h2>[TEL : 1544-9970]</h2>
+		<h3 style="color:grey">서울특별시 강남구 역삼동 남도빌딩(역삼동, 남도빌딩)</h3>
 	</div>
-
+	</div>
 	<br>
-
+<hr>
+<br>
+<br>
 	<div class="container">
-		<br> <a name="move02"></a>
-		<h2>대중교통</h2>
-		<br><br>
+		<div class="row">
+			<div class="col-sm-6">
+			 <img src="../../images/bus03.png" style="width:80px; height:80px;"><h3 class="way01">&emsp;버스로 오시는 방법</h3><h4 style="color:gray" class="way01">&emsp;&nbsp;역삼역, 포스코P&S타워 정류장 하차</h4><br>
+				<br><br>
+				<img src="../../images/bus01.jpeg" style="width:20px; height:27px;"><h4 class="way02">&emsp;간선버스&emsp;146 / 740 / 341 / 360</h4><br>
+				<img src="../../images/bus02.jpeg" style="width:20px; height:27px;"><h4 class="way02">&emsp;지선버스&emsp;1100 / 1700 / 2000 / 7007 / 8001</h4>
+			</div>
 
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4">
-					<img src=./image/bus.png alt="버스" height="160" width="160">
-				</div>
-				<div class="col-sm-8" style="background-color: lavenderblush;">
-					<h3 class="subheading" id="bus">버스 이용시에는</h3>
-					<br>
-					<p class="text-info" id="bus_text">
-						버스 역삼역 포스코 P&S타워 정류장 하자 <br> <br> <img src=""> 146
-						/ 740 / 341 / 360 <br> <img src=""> 1100 / 1700 / 2000
-						/ 7007 / 8001 <br>
-					</p>
-					<br>
-				</div>
+			<div class="col-sm-6">
+				<img src="../../images/bus04.png" style="width:80px; height:80px;"><h3 class="way02">&emsp;지하철로 오시는 방법</h3><h4 style="color:gray" class="way01">&emsp;&nbsp;지하철 2호선 역삼역 3번 출구로 나와서 100m 직진</h4>
+				<br><br>
+				<img src="../../images/yeoksam.png" style="width:400px; height:250px;">
+				<br>
+				<br>
+				<h4 class="text-info">주변 건물 : 신한은행 역삼지점, 코리아 IT 아카데미</h4>
+				<h2 class="subheading" style="text-align: right">
+				</h2>
+				<br>
+				<br>
+				<div>
+				<p class="text-muted">
+				<h4 class="text-info" style="text-align: right">
+				</h4>
+				<br> <br> <br>
 			</div>
 		</div>
-
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4">
-					<img src=./image/metro.png alt="지하철" height="160" width="160">
-				</div>
-				<div class="col-sm-8" style="background-color: lavenderblush;">
-					<h3 class="subheading" id="subway">지하철 이용시에는</h3>
-					<br>
-					<p class="text-info" id="bus_text">지하철 2호선 역삼역 3번 출구에서 나온 후 도보 100m 이동</p>
-					<br>
-				</div>
-			</div>
-		</div>
-		<br> <br> <br> <br> <br> <br> <br>
 	</div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+	<!-- 
+	<div class="container">
+	<table class="contact" cellpadding="0" cellspacing="0">
+		<tbody>
+			<tr>
+				<th style="border-top:1px solid #222">주소</th>
+				<td style="border-top:1px solid #222">서울특별시 강남구 테헤란로 14길 6 남도빌딩 2F, 3F, 4F, 5F, 6F (T: 1544-9970 / F: 02-562-2378)</td>
+			</tr>
+			<tr>
+				<th>버스</th>
+				<td class="bus">
+				역삼역, 포스코P&S타워 정류장
+				<br>
+				<img src="../../images/icon/bus01.jpeg" alt="">
+				146 / 740 / 341 / 360 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<img src="../../images/icon/bus02.jpeg" alt="">
+				1100 / 1700 / 2000 / 7007 / 8001
+			
+				</td>
+				</tr>
+				<tr>
+					<th style="border-bottom:1px solid #222">지하철</th>
+					<td style="border0bottom:1px solid #222">지하철 2호선 역삼역 3번 출구 100m</td>
+					</tr>
+		</tbody>
+	</table>
+	</div>
+-->
+<br>
+<br>
+
+<div class="top"> 
+	<button id="btn" onClick="GoTop()">▲</button> 
+</div> 
+ <script type="text/javascript" src="script.js"></script>
 
 	<footer style="background-color: #000000; color: #ffffff">
 		<div class="container">
@@ -263,17 +375,8 @@ $('.btn_gotop').click(function(){
 					</h4>
 				</div>
 			</div>
-		</div>
-		
-	<!-- 상단으로 이동하기 버튼 -->
-	<a href="#" class="btn_gotop">
-	  <span class="glyphicon glyphicon-chevron-up">
-	  </span>
-	</a>
-			
+		</div>		
 	</footer>
-
-
 
 </body>
 </html>
