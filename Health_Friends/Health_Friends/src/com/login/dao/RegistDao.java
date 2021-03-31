@@ -34,5 +34,8 @@ public interface RegistDao {
 	
 	//회원정보 수정
 	public int updateRegist(RegistDto dto);
+	
+	//회원 탈퇴
+	public int deleteRegist(String member_id);
 
 }
