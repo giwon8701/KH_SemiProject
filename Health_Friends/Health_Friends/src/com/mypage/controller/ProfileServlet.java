@@ -31,7 +31,7 @@ public class ProfileServlet extends HttpServlet {
 		
 		String realFolder = "profileimg";
 		String filename = request.getParameter("filename");
-		int maxSize = 500 * 500 * 5;
+		int maxSize = 480 * 480 * 5;
 		String encType = "UTF-8";
 		String savefile = "profileimg";
 		ServletContext scontext = getServletContext();
@@ -68,8 +68,6 @@ public class ProfileServlet extends HttpServlet {
 		loginSessionDto.setMember_picture_path(filename);
 		session.setAttribute("dto", loginSessionDto);
 	
-		System.out.println(res);
-		
 		if(res > 0) {
 			jsResponse(response, "./views/mypage/mypage.jsp", "프로필 사진이 변경되었습니다!");
 		} else {

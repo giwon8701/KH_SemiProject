@@ -8,6 +8,7 @@
 		<typeAlias type="com.mypage.dto.IndividualDto" alias="individualDto" />
 		<typeAlias type="com.board.dto.BoardDto" alias="BoardDto" />
 		<typeAlias type="com.login.dto.RegistDto" alias="registDto"/>
+		<typeAlias type="com.mypage.dto.PaymentDto" alias="paymentDto"/>
 	</typeAliases>
 
 	<environments default="development">

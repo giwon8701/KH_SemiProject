@@ -9,5 +9,5 @@
 		SET MEMBER_PICTURE_PATH = #{member_picture_path}
 		WHERE MEMBER_EMAIL = #{member_email}
 	</update>
-
+	
 </mapper>

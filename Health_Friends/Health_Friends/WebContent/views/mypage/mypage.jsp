@@ -89,13 +89,12 @@
  
 									<img src="../../profileimg/<%=dto.getMember_picture_path()%>?" id="profile-img" />
 
-									<%System.out.println(dto.getMember_picture_path()); %>
 								</c:otherwise>
 							</c:choose>
 						</td>
 						<td rowspan="4">
 							<form action="../../profile.do?member_email=<%=dto.getMember_email()%>" method="post" enctype="multipart/form-data">
-								<input type="file" name="filename" size='40'><br>
+								<input type="file" name="filename" size='20'><br>
 								<input type="submit" value="프사변경">
 							</form>
 						</td>
@@ -137,6 +136,7 @@
 								<li><a href="../../mypage.do?command=registUpdate">회원정보 수정</a></li>
 								<li><a href="../../payment.do?command=paymentRoleUp&member_role=<%=dto.getMember_role()%>">프리미엄 등록</a></li>
 								<li><a href="../../payment.do?command=paymentRoleDown&member_role=<%=dto.getMember_role()%>">프리미엄 탈퇴</a></li>
+								<li><a href="../../payment.do?command=paymentList">결제내역</a>
 							</ul>
 						</td>
 					</tr>
