@@ -4,10 +4,8 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-	response.setContentType("text/html; charset=UTF-8");
-%>    
+<% request.setCharacterEncoding("UTF-8"); %>
+<% response.setContentType("text/html; charset=UTF-8"); %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,13 +33,12 @@
  
 <%--게시판목록 --%>	
 	<section class="boardlist">
-		<a href="">동행 구해요</a>
-		<a href="">후기</a>
-		<a href="">공지사항</a>
+		<a href="href='../../board.do?command=list">동행 구해요</a>
+		<a href="photoReviewBoard.jsp">후기</a>
+		<a href="noticeBoard.jsp">공지사항</a>
 	</section>
 	<br/>
-	
-	<a href="">글작성</a>
+	<input type="button" value="글작성" onclick="location.href='../../board.do?command=insert'" />
 	
 <%--게시글리스트 --%>
 	<section id="Board_list">
@@ -57,7 +54,7 @@
 				for (BoardDto dto : list){
 %>
 				<tr>
-					<td><%=dto.getPostTitle() %></td>
+					<td></td>
 					<td>----</td>
 				</tr>
 <%

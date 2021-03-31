@@ -29,6 +29,8 @@ public class MypageServlet extends HttpServlet {
 		
 		String command = request.getParameter("command");
 		
+		RegistBiz biz = new RegistBizImpl();
+		
 		// 나중에 까먹지 말고 삭제할것
 		System.out.println("mypage.do : {" + command + "}");
 		
@@ -50,8 +52,6 @@ public class MypageServlet extends HttpServlet {
 			RegistDto dto = new RegistDto();
 			dto.setMember_id(member_id);
 			dto.setMember_pw(member_pw);
-			
-			RegistBiz biz = new RegistBizImpl();
 			
 			int res = biz.updateRegist(dto);
 			
@@ -76,7 +76,6 @@ public class MypageServlet extends HttpServlet {
 			dto.setMember_phone(member_phone);
 			dto.setMember_addr(member_addr);
 			
-			RegistBiz biz = new RegistBizImpl();
 			
 			int res = biz.updateRegist(dto);
 			
@@ -92,6 +91,14 @@ public class MypageServlet extends HttpServlet {
 			} else {
 				jsResponse(response, "./views/mypage/registUpdate.jsp", "다시 시도해주세요.");
 			}
+		} else if(command.equals("delRegist")) {
+			String member_id = request.getParameter("member_id");
+			
+			int res = biz.deleteRegist(member_id);
+			
+			PrintWriter out = response.getWriter();
+			out.println(res);
+			
 		}
 	}
 	

@@ -57,4 +57,10 @@
 		WHERE MEMBER_ID = #{member_id}
 	</update>
 	
+	<update id="deleteRegist" parameterType="String">
+		UPDATE MEMBER
+		SET MEMBER_ENABLED = 'N'
+		WHERE MEMBER_ID = #{member_id}
+	</update>
+	
 </mapper>

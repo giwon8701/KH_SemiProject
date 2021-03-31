@@ -51,8 +51,8 @@ public class NaverServlet extends HttpServlet {
 	    apiURL += "&redirect_uri=" + redirectURI;
 	    apiURL += "&code=" + code;
 	    apiURL += "&state=" + state;
-	    String access_token = "";
-	    String refresh_token = "";
+	    String access_token = "";	//사용자를 인증하고 API 호출 권한을 부여
+	    String refresh_token = "";	// 사용자가 매번 계정 정보를 입력하거나 카카오톡으로 로그인하지 않고도 액세스 토큰을 발급받을 수 있게
 	    System.out.println("apiURL="+apiURL);
 	    try {
 	      URL url = new URL(apiURL);

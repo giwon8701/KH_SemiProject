@@ -156,7 +156,6 @@ public class RegistDaoImpl extends SqlMapConfig implements RegistDao {
 			
 			if(res > 0) {
 				session.commit();
-				res = 1;
 			} else {
 				res = 0;
 			}
@@ -173,6 +172,21 @@ public class RegistDaoImpl extends SqlMapConfig implements RegistDao {
 		try(SqlSession session = getSqlSessionFactory().openSession(false);){
 			res = session.update("registmapper.updateRegist", dto);
 			System.out.println("res: " + res);
+			if(res > 0) {
+				session.commit();
+			}
+		}  catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	
+	@Override
+	public int deleteRegist(String member_id) {
+		int res = -1;
+		try(SqlSession session = getSqlSessionFactory().openSession(false);){
+			res = session.update("registmapper.deleteRegist", member_id);
 			if(res > 0) {
 				session.commit();
 			}
