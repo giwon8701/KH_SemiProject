@@ -15,6 +15,7 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="https://www.google.com/recaptcha/api.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type="text/javascript">
 	
 	function onSubmit(){
@@ -28,7 +29,47 @@
 		}
 	}
 	
+	Kakao.init('512a80154acbfb025784436cb05beaaf');
 	
+	function loginWithKakao() {
+	    Kakao.Auth.login({
+	      success: function(authObj) {
+	        
+	        Kakao.API.request({
+	            url: '/v2/user/me',
+	            success: function(res) {
+	            	$.ajax({
+		            	 url: "../../kakao.do?command=registChk&email=" + res.kakao_account.email,
+		            	 success: function(cnt){
+		            		 var email = res.kakao_account.email;
+		            		 var birthday = res.kakao_account.birthday;
+		            		 var gender = res.kakao_account.gender;
+		            		 
+		            		 if(cnt == 0){
+		            			var queryString = "?command=kakaoRegist&email="+email+"&birthday="+birthday+"&gender="+gender;
+		            			location.href="../../kakao.do"+queryString;
+		            		 } else if(cnt > 0){
+		            			 location.href="../../kakao.do?command=kakaoLogin&id="+id;
+		            		 }
+		            	 }		 
+		              });
+	            },
+	            fail: function(error) {
+	              alert(
+	                'login success, but failed to request user information: ' +
+	                  JSON.stringify(error)
+	              )
+	            },
+	          });
+	      },
+	      fail: function(err) {
+	        alert(JSON.stringify(err))
+	      },
+	    })
+	  }
+    
+	
+
 </script>
 </head>
   <%
@@ -79,8 +120,14 @@
 					<a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
 				</td>
 			</tr>
+			<tr>
+				<td colspan="4">
+					<a id="kakaologin" href="javascript:loginWithKakao()">
+  						<img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222"/>
+					</a>
+				</td>
+			</tr>
 		</table>
-		 
 	</form>
 
 </body>
