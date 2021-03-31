@@ -33,7 +33,7 @@
 	rel="stylesheet">
 <link rel="stylesheet" href="introduce.css">
 
-<script>
+<script type="text/javascript">
 	
 	// 글자 나타나기
 	$(document).ready(function(){
@@ -64,9 +64,7 @@
 	    }
 	  })
 	}
-
-
-window.addEventListener('scroll', handleScroll);
+	window.addEventListener('scroll', handleScroll);
 	
 	// 슬라이드 기능
     $(document).ready(function(){
@@ -89,9 +87,12 @@ window.addEventListener('scroll', handleScroll);
     // 화면 위로 보내기
 	function scrollFunction() { 
     	var btn = document.getElementById('btn');
-    		if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) { btn.style.display = "block"; 
-    		} else { btn.style.display = "none"; } 
-    } 
+    	if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) { 
+    		btn.style.display = "block"; 
+    	} else { 
+    		btn.style.display = "none"; 
+    	} 
+    }
     
 	function GoTop() { 
 		window.scrollTo({top:0, behavior:'smooth'}); 
@@ -101,6 +102,13 @@ window.addEventListener('scroll', handleScroll);
 
 </head>
 <body>
+
+<div id="container"></div>
+	<div id="load" class="fa fa-circle-o-notch fa-spin"></div>
+		<div class="top"> 
+			<button id="btn" onClick="GoTop()">▲</button> 
+		</div>
+		<script type="text/javascript" src="script.js"></script>
 
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
@@ -396,10 +404,7 @@ window.addEventListener('scroll', handleScroll);
 <br>
 <br>
 
-<div class="top"> 
-	<button id="btn" onClick="GoTop()">▲</button> 
-</div>
- <script type="text/javascript" src="script.js"></script>
+
 
 <!-- footer 시작 -->
 <footer style="background-color: #000000; color: #ffffff">
@@ -430,11 +435,5 @@ window.addEventListener('scroll', handleScroll);
 
 <!-- footer 끝 -->
 	
-<!-- 상단으로 이동하기 버튼 시작 -->
-<a href="#" class="btn_gotop"> <span
-	class="glyphicon glyphicon-chevron-up"> </span>
-</a>
-<!-- 상단으로 이동하기 버튼 끝 -->
-
 </body>
 </html>

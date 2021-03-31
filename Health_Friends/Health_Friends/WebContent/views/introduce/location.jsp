@@ -17,111 +17,13 @@
 <title>오시는 길</title>
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<style type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="location.css">
 
-* {
-	font-family: 'Noto Sans KR', sans-serif;
-}
-		
-.jumbotron {
-	background-image:
-		url("https://cdn.crowdpic.net/list-thumb/thumb_l_37B48B380D5AEB177BF931C56704AA5C.jpg");
-	background-size: cover;
-	text-shadow: block 0.2em 0.2em 0.2em;
-}
-
-#main01, #main02 {
-	color: white;
-}
-
-.contact {
-	width: 1130px;
-	margin: 0 auto;
-	padding-bottom: 20px;
-}
-
-table {
-	border-spacing: 0;
-	border-collapse: initial;
-}
-
-tbody {
-	display: table-row-group;
-	verticle-align: middle;
-	border-color: inherit;
-}
-
-tr {
-	display: table-row;
-	vertical-align: inherit;
-	border-color: inherit;
-}
-
-.contact th {
-	border-bottom: 1px solid grey;
-	color: black;
-	width: 200px;
-	font-weight: 500;
-	background: #ffffe0;
-	text-align: center;
-
-}
-
-.container .contact. td {
-	font-weight: 400;
-	font-size: 20px;
-}
-
-.contact td {
-	border-bottom: 1px solid grey;
-	color: black;
-	padding-left: 34px;
-	padding: 15px 0 15px 34px;
-}
-
-.top{
-    margin-bottom: 50px;
-}
-
-#btn {
-    position: fixed;
-    bottom: 20px;
-    right: 30px;
-    z-index: 99;
-    border: none;
-    font-size: 20px;
-    padding: 15px;
-    background-color: white;
-    color: rgb(0, 183, 255);
-    cursor: pointer;
-    transition: 0.5s;
-    display: none;
-    border: 1px solid;
-}
-
-#btn:hover {
-    background-color:rgb(0, 183, 255);
-    color: white;
-    border: 2px solid;
-}
-
-.way01, .way02 {
-	margin-top: 20px;
-	transition: transform 0.7s, opacity 2.5s;
-}
-
-.col-sm-6 > img {
-	float:left;
-}
-
-
-</style>
-
-<script>
+<script type="text/javascript">
 
 // 글자 위로 올라오는 기능
 function isElementUnderBottom(elem, triggerDiff) {
@@ -288,14 +190,18 @@ function GoTop() {
 				<br><br>
 				<img src="../../images/bus01.jpeg" style="width:20px; height:27px;"><h4 class="way02">&emsp;간선버스&emsp;146 / 740 / 341 / 360</h4><br>
 				<img src="../../images/bus02.jpeg" style="width:20px; height:27px;"><h4 class="way02">&emsp;지선버스&emsp;1100 / 1700 / 2000 / 7007 / 8001</h4>
+				<br>
+				<br>
+				주변 건물
+			
 			</div>
 
 			<div class="col-sm-6">
-				<img src="../../images/bus04.png" style="width:80px; height:80px;"><h3 class="way02">&emsp;지하철로 오시는 방법</h3><h4 style="color:gray" class="way01">&emsp;&nbsp;지하철 2호선 역삼역 3번 출구로 나와서 100m 직진</h4>
+				<img src="../../images/bus04.png" style="width:80px; height:80px;"><h3 class="way02">&emsp;지하철로 오시는 방법</h3><h4 style="color:gray" class="way01">&emsp;&nbsp;지하철 2호선 <span style="color=pink">역삼역 3번 출구</span>로 나와서 100m 직진</h4>
 				<br><br>
-				<img src="../../images/yeoksam.png" style="width:400px; height:250px;">
+				<div></div><img src="../../images/yeoksam.png" style="width:400px; height:250px;"><div></div>
 				<br>
-				<br>
+			
 				<h4 class="text-info">주변 건물 : 신한은행 역삼지점, 코리아 IT 아카데미</h4>
 				<h2 class="subheading" style="text-align: right">
 				</h2>
