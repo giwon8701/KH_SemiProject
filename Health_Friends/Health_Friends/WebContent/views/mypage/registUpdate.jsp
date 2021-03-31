@@ -84,8 +84,27 @@
 		
 	});
 	
-	
-	
+	function del(){
+		var member_id = $("#id").val();
+		var queryString = "?command=delRegist&member_id=" + member_id;
+		var res = confirm("정말로 탈퇴하시겠습니까?");
+		if(res){
+			$.ajax({
+				url: "../../mypage.do"+queryString,
+				dataType: "text",
+				success: function(data){
+					if(data > 0){
+						location.href="../../regist.do?command=logout";
+					} else{
+						alert("다시 시도해주세요.");
+					}
+				},
+				error: function(){
+					alert("통신오류");
+				}
+			});
+		}
+	}
 	
 </script>
 </head>
