@@ -222,14 +222,16 @@
 		
 		$.ajax({
 			type: "post",
-			url: "../../chart.do?command=todayHealth&individual_id="+individual_id+"&yyyyMMdd="+yyyyMMdd,
+			url: "../../chart.do?command=healthRecord&individual_id="+individual_id,
 			dataType: "json",
 			success: function(msg){
-				var todayHealth = msg.res;
-				
-				
-				
-				
+				var todayHealth = msg.todayHealth;
+				var yesterdayHealth = msg.yesterdayHealth;
+				var twoAgodayHealth = msg.twoAgodayHealth;
+				var threeAogdayHealth = msg.threeAogdayHealth;
+				var fourAgodayHealth = msg.fourAgodayHealth;
+				var fiveAgodayHealth = msg.fiveAgodayHealth;
+				var sixAgodayHealth = msg.sixAgodayHealth;
 
 				var today = new Date();
 				var todayDate = today.getFullYear()+'.'+(today.getMonth()+1)+'.'+today.getDate();
@@ -264,7 +266,7 @@
 				        labels: [sixAgoDate, fiveAgoDate, fourAgoDate, threeAgoDate, twoAgoDate, yesterdayDate, todayDate],
 				        datasets: [{
 				            label: '운동시간(분)',
-				            data: [33, 15, 53, 45, 29, 31, todayHealth],
+				            data: [sixAgodayHealth, fiveAgodayHealth, fourAgodayHealth, threeAogdayHealth, twoAgodayHealth, yesterdayHealth, todayHealth],
 				            backgroundColor: [
 				                'rgba(255, 99, 132, 0.2)'
 				            ],
@@ -285,16 +287,6 @@
 				        }
 				    }
 				});
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
 				
 			},
 			error: function(){

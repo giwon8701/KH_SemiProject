@@ -16,7 +16,6 @@ public class ChartDaoImpl extends SqlMapConfig implements ChartDao {
 		SqlSession session = null;
 		Map<String, String> map = new HashMap<>();
 		
-		
 		map.put("individual_id", individual_id);
 		map.put("yyyyMMdd", yyyyMMdd);
 		
@@ -29,8 +28,6 @@ public class ChartDaoImpl extends SqlMapConfig implements ChartDao {
 		} finally {
 			session.close();
 		}
-	
-		
 		
 		return res;
 	}

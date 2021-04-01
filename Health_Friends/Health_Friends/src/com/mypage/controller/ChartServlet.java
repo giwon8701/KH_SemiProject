@@ -2,6 +2,8 @@ package com.mypage.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mypage.biz.ChartBiz;
 import com.mypage.biz.ChartBizImpl;
+import com.mypage.common.Util;
 
 import net.sf.json.JSONObject;
 
@@ -20,6 +23,66 @@ import net.sf.json.JSONObject;
 public class ChartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	  public String YesterdayDate() {
+	        SimpleDateFormat Format = new SimpleDateFormat("yyyyMMdd");
+	        Calendar cal = Calendar.getInstance();
+	 
+	        cal.add(Calendar.DATE, -1);
+	        String timedate = Format.format(cal.getTime());
+	 
+	        return timedate;
+	    }
+	  
+	  public String twoAgodayDate() {
+	        SimpleDateFormat Format = new SimpleDateFormat("yyyyMMdd");
+	        Calendar cal = Calendar.getInstance();
+	 
+	        cal.add(Calendar.DATE, -2);
+	        String timedate = Format.format(cal.getTime());
+	 
+	        return timedate;
+	    }
+	  
+	  public String threeAgodayDate() {
+	        SimpleDateFormat Format = new SimpleDateFormat("yyyyMMdd");
+	        Calendar cal = Calendar.getInstance();
+	 
+	        cal.add(Calendar.DATE, -3);
+	        String timedate = Format.format(cal.getTime());
+	 
+	        return timedate;
+	    }
+	  
+	  public String fourAgodayDate() {
+	        SimpleDateFormat Format = new SimpleDateFormat("yyyyMMdd");
+	        Calendar cal = Calendar.getInstance();
+	 
+	        cal.add(Calendar.DATE, -4);
+	        String timedate = Format.format(cal.getTime());
+	 
+	        return timedate;
+	    }
+	  
+	  public String fiveAgodayDate() {
+	        SimpleDateFormat Format = new SimpleDateFormat("yyyyMMdd");
+	        Calendar cal = Calendar.getInstance();
+	 
+	        cal.add(Calendar.DATE, -5);
+	        String timedate = Format.format(cal.getTime());
+	 
+	        return timedate;
+	    }
+	  
+	  public String sixAgodayDate() {
+	        SimpleDateFormat Format = new SimpleDateFormat("yyyyMMdd");
+	        Calendar cal = Calendar.getInstance();
+	 
+	        cal.add(Calendar.DATE, -6);
+	        String timedate = Format.format(cal.getTime());
+	 
+	        return timedate;
+	    }
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	
@@ -28,19 +91,37 @@ public class ChartServlet extends HttpServlet {
 		String command = request.getParameter("command");
 		
 		
-		if(command.equals("todayHealth")) {
+		
+		Calendar cal = Calendar.getInstance();
+
+		int year = cal.get(Calendar.YEAR);
+		int month = cal.get(Calendar.MONTH) + 1;
+		int date = cal.get(Calendar.DATE);
+		
+		if(command.equals("healthRecord")) {
 			String individual_id = request.getParameter("individual_id");
-			String yyyyMMdd = request.getParameter("yyyyMMdd");
+			String yyyyMMdd = year + Util.isTwo(month+"") + Util.isTwo(date+"");
 			
 			System.out.printf("id : %s / yyyyMMdd : %s \n", individual_id, yyyyMMdd);
+			System.out.println(YesterdayDate());
 			
 			ChartBiz Cbiz = new ChartBizImpl();
-			int res = Cbiz.todayChart(individual_id, yyyyMMdd);
-			
-			System.out.println("res : " + res);
+			int todayHealth = Cbiz.todayChart(individual_id, yyyyMMdd);
+			int yesterdayHealth = Cbiz.todayChart(individual_id, YesterdayDate());
+			int twoAgodayHealth = Cbiz.todayChart(individual_id, twoAgodayDate());
+			int threeAogdayHealth = Cbiz.todayChart(individual_id, threeAgodayDate());
+			int fourAgodayHealth = Cbiz.todayChart(individual_id, fourAgodayDate());
+			int fiveAgodayHealth = Cbiz.todayChart(individual_id, fiveAgodayDate());
+			int sixAgodayHealth = Cbiz.todayChart(individual_id, sixAgodayDate());
 			
 			Map<String, Integer> map = new HashMap<String, Integer>();
-			map.put("res", res);
+			map.put("todayHealth", todayHealth);
+			map.put("yesterdayHealth", yesterdayHealth);
+			map.put("twoAgodayHealth", twoAgodayHealth);
+			map.put("threeAogdayHealth", threeAogdayHealth);
+			map.put("fourAgodayHealth", fourAgodayHealth);
+			map.put("fiveAgodayHealth", fiveAgodayHealth);
+			map.put("sixAgodayHealth", sixAgodayHealth);
 			
 			// map -> json
 			JSONObject obj = JSONObject.fromObject(map);
@@ -49,11 +130,6 @@ public class ChartServlet extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			obj.write(out);
 		}
-
-	
-	
-	
-	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
