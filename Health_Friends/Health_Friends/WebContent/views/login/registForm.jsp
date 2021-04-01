@@ -160,11 +160,6 @@
         }).open();
 	}
 	
-	/*function onSubmit(){
-		$(".g-recaptcha").css("display","none");
-		$("#submitbtn").css("display","");
-	}*/
-	
 	function onSubmit(){
 		if($("#id").prop("title") == "y" && $("#phone").prop("title") == "y" && $("#email").prop("title") == "y" && $("#pwchk").prop("title") == "y"){
 			$("#registform").submit();
@@ -273,6 +268,7 @@
         					data-sitekey="6LdY0Y0aAAAAAC55f1G3fyahKgyATLdZ1BZq_yt5" 
         					data-callback='onSubmit' 
         					data-action='submit'>회원가입</button>
+        			<input type="button" value="취소" onclick="history.back()">
 				</td>
 			</tr>
 			
