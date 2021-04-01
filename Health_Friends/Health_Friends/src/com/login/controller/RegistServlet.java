@@ -70,7 +70,7 @@ public class RegistServlet extends HttpServlet {
 		} else if(command.equals("registres")) {
 			String memberGender = request.getParameter("memberGender");
 			String memberId = request.getParameter("memberId");
-			String memberPw = getHash(request.getParameter("memberPw"));
+			String memberPw = getHash(request.getParameter("memberPw")+memberId);
 			String memberName = request.getParameter("memberName");
 			
 			String year = request.getParameter("year");
@@ -141,7 +141,7 @@ public class RegistServlet extends HttpServlet {
 			response.sendRedirect("./views/login/login.jsp");
 		} else if(command.equals("loginres")){
 			String memberId = request.getParameter("memberId");
-			String memberPw = getHash(request.getParameter("memberPw"));
+			String memberPw = getHash(request.getParameter("memberPw")+memberId);
 			
 			RegistDto logindto = new RegistDto();
 			logindto.setMember_id(memberId);

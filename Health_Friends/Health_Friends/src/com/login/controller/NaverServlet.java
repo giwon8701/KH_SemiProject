@@ -126,11 +126,17 @@ public class NaverServlet extends HttpServlet {
 				//로그인 처리
 				RegistDto Ldto = biz.selectByEmail(member_email);
 				
-				HttpSession session = request.getSession();
-				session.setAttribute("dto", Ldto);
-				session.setMaxInactiveInterval(10 * 60);
-				
-				jsResponse(response, "./index.jsp", member_name+"님, 환영합니다.");
+				if(Ldto.getMember_enabled().equals("N")) {
+					
+					jsResponse(response, "./index.jsp", "탈퇴한 회원입니다.");
+					
+				} else {
+					HttpSession session = request.getSession();
+					session.setAttribute("dto", Ldto);
+					session.setMaxInactiveInterval(10 * 60);
+					
+					jsResponse(response, "./index.jsp", member_name+"님, 환영합니다.");
+				}
 			} else {
 				//추가정보 입력창으로 이동
 				PrintWriter out = response.getWriter();

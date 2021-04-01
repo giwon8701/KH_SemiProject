@@ -65,11 +65,18 @@ public class KakaoServlet extends HttpServlet {
 			String member_email = request.getParameter("email");
 			
 			RegistDto dto = biz.selectByEmail(member_email);
-			HttpSession session = request.getSession();
-			session.setAttribute("dto", dto);
-			session.setMaxInactiveInterval(10*60);
 			
-			response.getWriter().print("<script type='text/javascript'>alert('"+dto.getMember_name()+"님, 환영합니다.');location.href='./index.jsp'</script>");
+			if(dto.getMember_enabled().equals("N")) {
+				response.getWriter().print("<script type='text/javascript'>alert('탈퇴한 회원입니다.');location.href='./index.jsp'</script>");
+				
+			} else {
+				HttpSession session = request.getSession();
+				session.setAttribute("dto", dto);
+				session.setMaxInactiveInterval(10*60);
+				
+				response.getWriter().print("<script type='text/javascript'>alert('"+dto.getMember_name()+"님, 환영합니다.');location.href='./index.jsp'</script>");
+			}
+			
 		}
 		
 	}
