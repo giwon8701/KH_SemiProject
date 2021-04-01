@@ -16,10 +16,93 @@
 </head>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
 <script type="text/javascript">
 
+	function chkPW() {
+	    if ($("#pw").val() != '' && $("#pwchk").val() != '') {
+	        if ($("#pw").val() == $("#pwchk").val()) {
+	        	$("#same").text("비밀번호가 일치합니다");
+	        	$("#same").css("color", "blue");
+	        	$("#pwchk").prop("title", "y");
+	        	$("#pw").css("background-color", "skyblue");
+	        	$("#pwchk").css("background-color", "skyblue");
+	          
+	        } else {
+	        	$("#same").text("비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
+	            $("#same").css("color", "red");
+	            $("#pw").css("background-color", "red");
+	            $("#pwchk").css("background-color", "red");
+	            $("#pwchk").prop("title", "n");
+	        }
+	    }
+	}
+	
+	function idCheck(){
+		var newId = $("#id").val();
+		if($.trim(newId) == "" || $.trim(newId) == null){
+			$("#idchk").text("아이디를 입력해주세요").css("color","red");
+		} else{
+			var queryString = "?command=idCheck&memberId="+newId;
+			$.ajax({
+				url: "regist.do"+queryString,
+				dataType: "text",
+				success: function(data){
+					if(data == 0){
+						$("#idchk").text("사용가능한 아이디입니다.");
+			            $("#idchk").css("color", "blue");
+			            $("#id").prop("title", "y");
+			            $("#id").css("background-color", "skyblue");
+					} else if(data == 1) {
+						$("#idchk").text("이미 사용중인 아이디입니다.");
+			            $("#idchk").css("color", "red");
+			            $("#id").css("background-color", "red");
+			            $("#id").prop("title", "n");
+			            $("#id").focus();
+					}
+				},
+				error: function(){
+					$("#idchk").text("통신오류");
+		            $("#idchk").css("color", "blue");
+				}
+			});
+		}
+	}
+	
+	function phoneChk(){
+		var newPhone = $("#phone").val();
+		if($.trim(newPhone) == "" || $.trim(newPhone) == null){
+			$("#phonechk").text("전화 번호를 입력해주세요").css("color", "red");
+		} else{
+			var queryString = "?command=phoneCheck&memberPhone="+newPhone;
+			$.ajax({
+				url: "regist.do"+queryString,
+				dataType: "text",
+				success: function(data){
+					if(data == 0){
+						$("#phonechk").text("등록 가능한 번호입니다.");
+			            $("#phonechk").css("color", "blue");
+			            $("#phone").prop("title", "y");
+			            $("#phone").css("background-color", "skyblue");
+			            
+					} else if(data == 1) {
+						$("#phonechk").text("이미 사용중인 번호입니다.");
+			            $("#phonechk").css("color", "red");
+			            $("#phone").prop("title", "n");
+			            $("#phone").focus();
+			            $("#phone").css("background-color", "red");
+					}
+				},
+				error: function(){
+					$("#phonechk").text("통신오류");
+		            $("#phonechk").css("color", "blue");
+				}
+			});
+		}
+	}
+
+
 	function addrCheck(){
-		//open("regist.do?command=addrcheck", "", "width=200, height=200");
 		
 		new daum.Postcode({
 	        oncomplete: function(data) {
@@ -48,6 +131,14 @@
 	
 	    }).open();
 	}
+	
+	function onSubmit(){
+		if($("#id").prop("title") == "y" && $("#phone").prop("title") == "y" && $("#pwchk").prop("title") == "y"){
+			$("#registform").submit();
+		} else{
+			alert("입력하신 정보를 다시 확인해주세요.");
+		}
+	}
 
 </script>
 <body>
@@ -63,7 +154,7 @@
 	<h1>우리동네 운동친구</h1>
 	<h2>추가 정보 입력</h2>
 
-	<form action="regist.do" method="post">
+	<form action="regist.do" method="post" id="registform">
 	<input type="hidden" name="command" value="naverregistres">
 		<table>
 			<tr align="center">
@@ -79,7 +170,7 @@
 			<tr>
 				<td colspan="2">
 					<label for="id">아이디</label><br>
-					<input type="text" id="id" name="memberId" title="n" value="${dto.member_id }" required="required" onchange="idCheck()">
+					<input type="text" id="id" name="memberId" title=<%=(dto.getMember_id() != null)?"y":"n" %> value="${dto.member_id }" <%=(dto.getMember_id() != null)?"readonly":"" %> required="required" onchange="idCheck()">
 				</td>
 			</tr>
 			<tr>
@@ -108,7 +199,7 @@
 			<tr>
 				<td colspan="2">
 					<label for="name">이름</label><br>
-					<input type="text" id="name" name="memberName" value="${dto.member_name }" readonly="readonly" required="required">
+					<input type="text" id="name" name="memberName" value="${dto.member_name }" <%=(dto.getMember_name() != null)?"readonly":"" %> required="required">
 				</td>
 			</tr>
 			<tr>
@@ -146,7 +237,7 @@
 			<tr>
 				<td>
 					<label for="phone">전화번호</label><br>
-					<input type="tel" id="phone" name="memberPhone" title="n" value="${dto.member_phone }" readonly="readonly" onchange="phoneChk()">
+					<input type="tel" id="phone" name="memberPhone" title=<%=(dto.getMember_phone() != null)?"y":"n" %> value="${dto.member_phone }" <%=(dto.getMember_phone() != null)?"readonly":"" %> onchange="phoneChk()">
 				</td>
 			</tr>
 			<tr>
@@ -155,11 +246,15 @@
 			<tr>
 				<td colspan="2">
 					<label for="email">이메일</label><br>
-					<input type="text" id="email" name="memberEmail" title="n" value="${dto.member_email }" readonly="readonly" required="required"></td>
+					<input type="text" id="email" name="memberEmail" value="${dto.member_email }" readonly="readonly" required="required"></td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="회원가입">
+					<button class="g-recaptcha" 
+        					data-sitekey="6LdY0Y0aAAAAAC55f1G3fyahKgyATLdZ1BZq_yt5" 
+        					data-callback='onSubmit' 
+        					data-action='submit'>회원가입</button>
+        			<input type="button" value="취소" onclick="location.href='regist.do?command=login'">
 				</td>
 			</tr>
 		</table>
