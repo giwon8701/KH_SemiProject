@@ -45,7 +45,7 @@
 				</div>
 			</article>
 			<article>
-				<img src=images/slide04.jpg"  alt="" />
+				<img src="images/slide04.jpg"  alt="" />
 				<div class="inner">
 					<header>
 						<p>오요우유으이</p>
