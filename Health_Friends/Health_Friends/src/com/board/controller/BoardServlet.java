@@ -42,7 +42,7 @@ public class BoardServlet extends HttpServlet {
 				String postMdate = request.getParameter("postMdate");
 				String postRegdate = null;
 				String postLatitude = request.getParameter("MapAddress");
-			//	 ³¯Â¥°ª Àü´Þ¾ÆÁ÷ ±¸Çö ¸øÇÔ
+			//	 ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ï¿½Þ¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			//	BoardDto dto = new BoardDto(0, postId, 0, null, postCategoryName, postTitle, postContent, postMdate, postRegdate, 
 			//			null, 0, 0, 0, postLatitude, 0);
 				

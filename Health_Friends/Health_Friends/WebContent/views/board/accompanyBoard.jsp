@@ -1,5 +1,9 @@
+<%@page import="org.apache.commons.collections.bag.SynchronizedSortedBag"%>
+<%@page import="com.board.dto.BoardDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
 <!DOCTYPE html>
@@ -9,7 +13,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 <%--
 	<%@include file="header.jsp" %>
  --%>
@@ -26,10 +29,12 @@
 <%--게시글리스트 --%>
 	<section id="Board_list">
 		<table border="1">
+			<c:forEach items="${list }" var="dto">
 				<tr>
-					<td>왜 안되냐 ${dto.postTitle }</td>
-					<td>${dto.postContent }</td>
+					<td>${dto.postTitle}</td>
+					<td>${dto.postContent}</td>
 				</tr>
+			</c:forEach>
 		</table>
 	</section>
 
