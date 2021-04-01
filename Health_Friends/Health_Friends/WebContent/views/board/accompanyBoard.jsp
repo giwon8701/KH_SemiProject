@@ -3,7 +3,8 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
 <!DOCTYPE html>
@@ -30,9 +31,13 @@
 	<section id="Board_list">
 		<table border="1">
 			<c:forEach items="${list }" var="dto">
+			
 				<tr>
+					<td>${dto.postNo}</td>
+					<td>${dto.postId}</td>
 					<td>${dto.postTitle}</td>
 					<td>${dto.postContent}</td>
+					<td>${dto.postRegdate}</td>
 				</tr>
 			</c:forEach>
 		</table>

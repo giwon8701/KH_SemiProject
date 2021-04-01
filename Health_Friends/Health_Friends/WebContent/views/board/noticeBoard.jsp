@@ -4,6 +4,8 @@
 <%@page import="com.board.biz.BoardBiz"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>    
 <!DOCTYPE html>
@@ -32,34 +34,20 @@
 	<h2>공지사항</h2>
 	
 	<table border="1">
-		<tr>
-			<th>글번호</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>날짜</th>
-			<th>조회수</th>
-		</tr>
-<% 
-			if (list.size() == 0){
-%>
-				<tr>
-					<td colspan="5">------작성된 글이 없습니다------</td>
-				</tr>
-<% 
-			} else{
-				for (BoardDto dto : list){
-%>
-				<tr>
-					<td></td>
-					<td>${dto.postTitle }</td>
-					<td>${dto.postContent }</td>
-					<td>${dto.postId }</td>
-					<td>${dto.postMdate }</td>
-				</tr>
-<%
-				}
-			}
-%>
+			<tr>
+				<th>글번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>날짜</th>
+			</tr>
+		<c:forEach items="${list }" var="dto">
+			<tr>
+				<td>${dto.postNo }</td>
+				<td><a href="notice.do?command=select&postId=${dto.postId }">${dto.postTitle }</a></td>
+				<td>회원id넣어야함</td>
+				<td>${dto.postRegdate }</td>
+			</tr>
+		</c:forEach>
 	</table>
 	 <input type="button" value="글작성" onclick="location.href='./notice.do?command=insert'" />
 <%---	

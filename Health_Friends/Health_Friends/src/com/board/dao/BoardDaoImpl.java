@@ -58,13 +58,62 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 		}
 		return list;
 	}
-
 	
 	@Override
-	public BoardDto selectOne(int postId) {
-		return null;
+	public BoardDto accompany_selectOne(int postId) {
+		
+		SqlSession session = null;
+		BoardDto dto = new BoardDto();
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			dto = session.selectOne("boardmapper.accompany_selectOne", postId);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
+	
+	@Override
+	public BoardDto notice_selectOne(int postId) {
+		
+		SqlSession session = null;
+		BoardDto dto = new BoardDto();
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			dto = session.selectOne("boardmapper.notice_selectOne", postId);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return dto;
 	}
 
+	@Override
+	public BoardDto photo_selectOne(int postId) {
+		
+		SqlSession session = null;
+		BoardDto dto = new BoardDto();
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			dto = session.selectOne("boardmapper.notice_selectOne", postId);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
+
+	
 	@Override
 	public int insert(BoardDto dto) {
 		

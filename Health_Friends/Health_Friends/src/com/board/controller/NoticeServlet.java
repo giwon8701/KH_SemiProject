@@ -54,6 +54,11 @@ public class NoticeServlet extends HttpServlet {
 				} else {
 					response.sendRedirect("./views/board/noticeBoard_post.jsp");
 				}
+			} else if(command.equals("select")) {
+				int postId = Integer.parseInt(request.getParameter("postId"));
+				BoardDto dto = biz.notice_selectOne(postId);
+				request.setAttribute("dto", dto);
+				dispatch(request, response, "noticeBoard.jsp");
 			}
 			
 			
@@ -76,3 +81,20 @@ public class NoticeServlet extends HttpServlet {
 		dispatch.forward(request, response);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

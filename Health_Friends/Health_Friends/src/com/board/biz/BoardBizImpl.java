@@ -26,8 +26,18 @@ public class BoardBizImpl implements BoardBiz {
 	}
 
 	@Override
-	public BoardDto selectOne(int postId) {
-		return dao.selectOne(postId);
+	public BoardDto accompany_selectOne(int postId) {
+		return dao.accompany_selectOne(postId);
+	}
+	
+	@Override
+	public BoardDto notice_selectOne(int postId) {
+		return dao.notice_selectOne(postId);
+	}
+	
+	@Override
+	public BoardDto photo_selectOne(int postId) {
+		return dao.photo_selectOne(postId);
 	}
 
 	@Override
