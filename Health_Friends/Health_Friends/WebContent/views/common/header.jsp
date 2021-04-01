@@ -33,7 +33,7 @@
 			<div class="header-list">
 				<a href="">소개</a>
 				<a href="">공지사항</a>
-				<a href="">동행게시판</a>
+				<a href="board.do?command=list">동행게시판</a>
 				<a href="">후기게시판</a>
 				<a href="shopping.do?command=shopping">쇼핑</a>
 				<a href="">고객센터</a>

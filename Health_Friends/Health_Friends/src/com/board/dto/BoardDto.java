@@ -7,7 +7,7 @@ public class BoardDto {
 	private int postId;
 	private int postNo;
 	private String postBoardName;
-	private int postCategoryName;
+	private String postCategoryName;
 	private String postTitle;
 	private String postContent;
 	private Date postMdate;
@@ -15,16 +15,15 @@ public class BoardDto {
 	private int postHit;
 	private int postCommentHit;
 	private int postLike;
-	private int postDelfag;
+	private String postDelflag;
 	private int postLatitude;
 	private int postLongitude;
 	
 	public BoardDto() {}
 	
-	public BoardDto(int postUserNo, int postId, int postNo, String postBoardName, int postCategoryName,
+	public BoardDto(int postUserNo, int postId, int postNo, String postBoardName, String postCategoryName,
 			String postTitle, String postContent, Date postMdate, Date postRegdate, int postHit, int postCommentHit,
-			int postLike, int postDelfag, int postLatitude, int postLongitude) {
-		super();
+			int postLike, String postDelflag, int postLatitude, int postLongitude) {
 		this.postUserNo = postUserNo;
 		this.postId = postId;
 		this.postNo = postNo;
@@ -37,7 +36,7 @@ public class BoardDto {
 		this.postHit = postHit;
 		this.postCommentHit = postCommentHit;
 		this.postLike = postLike;
-		this.postDelfag = postDelfag;
+		this.postDelflag = postDelflag;
 		this.postLatitude = postLatitude;
 		this.postLongitude = postLongitude;
 	}
@@ -74,11 +73,11 @@ public class BoardDto {
 		this.postBoardName = postBoardName;
 	}
 
-	public int getPostCategoryName() {
+	public String getPostCategoryName() {
 		return postCategoryName;
 	}
 
-	public void setPostCategoryName(int postCategoryName) {
+	public void setPostCategoryName(String postCategoryName) {
 		this.postCategoryName = postCategoryName;
 	}
 
@@ -138,12 +137,12 @@ public class BoardDto {
 		this.postLike = postLike;
 	}
 
-	public int getPostDelfag() {
-		return postDelfag;
+	public String getpostDelflag() {
+		return postDelflag;
 	}
 
-	public void setPostDelfag(int postDelfag) {
-		this.postDelfag = postDelfag;
+	public void setpostDelflag(String postDelflag) {
+		this.postDelflag = postDelflag;
 	}
 
 	public int getPostLatitude() {
