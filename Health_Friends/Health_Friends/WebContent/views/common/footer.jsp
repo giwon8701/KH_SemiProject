@@ -6,18 +6,53 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>footer 영역</title>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	
 </head>
 <body>
 <%-- footer --%>
 
 	<!-- Footer -->
-		<footer id="footer">
-				
-			<div class="copyright">
-				&copy; 제작자. <a href="#">KH정보교육원</a> QClass 세미프로젝트 5조 같이운동하조.
+	<footer style="background-color: black; color: white">
+		<div class="container">
+			<br>
+			<div class="row">
+				<div class="col-sm-3" style="text-align: left;">
+					<h4>Copyright &copy;</h4>
+					<h5>우리동네 운동메이트</h5>
+				</div>
+				<div class="col-sm-3">
+					<h4>제작자 소개</h4>
+					<p>
+						조장 : 임기원<br> 조원 : 강원기 소윤정 지 연 손승현
+					</p>
+					<br>
+				</div>
+				<div class="col-sm-3">
+					<h4>문의사항</h4>
+					<p>
+						전화번호 : 000-0000-0000<br>
+						펙스 : 0000-0000-0000</br>
+						E-mail : khacademy@kh.com
+					</p>
+					<br>
+				</div>
+				<div class="col-sm-2">
+					<h4 style="text-align: center;">
+						<span class="glyphicon glyphicon-ok"></span>&nbsp; by 세미 5조
+					</h4>
+				</div>
 			</div>
-		</footer>
+			</div>	
+	</footer>
 
 	<!-- Scripts -->
 		<script src="assets/js/jquery.min.js"></script>
