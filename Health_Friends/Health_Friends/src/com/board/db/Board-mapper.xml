@@ -4,8 +4,8 @@
 <mapper namespace="BoardMapper">
 	
 	<resultMap  type="BoardDto" id="BoardMap">
-		<result property="postUserNo" column="POST_USER_NO"/>
 		<result property="postId" column="POST_ID"/>
+		<result property="postUserNo" column="POST_USER_NO"/>
 		<result property="postNo" column="POST_NO"/>
 		<result property="postBoardName" column="POST_BOARD_NAME"/>
 		<result property="postCategoryName" column="POST_CATEGORY_NAME"/>
