@@ -49,7 +49,7 @@
 		            			var queryString = "?command=kakaoRegist&email="+email+"&birthday="+birthday+"&gender="+gender;
 		            			location.href="../../kakao.do"+queryString;
 		            		 } else if(cnt > 0){
-		            			 location.href="../../kakao.do?command=kakaoLogin&id="+id;
+		            			 location.href="../../kakao.do?command=kakaoLogin&login="+email;
 		            		 }
 		            	 }		 
 		              });

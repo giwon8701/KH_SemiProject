@@ -62,9 +62,9 @@ public class KakaoServlet extends HttpServlet {
 			RequestDispatcher dispatch = request.getRequestDispatcher("/views/login/naverRegistForm.jsp");
 			dispatch.forward(request, response);
 		} else if(command.equals("kakaoLogin")) {
-			String member_id = request.getParameter("id");
+			String member_email = request.getParameter("email");
 			
-			RegistDto dto = biz.selectById(member_id);
+			RegistDto dto = biz.selectByEmail(member_email);
 			HttpSession session = request.getSession();
 			session.setAttribute("dto", dto);
 			session.setMaxInactiveInterval(10*60);
