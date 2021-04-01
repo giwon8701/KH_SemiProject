@@ -33,4 +33,10 @@ public class PaymentBizImpl extends SqlMapConfig implements PaymentBiz {
 		return dao.paymentList();
 	}
 
+	@Override
+	public List<PaymentDto> paymentListMy(String member_email) {
+		return dao.paymentListMy(member_email);
+	}
+
+	
 }

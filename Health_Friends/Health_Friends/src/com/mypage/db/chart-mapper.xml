@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="profilemapper">
+	
+	<select id="todayChart" parameterType="individualDto">
+		SELECT SUM(INDIVIDUAL_TIME) FROM INDIVIDUAL
+		WHERE INDIVIDUAL_ID = #{individual_id}
+		AND SUBSTR(INDIVIDUAL_MDATE, 1, 8) = #{yyyyMMdd}
+		GROUP BY INDIVIDUAL_TIME;
+	</select>
+	
+</mapper>

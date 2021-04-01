@@ -36,4 +36,11 @@
 		ORDER BY PAYMENT_NO DESC
 	</select>
 	
+	<select id="paymentListMy" resultType="paymentDto">
+		SELECT PAYMENT_NO, MEMBER_EMAIL, PAYMENT_ACCOUNT, PAYMENT_DATE
+		FROM PAYMENT
+		WHERE MEMBER_EMAIL = #{member_email}
+		ORDER BY PAYMENT_NO DESC
+	</select>
+	
 </mapper>

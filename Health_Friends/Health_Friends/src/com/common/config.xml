@@ -30,5 +30,6 @@
 		<mapper resource="com/login/db/regist-mapper.xml" />
 		<mapper resource="com/mypage/db/payment-mapper.xml" />
 		<mapper resource="com/mypage/db/profile-mapper.xml" />
+		<mapper resource="com/mypage/db/chart-mapper.xml" />
 	</mappers>
 </configuration>

@@ -109,7 +109,7 @@
 </script>
 </head>
 <body>
-	<% RegistDto dto = (RegistDto)session.getAttribute("dto"); %>
+	<% RegistDto Ldto = (RegistDto)session.getAttribute("dto"); %>
 
 	<h1>회원 정보 수정</h1>
 
@@ -136,7 +136,7 @@
 			</tr>
 			<tr>
 				<th>생일</th>
-				<td><%=dto.getMember_birthday().substring(0,4) %>년 <%=dto.getMember_birthday().substring(4,6) %>월 <%=dto.getMember_birthday().substring(6) %>일</td>
+				<td><%=Ldto.getMember_birthday().substring(0,4) %>년 <%=Ldto.getMember_birthday().substring(4,6) %>월 <%=Ldto.getMember_birthday().substring(6) %>일</td>
 			</tr>
 			<tr>
 				<th>이메일</th>

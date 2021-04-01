@@ -61,6 +61,16 @@ public class PaymentDaoImpl extends SqlMapConfig implements PaymentDao{
 		
 		return list;
 	}
+	
+	public List<PaymentDto> paymentListMy(String member_email){
+		List<PaymentDto> list = new ArrayList<PaymentDto>();
+		try(SqlSession session = getSqlSessionFactory().openSession(true);){
+			list = session.selectList(namespace+"paymentListMy", member_email);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		return list;
+	}
 
 
 }

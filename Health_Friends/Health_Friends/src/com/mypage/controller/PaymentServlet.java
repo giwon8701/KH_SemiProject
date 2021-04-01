@@ -125,6 +125,16 @@ public class PaymentServlet extends HttpServlet {
 			
 			dispatch(request, response, "./views/mypage/paymentList.jsp");
 			
+		} else if(command.equals("paymentListMy")) {
+			
+			String member_email = request.getParameter("member_email");
+			
+			List<PaymentDto> list = biz.paymentListMy(member_email);
+			
+			request.setAttribute("list", list);
+			
+			dispatch(request, response, "./views/mypage/paymentListMy.jsp");
+			
 		}
 	}
 	
