@@ -27,12 +27,16 @@ public class ChartServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		String command = request.getParameter("command");
 		
+		
 		if(command.equals("todayHealth")) {
 			String individual_id = request.getParameter("individual_id");
 			String yyyyMMdd = request.getParameter("yyyyMMdd");
+			
 			System.out.printf("id : %s / yyyyMMdd : %s \n", individual_id, yyyyMMdd);
+			
 			ChartBiz Cbiz = new ChartBizImpl();
 			int res = Cbiz.todayChart(individual_id, yyyyMMdd);
+			
 			System.out.println("res : " + res);
 			
 			Map<String, Integer> map = new HashMap<String, Integer>();

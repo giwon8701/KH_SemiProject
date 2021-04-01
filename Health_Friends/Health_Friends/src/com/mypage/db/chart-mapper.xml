@@ -2,13 +2,13 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="profilemapper">
+<mapper namespace="chartmapper">
 	
-	<select id="todayChart" parameterType="individualDto">
+	<select id="todayChart" parameterType="java.util.HashMap" resultType="java.lang.Integer">
 		SELECT SUM(INDIVIDUAL_TIME) FROM INDIVIDUAL
 		WHERE INDIVIDUAL_ID = #{individual_id}
 		AND SUBSTR(INDIVIDUAL_MDATE, 1, 8) = #{yyyyMMdd}
-		GROUP BY INDIVIDUAL_TIME;
+		GROUP BY INDIVIDUAL_TIME
 	</select>
 	
 </mapper>
