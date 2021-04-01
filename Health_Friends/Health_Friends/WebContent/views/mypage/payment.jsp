@@ -13,7 +13,7 @@
 </head>
 <body>
 <%-- 결제페이지인데 추후에 조금더 자세하게 수정해야함! --%>
-<% RegistDto dto = (RegistDto) session.getAttribute("dto"); %>
+<% RegistDto Ldto = (RegistDto) session.getAttribute("dto"); %>
 <%
 	int price = 7900;
 %>
@@ -29,10 +29,10 @@
             merchant_uid : 'merchant_' + new Date().getTime(),
             name : 'Health Friends Premium',
             amount : <%=price%>,
-            member_email : '<%=dto.getMember_email()%>',
-            member_name : '<%=dto.getMember_name()%>',
-            member_tel : '<%=dto.getMember_phone()%>',
-            member_addr : '<%=dto.getMember_addr()%>'
+            member_email : '<%=Ldto.getMember_email()%>',
+            member_name : '<%=Ldto.getMember_name()%>',
+            member_tel : '<%=Ldto.getMember_phone()%>',
+            member_addr : '<%=Ldto.getMember_addr()%>'
         }, function(rsp) {
             if ( rsp.success ) {
                 $.ajax({
@@ -42,10 +42,10 @@
                     data: {
                         imp_uid : rsp.imp_uid,
                         amount : <%=price%>,
-                        member_email : '<%=dto.getMember_email()%>',
-                        member_name : '<%=dto.getMember_name()%>',
-                        member_tel : '<%=dto.getMember_phone()%>',
-                        member_addr : '<%=dto.getMember_addr()%>'
+                        member_email : '<%=Ldto.getMember_email()%>',
+                        member_name : '<%=Ldto.getMember_name()%>',
+                        member_tel : '<%=Ldto.getMember_phone()%>',
+                        member_addr : '<%=Ldto.getMember_addr()%>'
                     }
                 }).done(function(data) {
                     if ( everythings_fine ) {

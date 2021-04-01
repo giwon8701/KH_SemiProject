@@ -17,6 +17,7 @@
 	int year = cal.get(Calendar.YEAR);
 	int month = cal.get(Calendar.MONTH) + 1;
 
+	
 	String paramYear = request.getParameter("year");
 	String paramMonth = request.getParameter("month");
 	
@@ -49,21 +50,9 @@
 <link href="./assets/css/mypage.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="assets/js/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<% RegistDto dto = (RegistDto) session.getAttribute("dto"); %>
-<script type="text/javascript">
-	function js(){
-		var year = $(".y").text().trim();
-		var month = $(".m").text().trim();
-		var date = countView.text().trim();
-		var yyyyMMdd = year + isTwo(month) + isTwo(date);
-		
-		if(count > 0){
-			document.getElementsByClassName("countBackground").style.backgroundColor="gray";
-		}
-	}
-	
-</script>
+<% RegistDto Ldto = (RegistDto) session.getAttribute("dto"); %>
 <style type="text/css">
 	#profile-img{
 		width: 150px;
@@ -87,34 +76,34 @@
 								</c:when>
 								<c:otherwise>
  
-									<img src="../../profileimg/<%=dto.getMember_picture_path()%>?" id="profile-img" />
+									<img src="../../profileimg/<%=Ldto.getMember_picture_path()%>?" id="profile-img" />
 
 								</c:otherwise>
 							</c:choose>
 						</td>
 						<td rowspan="4">
-							<form action="../../profile.do?member_email=<%=dto.getMember_email()%>" method="post" enctype="multipart/form-data">
+							<form action="../../profile.do?member_email=<%=Ldto.getMember_email()%>" method="post" enctype="multipart/form-data">
 								<input type="file" name="filename" size='20'><br>
 								<input type="submit" value="프사변경">
 							</form>
 						</td>
 					</tr>
 					<tr>
-						<th colspan="2" align="center"><%=dto.getMember_id() %></th>
+						<th colspan="2" align="center"><%=Ldto.getMember_id() %></th>
 					</tr>
 					<tr>
 						<th>회원등급</th>
 						<th>매너점수</th>
 					</tr>
 					<tr>
-						<td align="center"><%=dto.getMember_role() %></td>
+						<td align="center"><%=Ldto.getMember_role() %></td>
 						<td align="center">
 							<c:choose>
 								<c:when test="${dto.getMember_review() == 0}">
 									----------
 								</c:when>
 								<c:otherwise>
-									<%=dto.getMember_review() %>
+									<%=Ldto.getMember_review() %>
 								</c:otherwise>
 							</c:choose>
 						</td>
@@ -134,9 +123,10 @@
 						<td>
 							<ul>
 								<li><a href="../../mypage.do?command=registUpdate">회원정보 수정</a></li>
-								<li><a href="../../payment.do?command=paymentRoleUp&member_role=<%=dto.getMember_role()%>">프리미엄 등록</a></li>
-								<li><a href="../../payment.do?command=paymentRoleDown&member_role=<%=dto.getMember_role()%>">프리미엄 탈퇴</a></li>
-								<li><a href="../../payment.do?command=paymentList">결제내역</a>
+								<li><a href="../../payment.do?command=paymentRoleUp&member_role=<%=Ldto.getMember_role()%>">프리미엄 등록</a></li>
+								<li><a href="../../payment.do?command=paymentRoleDown&member_role=<%=Ldto.getMember_role()%>">프리미엄 탈퇴</a></li>
+								<li><a href="../../payment.do?command=paymentListMy&member_email=<%=Ldto.getMember_email()%>">나의 결제내역</a>
+								<li><a href="../../payment.do?command=paymentList">모든회원결제내역(admin)</a>
 							</ul>
 						</td>
 					</tr>
@@ -144,7 +134,16 @@
 			</div>
 		</div>
 		<div class="mypage-second-div2">
-			<div style="width:800px"><canvas id="myChart"></canvas></div>
+		
+		
+			<div style="width:800px" style="float: left;">
+				<canvas id="myChart"></canvas>
+			</div>
+			
+			
+			
+			
+			
 			<div class="mypage-calendar-div">
 
 
@@ -179,7 +178,7 @@
 						for (int i = 1; i <= lastDay; i++) {
 						%>
 						<td class="countBackground"><a class="countview"
-							href="../../individual.do?command=individualList&year=<%=year%>&month=<%=month%>&date=<%=i%>"
+							href="../../individual.do?command=individualList&individual_id=<%=Ldto.getMember_id()%>&year=<%=year%>&month=<%=month%>&date=<%=i%>"
 							style="color: <%=Util.fontColor(i, dayOfWeek)%>"><%=i%></a></td>
 						<%
 							if ((dayOfWeek - 1 + i) % 7 == 0) {
@@ -197,63 +196,111 @@
 
 			</div>
 		</div>
+		
+		
+		
+		
 		<div class="mypage-second-div3">
 			<div class="mypage-basket-div">찜한게시물</div>
 			<div class="mypage-follw-div">팔로우</div>
 		</div>
 	</div>
 	
-	
 <script type="text/javascript">
+	function isTwo(n){
+		n = n+'';
+		return (n.length<2)?"0"+n:n;
+	}
 	
-	var today = new Date();
-	var dd = today.getDate();
-	var mm = today.getMonth()+1; //January is 0!
-	var yyyy = today.getFullYear();
-	
-	if(dd<10) {
-	    dd='0'+dd
-	} 
-	
-	if(mm<10) {
-	    mm='0'+mm
-	} 
-	
-	var ctx = document.getElementById("myChart").getContext('2d');
-	/*
-	- Chart를 생성하면서, 
-	- ctx를 첫번째 argument로 넘겨주고, 
-	- 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줌
-	*/
-	var myChart = new Chart(ctx, {
-	    type: 'line',
-	    data: {
-	        labels: [yyyy+'/'+mm+'/'+(dd-6), yyyy+'/'+mm+'/'+(dd-5), yyyy+'/'+mm+'/'+(dd-4), yyyy+'/'+mm+'/'+(dd-3), yyyy+'/'+mm+'/'+(dd-2), yyyy+'/'+mm+'/'+(dd-1), yyyy+'/'+mm+'/'+dd],
-	        datasets: [{
-	            label: '운동시간(분)',
-	            data: [33, 15, 53, 45, 29, 31, 67],
-	            backgroundColor: [
-	                'rgba(255, 99, 132, 0.2)'
-	            ],
-	            borderColor: [
-	                'rgba(255,99,132,1)'
-	            ],
-	            borderWidth: 1
-	        }]
-	    },
-	    options: {
-	        maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
-	        scales: {
-	            yAxes: [{
-	                ticks: {
-	                    beginAtZero:true
-	                }
-	            }]
-	        }
-	    }
+	$(function(){
+		var individual_id = "<%=Ldto.getMember_id()%>";
+		var today = new Date();
+		var date = today.getDate();
+		var month = today.getMonth()+1 ;
+		var year = today.getFullYear();
+		var yyyyMMdd = '' + year + isTwo(month) + isTwo(date);
+		
+		$.ajax({
+			type: "post",
+			url: "../../chart.do?command=healthRecord&individual_id="+individual_id,
+			dataType: "json",
+			success: function(msg){
+				var todayHealth = msg.todayHealth;
+				var yesterdayHealth = msg.yesterdayHealth;
+				var twoAgodayHealth = msg.twoAgodayHealth;
+				var threeAogdayHealth = msg.threeAogdayHealth;
+				var fourAgodayHealth = msg.fourAgodayHealth;
+				var fiveAgodayHealth = msg.fiveAgodayHealth;
+				var sixAgodayHealth = msg.sixAgodayHealth;
+				
+				console.log(todayHealth);
+				console.log(yesterdayHealth);
+
+				var today = new Date();
+				var todayDate = today.getFullYear()+'.'+(today.getMonth()+1)+'.'+today.getDate();
+
+				new Date(today.setDate(today.getDate() - 1));
+				var yesterdayDate = today.getFullYear()+'.'+(today.getMonth()+1)+'.'+today.getDate();
+
+				new Date(today.setDate(today.getDate() - 1));
+				var twoAgoDate = today.getFullYear()+'.'+(today.getMonth()+1)+'.'+today.getDate();
+				
+				new Date(today.setDate(today.getDate() - 1));
+				var threeAgoDate = today.getFullYear()+'.'+(today.getMonth()+1)+'.'+today.getDate();
+				
+				new Date(today.setDate(today.getDate() - 1));
+				var fourAgoDate = today.getFullYear()+'.'+(today.getMonth()+1)+'.'+today.getDate();
+				
+				new Date(today.setDate(today.getDate() - 1));
+				var fiveAgoDate = today.getFullYear()+'.'+(today.getMonth()+1)+'.'+today.getDate();
+				
+				new Date(today.setDate(today.getDate() - 1));
+				var sixAgoDate = today.getFullYear()+'.'+(today.getMonth()+1)+'.'+today.getDate();
+				
+				var ctx = document.getElementById("myChart").getContext('2d');
+				/*
+				- Chart를 생성하면서, 
+				- ctx를 첫번째 argument로 넘겨주고, 
+				- 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줌
+				*/
+				var myChart = new Chart(ctx, {
+				    type: 'line',
+				    data: {
+				        labels: [sixAgoDate, fiveAgoDate, fourAgoDate, threeAgoDate, twoAgoDate, yesterdayDate, todayDate],
+				        datasets: [{
+				            label: '운동시간(분)',
+				            data: [sixAgodayHealth, fiveAgodayHealth, fourAgodayHealth, threeAogdayHealth, twoAgodayHealth, yesterdayHealth, todayHealth],
+				            backgroundColor: [
+				                'rgba(255, 99, 132, 0.2)'
+				            ],
+				            borderColor: [
+				                'rgba(255,99,132,1)'
+				            ],
+				            borderWidth: 1
+				        }]
+				    },
+				    options: {
+				        maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+				        scales: {
+				            yAxes: [{
+				                ticks: {
+				                    beginAtZero:true
+				                }
+				            }]
+				        }
+				    }
+				});
+				
+			},
+			error: function(){
+				alert("통신실패");
+			}
+		});
 	});
 </script>
-	<%@ include file="../common/footer.jsp" %>
 
+<%--
+	<%@ include file="../common/footer.jsp" %>
+ --%>
 </body>
 </html>

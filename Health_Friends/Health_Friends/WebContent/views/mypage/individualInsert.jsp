@@ -1,3 +1,4 @@
+<%@page import="com.login.dto.RegistDto"%>
 <%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -11,7 +12,7 @@
 </head>
 <body>
 <%--캘린더 게시판 insert --%>
-
+<% RegistDto Ldto = (RegistDto) session.getAttribute("dto"); %>
 <%
 
 	Calendar cal = Calendar.getInstance();
@@ -58,7 +59,7 @@
 		<table border="1">
 			<tr>
 				<th>ID</th>
-				<td><input type="text" name="individual_id" value="cine" readonly="readonly"></td>
+				<td><input type="text" name="individual_id" value="<%=Ldto.getMember_id() %>" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>일정</th>
@@ -113,6 +114,10 @@
 %>
 					</select>분
 				</td>
+			</tr>
+			<tr>
+				<th>운동시간</th>
+				<td><input type="text" name="individual_time">분</td>
 			</tr>
 			<tr>
 				<th>제목</th>
