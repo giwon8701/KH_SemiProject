@@ -132,7 +132,7 @@ public class NaverServlet extends HttpServlet {
 					
 				} else {
 					HttpSession session = request.getSession();
-					session.setAttribute("dto", Ldto);
+					session.setAttribute("Ldto", Ldto);
 					session.setMaxInactiveInterval(10 * 60);
 					
 					jsResponse(response, "./index.jsp", member_name+"님, 환영합니다.");
@@ -147,7 +147,7 @@ public class NaverServlet extends HttpServlet {
 				out.println(s);
 				
 				request.setAttribute("dto", dto);
-				dispatch(request, response, "/views/login/naverRegistForm.jsp");
+				dispatch(request, response, "/views/login/registSample.jsp");
 			}
 
 	      }

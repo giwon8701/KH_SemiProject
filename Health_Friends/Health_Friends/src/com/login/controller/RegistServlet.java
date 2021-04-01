@@ -42,7 +42,7 @@ public class RegistServlet extends HttpServlet {
 		System.out.println("["+command+"]");
 		
 		if(command.equals("registForm")) {
-			response.sendRedirect("./views/login/registForm.jsp");
+			response.sendRedirect("./views/login/registSample.jsp");
 			
 		} else if(command.equals("idCheck")) {
 			String memberId = request.getParameter("memberId");
@@ -130,7 +130,7 @@ public class RegistServlet extends HttpServlet {
 				RegistDto Ldto = biz.selectByEmail(memberEmail);
 				
 				HttpSession session = request.getSession();
-				session.setAttribute("dto", Ldto);
+				session.setAttribute("Ldto", Ldto);
 				session.setMaxInactiveInterval(10 * 60);
 				
 				jsResponse(response, "./index.jsp", memberName + "님, 환영합니다.");
@@ -156,7 +156,7 @@ public class RegistServlet extends HttpServlet {
 					jsResponse(response, "./views/login/login.jsp", "탈퇴한 회원입니다.");
 				} else {
 					HttpSession session = request.getSession();
-					session.setAttribute("dto", Ldto);
+					session.setAttribute("Ldto", Ldto);
 					session.setMaxInactiveInterval(10 * 60);
 					
 					if(Ldto.getMember_role().equals("ADMIN")) {
