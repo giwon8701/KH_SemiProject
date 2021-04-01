@@ -232,6 +232,9 @@
 				var fourAgodayHealth = msg.fourAgodayHealth;
 				var fiveAgodayHealth = msg.fiveAgodayHealth;
 				var sixAgodayHealth = msg.sixAgodayHealth;
+				
+				console.log(todayHealth);
+				console.log(yesterdayHealth);
 
 				var today = new Date();
 				var todayDate = today.getFullYear()+'.'+(today.getMonth()+1)+'.'+today.getDate();
@@ -294,10 +297,6 @@
 			}
 		});
 	});
-
-
-
-
 </script>
 
 <%--
