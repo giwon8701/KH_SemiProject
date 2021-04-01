@@ -43,9 +43,9 @@
 	<%@include file="header.jsp" %>
  --%>	
  	<section class="boardlist">
-		<a href="href='../../board.do?command=list">동행 구해요</a>
+		<a href="../../board.do?command=list">동행 구해요</a>
 		<a href="">후기</a>
-		<a href="">공지사항</a>
+		<a href="../../notice.do?command=list">공지사항</a>
 	</section>
  
 	<section id="Board_writePost">
@@ -69,18 +69,16 @@
 						운동종류	<br/>
 						<select name="chooseExercise">
 							<optgroup label="맨발운동">
-								<option value="slow_walk">느리게 걷기</option>
-								<option value="fast_walk">빠르게 걷기</option>
+								<option value="walk">걷기</option>
 								<option value="running">달리기</option>
 							</optgroup>
 							<optgroup label="라이딩">
 								<option value="bike_riding">자전거</option>
-								<option value="skate_boarding">스케이트보드</option>
 								<option value="inline_skating">인라인스케이트(롤러브레이드)</option>
 							</optgroup>
 							<optgroup label="구기운동">
-								<option value="basket_ball">농구</option>
-								<option value="dodge_ball">피구</option>
+								<option value="basketball">농구</option>
+								<option value="dodgeball">피구</option>
 								<option value="tennis">테니스</option>
 							</optgroup>
 						</select>
@@ -197,7 +195,7 @@
 				</tr>
 			</table>
 			<input type="submit" value="등록">
-			<input type="button" value="취소" onclick="location.href='board.do?command=list'" />
+			<input type="button" value="취소" onclick="location.href='board.do?command=accompany_list'" />
 		</form>
 	</section>
 <%--	

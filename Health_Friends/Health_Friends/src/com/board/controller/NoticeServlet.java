@@ -1,6 +1,8 @@
 package com.board.controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -14,10 +16,10 @@ import com.board.biz.BoardBiz;
 import com.board.biz.BoardBizImpl;
 import com.board.dto.BoardDto;
 
-@WebServlet("/board.do")
-public class BoardServlet extends HttpServlet {
+@WebServlet("/notice.do")
+public class NoticeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html charset=UTF-8");
@@ -27,41 +29,48 @@ public class BoardServlet extends HttpServlet {
 		
 		try {
 			if(command.equals("list")) {
-				List<BoardDto> list = biz.accompany_selectList();
+				List<BoardDto> list = biz.notice_selectList();
 				request.setAttribute("list", list);
-				dispatch(request, response, "./views/board/accompanyBoard.jsp");
+				dispatch(request, response, "./views/board/noticeBoard.jsp");
 				
-			}else if(command.equals("insert")) {
-				response.sendRedirect("./views/board/accompanyBoard_post.jsp");
+			} else if(command.equals("insert")) {
+				response.sendRedirect("./views/board/noticeBoard_post.jsp");
 				
-			}else if(command.equals("insertres")) {
-				String postId = request.getParameter("postId");
-				String postCategoryName = request.getParameter("chooseExercise");
+			} else if(command.equals("insertres")) {
+				System.out.println("test1");
 				String postTitle = request.getParameter("postTitle");
-				String postContent = request.getParameter("content");
-				String postMdate = request.getParameter("postMdate");
-				String postRegdate = null;
-				String postLatitude = request.getParameter("MapAddress");
-			//	 날짜값 전달아직 구현 못함
-			//	BoardDto dto = new BoardDto(0, postId, 0, null, postCategoryName, postTitle, postContent, postMdate, postRegdate, 
-			//			null, 0, 0, 0, postLatitude, 0);
+				System.out.println("test2");
+				String postContent = request.getParameter("postContent");
+				System.out.println("test3");
 				
-			//	if (res > 0) {
-			//		response.sendRedirect("board.do?command=list");
-			//	} else {
-			//		response.sendRedirect("board.do?command=insert");
-			//	} 
-			} 
+				BoardDto dto = new BoardDto();
+				dto.setPostTitle(postTitle);
+				dto.setPostContent(postContent);
+				dto.setPostCategoryName("walk");
+				int res = biz.insert(dto);
+				
+				if(res > 0) {
+					response.sendRedirect("./views/board/noticeBoard.jsp");
+				} else {
+					response.sendRedirect("./views/board/noticeBoard_post.jsp");
+				}
+			}
+			
 			
 			
 		} catch(Exception e){
+			e.printStackTrace();
 			response.sendRedirect("./views/common/error.jsp");
 		}
+
+		
+	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
+	
 	private void dispatch(HttpServletRequest request, HttpServletResponse response, String path) throws ServletException, IOException {
 		RequestDispatcher dispatch = request.getRequestDispatcher(path);
 		dispatch.forward(request, response);

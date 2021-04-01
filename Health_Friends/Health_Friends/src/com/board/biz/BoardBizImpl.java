@@ -11,8 +11,18 @@ public class BoardBizImpl implements BoardBiz {
 	BoardDao dao = new BoardDaoImpl();
 
 	@Override
-	public List<BoardDto> selectList() {
-		return dao.selectList();
+	public List<BoardDto> accompany_selectList() {
+		return dao.accompany_selectList();
+	}
+	
+	@Override
+	public List<BoardDto> notice_selectList() {
+		return dao.notice_selectList();
+	}
+	
+	@Override
+	public List<BoardDto> photo_selectList() {
+		return dao.notice_selectList();
 	}
 
 	@Override

@@ -1,9 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8"); %>
+<% response.setContentType("text/html; charset=UTF-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="/Health_Friends/assets/api/se2/js/HuskyEZCreator.js" type="text/javascript"></script>
@@ -22,31 +24,42 @@
 	<%@include file="header.jsp" %>
  --%>	
  	<section class="boardlist">
-		<a href="">µ¿Çà ±¸ÇØ¿ä</a>
-		<a href="">ÈÄ±â</a>
-		<a href="">°øÁö»çÇ×</a>
+		<a href="">ë™í–‰ êµ¬í•´ìš”</a>
+		<a href="">í›„ê¸°</a>
+		<a href="">ê³µì§€ì‚¬í•­</a>
 	</section>
- 
+ <!-- 
+ postBoardName
+ postNo
+ postId
+ postTitle
+ postContent (se2)
+  -->
 	<section id="noticeBoard_post">
-		<form action="" method="post">
-			<input type="hidden" name="command" value="noticeBoard_postRes"/>
+		<form action="../../notice.do" method="post">
+			<input type="hidden" name="command" value="insertres"/>
 			<table border="1">
 				<tr>
-					<th colspan="3">°øÁöÀÛ¼º</th>
+					<th colspan="2">
+						ê³µì§€ì‚¬í•­
+					</th>
 				</tr>
 				<tr>
 					<td colspan="3">
-						<input type="text" placeholder="°Ô½Ã±Û Á¦¸ñÀ» Àû¾îÁÖ¼¼¿ä"/>
+						<input type="text" name="postTitle" placeholder="ì œëª©ì„ ì ì–´ì£¼ì„¸ìš”"/>
 					</td>
 				</tr>
+				<tr>	
+				
+				</tr>
 				<tr>
 					<td colspan="3">
-						<textarea id="se2" name="se2" class="smarteditor2" ></textarea>
+						<textarea id="se2" name="postContent" class="smarteditor2" ></textarea>
 					</td>
 				</tr>
 			</table>
-			<input type="submit" value="µî·Ï">
-			<input type="button" value="Ãë¼Ò" onclick="location.href='board.do?command=list'" />
+			<input type="submit" value="ë“±ë¡">
+			<input type="button" value="ì·¨ì†Œ" onclick="location.href='board.do?command=list'" />
 		</form>
 	</section>
 <%--	

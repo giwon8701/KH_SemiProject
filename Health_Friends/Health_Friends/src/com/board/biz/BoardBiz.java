@@ -6,7 +6,9 @@ import com.board.dto.BoardDto;
 
 public interface BoardBiz {
 
-	public List<BoardDto> selectList();
+	public List<BoardDto> accompany_selectList();
+	public List<BoardDto> notice_selectList();
+	public List<BoardDto> photo_selectList();
 	public BoardDto selectOne(int postId);
 	public int insert(BoardDto dto);
 	public int update(BoardDto dto);

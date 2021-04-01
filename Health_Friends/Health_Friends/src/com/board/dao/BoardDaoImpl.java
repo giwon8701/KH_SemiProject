@@ -11,14 +11,30 @@ import com.common.SqlMapConfig;
 public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 	
 	@Override
-	public List<BoardDto> selectList() {
+	public List<BoardDto> accompany_selectList() {
 		List<BoardDto> list = new ArrayList<BoardDto>();
 		
 		SqlSession session = null;
 		
 		try {
 			session = getSqlSessionFactory().openSession(false);
-			list = session.selectList("BoardMapper.selectList");
+			list = session.selectList("BoardMapper.accompany_selectList");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+	
+	public List<BoardDto> notice_selectList() {
+		List<BoardDto> list = new ArrayList<BoardDto>();
+		
+		SqlSession session = null;
+		
+		try {
+			session = getSqlSessionFactory().openSession(false);
+			list = session.selectList("BoardMapper.notice_selectList");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -27,6 +43,23 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 		return list;
 	}
 
+	public List<BoardDto> photo_selectList() {
+		List<BoardDto> list = new ArrayList<BoardDto>();
+		
+		SqlSession session = null;
+		
+		try {
+			session = getSqlSessionFactory().openSession(false);
+			list = session.selectList("BoardMapper.photo_selectList");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+
+	
 	@Override
 	public BoardDto selectOne(int postId) {
 		return null;
@@ -38,11 +71,11 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 		int res = 0;
 		
 		try(SqlSession session = getSqlSessionFactory().openSession(true)){
-			res = session.insert("BoardMapper.insert", dto);
+			res = session.insert("BoardMapper.notice_insert", dto);
+			System.out.println(res);
 		} catch(Exception e){
 			e.printStackTrace();
 		}
-		
 		return res;
 	}
 
