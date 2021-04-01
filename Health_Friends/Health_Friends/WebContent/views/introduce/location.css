@@ -3,12 +3,14 @@
 * {
 	font-family: 'Noto Sans KR', sans-serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}
 		
-.jumbotron {
-	background-image:
-		url("https://cdn.crowdpic.net/list-thumb/thumb_l_37B48B380D5AEB177BF931C56704AA5C.jpg");
-	background-size: cover;
-	text-shadow: block 0.2em 0.2em 0.2em;
+.background01 {
+	margin: 10px auto;
+	position: relative;
 }
 
 #main01, #main02 {
@@ -48,7 +50,52 @@ tr {
 
 }
 
-.container .contact. td {
+.container01 {
+	width:100%;
+}
+
+/* 글씨 나오게 하기 */
+.text01 {
+  margin-top: 20px;
+  padding: 100px 100px;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 70%;
+  left: 5%;
+  font-size:50px;
+  text-align: left;
+  display: none;
+}
+
+.text02 {
+  margin-top: 20px;
+  padding: 100px 100px;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 60%;
+  left: 5%;
+  font-family: Verdana, Geneva, Arial, sans-serif;
+  font-size:42px;
+  text-align: left;
+  display: none;
+}
+
+.text03 {
+  margin-top: 20px;
+  padding: 100px 100px;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 46%;
+  left: 5%;
+  font-family: Verdana, Geneva, Arial, sans-serif;
+  font-size:28px;
+  text-align: left;
+  display: none;
+}
+
+
+
+.container .contact .td {
 	font-weight: 400;
 	font-size: 20px;
 }
@@ -69,14 +116,12 @@ tr {
     bottom: 20px;
     right: 30px;
     z-index: 99;
-    border: none;
     font-size: 20px;
     padding: 15px;
     background-color: white;
     color: rgb(0, 183, 255);
     cursor: pointer;
     transition: 0.5s;
-    display: none;
     border: 1px solid;
 }
 
@@ -86,8 +131,7 @@ tr {
     border: 2px solid;
 }
 
-.way01, .way02 {
-	margin-top: 20px;
+.text04, .way01, .way02 {
 	transition: transform 0.7s, opacity 2.5s;
 }
 

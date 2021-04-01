@@ -1,4 +1,8 @@
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* 사진 슬라이드 css */
 .controls { text-align: center; padding: 50px 0 0;}
 .controls button { background: #fff; border:1px solid grey; cursor:pointer; }
@@ -139,13 +143,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 	transition-delay: .8s;
 }
 
-
 .team-item:hover .profile-contents p {
 	opacity: 1;
 	max-height: 6em;
 	margin-top: 0.2em;
 }
 
+/* 글씨 나오게 하기 */
 .text01 {
   margin-top: 20px;
   padding: 100px 100px;
@@ -165,10 +169,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   position: absolute;
   bottom: 63%;
   left: 5%;
-     font-family: Verdana, Geneva, Arial, sans-serif;
+  font-family: Verdana, Geneva, Arial, sans-serif;
   font-size:42px;
   text-align: left;
-      display: none;
+  display: none;
 }
 
 .text03 {
@@ -178,7 +182,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   position: absolute;
   bottom: 35%;
   left: 5%;
-     font-family: Verdana, Geneva, Arial, sans-serif;
+  font-family: Verdana, Geneva, Arial, sans-serif;
   font-size:28px;
   text-align: left;
   display: none;
@@ -197,7 +201,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   width: 100%;
 }
 
-.title01, .title02, .subheading, .text-info, .text06, .text07 {
+.title01, .title02, .text-danger, .text-info, .text06, .text07 {
 	margin-top: 20px;
 	transition: transform 0.7s, opacity 2.5s;
 }
@@ -206,24 +210,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     margin-bottom: 50px;
 }
 
-#load{
-    display: none;
-    font-size: 50px;
-}
 
 #btn {
     position: fixed;
     bottom: 20px;
     right: 30px;
     z-index: 99;
-    border: none;
     font-size: 20px;
     padding: 15px;
     background-color: white;
     color: rgb(0, 183, 255);
     cursor: pointer;
     transition: 0.5s;
-    display: none;
     border: 1px solid;
 }
 

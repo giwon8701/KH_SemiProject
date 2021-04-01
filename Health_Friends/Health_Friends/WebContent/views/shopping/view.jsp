@@ -64,17 +64,6 @@ pageEncoding="UTF-8"%>
     }
 };
 
-    // 화면 위로 보내기
-	function scrollFunction() { 
-    	var btn = document.getElementById('btn');
-    		if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) { btn.style.display = "block"; 
-    		} else { btn.style.display = "none"; } 
-    } 
-    
-	function GoTop() { 
-		window.scrollTo({top:0, behavior:'smooth'}); 
-	}
-
 </script>
 
 <style type="text/css">
@@ -193,31 +182,6 @@ pageEncoding="UTF-8"%>
 	display: inline-block
 }
 
-.top{
-    margin-bottom: 50px;
-}
-
-#btn{
-    position: fixed;
-    bottom: 20px;
-    right: 30px;
-    z-index: 99;
-    border: none;
-    font-size: 20px;
-    padding: 15px;
-    background-color: white;
-    color: rgb(0, 183, 255);
-    cursor: pointer;
-    transition: 0.5s;
-    display: none;
-    border: 1px solid;
-}
-
-#btn:hover{
-    background-color:rgb(0, 183, 255);
-    color: white;
-    border: 2px solid;
-}
 
 </style>
 
@@ -256,10 +220,6 @@ pageEncoding="UTF-8"%>
 	</div>
 </div>
 
-<!-- 상단으로 이동하기 버튼 -->
-<div class="top"> 
-	<button id="btn" onClick="GoTop()">▲</button> 
-</div> 
 
 </body>
 </html>
