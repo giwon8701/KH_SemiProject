@@ -1,7 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%request.setCharacterEncoding("UTF-8");%>
-<%response.setContentType("text/html; charset=UTF-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,10 +20,236 @@
 	.quick {position:fixed;right:20px;top:50%;transform:translateY(-50%); z-index:100000}
 	.quick li {width:10px;height:10px;margin-bottom:10px; border-radius:15px;border:2px solid #fff;cursor:pointer;}
 	.quick .on {background:#fff;}
+
+
+
+/* Reset */
+
+	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+	}
+
+	
+
+	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+		display: block;
+	}
+
+	body {
+		line-height: 1;
+	}
+
+	blockquote:before, blockquote:after, q:before, q:after {
+		content: '';
+		content: none;
+	}
+
+
+
+/* Box Model */
+
+	*, *:before, *:after {
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+
+
+
+
+
+
+
+/* Header */
+
+
+	.header-list{
+		float:left;
+	}
+
+
+	.header-search{
+		background-image: url("https://d1unjqcospf8gs.cloudfront.net/assets/home/base/header/search-icon-7008edd4f9aaa32188f55e65258f1c1905d7a9d1a3ca2a07ae809b5535380f14.svg");
+		background-repeat: no-repeat;
+		background-position: right;
+		left: 20%;
+		top: 17%;
+		border-radius: 5px;
+		border: solid 1px #e9ecef;
+		text-decoration: none;
+		padding: 0 1.6rem;
+		height: 0%;
+		box-sizing: border-box;
+		padding: 1rem 0;
+
+	}
+
+	.main-button{
+		background-color: rgb(255, 255, 255);
+		position: fixed;
+		border-radius: 100px;
+		width: 100px;
+		height: 100px;
+	
+		right: 5%;
+		top: 85%;
+		text-align: center;
+		font-size: 15px;
+		margin-left: 60%;
+		z-index: 10002;
+	}
+
+	.main-button:hover{
+		background-color: rgb(221, 221, 221);
+		position: fixed;
+		border-radius: 100px;
+		width: 100px;
+		height: 100px;
+	
+		right: 5%;
+		top: 85%;
+		text-align: center;
+		font-size: 15px;
+		margin-left: 60%;
+	}
+
+
+
+	#main-board .inner h1{
+		margin-top: 50px;
+		margin-bottom: 30px;
+		text-align:center;
+		font-size: 50pt;
+	}
+
+
+	#main-borad .inner{
+		width: 100%;
+		height: 100%;
+		background: #000;
+	}
+	
+	#main-board .inner .box{
+		width: 80%;
+		margin:0 auto;
+		text-align: center;
+		vertical-align: middle;
+		background-color: rgb(228, 228, 228);
+		border-radius: 20px;
+	}
+	
+	
+
+
+
+
+
+	body.subpage {
+		padding-top: 3.25em;
+	}
+
+
+    /* 헤더에서 제일 중요한 효과!! */
+	#header {
+		background: rgba(255, 255, 255, 0);
+		color: #a6a6a6;
+		cursor: default;
+		height: 4em;
+		left: 0;
+		line-height: 3.5em;
+		position: fixed;
+		text-align: right;
+		border: 1px solid black;
+		top: 0;
+		width: 100%;
+		z-index: 10001;
+	}
+
+
+
+    /* 로고 효과 */
+
+	#header > .logo {
+		display: inline-block;
+		height: inherit;
+		left: 1.25em;
+		line-height: inherit;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		top: 0;
+	}
+
+	#header > .logo a {
+		font-size: 1.25em;
+		color: rgb(0, 0, 0);
+		text-decoration: none;
+	}
+
+	#header > .logo a:hover {
+		color: rgba(200, 200, 200, 0.65);
+	}
+
+
+        
+	#header > .logo span {
+		font-weight: 400;
+		font-size: .8em;
+		color: rgba(0, 0, 0, 0.65);
+	}
+
+
+/* a태그 효과 */
+	#header > a, #header > .header-list > a{
+		-moz-transition: color 0.2s ease-in-out;
+		-webkit-transition: color 0.2s ease-in-out;
+		-ms-transition: color 0.2s ease-in-out;
+		transition: color 0.2s ease-in-out;
+		display: inline-block;
+		padding: 0 0.75em;
+		color: inherit;
+		text-decoration: none;
+		color: #000;
+	}
+
+
+/* 헤더 호버 */
+	#header > a:hover , #header > .header-list > a:hover{
+		color: #b4b4b4;
+	}
+
+	#header > .header-list > a:first-child{
+		padding-left: 15em;
+	}
+
+
+
 </style>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+
+    <!-- Header -->
+    <header id="header" class="alt navbar navbar-light">
+        <div class="logo"><a href="../../index.jsp">우리 동네 <span>운동 친구</span></a></div>
+        <div class="header-list">
+            <a href="">소개</a>
+            <a href="">공지사항</a>
+            <a href="">동행게시판</a>
+            <a href="">후기게시판</a>
+            <a href="shopping.do?command=shopping">쇼핑</a>
+            <a href="">고객센터</a>
+        </div>
+
+        <input type="text" size="50" placeholder="동네 이름 또는 운동명을 검색해 보세요!" class="header-search">
+        
+                <a href="regist.do?command=login">로그인</a>
+                <a href="regist.do?command=registForm">회원가입</a>
+    </header>
 
 	<div id="fullpage">
 		<div class='quick'><ul></ul></div>

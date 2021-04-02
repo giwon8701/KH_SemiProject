@@ -15,7 +15,7 @@
 </head>
 <body>
 <%--캘린더 게시판 하나선택하여 자세히보기 --%>
-<% RegistDto Ldto = (RegistDto) session.getAttribute("dto"); %>
+<% RegistDto Ldto = (RegistDto) session.getAttribute("Ldto"); %>
 <%
 	Calendar cal = Calendar.getInstance();
 
