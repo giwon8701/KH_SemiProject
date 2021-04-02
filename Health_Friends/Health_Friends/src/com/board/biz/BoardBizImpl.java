@@ -26,27 +26,57 @@ public class BoardBizImpl implements BoardBiz {
 	}
 
 	@Override
-	public BoardDto selectOne(int postId) {
-		return dao.selectOne(postId);
+	public BoardDto accompany_selectOne(int postId) {
+		return dao.accompany_selectOne(postId);
+	}
+	
+	@Override
+	public BoardDto notice_selectOne(int postId) {
+		return dao.notice_selectOne(postId);
+	}
+	
+	@Override
+	public BoardDto photo_selectOne(int postId) {
+		return dao.photo_selectOne(postId);
 	}
 
 	@Override
-	public int insert(BoardDto dto) {
-		return dao.insert(dto);
+	public int accompany_insert(BoardDto dto) {
+		return dao.accompany_insert(dto);
+	}
+	
+	@Override
+	public int notice_insert(BoardDto dto) {
+		// TODO Auto-generated method stub
+		return dao.notice_insert(dto);
 	}
 
 	@Override
-	public int update(BoardDto dto) {
-		return dao.update(dto);
+	public int accompany_update(BoardDto dto) {
+		return dao.accompany_update(dto);
 	}
 
 	@Override
-	public int delete(int postId) {
-		return dao.delete(postId);
+	public int photo_update(BoardDto dto) {
+		return dao.photo_update(dto);
 	}
 
 	@Override
-	public int multiDelete(String[] postIds) {
-		return dao.multiDelete(postIds);
+	public int notice_update(BoardDto dto) {
+		return dao.notice_update(dto);
 	}
+
+	@Override
+	public int accompany_delete(int postId) {
+		return dao.accompany_delete(postId);
+	}
+	
+	@Override
+	public int notice_delete(int postId) {
+		return dao.notice_delete(postId);
+	}
+
+
+
+
 }

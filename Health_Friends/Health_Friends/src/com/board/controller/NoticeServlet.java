@@ -37,26 +37,60 @@ public class NoticeServlet extends HttpServlet {
 				response.sendRedirect("./views/board/noticeBoard_post.jsp");
 				
 			} else if(command.equals("insertres")) {
-				System.out.println("test1");
 				String postTitle = request.getParameter("postTitle");
-				System.out.println("test2");
 				String postContent = request.getParameter("postContent");
-				System.out.println("test3");
 				
 				BoardDto dto = new BoardDto();
 				dto.setPostTitle(postTitle);
 				dto.setPostContent(postContent);
 				dto.setPostCategoryName("walk");
-				int res = biz.insert(dto);
+				int res = biz.notice_insert(dto);
 				
 				if(res > 0) {
-					response.sendRedirect("./views/board/noticeBoard.jsp");
+					response.sendRedirect("notice.do?command=list");
 				} else {
 					response.sendRedirect("./views/board/noticeBoard_post.jsp");
 				}
+				
+			} else if(command.equals("select")) {
+				int postId = Integer.parseInt(request.getParameter("postId"));
+				BoardDto dto = biz.notice_selectOne(postId);
+				request.setAttribute("dto", dto);
+				dispatch(request, response, "./views/board/noticeBoard_select.jsp");
+			
+			} else if(command.equals("updateform")) {
+				int postId = Integer.parseInt(request.getParameter("postId"));
+				BoardDto dto = biz.notice_selectOne(postId);
+				request.setAttribute("dto", dto);
+				dispatch(request, response, "./views/board/noticeBoard_update.jsp");
+				
+			} else if(command.equals("updateres")) {	
+				int postId = Integer.parseInt(request.getParameter("postId"));
+				int postUserNo = Integer.parseInt(request.getParameter("postUserNo"));
+				String postTitle = request.getParameter("postTitle");
+				String postContent = request.getParameter("postContent");
+				BoardDto dto = new BoardDto();
+				dto.setPostNo(postUserNo);
+				dto.setPostId(postId);
+				dto.setPostTitle(postTitle);
+				dto.setPostContent(postContent);
+				
+				int res = biz.notice_update(dto);
+				if (res > 0) {
+					response.sendRedirect("notice.do?command=list&postId=" + postId);
+				} else {
+					response.sendRedirect("notice.do?command=select&postId=" + postId);
+				}
+				
+			} else if(command.equals("delete")) {
+				int postId = Integer.parseInt(request.getParameter("postId"));
+				int res = biz.notice_delete(postId);
+				if (res > 0) {
+					response.sendRedirect("notice.do?command=list");
+				} else {
+					response.sendRedirect("notice.do?command=select&postId=" + postId);
+				}
 			}
-			
-			
 			
 		} catch(Exception e){
 			e.printStackTrace();
@@ -76,3 +110,20 @@ public class NoticeServlet extends HttpServlet {
 		dispatch.forward(request, response);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

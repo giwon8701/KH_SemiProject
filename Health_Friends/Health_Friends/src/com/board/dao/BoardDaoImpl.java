@@ -58,15 +58,78 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 		}
 		return list;
 	}
-
 	
 	@Override
-	public BoardDto selectOne(int postId) {
-		return null;
+	public BoardDto accompany_selectOne(int postId) {
+		
+		SqlSession session = null;
+		BoardDto dto = new BoardDto();
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			dto = session.selectOne("BoardMapper.accompany_selectOne", postId);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
+	
+	@Override
+	public BoardDto notice_selectOne(int postId) {
+		
+		SqlSession session = null;
+		BoardDto dto = new BoardDto();
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			dto = session.selectOne("BoardMapper.notice_selectOne", postId);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return dto;
 	}
 
 	@Override
-	public int insert(BoardDto dto) {
+	public BoardDto photo_selectOne(int postId) {
+		
+		SqlSession session = null;
+		BoardDto dto = new BoardDto();
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			dto = session.selectOne("BoardMapper.notice_selectOne", postId);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
+
+	
+	@Override
+	public int accompany_insert(BoardDto dto) {
+		
+		int res = 0;
+		
+		try(SqlSession session = getSqlSessionFactory().openSession(true)){
+			res = session.insert("BoardMapper.accompany_insert", dto);
+			System.out.println(res);
+		} catch(Exception e){
+			e.printStackTrace();
+		} 
+		return res;
+	}
+	
+	@Override
+	public int notice_insert(BoardDto dto) {
 		
 		int res = 0;
 		
@@ -78,20 +141,68 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 		}
 		return res;
 	}
-
+	
 	@Override
-	public int update(BoardDto dto) {
-		return 0;
+	public int accompany_update(BoardDto dto) {
+		
+		int res = 0;
+		
+		try(SqlSession session = getSqlSessionFactory().openSession(true)){
+			res = session.update("BoardMapper.accompany_update", dto);
+			System.out.println(res);
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 	@Override
-	public int delete(int postId) {
-		return 0;
+	public int photo_update(BoardDto dto) {
+		int res = 0;
+		
+		try(SqlSession session = getSqlSessionFactory().openSession(true)){
+			res = session.update("BoardMapper.photo_update", dto);
+			System.out.println(res);
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 	@Override
-	public int multiDelete(String[] postIds) {
-		return 0;
+	public int notice_update(BoardDto dto) {
+		int res = 0;
+		
+		try(SqlSession session = getSqlSessionFactory().openSession(true)){
+			res = session.update("BoardMapper.notice_update", dto);
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		return res;
 	}
+	
+	@Override
+	public int accompany_delete(int postId) {
+		int res = 0;
+		try(SqlSession session = getSqlSessionFactory().openSession(true)){
+			res = session.update("BoardMapper.accompany_delete", postId);
+		}catch (Exception e){
+			e.printStackTrace();
+		} 
+		return res;
+	}
+
+	@Override
+	public int notice_delete(int postId) {
+		int res = 0;
+		try(SqlSession session = getSqlSessionFactory().openSession(true)){
+			res = session.update("BoardMapper.notice_delete", postId);
+			System.out.println(res);
+		}catch (Exception e){
+			e.printStackTrace();
+		} 
+		return res;
+	}
+
 
 }
