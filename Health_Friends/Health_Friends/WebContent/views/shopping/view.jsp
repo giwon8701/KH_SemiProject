@@ -313,6 +313,8 @@
 
 <body>
 
+	<%@include file="../../views/common/header.jsp" %>
+
 	<div style="text-align: center">
 		<img
 			src="https://image.freepik.com/free-vector/people-doing-different-actions_52683-2299.jpg"

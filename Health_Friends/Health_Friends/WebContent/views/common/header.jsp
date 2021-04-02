@@ -10,10 +10,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
 <link href="assets/css/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -24,7 +21,7 @@
 		<header id="header" class="alt navbar navbar-light">
 			<div class="logo"><a href="../../index.jsp">우리 동네 <span>운동 친구</span></a></div>
 			<div class="header-list">
-				<a href="./views/introduce/introduce.jsp">소개</a>
+				<a href="introduce.do?command=introduce">소개</a>
 				<a href="notice.do?command=list">공지사항</a>
 				<a href="board.do?command=list">동행게시판</a>
 				<a href="views/board/photoReviewBoard.jsp">후기게시판</a>
