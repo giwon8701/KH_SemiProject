@@ -1,12 +1,15 @@
 package com.mypage.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.common.SqlMapConfig;
 import com.login.dto.RegistDto;
+import com.mypage.dto.IndividualDto;
 import com.mypage.dto.PaymentDto;
 
 public class PaymentDaoImpl extends SqlMapConfig implements PaymentDao{
@@ -70,6 +73,42 @@ public class PaymentDaoImpl extends SqlMapConfig implements PaymentDao{
 			e.printStackTrace();
 		} 
 		return list;
+	}
+
+	@Override
+	public List<PaymentDto> paymentListPaging(int startRow, int endRow) {
+		List<PaymentDto> list = new ArrayList<PaymentDto>();
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		
+		map.put("startRow", startRow);
+		map.put("endRow", endRow);
+		
+		try(SqlSession session = getSqlSessionFactory().openSession(true);){
+			list = session.selectList(namespace+"paymentListPaging", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		
+		return list;
+	}
+
+	@Override
+	public int getTotalCount() {
+		SqlSession session = null;
+
+		int res = 0;
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			res = session.selectOne(namespace+"getTotalCount");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	
+		return res;
 	}
 
 

@@ -38,5 +38,15 @@ public class PaymentBizImpl extends SqlMapConfig implements PaymentBiz {
 		return dao.paymentListMy(member_email);
 	}
 
+	@Override
+	public List<PaymentDto> paymentListPaging(int startRow, int endRow) {
+		return dao.paymentListPaging(startRow, endRow);
+	}
+
+	@Override
+	public int getTotalCount() {
+		return dao.getTotalCount();
+	}
+
 	
 }
