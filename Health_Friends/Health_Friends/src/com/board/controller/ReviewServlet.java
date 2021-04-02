@@ -5,13 +5,19 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.board.biz.BoardBiz;
+import com.board.biz.BoardBizImpl;
+import com.board.dto.BoardDto;
 
 /**
  * Servlet implementation class ReviewServlet
@@ -36,9 +42,13 @@ public class ReviewServlet extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		
 		String command = request.getParameter("command");
+		BoardBiz biz = new BoardBizImpl();
 		
-		
-		if(command.equals("insertReview")) {
+		if(command.equals("list")) {
+			List<BoardDto> list = biz.photo_selectList();
+			request.setAttribute("list", list);
+			dispatch(request, response, "./views/board/photoReviewBoard.jsp");
+		} else if(command.equals("insertReview")) {
 				
 				
 		} else if(command.equals("multiimg")) {
@@ -92,6 +102,11 @@ public class ReviewServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	private void dispatch(HttpServletRequest request, HttpServletResponse response, String path) throws ServletException, IOException {
+		RequestDispatcher dispatch = request.getRequestDispatcher(path);
+		dispatch.forward(request, response);
 	}
 
 }

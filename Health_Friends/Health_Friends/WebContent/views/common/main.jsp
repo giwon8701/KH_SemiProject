@@ -50,7 +50,7 @@
 	
 	<section>
         <span>
-            <button class="main-button">
+            <button class="main-button" onclick="location.href='board.do?command=list'">
                 운동약속<br> 하러가기
             </button>
         </span>
