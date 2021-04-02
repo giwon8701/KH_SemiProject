@@ -43,14 +43,14 @@
 		ORDER BY PAYMENT_NO DESC
 	</select>
 	
-	<select id="paymentListPaging" parameterType="map" resultType="int">
+	<select id="paymentListPaging" parameterType="map" resultType="paymentDto">
 	<![CDATA[
 		SELECT B.PAYMENT_NO, B.MEMBER_EMAIL, B.PAYMENT_ACCOUNT, B.PAYMENT_DATE FROM
 		(SELECT ROWNUM AS RNUM, A.PAYMENT_NO, A.MEMBER_EMAIL, A.PAYMENT_ACCOUNT, A.PAYMENT_DATE FROM
 		(SELECT PAYMENT_NO, MEMBER_EMAIL, PAYMENT_ACCOUNT, PAYMENT_DATE FROM PAYMENT
 		ORDER BY PAYMENT_NO DESC) A
-		WHERE ROWNUM <= #{startRow} ) B
-		WHERE B.RNUM > #{endRow}
+		WHERE ROWNUM <= #{endRow} ) B
+		WHERE B.RNUM > #{startRow}
 	]]>
 	</select>
 	

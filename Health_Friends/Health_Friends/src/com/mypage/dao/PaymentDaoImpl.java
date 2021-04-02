@@ -77,12 +77,16 @@ public class PaymentDaoImpl extends SqlMapConfig implements PaymentDao{
 
 	@Override
 	public List<PaymentDto> paymentListPaging(int startRow, int endRow) {
-		List<PaymentDto> list = new ArrayList<PaymentDto>();
 		
-		Map<String, Integer> map = new HashMap<String, Integer>();
+		List<PaymentDto> list = new ArrayList<PaymentDto>();
+		endRow += startRow;
+		
+		Map<String, Object> map = new HashMap<>();
 		
 		map.put("startRow", startRow);
 		map.put("endRow", endRow);
+		
+		System.out.println("다오"+map);
 		
 		try(SqlSession session = getSqlSessionFactory().openSession(true);){
 			list = session.selectList(namespace+"paymentListPaging", map);
