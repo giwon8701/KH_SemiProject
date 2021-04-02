@@ -13,6 +13,7 @@
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width" , initial-scale="1">
 
 <title>우리 동네 운동 메이트 소개하기</title>
 
@@ -33,7 +34,7 @@
 	rel="stylesheet">
 <link rel="stylesheet" href="introduce.css">
 
-<script>
+<script type="text/javascript">
 	
 	// 글자 나타나기
 	$(document).ready(function(){
@@ -51,7 +52,7 @@
 	}
 
 	function handleScroll() {
-	  const elems = document.querySelectorAll('.title01, .title02, .subheading, .text-info, .text06, .text07');
+	  const elems = document.querySelectorAll('.title01, .title02, .text-danger, .text-info, .text06, .text07');
 	  elems.forEach(elem => {
 	    if (isElementUnderBottom(elem, 20)) {
 	      elem.style.opacity = "0";
@@ -64,9 +65,7 @@
 	    }
 	  })
 	}
-
-
-window.addEventListener('scroll', handleScroll);
+	window.addEventListener('scroll', handleScroll);
 	
 	// 슬라이드 기능
     $(document).ready(function(){
@@ -89,9 +88,12 @@ window.addEventListener('scroll', handleScroll);
     // 화면 위로 보내기
 	function scrollFunction() { 
     	var btn = document.getElementById('btn');
-    		if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) { btn.style.display = "block"; 
-    		} else { btn.style.display = "none"; } 
-    } 
+    	if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) { 
+    		btn.style.display = "block"; 
+    	} else { 
+    		btn.style.display = "none"; 
+    	} 
+    }
     
 	function GoTop() { 
 		window.scrollTo({top:0, behavior:'smooth'}); 
@@ -101,68 +103,23 @@ window.addEventListener('scroll', handleScroll);
 
 </head>
 <body>
+	
+	<!-- header 영역 시작 -->
 
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-					aria-expanded="false">
-					<span class="sr-only"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">소개하기</a>
-			</div>
-			<div class="collapse navbar-collapse"
-				id="bs-example-naver-collapse-1">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">메뉴<span class="sr-only"></span></a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">우리동네 운동 메이트<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#move01">함께해요</a>
-							<li><a href="#move02">운동 메이트 구하기</a></li>
-							<li><a href="#move03">적절한 운동 방법</a></li>
-							<li><a href="#move04">규칙적인 운동 계획</a></li>
-						</ul></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">오시는 길<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="location.jsp">교통과 지도</a></li>
-						</ul></li>
-				</ul>
-				<form class="navbar-form navbar-left">
-					<div class="form-group">
-						<input type="text" class="form=control" placeholder="내용을 입력하세요.">
-					</div>
-					<button type="submit" class="btn btn-default">검색</button>
-				</form>
-				<ul class="nav navbar=nav navbar-right">
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">접속하기<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">로그인</a></li>
-							<li><a href="#">회원가입</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+		<%@include file="../../views/common/header.jsp" %>
+
+<!-- header 영역 끝 -->
 	
 	<!-- 개요 시작 -->
+	<a name="move01"></a>
 	<div class=background01>
 		<br> <br> <br>
 		<div class="container01"><img src="https://image.freepik.com/free-photo/closeup-of-sport-shoes-on-concrete-path_273609-14253.jpg" style="width: 100%; height:auto;">
-			<a name="move01"></a>
-			<h1 class=text01>우리 동네 운동 메이트와 함께해요!</h1>
+			<h1 class="text01"><b>우리 동네 운동 메이트와 함께해요!</b></h1>
 			<br>
-			<h3 class=text02>우리 동네 운동 메이트는 이래서 만들어졌습니다.</h3>
+			<h3 class="text02" style="color: #00008B">우리 동네 운동 메이트는 이래서 만들어졌습니다.</h3>
 			<br> <br>
-			<h4 class=text03>
+			<h4 class="text03">
 				운동을 하고 싶지만 운동 메이트가 없어서 고민하시는 분을 위해,<br> <br> 운동을 하고 싶지만
 				방법을 몰라 시작을 못하시는 분들을 위해,<br> <br> 운동을 하고 싶지만 끈기가 없어서 쉽게
 				포기하시는 분을 위해,<br> <br>
@@ -176,6 +133,7 @@ window.addEventListener('scroll', handleScroll);
 	<br>
 	
 <!-- 사진 전환 기능 시작 -->
+
 	<div class="slider">
 		<div><img src="https://pusyap.com/wp-content/uploads/2018/01/%EC%9A%B4%EB%8F%99_%ED%96%89%EB%B3%B5_1.png" alt="슬라이드 사진"></div>
 		<div><img src="https://pusyap.com/wp-content/uploads/2018/01/%EC%9A%B4%EB%8F%99_%ED%96%89%EB%B3%B5_1.png" alt="슬라이드 사진"></div>
@@ -192,6 +150,8 @@ window.addEventListener('scroll', handleScroll);
 	<br>
 	<br>
 	<br>
+
+<hr>
 
 <!-- 소개하기 시작 -->
 <div class="background02">
@@ -213,9 +173,9 @@ window.addEventListener('scroll', handleScroll);
 
 			<div class="col-sm-5">
 				<br> <br> <a name="move02"></a>
-				<h1 class="title01" style="text-align: right">운동 메이트 구하기</h1>
+				<h1 class="title01" style="font-family: Jua, sans-serif; text-align: right">운동 메이트 구하기</h1>
 				<br>
-				<h2 class="subheading" style="text-align: right">
+				<h2 class="text-danger" style="text-align: right">
 					우리 동네 운동 메이트는<br>가까운 거리의 운동 메이트를<br>찾아줍니다
 				</h2>
 				<br> <br>
@@ -236,11 +196,11 @@ window.addEventListener('scroll', handleScroll);
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-5">
-				<br> <br> <br> <a name="move03"></a>
+				<br> <br> <br>
 				<h1 class="title02" style="font-family: Jua, sans-serif; text-align: left;">적절한 운동
 					방법</h1>
 				<br>
-				<h2 class="subheading" style="text-align: left" >
+				<h2 class="text-danger" style="text-align: left" >
 					우리 동네 운동 메이트는<br>적절한 운동 방법을<br>찾아줍니다
 				</h2>
 				<br> <br>
@@ -293,20 +253,20 @@ window.addEventListener('scroll', handleScroll);
 			</div>
 
 			<div class="col-sm-5">
-				<br> <br> <br> <a name="move04"></a>
+				<br> <br> <br>
 				<h1 class="title01"
 					style="font-family: Jua, sans-serif; text-align: right">규칙적인
 					운동 계획</h1>
 				<br>
-				<h2 class="subheading" style="text-align: right">
-					우리 동네 운동 메이트는<br>꾸준한 운동을 할 수 있도록<br>도움을 줍니다
+				<h2 class="text-danger" style="text-align: right">
+					우리 동네 운동 메이트는<br>규칙적인 운동을 할 수 있도록<br>도움을 줍니다
 				</h2>
 				<br>
 				<br>
 				<p class="text-muted">
 				<h4 class="text-info" style="text-align: right">
 					"스케쥴러를 통해 자신의 운동 일정을 스스로 정하여<br>
-					<br>꾸준한 운동 습관을 기룰 수 있도록 도와주고<br>
+					<br>규칙적인 운동 습관을 기룰 수 있도록 도와주고<br>
 					<br> 후기 게시판을 통해 좋은 정보를 공유하고<br>
 					<br>올바른 운동을 할 수 있도록 도움을 줍니다"
 				</h4>
@@ -317,18 +277,20 @@ window.addEventListener('scroll', handleScroll);
 </div>
 <!-- 소개하기 끝 -->
 
+<hr>
+
 <br>
 <br>
 <br>
 
 <!-- 조원 소개하기 시작 -->
-<div class="text06" style="font-size: 40px; text-align:center">우리 동네 운동 메이트 조원<br>
-<span class="text07" style="font-size: 25px; text-align:center">조원들을 소개합니다.</span>
+<div class="text06" style="font-size: 40px; text-align:center; color: black" ><b>우리 동네 운동 메이트 조원</b><br>
+<span class="text07" style="font-size: 25px; text-align:center; color: #8B0000">조원들을 소개합니다.</span>
 </div>
 
 <div class="wrapper">
 	<ul class="team">
-		<li class="team-item">
+		<li class="team-item"><a name="move03"></a>
 			<div class="profile profile_red">
 				<img
 					src="https://post-phinf.pstatic.net/MjAyMTAzMDFfMTkz/MDAxNjE0NTgwNjMyNTM3.2O-VrXmnSaD-hK2loLB9uC5975b8Fo074VC2uMOw_zcg.2qrNXPHxyh_QtmTbwfSDTtx9SvxAEG8AGhY_cI1WHfYg.JPEG/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2021-03-01_%EC%98%A4%ED%9B%84_3.36.54.jpg?type=w1200">
@@ -396,45 +358,48 @@ window.addEventListener('scroll', handleScroll);
 <br>
 <br>
 
-<div class="top"> 
-	<button id="btn" onClick="GoTop()">▲</button> 
-</div>
- <script type="text/javascript" src="script.js"></script>
+<div id="container"></div>
+	<div id="load" class="fa fa-circle-o-notch fa-spin"></div>
+		<div class="top"> 
+			<button id="btn" onClick="GoTop()">▲</button> 
+		</div>
+		<script type="text/javascript" src="script.js"></script>
 
 <!-- footer 시작 -->
-<footer style="background-color: #000000; color: #ffffff">
-
-	<div class="container">
-		<br>
-		<div class="row">
-			<div class="col-sm-3" style="text-align: left;">
-				<h5>Copyright &copy;</h5>
-				<h5>우리동네 운동메이트</h5>
+	<footer style="background-color: #000000; color: #ffffff">
+		<div class="container">
+			<br>
+			<div class="row">
+				<div class="col-sm-3" style="text-align: left;">
+					<h4>Copyright &copy;</h4>
+					<h5>우리동네 운동메이트</h5>
+				</div>
+				<div class="col-sm-3">
+					<h4>제작자 소개</h4>
+					<p>
+						조장 : 임기원<br> 조원 : 강원기 소윤정 지 연 손승현
+					</p>
+					<br>
+				</div>
+				<div class="col-sm-3">
+					<h4>문의사항</h4>
+					<p>
+						전화번호 : 000-0000-0000<br>
+						펙스 : 0000-0000-0000</br>
+						E-mail : khacademy@kh.com
+					</p>
+					<br>
+				</div>
+				<div class="col-sm-2">
+					<h4 style="text-align: center;">
+						<span class="glyphicon glyphicon-ok"></span>&nbsp; by 세미 5조
+					</h4>
+				</div>
 			</div>
-			<div class="col-sm-6">
-				<h4>조원 소개</h4>
-				<p>
-					조장 : 임기원<br> 조원 : 강원기 소윤정 지 연 손승현
-				</p>
-			</div>
-			<div class="col-sm-2">
-				<h4 style="text-align: left;">
-					<span class="glyphicon glyphicon-ok"></span>&nbsp; by 세미 5조
-				</h4>
-			</div>
-		</div>
-	</div>
-	<br>	
-	
-</footer>
+			</div>	
+	</footer>
 
 <!-- footer 끝 -->
 	
-<!-- 상단으로 이동하기 버튼 시작 -->
-<a href="#" class="btn_gotop"> <span
-	class="glyphicon glyphicon-chevron-up"> </span>
-</a>
-<!-- 상단으로 이동하기 버튼 끝 -->
-
 </body>
 </html>
