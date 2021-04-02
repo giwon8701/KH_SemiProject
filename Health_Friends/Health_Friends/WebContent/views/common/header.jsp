@@ -96,23 +96,26 @@ font-size : 18px;
 				
 				<form class="navbar-form navbar-left">
 					<div class="form-group">
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
 						<input type="text" class="form=control" placeholder="내용을 입력하세요." style="width:200px; height:33px; font-size:16px;">
 					</div>
 					<button type="submit" class="btn btn-default">검색</button>
 				</form>
 				
-				<ul class="nav navbar=nav navbar-right">
+				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">접속하기<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">로그인</a></li>
-							<li><a href="#">회원가입</a></li>
-							
-						</ul>
+							<li><a href="#"><span class="glyphicon glyphicon-user"></span>&emsp;로그인</a></li>
+							<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>&emsp;회원가입</a></li>
+						</ul>	
 					</li>
+				
 				</ul>
+				
 			</div>
+				<br>
 		</div>
 	</nav>
 
