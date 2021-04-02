@@ -120,7 +120,7 @@ color: hotpink;
 				<div class="inner">
 					<header>
 						<p style="font-size:40px"><b style="color:#FFD700">무료하시나요?</b></p>
-						<h2><b style="color:#FFFAF0">밖에 나가 달려보는 건 어떠신가요</b></h2>
+						<h2><b style="color:#FFFAF0">밖에 나가 달려보는 건 어떤가요</b></h2>
 					</header>
 				</div>
 			</article>
@@ -129,7 +129,7 @@ color: hotpink;
 				<div class="inner">
 					<header>
 						<p style="font-size:40px"><b style="color:#FFD700">외로우신가요?</b></p>
-						<h2><b style="color:#FFFAF0">가까운 동네 친구를 만나보는 건 어떠신가요</b></h2>
+						<h2><b style="color:#FFFAF0">가까운 동네 친구를 만나보는 건 어떤가요</b></h2>
 					</header>
 				</div>
 			</article>
@@ -138,7 +138,7 @@ color: hotpink;
 				<div class="inner">
 					<header>
 						<p style="font-size:40px"><b style="color:#FFD700">귀찮으신가요?</b></p>
-						<h2><b style="color:#FFFAF0">규칙적인 생활을 해보는 건 어떠신가요</b></h2>
+						<h2><b style="color:#FFFAF0">규칙적인 생활을 해보는 건 어떤가요</b></h2>
 					</header>
 				</div>
 			</article>
@@ -147,7 +147,7 @@ color: hotpink;
 				<div class="inner">
 					<header>
 						<p style="font-size:40px"><b style="color:#FFD700">우리동네 운동메이트</b></p>
-						<h2><b style="color:#FFFAF0" >접속해 보는 건 어떠신가요</b></h2>
+						<h2><b style="color:#FFFAF0" >접속해 보는 건 어떤가요</b></h2>
 					</header>
 				</div>
 			</article>
@@ -177,7 +177,7 @@ color: hotpink;
 <br><br>
 <p style="font-size: 20px; text-align:center;" class="text01">회원의 건강 증진을 최고의 가치로 삼으며 회원을 위해 최선을 다하자는 신념을 지켜 나가고 있는
 <br>우리 동네 운동 메이트는 2021년 우리동네 운동 메이트 제작을 필두로 게시판, 쇼핑하기,<br>
-채팅, 고객센터 등으로 구성된 헬스케어 웹 프로젝트입니다.
+채팅, 문의하기 등으로 구성된 헬스케어 웹 프로젝트입니다.
 </p>
 
 </div>
@@ -244,6 +244,7 @@ color: hotpink;
 <br>
 <br>
 <br>
+<<<<<<< Updated upstream
 <br>
 
 <div class="container">
@@ -257,6 +258,18 @@ color: hotpink;
 <br>
 
 <div class="board01" style="">
+=======
+
+<div class="container">
+<div class="" style="font-size: 35px; text-align:left; color: black" ><b>&nbsp;&nbsp;함께 해요</b>
+
+</div>
+<br>
+<br>
+
+
+		<div class="board01" style="">
+>>>>>>> Stashed changes
 		<ul class="board02" style="">
 			<li class="" style="">
 			</li>
@@ -265,7 +278,11 @@ color: hotpink;
 				<a href="" class="pic01"><img src="https://img4.yna.co.kr/photo/cms/2019/05/02/02/PCM20190502000402370_P2.jpg"></a>
 			</div>
 			<div class="board05">
+<<<<<<< Updated upstream
 				<h4 class="board06" style="text-align: center">산   책</h4>
+=======
+				<h4 class="board06" style="text-align: center">러  닝</h4>
+>>>>>>> Stashed changes
 				<a href="">상세보기 +</a>
 			</div>
 		</li>
@@ -276,7 +293,11 @@ color: hotpink;
 			</a>
 			</div>
 			<div class="board05">
+<<<<<<< Updated upstream
 				<h4 class="board06" style="text-align: center">러   닝</h4>
+=======
+				<h4 class="board06" style="text-align: center">싸이클</h4>
+>>>>>>> Stashed changes
 			<a href="">상세보기 +</a>
 			</div>
 		</li>
@@ -287,7 +308,11 @@ color: hotpink;
 			</a>
 			</div>
 			<div class="board05">
+<<<<<<< Updated upstream
 				<h4 class="board06" style="text-align: center">싸 이 클</h4>
+=======
+				<h4 class="board06" style="text-align: center">배드민턴</h4>
+>>>>>>> Stashed changes
 			<a href="">상세보기 +</a>
 			</div>
 		</li>

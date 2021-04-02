@@ -87,7 +87,7 @@ font-size : 18px;
 						</ul></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">&emsp;&nbsp;고객센터<span class="caret"></span></a>
+							aria-expanded="false">&emsp;&nbsp;문의하기<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="location.jsp">교통과 지도</a></li>
 						</ul>

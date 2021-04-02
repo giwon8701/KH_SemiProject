@@ -113,7 +113,6 @@
 	<!-- 개요 시작 -->
 	<a name="move01"></a>
 	<div class=background01>
-		<br> <br> <br>
 		<div class="container01"><img src="https://image.freepik.com/free-photo/closeup-of-sport-shoes-on-concrete-path_273609-14253.jpg" style="width: 100%; height:auto;">
 			<h1 class="text01"><b>우리 동네 운동 메이트와 함께해요!</b></h1>
 			<br>
