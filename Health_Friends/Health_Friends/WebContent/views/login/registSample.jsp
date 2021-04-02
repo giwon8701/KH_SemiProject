@@ -186,9 +186,10 @@
 	<h1>우리동네 운동친구</h1>
 	<h2>회원가입</h2>
 
-	<form action="../../regist.do" method="post" id="registform">
+	
 		<c:choose>
 			<c:when test="${empty dto}">
+			<form action="../../regist.do" method="post" id="registform">
 				<input type="hidden" name="command" value="registres">
 				<table>
 					<tr align="center">
@@ -287,6 +288,7 @@
 						</td>
 					</tr>
 				</table>
+			</form>
 			</c:when>
 			<c:otherwise>
 				<%
@@ -296,6 +298,7 @@
 					int mm = Integer.parseInt(Util.getMm(birthday));
 					int dd = Integer.parseInt(Util.getDd(birthday));
 				%>
+				<form action="regist.do" method="post" id="registform">
 				<input type="hidden" name="command" value="naverregistres">
 				<table>
 					<tr align="center">
@@ -399,9 +402,10 @@
 						</td>
 					</tr>
 				</table>
+			</form>
 			</c:otherwise>
 		</c:choose>
-	</form>
+	
 
 	<%@include file="../common/footer.jsp" %>
 
