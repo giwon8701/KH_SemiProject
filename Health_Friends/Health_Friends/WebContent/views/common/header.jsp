@@ -36,7 +36,7 @@ font-size : 18px;
 
 <body>
 
-<% RegistDto dto = (RegistDto) session.getAttribute("dto"); %>
+<% RegistDto Ldto = (RegistDto) session.getAttribute("Ldto"); %>
 
 <%--header 로그인 상황에 따라 다르게 나와야함...! --%>
 		<nav class="navbar navbar-light" style="background-color:#F8F8FF">
@@ -106,8 +106,8 @@ font-size : 18px;
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">접속하기<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">로그인</a></li>
-							<li><a href="#">회원가입</a></li>
+							<li><a href="regist.do?command=login">로그인</a></li>
+							<li><a href="regist.do?command=registForm">회원가입</a></li>
 							
 						</ul>
 					</li>

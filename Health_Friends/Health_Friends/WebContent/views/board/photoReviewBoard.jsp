@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("UTF-8");%>
 <%response.setContentType("text/html; charset=UTF-8"); %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,13 +31,15 @@ img{
 	<h2>사진후기</h2>
 	
 	<section id="photoReviewBoard_list">
-		<a href="">
-			<img alt="" src="">
-			<br/>
-			임시게이글제목	<br/>
-			닉네임
-		</a>
-
+		<table border="1">
+			<c:forEach items="${list }" var="dto">
+				<tr>
+					<td><img src="../../reviewimg/<%=%>?"></td>
+					<td>${dto.postTitle}</td>
+					<td>${dto.postContent}</td>
+				</tr>
+			</c:forEach>
+		</table>
 	</section>
 	
 	
