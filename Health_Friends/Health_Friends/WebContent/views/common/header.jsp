@@ -17,7 +17,7 @@
 <link href="assets/css/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<% RegistDto Ldto = (RegistDto) session.getAttribute("dto"); %>
+<% RegistDto Ldto = (RegistDto) session.getAttribute("Ldto"); %>
 
 <%--header 로그인 상황에 따라 다르게 나와야함...! --%>
 		<!-- Header -->
