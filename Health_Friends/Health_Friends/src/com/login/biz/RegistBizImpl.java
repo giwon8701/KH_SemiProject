@@ -1,8 +1,5 @@
 package com.login.biz;
 
-import java.util.List;
-import java.util.Map;
-
 import com.login.dao.RegistDao;
 import com.login.dao.RegistDaoImpl;
 import com.login.dto.RegistDto;
@@ -13,8 +10,8 @@ public class RegistBizImpl implements RegistBiz {
 	RegistDao dao = new RegistDaoImpl();
 
 	@Override
-	public int registCheck(String member) {
-		return dao.registCheck(member);
+	public int registCheck(String member, String check) {
+		return dao.registCheck(member, check);
 	}
 	
 	@Override

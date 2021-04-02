@@ -47,23 +47,15 @@ public class RegistServlet extends HttpServlet {
 		} else if(command.equals("idCheck")) {
 			String memberId = request.getParameter("memberId");
 			
-			int cnt = biz.registCheck(memberId);
-			
-			PrintWriter out = response.getWriter();
-			out.println(cnt);
-			
-		} else if(command.equals("phoneCheck")) {
-			String memberPhone = request.getParameter("memberPhone");
-
-			int cnt = biz.registCheck(memberPhone);
+			int cnt = biz.registCheck(memberId, "id");
 			
 			PrintWriter out = response.getWriter();
 			out.println(cnt);
 			
 		} else if(command.equals("emailCheck")) {
 			String memberEmail = request.getParameter("memberEmail");
-			
-			int cnt = biz.registCheck(memberEmail);
+			System.out.println("memberEmail: " + memberEmail);
+			int cnt = biz.registCheck(memberEmail, "email");
 			PrintWriter out = response.getWriter();
 			out.println(cnt);
 			
