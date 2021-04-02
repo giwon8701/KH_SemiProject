@@ -52,7 +52,7 @@
 <script type="text/javascript" src="assets/js/chart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<% RegistDto Ldto = (RegistDto) session.getAttribute("dto"); %>
+<% RegistDto Ldto = (RegistDto) session.getAttribute("Ldto"); %>
 <style type="text/css">
 	#profile-img{
 		width: 150px;
@@ -99,7 +99,7 @@
 						<td align="center"><%=Ldto.getMember_role() %></td>
 						<td align="center">
 							<c:choose>
-								<c:when test="${dto.getMember_review() == 0}">
+								<c:when test="${Ldto.getMember_review() == 0}">
 									----------
 								</c:when>
 								<c:otherwise>

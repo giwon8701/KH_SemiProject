@@ -12,7 +12,7 @@
 </head>
 <body>
 <%--캘린더 게시판 insert --%>
-<% RegistDto Ldto = (RegistDto) session.getAttribute("dto"); %>
+<% RegistDto Ldto = (RegistDto) session.getAttribute("Ldto"); %>
 <%
 
 	Calendar cal = Calendar.getInstance();

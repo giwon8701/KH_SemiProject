@@ -13,7 +13,7 @@
 </head>
 <body>
 <%-- 결제페이지인데 추후에 조금더 자세하게 수정해야함! --%>
-<% RegistDto Ldto = (RegistDto) session.getAttribute("dto"); %>
+<% RegistDto Ldto = (RegistDto) session.getAttribute("Ldto"); %>
 <%
 	int price = 7900;
 %>

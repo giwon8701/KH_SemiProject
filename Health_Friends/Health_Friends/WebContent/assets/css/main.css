@@ -1,6 +1,5 @@
 @charset "UTF-8";
 @import url(font-awesome.min.css);
-@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
 
 
 /* Reset */
@@ -40,95 +39,12 @@
 	}
 
 
-/* Box */
-
-	.box {
-		margin-bottom: 2rem;
-		background: #FFF;
-	}
-
-
-	.box {
-		border-color: rgba(144, 144, 144, 0.25);
-	}
-
-/* Icon */
-
-	.icon {
-		text-decoration: none;
-		border-bottom: none;
-		position: relative;
-	}
-
-		.icon:before {
-			-moz-osx-font-smoothing: grayscale;
-			-webkit-font-smoothing: antialiased;
-			font-family: FontAwesome;
-			font-style: normal;
-			font-weight: normal;
-			text-transform: none !important;
-		}
-
-		.icon > .label {
-			display: none;
-		}
-
-
-
-/* Section/Article */
-
-	section.special, article.special {
-		text-align: center;
-	}
-
-	header p {
-		position: relative;
-		margin: 0 0 1.5rem 0;
-	}
-
-	header h2 + p {
-		font-size: 1.25rem;
-		margin-top: -1rem;
-	}
-
-	header h3 + p {
-		font-size: 1.1rem;
-		margin-top: -0.8rem;
-	}
-
-	header h4 + p,
-	header h5 + p,
-	header h6 + p {
-		font-size: 0.9rem;
-		margin-top: -0.6rem;
-	}
-
-	header p {
-		color: #bbb;
-	}
-
-
-/* Wrapper */
-
-	.wrapper {
-		padding: 6rem 0 4rem 0 ;
-		position: relative;
-		margin: 0;
-	}
-
-		section > .inner {
-			margin: 0 auto;
-			width: 80rem;
-			height: 20rem;
-		}
 
 
 
 
 
 /* Header */
-
-
 	.header-list{
 		float:left;
 	}
@@ -205,30 +121,6 @@
 	}
 	
 	
-	/* Image */
-	
-	
-	.main-board-table{
-		margin-left: auto;
-		margin-right: auto;
-		text-align: center;
-		vertical-align: middle;
-	}
-	
-	.main-board-table img{
-		width: 20px;
-		height: 20px;
-	}
-
-	.main-board-table .profile{
-		width: 100px;
-		height: 100px;
-		border-radius: 100px;
-	}
-
-
-
-
 
 
 
@@ -238,8 +130,10 @@
 		padding-top: 3.25em;
 	}
 
+
+    /* 헤더에서 제일 중요한 효과!! */
 	#header {
-		background: rgba(255, 255, 255, 0.975);
+		background: rgba(255, 255, 255, 0);
 		color: #a6a6a6;
 		cursor: default;
 		height: 4em;
@@ -253,414 +147,60 @@
 		z-index: 10001;
 	}
 
-		#header > .logo {
-			display: inline-block;
-			height: inherit;
-			left: 1.25em;
-			line-height: inherit;
-			margin: 0;
-			padding: 0;
-			position: absolute;
-			top: 0;
-		}
-
-			#header > .logo a {
-				font-size: 1.25em;
-				color: rgb(0, 0, 0);
-				text-decoration: none;
-			}
-
-				#header > .logo a:hover {
-					color: rgba(200, 200, 200, 0.65);
-				}
-
-			#header > .logo span {
-				font-weight: 400;
-				font-size: .8em;
-				color: rgba(0, 0, 0, 0.65);
-			}
-
-		#header > a, #header > .header-list > a{
-			-moz-transition: color 0.2s ease-in-out;
-			-webkit-transition: color 0.2s ease-in-out;
-			-ms-transition: color 0.2s ease-in-out;
-			transition: color 0.2s ease-in-out;
-			display: inline-block;
-			padding: 0 0.75em;
-			color: inherit;
-			text-decoration: none;
-			color: #000;
-		}
-
-			#header > a:hover , #header > .header-list > a:hover{
-				color: #b4b4b4;
-			}
 
 
+    /* 로고 효과 */
 
-			#header > a:last-child {
-				padding-right: 1.25em;
-			}
-
-
-			#header > .header-list > a:first-child{
-				padding-left: 15em;
-			}
-
-			@media screen and (max-width: 736px) {
-
-				#header > a {
-					padding: 0 0.5em;
-				}
-
-					#header > a:last-child {
-						padding-right: 1em;
-					}
-
-			}
-		/* 맨위에 있는 헤더바 테두리? 없애기
-		#header.reveal {
-			-moz-animation: reveal-header 0.5s ease;
-			-webkit-animation: reveal-header 0.5s ease;
-			-ms-animation: reveal-header 0.5s ease;
-			animation: reveal-header 0.5s ease;
-		}
-		
-		#header.alt {
-			-moz-animation: none;
-			-webkit-animation: none;
-			-ms-animation: none;
-			animation: none;
-			background-color: transparent;
-			box-shadow: none;
-			overflow: hidden;
-			position: absolute;
-			top: 1.5em;
-		}*/
-
-			#header.alt h1 {
-				left: 2.5em;
-			}
-
-
-
-	@media screen and (max-width: 980px) {
-
-		body.subpage {
-			padding-top: 44px;
-		}
-
-		#header {
-			height: 44px;
-			line-height: 44px;
-		}
-
-			#header > h1 {
-				left: 1em;
-			}
-
-				#header > h1 a {
-					font-size: 1em;
-				}
-
+	#header > .logo {
+		display: inline-block;
+		height: inherit;
+		left: 1.25em;
+		line-height: inherit;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		top: 0;
 	}
 
-	@media screen and (max-width: 480px) {
+	#header > .logo a {
+		font-size: 1.25em;
+		color: rgb(0, 0, 0);
+		text-decoration: none;
+	}
 
-		#header {
-			min-width: 320px;
-		}
-
+	#header > .logo a:hover {
+		color: rgba(200, 200, 200, 0.65);
 	}
 
 
-/* Banner */
-
-	.banner {
-		background-color: #000000;
-		color: #e2d1df;
-		padding: 8em 0;
-		position: relative;
+        
+	#header > .logo span {
+		font-weight: 400;
+		font-size: .8em;
+		color: rgba(0, 0, 0, 0.65);
 	}
 
-		.banner input, .banner select, .banner textarea {
-			color: #ffffff;
-		}
 
-		.banner a {
-			color: #ffffff;
-		}
-
-		.banner strong, .banner b {
-			color: #ffffff;
-		}
-
-		.banner h1, .banner h2, .banner h3, .banner h4, .banner h5, .banner h6 {
-			color: #ffffff;
-		}
-
-		.banner blockquote {
-			border-left-color: rgba(255, 255, 255, 0.25);
-		}
-
-		.banner code {
-			background: rgba(255, 255, 255, 0.075);
-			border-color: rgba(255, 255, 255, 0.25);
-		}
-
-		.banner hr {
-			border-bottom-color: rgba(255, 255, 255, 0.25);
-		}
-
-		.banner.full {
-			padding: 0;
-			min-height: 100vh;
-			height: 100vh !important;
-		}
-
-		.banner.half {
-			padding: 0;
-			min-height: 50vh;
-			height: 50vh !important;
-		}
-
-		.banner:after {
-			-moz-pointer-events: none;
-			-webkit-pointer-events: none;
-			-ms-pointer-events: none;
-			pointer-events: none;
-			-moz-transition: opacity 1.5s ease-in-out, visibility 1.5s;
-			-webkit-transition: opacity 1.5s ease-in-out, visibility 1.5s;
-			-ms-transition: opacity 1.5s ease-in-out, visibility 1.5s;
-			transition: opacity 1.5s ease-in-out, visibility 1.5s;
-			background: #000000;
-			content: '';
-			display: block;
-			height: 100%;
-			left: 0;
-			opacity: 0;
-			position: absolute;
-			top: 0;
-			visibility: hidden;
-			width: 100%;
-			z-index: 2;
-		}
-
-		.banner .indicators {
-			bottom: 1.5em;
-			left: 0;
-			list-style: none;
-			margin: 0;
-			padding: 0;
-			position: absolute;
-			text-align: center;
-			width: 100%;
-			z-index: 2;
-		}
-
-			.banner .indicators li {
-				cursor: pointer;
-				display: inline-block;
-				height: 2em;
-				overflow: hidden;
-				padding: 0;
-				position: relative;
-				text-indent: 2em;
-				width: 2em;
-			}
-
-				.banner .indicators li:before {
-					background: rgba(255, 255, 255, 0.35);
-					border-radius: 100%;
-					content: '';
-					display: inline-block;
-					height: 0.8em;
-					left: 50%;
-					margin: -0.4em 0 0 -0.4em;
-					position: absolute;
-					text-indent: 0;
-					top: 50%;
-					width: 0.8em;
-				}
-
-				.banner .indicators li.visible:before {
-					background: #fff;
-				}
-
-		.banner > article {
-			-moz-transition: opacity 1.5s ease, visibility 1.5s;
-			-webkit-transition: opacity 1.5s ease, visibility 1.5s;
-			-ms-transition: opacity 1.5s ease, visibility 1.5s;
-			transition: opacity 1.5s ease, visibility 1.5s;
-			background-attachment: fixed;
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: cover;
-			height: 100%;
-			left: 0;
-			opacity: 0;
-			position: absolute;
-			text-align: center;
-			top: 0;
-			visibility: hidden;
-			width: 100%;
-			z-index: 0;
-		}
-
-			.banner > article:before {
-				content: '';
-				display: inline-block;
-				height: 100%;
-				vertical-align: middle;
-			}
-
-			.banner > article:after {
-				content: '';
-				display: block;
-				width: 100%;
-				height: 100%;
-				position: absolute;
-				top: 0;
-				left: 0;
-				background: #000;
-				opacity: 0.35;
-			}
-
-			.banner > article .inner {
-				position: relative;
-				display: inline-block;
-				vertical-align: middle;
-				z-index: 1;
-			}
-
-				.banner > article .inner > :last-child {
-					margin-bottom: 0;
-				}
-
-			.banner > article h2 {
-				font-size: 7rem;
-				margin-bottom: 0;
-				color: #FFF;
-				font-weight: 300;
-			}
-
-				.banner > article h2:after {
-					display: none;
-				}
-
-			.banner > article p {
-				color: rgba(255, 255, 255, 0.65);
-				text-transform: uppercase;
-				font-size: 1rem;
-				font-weight: 300;
-				margin: 0;
-				padding-bottom: 1.75rem;
-				letter-spacing: .25rem;
-			}
-
-				.banner > article p:after {
-					content: '';
-					position: absolute;
-					margin: auto;
-					right: 0;
-					bottom: 0;
-					left: 0;
-					width: 50%;
-					height: 1px;
-					background-color: rgba(255, 255, 255, 0.65);
-				}
-
-			.banner > article a {
-				color: #FFF;
-				text-decoration: none;
-			}
-
-			.banner > article img {
-				display: none;
-			}
-
-			.banner > article.visible {
-				opacity: 1;
-				visibility: visible;
-			}
-
-			.banner > article.top {
-				z-index: 1;
-			}
-
-			.banner > article.instant {
-				-moz-transition: none !important;
-				-webkit-transition: none !important;
-				-ms-transition: none !important;
-				transition: none !important;
-			}
-
-
-		/* 비율을 맞출건지 최대 길이를 맞출건지 */
-		@media screen and (max-width: 1280px) {
-
-			.banner.full {
-				padding: 0;
-				min-height: 75vh;
-				height: 75vh !important;
-			}
-
-		}
-
-
-
-
-
-		body.is-mobile .banner > article {
-			background-attachment: scroll;
-		}
-
-/* Main */
-
-	#main {
-		padding: 4rem 0 2rem 0 ;
+/* a태그 효과 */
+	#header > a, #header > .header-list > a{
+		-moz-transition: color 0.2s ease-in-out;
+		-webkit-transition: color 0.2s ease-in-out;
+		-ms-transition: color 0.2s ease-in-out;
+		transition: color 0.2s ease-in-out;
+		display: inline-block;
+		padding: 0 0.75em;
+		color: inherit;
+		text-decoration: none;
+		color: #000;
 	}
 
-		@media screen and (max-width: 736px) {
 
-			#main {
-				padding: 3rem 0 1rem 0 ;
-			}
-
-		}
-
-
-
-/* Footer */
-
-	#footer {
-		padding: 4rem 0 2rem 0 ;
-		background: #000;
-		text-align: center;
+/* 헤더 호버 */
+	#header > a:hover , #header > .header-list > a:hover{
+		color: #b4b4b4;
 	}
 
-		#footer a {
-			color: rgba(255, 255, 255, 0.5);
-		}
+	#header > .header-list > a:first-child{
+		padding-left: 15em;
+	}
 
-			#footer a:hover {
-				color: #FFF;
-			}
-
-		#footer .copyright {
-			color: #bbb;
-			font-size: 0.9rem;
-			margin: 0 0 2rem 0;
-			padding: 0;
-			text-align: center;
-		}
-
-		@media screen and (max-width: 736px) {
-
-			#footer {
-				padding: 3rem 0 1rem 0 ;
-			}
-
-		}
-
-		

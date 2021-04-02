@@ -109,7 +109,7 @@
 </script>
 </head>
 <body>
-	<% RegistDto Ldto = (RegistDto)session.getAttribute("dto"); %>
+	<% RegistDto Ldto = (RegistDto) session.getAttribute("Ldto"); %>
 
 	<h1>회원 정보 수정</h1>
 

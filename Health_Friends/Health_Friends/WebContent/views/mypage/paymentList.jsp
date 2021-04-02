@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% RegistDto Ldto = (RegistDto) session.getAttribute("dto"); %>
+<% RegistDto Ldto = (RegistDto) session.getAttribute("Ldto"); %>
 <%
 	List<PaymentDto> list = (List<PaymentDto>) request.getAttribute("list");
 %>
