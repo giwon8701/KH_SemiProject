@@ -33,14 +33,21 @@
 
 .pic01 > img {
 	width: 240px;
-	height: 280px
+	height: 280px;
+	display: block; margin: 0px auto;
 }
 
 ul, ol {
 list-style: none;
 }
 
-.board02 .board03 { list-style-type: none; float: left;}
+.board02 {
+ 
+}
+.board03 { 
+height:100%; width:25%; float:left; left: 50%;;
+
+}
 
 .board01 .board03 .board05 a {
     display: block;
@@ -113,7 +120,7 @@ color: hotpink;
 				<div class="inner">
 					<header>
 						<p style="font-size:40px"><b style="color:#FFD700">무료하시나요?</b></p>
-						<h2><b style="color:#FFFAF0">밖에 나가 달려보는 건 어떠신가요</b></h2>
+						<h2><b style="color:#FFFAF0">밖에 나가 달려보는 건 어떤가요</b></h2>
 					</header>
 				</div>
 			</article>
@@ -122,7 +129,7 @@ color: hotpink;
 				<div class="inner">
 					<header>
 						<p style="font-size:40px"><b style="color:#FFD700">외로우신가요?</b></p>
-						<h2><b style="color:#FFFAF0">가까운 동네 친구를 만나보는 건 어떠신가요</b></h2>
+						<h2><b style="color:#FFFAF0">가까운 동네 친구를 만나보는 건 어떤가요</b></h2>
 					</header>
 				</div>
 			</article>
@@ -131,7 +138,7 @@ color: hotpink;
 				<div class="inner">
 					<header>
 						<p style="font-size:40px"><b style="color:#FFD700">귀찮으신가요?</b></p>
-						<h2><b style="color:#FFFAF0">규칙적인 생활을 해보는 건 어떠신가요</b></h2>
+						<h2><b style="color:#FFFAF0">규칙적인 생활을 해보는 건 어떤가요</b></h2>
 					</header>
 				</div>
 			</article>
@@ -140,7 +147,7 @@ color: hotpink;
 				<div class="inner">
 					<header>
 						<p style="font-size:40px"><b style="color:#FFD700">우리동네 운동메이트</b></p>
-						<h2><b style="color:#FFFAF0" >접속해 보는 건 어떠신가요</b></h2>
+						<h2><b style="color:#FFFAF0" >접속해 보는 건 어떤가요</b></h2>
 					</header>
 				</div>
 			</article>
@@ -170,7 +177,7 @@ color: hotpink;
 <br><br>
 <p style="font-size: 20px; text-align:center;" class="text01">회원의 건강 증진을 최고의 가치로 삼으며 회원을 위해 최선을 다하자는 신념을 지켜 나가고 있는
 <br>우리 동네 운동 메이트는 2021년 우리동네 운동 메이트 제작을 필두로 게시판, 쇼핑하기,<br>
-채팅, 고객센터 등으로 구성된 헬스케어 웹 프로젝트입니다.
+채팅, 문의하기 등으로 구성된 헬스케어 웹 프로젝트입니다.
 </p>
 
 </div>
@@ -188,7 +195,6 @@ color: hotpink;
 			<div class="board04">
 				<a href="" class="pic01"><img src="https://img4.yna.co.kr/photo/cms/2019/05/02/02/PCM20190502000402370_P2.jpg"></a>
 			</div>
-			<br>
 			<div class="board05">
 				<h4 class="board06" style="text-align: center">동행 게시판</h4>
 				<a href="">상세보기 +</a>
@@ -200,7 +206,6 @@ color: hotpink;
 			<a href="" class="pic01"><img src="https://img4.yna.co.kr/photo/cms/2019/05/02/02/PCM20190502000402370_P2.jpg">
 			</a>
 			</div>
-			<br>
 			<div class="board05">
 				<h4 class="board06" style="text-align: center">후기 게시판</h4>
 			<a href="">상세보기 +</a>
@@ -212,9 +217,87 @@ color: hotpink;
 			<a href="" class="pic01"><img src="https://img4.yna.co.kr/photo/cms/2019/05/02/02/PCM20190502000402370_P2.jpg">
 			</a>
 			</div>
-			<br>
 			<div class="board05">
 				<h4 class="board06" style="text-align: center">쇼핑 하기</h4>
+			<a href="">상세보기 +</a>
+			</div>
+		</li>
+		
+		<li class="board03">
+			<div class="board04">
+			<a href="shopping.do?command=shopping" class="pic01"><img src="https://img4.yna.co.kr/photo/cms/2019/05/02/02/PCM20190502000402370_P2.jpg">
+			</a>
+			</div>
+			<div class="board05">
+				<h4 class="board06" style="text-align: center">문의 하기</h4>
+			<a href="shopping.do?command=shopping">상세보기 +</a>
+			</div>
+		</li>
+		
+		</ul>
+		
+
+		
+	</div>
+</div>
+
+<br>
+<br>
+<br>
+<<<<<<< Updated upstream
+<br>
+
+<div class="container">
+<div class="text01" style="font-size: 40px; text-align:center; color: black" ><b>함께 해요</b>
+<br>
+<span class="text01" style="font-size: 25px; text-align:center">
+나와 같은 취미를 가진 친구들을 만나보세요.</span>
+</div>
+<br>
+<br>
+<br>
+
+<div class="board01" style="">
+=======
+
+<div class="container">
+<div class="" style="font-size: 35px; text-align:left; color: black" ><b>&nbsp;&nbsp;함께 해요</b>
+
+</div>
+<br>
+<br>
+
+
+		<div class="board01" style="">
+>>>>>>> Stashed changes
+		<ul class="board02" style="">
+			<li class="" style="">
+			</li>
+		<li class="board03">
+			<div class="board04">
+				<a href="" class="pic01"><img src="https://img4.yna.co.kr/photo/cms/2019/05/02/02/PCM20190502000402370_P2.jpg"></a>
+			</div>
+			<div class="board05">
+<<<<<<< Updated upstream
+				<h4 class="board06" style="text-align: center">산   책</h4>
+=======
+				<h4 class="board06" style="text-align: center">러  닝</h4>
+>>>>>>> Stashed changes
+				<a href="">상세보기 +</a>
+			</div>
+		</li>
+		
+		<li class="board03">
+			<div class="board04">
+			<a href="" class="pic01"><img src="https://img4.yna.co.kr/photo/cms/2019/05/02/02/PCM20190502000402370_P2.jpg">
+			</a>
+			</div>
+			<div class="board05">
+<<<<<<< Updated upstream
+				<h4 class="board06" style="text-align: center">러   닝</h4>
+=======
+				<h4 class="board06" style="text-align: center">싸이클</h4>
+>>>>>>> Stashed changes
 			<a href="">상세보기 +</a>
 			</div>
 		</li>
@@ -224,35 +307,41 @@ color: hotpink;
 			<a href="" class="pic01"><img src="https://img4.yna.co.kr/photo/cms/2019/05/02/02/PCM20190502000402370_P2.jpg">
 			</a>
 			</div>
-			<br>
 			<div class="board05">
-				<h4 class="board06" style="text-align: center">고객 센터</h4>
+<<<<<<< Updated upstream
+				<h4 class="board06" style="text-align: center">싸 이 클</h4>
+=======
+				<h4 class="board06" style="text-align: center">배드민턴</h4>
+>>>>>>> Stashed changes
 			<a href="">상세보기 +</a>
+			</div>
+		</li>
+		
+		<li class="board03">
+			<div class="board04">
+			<a href="shopping.do?command=shopping" class="pic01"><img src="https://img4.yna.co.kr/photo/cms/2019/05/02/02/PCM20190502000402370_P2.jpg">
+			</a>
+			</div>
+			<div class="board05">
+				<h4 class="board06" style="text-align: center">반려견과 산책</h4>
+			<a href="shopping.do?command=shopping">상세보기 +</a>
 			</div>
 		</li>
 		
 		</ul>
 	</div>
-</div>
+	</div>
+	
 		
 
 <%-- --%>
 		<section>
 			<span>
 				<button class="main-button">
-					운동약속<br> 하러가기
+					<b>운동약속<br> 하러가기</b>
 				</button>
 			</span>
 		</section>
-	
-
-	
-
-	
-	
-	
-	
-	
 	
 		<!-- Section 나중에 세로길이 css 건들때 main.css에서 line-height: 2em; 수정-->
 		

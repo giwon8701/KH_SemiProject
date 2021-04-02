@@ -1,22 +1,81 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%request.setCharacterEncoding("UTF-8");%>
-<%response.setContentType("text/html; charset=UTF-8");%>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
+<%
+	response.setContentType("text/html; charset=UTF-8");
+%>
 
 <!DOCTYPE html>
 <html>
 <head>
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
-// div에 담아줘서 dom을 재구축해줌
-let wrapper = document.createElement('div');
-let cnt = 0;
-let result;
+
+
+	function goSearch(event) {
+
+		event.preventDefault();
+		var command = "search";
+		var search = $("#txt_search").val();
+		var keyword = encodeURIComponent(search);
+
+		if (!keyword) {
+			alert("먼저 검색어를 입력해 주십시오");
+			return false;
+		}
+		if (keyword) {
+
+						$.ajax({
+									url : "../../shopping.do",
+									method : "GET",
+									data : {
+										"command" : "search",
+										"keyword" : keyword,
+										"responseBody" : "responseBody"
+									},
+									dataType : "json",
+									success : function(msg) {
+			
+										var list = msg.result;
+										
+										$('#start').html("");
+										
+										for (var i = 0; i < list.length; i++) {
+											
+											$('#start').append(
+													'<div class="col-md-3 col-sm-6"> <div class="product-grid3"> <div class="product-image3"> <a href="' + list[i].link + '" target=_sub > <img class="pic" src="' + list[i].image + '" + ""> </a> </div> <div class="product-content"> <h3 class="title">' + list[i].title + '</a> </h3> <div class="price"> 최저가 : ' + list[i].lprice + '원 </div> <br> </div> </div> </div>');
+					
+										}
+									},
+									error : function() {
+										alert("통신 실패");
+									}
+								});
+		}
+		
+		var count = 0;
+		window.onscroll = function(e) {
+
+			if (list.length > 19) {
+				if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+
+					//실행할 로직 (콘텐츠 추가)
+					count++;
+				}
+			}
+		};
+	}
+
 	
-	// 검색기능
 	function getSearch() {
 		let command = "search";
 		let search = $("#txt_search").val();
@@ -37,6 +96,10 @@ let result;
 		
 	}
 
+	// div에 담아줘서 dom을 재구축해줌
+	let wrapper = document.createElement('div');
+	let cnt = 0;
+	let result;
 	// 엔터 쳤을때 검색기능 실행
 	async function enter_event(event) {
 		event.preventDefault();
@@ -54,12 +117,25 @@ let result;
 			// dom에 추가로 씌워진 div태그를 firstChild로 벗겨줌
 			document.getElementById("start").append(wrapper.firstChild);
 		}
+
 		await scrollend();
+	
+	}
+	
+	// 화면 위로 보내기
+	function scrollFunction() {
+		var btn = document.getElementById('btn');
+		if (document.body.scrollTop > 20
+				|| document.documentElement.scrollTop > 20) {
+			btn.style.display = "block";
+		} else {
+			btn.style.display = "none";
+		}
 	}
 	
 
-	// 스크롤의 끝 감지했을 때 무한스크롤
 	async function scrollend() {
+		// 무한스크롤
 		window.onscroll = await function(ev) {
     		if (((window.innerHeight + window.scrollY) >= document.body.offsetHeight) && result.length > cnt) {
     			let max = cnt + 20;
@@ -79,18 +155,7 @@ let result;
 		};
 	}
 	
-	
-	// 화면 위로 보내기
-	function scrollFunction() {
-		var btn = document.getElementById('btn');
-		if (document.body.scrollTop > 20
-				|| document.documentElement.scrollTop > 20) {
-			btn.style.display = "block";
-		} else {
-			btn.style.display = "none";
-		}
-	}
-	
+
 	function GoTop() {
 		window.scrollTo({
 			top : 0,
