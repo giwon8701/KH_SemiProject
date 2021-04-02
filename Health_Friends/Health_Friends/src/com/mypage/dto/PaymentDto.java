@@ -40,7 +40,6 @@ public class PaymentDto {
 	}
 	public PaymentDto() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 

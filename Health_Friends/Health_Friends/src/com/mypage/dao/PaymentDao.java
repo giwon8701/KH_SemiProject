@@ -11,4 +11,5 @@ public interface PaymentDao {
 	public int paymentDowndate(RegistDto dto);
 	public int paymentInsert(PaymentDto dto);
 	public List<PaymentDto> paymentList();
+	public List<PaymentDto> paymentListMy(String member_email);
 }

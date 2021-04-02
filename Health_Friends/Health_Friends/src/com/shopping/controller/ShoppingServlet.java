@@ -35,14 +35,13 @@ public class ShoppingServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 
 		String command = request.getParameter("command");
-		String keyword = URLEncoder.encode(request.getParameter("keyword"), "UTF-8");
 		System.out.println(command);
-		System.out.println(keyword);
 
 		if (command.equals("shopping")) {
 			response.sendRedirect("./views/shopping/view.jsp");
 			
 		} else if (command.equals("search")) {
+			String keyword = URLEncoder.encode(request.getParameter("keyword"), "UTF-8");
 			String clientId = "_3AIU523fsl3259zT1M3";
 			String clientSecret = "TaDZyyf7Z7";
 

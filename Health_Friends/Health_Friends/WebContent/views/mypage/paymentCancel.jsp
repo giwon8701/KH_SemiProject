@@ -16,7 +16,7 @@
 	</tr>
 	<tr>
 		<td>
-			<input type="button" value="프리미엄 취소" onclick="location.href='../../payment.do?command=paymentDowndate&member_email=<%=Ldto.getMember_email()%>'"/>
+			<input type="button" value="프리미엄 탈퇴" onclick="location.href='../../payment.do?command=paymentDowndate&member_email=<%=dto.getMember_email()%>'"/>
 			<input type="button" value="돌아가기" onclick="location.href='mypage.jsp'"/>
 		</td>
 	</tr>
