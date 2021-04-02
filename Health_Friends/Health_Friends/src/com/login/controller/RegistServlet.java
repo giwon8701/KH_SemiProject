@@ -102,7 +102,7 @@ public class RegistServlet extends HttpServlet {
 		} else if(command.equals("naverregistres")) {
 			String memberGender = request.getParameter("memberGender");
 			String memberId = request.getParameter("memberId");
-			String memberPw = getHash(request.getParameter("memberPw"));
+			String memberPw = getHash(request.getParameter("memberPw")+memberId);
 			String memberName = request.getParameter("memberName");
 			
 			String year = request.getParameter("year");

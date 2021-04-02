@@ -29,8 +29,8 @@
 	</section>
  	
 	<section id="photoReview_writePost">
-		<form action="" method="post">
-			<input type="hidden" name="command" value=""/>
+		<form action="../../board.do" method="post">
+			<input type="hidden" name="command" value="insertReview"/>
 			<table border="1">
 				<tr>
 					<th colspan="3">사진후기</th>
@@ -41,14 +41,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3">
-						사진올리기	<br/>
-						<a href="">클릭!</a>
-					</td>
-				</tr>
-				<tr>
 					<td colspan="3" id="Board_writeContent">
-						<textarea id="se2" name="se2" class="smarteditor2"></textarea>
+						<textarea id="se2" name="se2" class="smarteditor2" ></textarea>
 					</td>
 				</tr>
 			</table>

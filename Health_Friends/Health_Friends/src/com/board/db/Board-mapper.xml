@@ -54,6 +54,10 @@
 		,null, SYSDATE,#{postHit},#{postCommentHit},#{postLike},'N',#{postLatitude},#{postLongitude})
 	</insert>
 	
-	
+	<select id="photo_thumnail" parameterType="int" resultType="String">
+		SELECT ROWNUM(IMAGE_FILE_NO) AS RN, IMAGE_PATH
+		FROM (SELECT IAMGE_FILE_NO, IMAGE_POST_NO, IMAGE_PATH FROM IMAGE WHERE IMAGE_POST_NO = #{image_post_no} ORDER BY IMAGE_FILE_NO)
+		WHERE RN = 1
+	</select>
 	
 </mapper>
