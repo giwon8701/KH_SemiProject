@@ -12,9 +12,11 @@ public interface BoardDao {
 	public BoardDto accompany_selectOne(int postId);
 	public BoardDto notice_selectOne(int postId);
 	public BoardDto photo_selectOne(int postId);
-	public int insert(BoardDto dto);
-	public int update(BoardDto dto);
+	public int accompany_insert(BoardDto dto);
+	public int notice_insert(BoardDto dto);
+	public int accompany_update(BoardDto dto);
+	public int photo_update(BoardDto dto);
+	public int notice_update(BoardDto dto);
 	public int delete(int postId);
-	public int multiDelete(String[] postIds);
 	
 }

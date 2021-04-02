@@ -41,13 +41,29 @@ public class BoardBizImpl implements BoardBiz {
 	}
 
 	@Override
-	public int insert(BoardDto dto) {
-		return dao.insert(dto);
+	public int accompany_insert(BoardDto dto) {
+		return dao.accompany_insert(dto);
+	}
+	
+	@Override
+	public int notice_insert(BoardDto dto) {
+		// TODO Auto-generated method stub
+		return dao.notice_insert(dto);
 	}
 
 	@Override
-	public int update(BoardDto dto) {
-		return dao.update(dto);
+	public int accompany_update(BoardDto dto) {
+		return dao.accompany_update(dto);
+	}
+
+	@Override
+	public int photo_update(BoardDto dto) {
+		return dao.photo_update(dto);
+	}
+
+	@Override
+	public int notice_update(BoardDto dto) {
+		return dao.notice_update(dto);
 	}
 
 	@Override
@@ -55,8 +71,8 @@ public class BoardBizImpl implements BoardBiz {
 		return dao.delete(postId);
 	}
 
-	@Override
-	public int multiDelete(String[] postIds) {
-		return dao.multiDelete(postIds);
-	}
+
+
+
+
 }

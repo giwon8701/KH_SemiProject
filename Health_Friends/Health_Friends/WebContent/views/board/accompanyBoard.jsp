@@ -31,7 +31,6 @@
 	<section id="Board_list">
 		<table border="1">
 			<c:forEach items="${list }" var="dto">
-			
 				<tr>
 					<td>${dto.postNo}</td>
 					<td>${dto.postId}</td>

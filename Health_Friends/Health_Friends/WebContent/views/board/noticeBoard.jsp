@@ -43,7 +43,7 @@
 		<c:forEach items="${list }" var="dto">
 			<tr>
 				<td>${dto.postNo }</td>
-				<td><a href="notice.do?command=select&postId=${dto.postId }">${dto.postTitle }</a></td>
+				<td><a href="./notice.do?command=select&postId=${dto.postId }">${dto.postTitle }</a></td>
 				<td>회원id넣어야함</td>
 				<td>${dto.postRegdate }</td>
 			</tr>

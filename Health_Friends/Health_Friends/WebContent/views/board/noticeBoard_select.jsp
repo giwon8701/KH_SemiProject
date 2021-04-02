@@ -26,6 +26,8 @@
 		
 		</c:forEach>
 	</table>
-
+	<input type="button" value="목록" onclick="location.href='notice.do?command=list'"/>
+	<input type="button" value="수정" onclick="location.href='notice.do?command=updateform&postId=${dto.postId}'"/>
+	<input type="button" value="삭제" onclick="location.href='notice.do?command=delete&postId=${dto.postId}'"/>
 </body>
 </html>
