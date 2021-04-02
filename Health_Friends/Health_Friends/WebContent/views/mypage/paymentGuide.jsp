@@ -9,15 +9,7 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 
-	function popUp(){
-		var _width = '500';
-		var _height = '600';
 
-		var _left = Math.ceil(( window.screen.width - _width )/2);
-		var _top = Math.ceil(( window.screen.width - _height )/2); 
-
-		window.open('../../payment.do?command=payment', 'premium payment', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top);
-	}
 	
 </script>
 </head>

@@ -84,13 +84,32 @@
 		
 	});
 	
-	
-	
+	function del(){
+		var member_id = $("#id").val();
+		var queryString = "?command=delRegist&member_id=" + member_id;
+		var res = confirm("정말로 탈퇴하시겠습니까?");
+		if(res){
+			$.ajax({
+				url: "../../mypage.do"+queryString,
+				dataType: "text",
+				success: function(data){
+					if(data > 0){
+						location.href="../../regist.do?command=logout";
+					} else{
+						alert("다시 시도해주세요.");
+					}
+				},
+				error: function(){
+					alert("통신오류");
+				}
+			});
+		}
+	}
 	
 </script>
 </head>
 <body>
-	<% RegistDto dto = (RegistDto)session.getAttribute("dto"); %>
+	<% RegistDto Ldto = (RegistDto)session.getAttribute("dto"); %>
 
 	<h1>회원 정보 수정</h1>
 
@@ -99,11 +118,11 @@
 		<table>
 			<tr>
 				<th>아이디</th>
-				<td><input type="text" readonly="readonly" name="member_id" id="id" value="${dto.member_id }"></td>
+				<td><input type="text" readonly="readonly" name="member_id" id="id" value="${Ldto.member_id }"></td>
 			</tr>
 			<tr>
 				<th>이름</th>
-				<td><input type="text" readonly="readonly" name="member_name" id="name" value="${dto.member_name }"></td>
+				<td><input type="text" readonly="readonly" name="member_name" id="name" value="${Ldto.member_name }"></td>
 			</tr>
 			<tr>
 				<th>비밀번호</th>
@@ -113,19 +132,19 @@
 			</tr>
 			<tr>
 				<th>주소</th>
-				<td><input type="text" id="addr" name="member_addr" required="required" value="${dto.member_addr }" onclick="addrCheck()"></td>
+				<td><input type="text" id="addr" name="member_addr" required="required" value="${Ldto.member_addr }" onclick="addrCheck()"></td>
 			</tr>
 			<tr>
 				<th>생일</th>
-				<td><%=dto.getMember_birthday().substring(0,4) %>년 <%=dto.getMember_birthday().substring(4,6) %>월 <%=dto.getMember_birthday().substring(6) %>일</td>
+				<td><%=Ldto.getMember_birthday().substring(0,4) %>년 <%=Ldto.getMember_birthday().substring(4,6) %>월 <%=Ldto.getMember_birthday().substring(6) %>일</td>
 			</tr>
 			<tr>
 				<th>이메일</th>
-				<td><input type="text" id="email" name="member_email" value="${dto.member_email }" readonly="readonly"></td>
+				<td><input type="text" id="email" name="member_email" value="${Ldto.member_email }" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>전화번호</th>
-				<td><input type="tel" id="phone" name="member_phone" required="required" title="y" value="${dto.member_phone }" onchange="phoneChk()"></td>
+				<td><input type="tel" id="phone" name="member_phone" required="required" title="y" value="${Ldto.member_phone }" onchange="phoneChk()"></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right">

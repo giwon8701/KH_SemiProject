@@ -61,4 +61,9 @@ public class RegistBizImpl implements RegistBiz {
 	public int updateRegist(RegistDto dto) {
 		return dao.updateRegist(dto);
 	}
+	
+	@Override
+	public int deleteRegist(String member_id) {
+		return dao.deleteRegist(member_id);
+	}
 }

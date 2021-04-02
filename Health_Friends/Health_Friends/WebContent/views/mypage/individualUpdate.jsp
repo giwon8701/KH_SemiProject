@@ -1,3 +1,4 @@
+<%@page import="com.login.dto.RegistDto"%>
 <%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -11,7 +12,7 @@
 </head>
 <body>
 <%--캘린더 게시판 게시글 수정 --%>
-
+<% RegistDto Ldto = (RegistDto) session.getAttribute("dto"); %>
 <%
 	Calendar cal = Calendar.getInstance();
 	
@@ -20,30 +21,10 @@
 	
 	String paramYear = request.getParameter("year");
 	String paramMonth = request.getParameter("month");
-	
-	if (paramYear != null) {
-		year = Integer.parseInt(paramYear);
-	}
-	if (paramMonth != null) {
-		month = Integer.parseInt(paramMonth);
-	}
-	
-	if (month > 12) {
-		month = 1;
-		year++;
-	}
-	
-	if (month < 1) {
-		month = 12;
-		year--;
-	}
-	
-	cal.set(year, month - 1, 1);
-	int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
-	int lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-	
 
 	int individual_no = Integer.parseInt(request.getParameter("individual_no"));
+	
+	int date = Integer.parseInt(request.getParameter("date"));
 %>
 	<jsp:useBean id="util" class="com.mypage.common.Util"></jsp:useBean>
 
@@ -54,11 +35,12 @@
 		<input type="hidden" name="individual_no" value="${dto.individual_no }">
 		<input type="hidden" name="year" value="<%=year %>">
 		<input type="hidden" name="month" value="<%=month %>">
+		<input type="hidden" name="date" value="<%=date%>">
 		
 		<table border="1">
 			<tr>
 				<th>ID</th>
-				<td>kh</td>
+				<td>${dto.individual_id }</td>
 			</tr>
 			<tr>
 				<th>일정</th>
@@ -70,6 +52,10 @@
 			<tr>
 				<th>제목</th>
 				<td><input type="text" name="individual_title" value="${dto.individual_title }" /></td>
+			</tr>
+			<tr>
+				<th>운동시간</th>
+				<td><input type="text" name="individual_time" value="${dto.individual_time }"></td>
 			</tr>
 			<tr>
 				<th>내용</th>

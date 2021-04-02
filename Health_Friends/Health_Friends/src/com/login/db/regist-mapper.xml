@@ -26,12 +26,12 @@
 	<insert id="regist" parameterType="registDto">
 		INSERT INTO MEMBER VALUES(
 			MEMBERNOSEQ.NEXTVAL, #{member_id}, #{member_pw}, #{member_name}, #{member_addr}, #{member_birthday},
-			#{member_gender}, #{member_email}, #{member_phone}, 'Y', 0, 'USER'
+			#{member_gender}, #{member_email}, #{member_phone}, 'Y', 0, 'USER' ,NULL
 		)
 	</insert>
 	
 	<select id="selectOne" parameterType="registDto" resultType="registDto">
-		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_ADDR, MEMBER_BIRTHDAY, MEMBER_GENDER, MEMBER_EMAIL, MEMBER_PHONE, MEMBER_ENABLED, MEMBER_REVIEW, MEMBER_ROLE
+		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_ADDR, MEMBER_BIRTHDAY, MEMBER_GENDER, MEMBER_EMAIL, MEMBER_PHONE, MEMBER_ENABLED, MEMBER_REVIEW, MEMBER_ROLE, MEMBER_PICTURE_PATH
 		FROM MEMBER
 		<trim prefix="WHERE" prefixOverrides="AND">
 		<if test="member_id != null">MEMBER_ID = #{member_id}</if>
@@ -54,6 +54,12 @@
 		<if test="member_phone != null">MEMBER_PHONE = #{member_phone},</if>
 		<if test="member_addr != null">MEMBER_ADDR = #{member_addr}</if>
 		</trim>
+		WHERE MEMBER_ID = #{member_id}
+	</update>
+	
+	<update id="deleteRegist" parameterType="String">
+		UPDATE MEMBER
+		SET MEMBER_ENABLED = 'N'
 		WHERE MEMBER_ID = #{member_id}
 	</update>
 	

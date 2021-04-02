@@ -39,10 +39,12 @@ public class IndividualServlet extends HttpServlet {
 				String year = request.getParameter("year");
 				String month = request.getParameter("month");
 				String date = request.getParameter("date");
-				//String id = "";
+				String individual_id = request.getParameter("individual_id");
+				System.out.println(date);
+				
 				String yyyyMMdd = year + Util.isTwo(month) + Util.isTwo(date);
 				
-				List<IndividualDto> list = biz.individualList("cine", yyyyMMdd);
+				List<IndividualDto> list = biz.individualList(individual_id, yyyyMMdd);
 				
 				request.setAttribute("list", list);
 				
@@ -54,6 +56,7 @@ public class IndividualServlet extends HttpServlet {
 				IndividualDto dto = biz.individualSelectOne(individual_no);
 				
 				request.setAttribute("dto", dto);
+				
 				dispatch("./views/mypage/individualSelectOne.jsp", request, response);
 				
 			} else if(command.equals("individualInsert")) {
@@ -68,11 +71,13 @@ public class IndividualServlet extends HttpServlet {
 				String individual_mdate = year + Util.isTwo(month) + Util.isTwo(date) + Util.isTwo(hour) + Util.isTwo(min);
 				String individual_id = request.getParameter("individual_id");
 				String individual_title = request.getParameter("individual_title");
+				int individual_time = Integer.parseInt(request.getParameter("individual_time"));
 				String individual_content = request.getParameter("individual_content");
 				
 				IndividualDto dto = new IndividualDto();
 				dto.setIndividual_id(individual_id);
 				dto.setIndividual_title(individual_title);
+				dto.setIndividual_time(individual_time);
 				dto.setIndividual_content(individual_content);
 				dto.setIndividual_mdate(individual_mdate);
 				
@@ -86,28 +91,37 @@ public class IndividualServlet extends HttpServlet {
 				}
 			}  else if(command.equals("individualUpdate")) {
 				int individual_no = Integer.parseInt(request.getParameter("individual_no"));
+				String date = request.getParameter("date");
 				
 				IndividualDto dto = biz.individualSelectOne(individual_no);
 				
 				request.setAttribute("dto", dto);
+				request.setAttribute("date", date);
 				
 				dispatch("./views/mypage/individualUpdate.jsp", request, response);
 				
 			} else if(command.equals("individualUpdateres")){
 				int individual_no = Integer.parseInt(request.getParameter("individual_no"));
 				String individual_title = request.getParameter("individual_title");
+				int individual_time = Integer.parseInt(request.getParameter("individual_time"));
 				String individual_content = request.getParameter("individual_content");
+				
+				String year = request.getParameter("year");
+				String month = request.getParameter("month");
+				String date = request.getParameter("date");
 				
 				IndividualDto dto = new IndividualDto();
 				dto.setIndividual_no(individual_no);
 				dto.setIndividual_title(individual_title);
+				dto.setIndividual_time(individual_time);
 				dto.setIndividual_content(individual_content);
+				
 				int res = biz.individualUpdate(dto);
 				
 				
 				if(res > 0){
 					
-					dispatch("individual.do?command=individualSelectOne&individual_no="+individual_no, request, response);
+					dispatch("individual.do?command=individualSelectOne&individual_no="+individual_no+"&year="+year+"&month="+month+"&date="+date, request, response);
 					
 				} else {
 					
@@ -128,17 +142,18 @@ public class IndividualServlet extends HttpServlet {
 				String year = request.getParameter("year");
 				String month = request.getParameter("month");
 				String date = request.getParameter("date");
+				String individual_id = request.getParameter("individual_id");
 				
 				String[] individual_nos = request.getParameterValues("chk");
 				
 				if(individual_nos == null || individual_nos.length ==0) {
-					response.sendRedirect("individual.do?command=individualList&year="+year+"&month="+month+"&date="+date);
+					response.sendRedirect("individual.do?command=individualList&individual_id="+individual_id+"&year="+year+"&month="+month+"&date="+date);
 				} else {
 					int res = biz.individualMultiDelete(individual_nos);
 					if(res > 0) {
-						response.sendRedirect("individual.do?command=individualList&year="+year+"&month="+month+"&date="+date);
+						response.sendRedirect("individual.do?command=individualList&individual_id="+individual_id+"&year="+year+"&month="+month+"&date="+date);
 					} else {
-						response.sendRedirect("individual.do?command=individualList&year="+year+"&month="+month+"&date="+date);
+						response.sendRedirect("individual.do?command=individualList&individual_id="+individual_id+"&year="+year+"&month="+month+"&date="+date);
 					}
 				}
 				

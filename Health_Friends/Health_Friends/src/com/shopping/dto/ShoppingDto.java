@@ -14,6 +14,7 @@ public class ShoppingDto {
 	}
 	
 	public ShoppingDto(String title, String link, String image, int lprice, String brand, String category3) {
+		super();
 		this.title = title;
 		this.link = link;
 		this.image = image;

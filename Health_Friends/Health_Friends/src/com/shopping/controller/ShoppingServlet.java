@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,12 +35,13 @@ public class ShoppingServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 
 		String command = request.getParameter("command");
-		String keyword = request.getParameter("keyword");
+		System.out.println(command);
 
 		if (command.equals("shopping")) {
 			response.sendRedirect("./views/shopping/view.jsp");
 			
 		} else if (command.equals("search")) {
+			String keyword = URLEncoder.encode(request.getParameter("keyword"), "UTF-8");
 			String clientId = "_3AIU523fsl3259zT1M3";
 			String clientSecret = "TaDZyyf7Z7";
 
@@ -80,6 +81,7 @@ public class ShoppingServlet extends HttpServlet {
 			JsonObject result = new JsonObject();
 			result.add("result", resultArray);
 
+			System.out.println("result : " + result);
 			response.getWriter().append(result + "");
 		}
 
