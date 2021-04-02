@@ -59,7 +59,7 @@ public class MypageServlet extends HttpServlet {
 				RegistDto Ldto = biz.selectById(member_id);
 				
 				HttpSession session = request.getSession();
-				session.setAttribute("dto", Ldto);
+				session.setAttribute("Ldto", Ldto);
 				session.setMaxInactiveInterval(10 * 60);
 			}
 			
@@ -84,7 +84,7 @@ public class MypageServlet extends HttpServlet {
 				System.out.println("LDTO:" + Ldto.getMember_id());
 				
 				HttpSession session = request.getSession();
-				session.setAttribute("dto", Ldto);
+				session.setAttribute("Ldto", Ldto);
 				session.setMaxInactiveInterval(10 * 60);
 				
 				jsResponse(response, "./views/mypage/mypage.jsp", "회원정보가 수정되었습니다.");

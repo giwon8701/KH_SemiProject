@@ -50,7 +50,7 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="assets/js/chart.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<% RegistDto dto = (RegistDto) session.getAttribute("dto"); %>
+<% RegistDto Ldto = (RegistDto) session.getAttribute("Ldto"); %>
 <script type="text/javascript">
 	function js(){
 		var year = $(".y").text().trim();
@@ -82,39 +82,39 @@
 					<tr>
 						<td colspan="2">
 							<c:choose>
-								<c:when test="${dto.getMember_picture_path() == null}">
+								<c:when test="${Ldto.getMember_picture_path() == null}">
 									대표 프로필 사진이 존재하지 않습니다<br>프로필 사진을 등록해주세요!
 								</c:when>
 								<c:otherwise>
  
-									<img src="../../profileimg/<%=dto.getMember_picture_path()%>?" id="profile-img" />
+									<img src="../../profileimg/<%=Ldto.getMember_picture_path()%>?" id="profile-img" />
 
 								</c:otherwise>
 							</c:choose>
 						</td>
 						<td rowspan="4">
-							<form action="../../profile.do?member_email=<%=dto.getMember_email()%>" method="post" enctype="multipart/form-data">
+							<form action="../../profile.do?member_email=<%=Ldto.getMember_email()%>" method="post" enctype="multipart/form-data">
 								<input type="file" name="filename" size='20'><br>
 								<input type="submit" value="프사변경">
 							</form>
 						</td>
 					</tr>
 					<tr>
-						<th colspan="2" align="center"><%=dto.getMember_id() %></th>
+						<th colspan="2" align="center"><%=Ldto.getMember_id() %></th>
 					</tr>
 					<tr>
 						<th>회원등급</th>
 						<th>매너점수</th>
 					</tr>
 					<tr>
-						<td align="center"><%=dto.getMember_role() %></td>
+						<td align="center"><%=Ldto.getMember_role() %></td>
 						<td align="center">
 							<c:choose>
 								<c:when test="${dto.getMember_review() == 0}">
 									----------
 								</c:when>
 								<c:otherwise>
-									<%=dto.getMember_review() %>
+									<%=Ldto.getMember_review() %>
 								</c:otherwise>
 							</c:choose>
 						</td>
@@ -134,8 +134,8 @@
 						<td>
 							<ul>
 								<li><a href="../../mypage.do?command=registUpdate">회원정보 수정</a></li>
-								<li><a href="../../payment.do?command=paymentRoleUp&member_role=<%=dto.getMember_role()%>">프리미엄 등록</a></li>
-								<li><a href="../../payment.do?command=paymentRoleDown&member_role=<%=dto.getMember_role()%>">프리미엄 탈퇴</a></li>
+								<li><a href="../../payment.do?command=paymentRoleUp&member_role=<%=Ldto.getMember_role()%>">프리미엄 등록</a></li>
+								<li><a href="../../payment.do?command=paymentRoleDown&member_role=<%=Ldto.getMember_role()%>">프리미엄 탈퇴</a></li>
 								<li><a href="../../payment.do?command=paymentList">결제내역</a>
 							</ul>
 						</td>
