@@ -67,7 +67,8 @@
             } 
             $("#fullpage .quick ul :first-child").addClass("on"); //일단 화면이 로드 되었을때는 퀵버튼에 1번째에 불이 들어오게 
             //마우스 휠 이벤트 
-            $(window).bind("mousewheel", function(event){ var page = $(".quick ul li.on"); //alert(page.index()+1); // 현재 on 되어있는 페이지 번호 
+            $(window).bind("mousewheel", function(event){ var page = $(".quick ul li.on"); //alert(page.index()+1); 
+            // 현재 on 되어있는 페이지 번호 
             if($("body").find("#fullpage:animated").length >= 1) return false;
             //마우스 휠을 위로 
             if(event.originalEvent.wheelDelta >= 0) { 
@@ -80,7 +81,7 @@
                 } 
                 if(page.index() > 0){ //첫번째 페이지가 아닐때 (index는 0부터 시작임) 
                     page=page.index()-1; 
-                    $("#fullpage").animate({"top": -pagelength + "px"},1000, "swing"); 
+                    $("#fullpage").animate({"top": -pagelength + "px"},500, "swing"); 
                 }
             }else{ // 마우스 휠을 아래로 
                 var nextPage=parseInt(page.index()+1); //다음페이지번호 
@@ -96,7 +97,7 @@
                         //ex) 현재 1번페이지에서 2번페이지로 내려갈때는 1번페이지 길이 + 2번페이지 길이가 더해짐 
                         pagelength += $(".full"+i).height(); 
                     } 
-                    $("#fullpage").animate({"top": -pagelength + "px"},1000, "swing"); 
+                    $("#fullpage").animate({"top": -pagelength + "px"},500, "swing"); 
                 } 
             } 
         }); 
