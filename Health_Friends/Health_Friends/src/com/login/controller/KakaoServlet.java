@@ -59,17 +59,24 @@ public class KakaoServlet extends HttpServlet {
 			System.out.println(member_gender);
 			
 			request.setAttribute("dto", dto);
-			RequestDispatcher dispatch = request.getRequestDispatcher("/views/login/naverRegistForm.jsp");
+			RequestDispatcher dispatch = request.getRequestDispatcher("/views/login/registSample.jsp");
 			dispatch.forward(request, response);
 		} else if(command.equals("kakaoLogin")) {
-			String member_id = request.getParameter("id");
+			String member_email = request.getParameter("email");
 			
-			RegistDto dto = biz.selectById(member_id);
-			HttpSession session = request.getSession();
-			session.setAttribute("dto", dto);
-			session.setMaxInactiveInterval(10*60);
+			RegistDto Ldto = biz.selectByEmail(member_email);
 			
-			response.getWriter().print("<script type='text/javascript'>alert('"+dto.getMember_name()+"님, 환영합니다.');location.href='./index.jsp'</script>");
+			if(Ldto.getMember_enabled().equals("N")) {
+				response.getWriter().print("<script type='text/javascript'>alert('탈퇴한 회원입니다.');location.href='./index.jsp'</script>");
+				
+			} else {
+				HttpSession session = request.getSession();
+				session.setAttribute("Ldto", Ldto);
+				session.setMaxInactiveInterval(10*60);
+				
+				response.getWriter().print("<script type='text/javascript'>alert('"+Ldto.getMember_name()+"님, 환영합니다.');location.href='./index.jsp'</script>");
+			}
+			
 		}
 		
 	}
