@@ -67,10 +67,14 @@ public class BoardBizImpl implements BoardBiz {
 	}
 
 	@Override
-	public int delete(int postId) {
-		return dao.delete(postId);
+	public int accompany_delete(int postId) {
+		return dao.accompany_delete(postId);
 	}
-
+	
+	@Override
+	public int notice_delete(int postId) {
+		return dao.notice_delete(postId);
+	}
 
 
 

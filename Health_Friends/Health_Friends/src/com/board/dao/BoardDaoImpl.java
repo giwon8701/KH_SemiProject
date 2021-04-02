@@ -124,7 +124,7 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 			System.out.println(res);
 		} catch(Exception e){
 			e.printStackTrace();
-		}
+		} 
 		return res;
 	}
 	
@@ -175,7 +175,6 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 		
 		try(SqlSession session = getSqlSessionFactory().openSession(true)){
 			res = session.update("BoardMapper.notice_update", dto);
-			System.out.println(res);
 		} catch(Exception e){
 			e.printStackTrace();
 		}
@@ -183,8 +182,26 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 	}
 	
 	@Override
-	public int delete(int postId) {
-		return 0;
+	public int accompany_delete(int postId) {
+		int res = 0;
+		try(SqlSession session = getSqlSessionFactory().openSession(true)){
+			res = session.update("BoardMapper.accompany_delete", postId);
+		}catch (Exception e){
+			e.printStackTrace();
+		} 
+		return res;
+	}
+
+	@Override
+	public int notice_delete(int postId) {
+		int res = 0;
+		try(SqlSession session = getSqlSessionFactory().openSession(true)){
+			res = session.update("BoardMapper.notice_delete", postId);
+			System.out.println(res);
+		}catch (Exception e){
+			e.printStackTrace();
+		} 
+		return res;
 	}
 
 

@@ -43,7 +43,16 @@
 		<c:forEach items="${list }" var="dto">
 			<tr>
 				<td>${dto.postNo }</td>
-				<td><a href="./notice.do?command=select&postId=${dto.postId }">${dto.postTitle }</a></td>
+				<td>
+					<c:choose>
+						<c:when test="${dto.postDelflag eq'Y' }">
+							<c:out value="---삭제된 게시글입니다---"></c:out>
+						</c:when>
+						<c:otherwise>
+							<a href="./notice.do?command=select&postId=${dto.postId }">${dto.postTitle }</a>
+						</c:otherwise>
+					</c:choose>
+				</td>
 				<td>회원id넣어야함</td>
 				<td>${dto.postRegdate }</td>
 			</tr>
@@ -55,3 +64,13 @@
 --%>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+

@@ -80,13 +80,18 @@
 	
 	<update id="notice_update" parameterType="BoardDto">
 		UPDATE POST SET 
-			POST_USER_NO = 2#{postUserNo},
+			POST_USER_NO = #{postUserNo},
 			POST_TITLE = #{postTitle},
 			POST_CONTENT = #{postContent},
 			POST_REGDATE = SYSDATE
 		WHERE POST_ID = #{POST_ID}
 	</update>
 	
+	<update id="notice_delete" parameterType="int">
+		UPDATE POST SET
+			POST_DELFLAG = 'Y'
+		WHERE POST_ID = #{postId}
+	</update>
 	
 	
 </mapper>

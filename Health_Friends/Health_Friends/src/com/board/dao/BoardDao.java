@@ -17,6 +17,7 @@ public interface BoardDao {
 	public int accompany_update(BoardDto dto);
 	public int photo_update(BoardDto dto);
 	public int notice_update(BoardDto dto);
-	public int delete(int postId);
+	public int accompany_delete(int postId);
+	public int notice_delete(int postId);
 	
 }

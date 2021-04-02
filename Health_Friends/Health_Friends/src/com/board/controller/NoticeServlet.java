@@ -82,13 +82,15 @@ public class NoticeServlet extends HttpServlet {
 					response.sendRedirect("notice.do?command=select&postId=" + postId);
 				}
 				
-				
 			} else if(command.equals("delete")) {
-				
-				
+				int postId = Integer.parseInt(request.getParameter("postId"));
+				int res = biz.notice_delete(postId);
+				if (res > 0) {
+					response.sendRedirect("notice.do?command=list");
+				} else {
+					response.sendRedirect("notice.do?command=select&postId=" + postId);
+				}
 			}
-			
-			
 			
 		} catch(Exception e){
 			e.printStackTrace();
