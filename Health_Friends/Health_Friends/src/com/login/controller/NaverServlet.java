@@ -120,7 +120,7 @@ public class NaverServlet extends HttpServlet {
 			
 			//가입 유무 확인
 			RegistBiz biz = new RegistBizImpl();
-			int regist = biz.registCheck(member_email);
+			int regist = biz.registCheck(member_email, "email");
 			
 			if(regist > 0) {
 				//로그인 처리

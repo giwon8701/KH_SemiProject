@@ -9,7 +9,7 @@ import com.login.dto.RegistDto;
 public interface RegistBiz {
 	
 	//id 중복체크
-	public int registCheck(String member);
+	public int registCheck(String member, String check);
 	
 	//회원가입
 	public int registMember(RegistDto dto);

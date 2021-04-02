@@ -33,7 +33,7 @@ public class KakaoServlet extends HttpServlet {
 		if(command.equals("registChk")) {
 			String member_email = request.getParameter("email");
 			
-			int cnt = biz.registCheck(member_email);
+			int cnt = biz.registCheck(member_email, "email");
 			
 			PrintWriter out = response.getWriter();
 			out.println(cnt);

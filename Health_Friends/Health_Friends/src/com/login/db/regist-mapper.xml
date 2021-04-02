@@ -4,11 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="registmapper">
 
-	<select id="registCheck" parameterType="String" resultType="int">
+	<select id="registCheck" parameterType="registDto" resultType="int">
 		SELECT COUNT(*) FROM MEMBER
 		<trim prefix="WHERE" prefixOverrides="OR">
 		<if test="member_id != null">MEMBER_ID = #{member_id}</if>
-		<if test="member_phone != null">OR MEMBER_PHONE = #{member_phone}</if>
 		<if test="member_email != null">OR MEMBER_EMAIL = #{member_email}</if>
 		</trim>
 	</select>
