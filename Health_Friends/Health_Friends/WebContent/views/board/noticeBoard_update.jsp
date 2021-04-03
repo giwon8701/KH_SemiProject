@@ -25,9 +25,8 @@
 	</section>
 	<form action="notice.do" method="post">
 		<input type="hidden" name="command" value="updateres"/>
-		<c:forEach items="dto">
 			<input type="hidden" name="postId" value=${dto.postId } />
-			<input type="hidden" name="postUserNo" value=${Ldto.getMember_no() } />
+			<input type="hidden" name="postUserNo" value=${Ldto.member_no } />
 		<table border="1">
 				<tr>
 					<th colspan="3">
@@ -35,7 +34,7 @@
 					</th>		
 				</tr>
 				<tr>
-					<td colspan="2">${Ldto.getMember_id() }</td>
+					<td colspan="2">${Ldto.member_id }</td>
 					<td>${dto.postRegdate } </td>
 				</tr>
 				<tr>
@@ -50,7 +49,6 @@
 					</td>
 				</tr>
 		</table>
-		</c:forEach>
 	</form>
 	
 <%---	

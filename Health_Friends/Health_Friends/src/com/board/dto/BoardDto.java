@@ -18,13 +18,12 @@ public class BoardDto {
 	private String postDelflag;
 	private int postLatitude;
 	private int postLongitude;
-	private String member_id;
 	
 	public BoardDto() {}
 	
 	public BoardDto(int postUserNo, int postId, int postNo, String postBoardName, String postCategoryName,
 			String postTitle, String postContent, Date postMdate, Date postRegdate, int postHit, int postCommentHit,
-			int postLike, String postDelflag, int postLatitude, int postLongitude, String member_id) {
+			int postLike, String postDelflag, int postLatitude, int postLongitude) {
 		this.postUserNo = postUserNo;
 		this.postId = postId;
 		this.postNo = postNo;
@@ -40,7 +39,6 @@ public class BoardDto {
 		this.postDelflag = postDelflag;
 		this.postLatitude = postLatitude;
 		this.postLongitude = postLongitude;
-		this.member_id = member_id;
 	}
 
 	public int getPostUserNo() {
@@ -169,14 +167,6 @@ public class BoardDto {
 
 	public void setPostDelflag(String postDelflag) {
 		this.postDelflag = postDelflag;
-	}
-
-	public String getMember_id() {
-		return member_id;
-	}
-
-	public void setMember_id(String member_id) {
-		this.member_id = member_id;
 	}
 	
 }
