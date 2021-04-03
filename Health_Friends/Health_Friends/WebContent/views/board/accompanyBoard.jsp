@@ -24,15 +24,11 @@
 <%--게시판목록 --%>	
 	<section class="boardlist">
 		<a href="./board.do?command=list">동행 구해요</a>
-		<a href="photoReviewBoard.jsp">사진후기</a>
+		<a href="./review.do?command=list">사진후기</a>
 		<a href="./notice.do?command=list">공지사항</a>
 	</section>
-<<<<<<< Updated upstream
-	<input type="button" value="글작성" onclick="location.href='../../board.do?command=insert'" />
-=======
 	<br/>
 	<input type="button" value="글작성" onclick="location.href='board.do?command=insert'" />
->>>>>>> Stashed changes
 	
 <%--게시글리스트 --%>
 	<section id="accompanyBoard_list">

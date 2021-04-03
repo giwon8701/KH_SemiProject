@@ -1,3 +1,4 @@
+<%@page import="com.login.dto.RegistDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
@@ -23,18 +24,13 @@
 <%--  
 	<%@include file="../../views/common/header.jsp" %>
 --%>	
+
 	<section class="boardlist">
 		<a href="./board.do?command=list">동행 구해요</a>
-		<a href="photoReviewBoard.jsp">사진후기</a>
+		<a href="./review.do?command=list">사진후기</a>
 		<a href="./notice.do?command=list">공지사항</a>
 	</section>
- <!-- 
- postBoardName
- postNo
- postId
- postTitle
- postContent (se2)
-  -->
+	
 	<section id="noticeBoard_post">
 		<form action="../../notice.do" method="post">
 			<input type="hidden" name="command" value="insertres"/>
@@ -68,3 +64,6 @@
 
 </body>
 </html>
+
+
+

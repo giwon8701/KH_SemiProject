@@ -16,7 +16,7 @@
 --%>
 	<section class="boardlist">
 		<a href="./board.do?command=list">동행 구해요</a>
-		<a href="photoReviewBoard.jsp">사진후기</a>
+		<a href="./review.do?command=list">사진후기</a>
 		<a href="./notice.do?command=list">공지사항</a>
 	</section>
 	<table border="1">

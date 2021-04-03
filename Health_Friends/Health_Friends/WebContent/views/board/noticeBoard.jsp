@@ -1,3 +1,4 @@
+<%@page import="com.login.dto.RegistDto"%>
 <%@page import="com.board.dto.BoardDto"%>
 <%@page import="java.util.List"%>
 <%@page import="com.board.biz.BoardBizImpl"%>
@@ -20,6 +21,7 @@
 <%
 	BoardBiz biz = new BoardBizImpl();
 	List<BoardDto> list = biz.notice_selectList();
+	RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); 
 %>
 <body>
 <%--
@@ -27,7 +29,7 @@
  --%>
 	<section class="boardlist">
 		<a href="./board.do?command=list">동행 구해요</a>
-		<a href="photoReviewBoard.jsp">사진후기</a>
+		<a href="./review.do?command=list">사진후기</a>
 		<a href="./notice.do?command=list">공지사항</a>
 	</section>
 	
@@ -53,7 +55,7 @@
 						</c:otherwise>
 					</c:choose>
 				</td>
-				<td>회원id넣어야함</td>
+				<td>${Ldto.member_id }</td>
 				<td>${dto.postRegdate }</td>
 			</tr>
 		</c:forEach>
