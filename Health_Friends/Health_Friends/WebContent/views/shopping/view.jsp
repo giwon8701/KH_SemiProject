@@ -11,13 +11,20 @@
 <html>
 <head>
 
-<link
-	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link href="https://fonts.googleapis.com/css?family=Jua"
+	rel="stylesheet">
+<link rel="stylesheet" href="introduce.css">
 
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 
 
@@ -260,7 +267,8 @@
 	font-size: 18px;
 	text-transform: capitalize;
 	margin: 0 0 7px;
-	transition: all .3s ease 0s
+	transition: all .3s ease 0s;
+	height: 50px;
 }
 
 .product-grid3 .title a {
@@ -312,6 +320,8 @@
 </head>
 
 <body>
+
+<link href="../../assets/css/main.css" rel="stylesheet" type="text/css">
 
 	<%@include file="../../views/common/header.jsp" %>
 

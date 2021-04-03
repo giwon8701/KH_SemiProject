@@ -24,7 +24,7 @@
 <!-- 슬라이드 라이브러리 -->
 <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
 	
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -103,8 +103,10 @@
 
 </head>
 <body>
-	
+
+<link href="../../assets/css/main.css" rel="stylesheet" type="text/css">	
 	<!-- header 영역 시작 -->
+
 
 	<%@include file="../common/header.jsp" %>
 
@@ -114,7 +116,7 @@
 	<a name="move01"></a>
 	<div class=background01>
 		<div class="container01"><img src="https://image.freepik.com/free-photo/closeup-of-sport-shoes-on-concrete-path_273609-14253.jpg" style="width: 100%; height:auto;">
-			<h1 class="text01"><b>우리 동네 운동 메이트와 함께해요!</b></h1>
+			<h1 class="text01">우리 동네 운동 메이트와 함께해요!</h1>
 			<br>
 			<h3 class="text02" style="color: #00008B">우리 동네 운동 메이트는 이래서 만들어졌습니다.</h3>
 			<br> <br>
@@ -132,13 +134,14 @@
 	<br>
 	
 <!-- 사진 전환 기능 시작 -->
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
 	<div class="slider">
-		<div><img src="https://pusyap.com/wp-content/uploads/2018/01/%EC%9A%B4%EB%8F%99_%ED%96%89%EB%B3%B5_1.png" alt="슬라이드 사진"></div>
-		<div><img src="https://pusyap.com/wp-content/uploads/2018/01/%EC%9A%B4%EB%8F%99_%ED%96%89%EB%B3%B5_1.png" alt="슬라이드 사진"></div>
-		<div><img src="https://pusyap.com/wp-content/uploads/2018/01/%EC%9A%B4%EB%8F%99_%ED%96%89%EB%B3%B5_1.png" alt="슬라이드 사진"></div>
-		<div><img src="https://pusyap.com/wp-content/uploads/2018/01/%EC%9A%B4%EB%8F%99_%ED%96%89%EB%B3%B5_1.png" alt="슬라이드 사진"></div>
-		<div><img src="https://pusyap.com/wp-content/uploads/2018/01/%EC%9A%B4%EB%8F%99_%ED%96%89%EB%B3%B5_1.png" alt="슬라이드 사진"></div>	
+		<div><img src="../../images/workhappy.png" alt="슬라이드 사진"></div>
+		<div><img src="../../images/workhappy.png" alt="슬라이드 사진"></div>
+		<div><img src="../../images/workhappy.png" alt="슬라이드 사진"></div>
+		<div><img src="../../images/workhappy.png" alt="슬라이드 사진"></div>
+		<div><img src="../../images/workhappy.png" alt="슬라이드 사진"></div>	
 	</div>
 	<div class="controls">
 		<button class="play">재생</button>
@@ -172,9 +175,9 @@
 
 			<div class="col-sm-5">
 				<br> <br> <a name="move02"></a>
-				<h1 class="title01" style="font-family: Jua, sans-serif; text-align: right">운동 메이트 구하기</h1>
+				<h1 class="title01" style="font-family: Jua, sans-serif; text-align: right; font-size:38px;">운동 메이트 구하기</h1>
 				<br>
-				<h2 class="text-danger" style="text-align: right">
+				<h2 class="text-danger" style="text-align: right; font-size:26px;">
 					우리 동네 운동 메이트는<br>가까운 거리의 운동 메이트를<br>찾아줍니다
 				</h2>
 				<br> <br>
@@ -196,10 +199,10 @@
 		<div class="row">
 			<div class="col-sm-5">
 				<br> <br> <br>
-				<h1 class="title02" style="font-family: Jua, sans-serif; text-align: left;">적절한 운동
+				<h1 class="title02" style="font-family: Jua, sans-serif; text-align: left; font-size:38px">적절한 운동
 					방법</h1>
 				<br>
-				<h2 class="text-danger" style="text-align: left" >
+				<h2 class="text-danger" style="text-align: left; font-size:26px;">
 					우리 동네 운동 메이트는<br>적절한 운동 방법을<br>찾아줍니다
 				</h2>
 				<br> <br>
@@ -254,10 +257,10 @@
 			<div class="col-sm-5">
 				<br> <br> <br>
 				<h1 class="title01"
-					style="font-family: Jua, sans-serif; text-align: right">규칙적인
+					style="font-family: Jua, sans-serif; text-align: right; font-size:38px">규칙적인
 					운동 계획</h1>
 				<br>
-				<h2 class="text-danger" style="text-align: right">
+				<h2 class="text-danger" style="text-align: right; font-size:26px;">
 					우리 동네 운동 메이트는<br>규칙적인 운동을 할 수 있도록<br>도움을 줍니다
 				</h2>
 				<br>
@@ -283,8 +286,8 @@
 <br>
 
 <!-- 조원 소개하기 시작 -->
-<div class="text06" style="font-size: 40px; text-align:center; color: black" ><b>우리 동네 운동 메이트 조원</b><br>
-<span class="text07" style="font-size: 25px; text-align:center; color: #8B0000">조원들을 소개합니다.</span>
+<div class="text06" style="font-size: 40px; text-align:center; color: black; font-weight: bold">우리 동네 운동 메이트 조원<br><br>
+<span class="text07" style="font-size: 30px; text-align:center; color: #8B0000">조원들을 소개합니다.</span>
 </div>
 
 <div class="wrapper">

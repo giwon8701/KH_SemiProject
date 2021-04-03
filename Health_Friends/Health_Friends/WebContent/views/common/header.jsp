@@ -10,7 +10,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
 <link href="assets/css/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
