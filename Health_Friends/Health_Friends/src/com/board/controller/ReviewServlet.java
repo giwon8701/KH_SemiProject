@@ -63,8 +63,6 @@ public class ReviewServlet extends HttpServlet {
 				jsResponse(response, "오류가 발생하였습니다", "review.do?command=insert");
 			}
 			
-		} else if(command.equals("image")) {
-			
 		}
 	}
 	
