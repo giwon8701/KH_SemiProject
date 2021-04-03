@@ -8,16 +8,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	html,body {width:100%;height:100%;margin:0px;padding:0px;overflow:hidden;font-family:sans-serif;}
+	html,body {width:100%;height:100%;margin:0px;padding:0px;overflow:hidden;font-family:sans-serif; }
 	
 	#fullpage {position:relative;top:0px;z-index:9;width:100%;height:100%;}
 	.fullsection{width:100%;height:100%;position:relative;}
-	.full1{height: 100vh; background-image: url("images/slide01.jpg"); background-repeat: no-repeat; background-size: cover;}
-	.full2{height: 100vh; background-image: url("images/slide02.jpg"); background-repeat: no-repeat; background-size: cover;}
-	.full3{height: 100vh; background-image: url("images/slide03.jpg"); background-repeat: no-repeat; background-size: cover;}
-	.full4{height: 100vh; background-image: url("images/slide04.jpg"); background-repeat: no-repeat; background-size: cover;}
-	.full5{height: 100vh; background-image: url("images/slide05.jpg"); background-repeat: no-repeat; background-size: cover;}
-	#fullpage span{display:block;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:4em;font-weight:bold;}
+	.full1{height: 100vh; background-color: #4481eb; background-image: url("images/main/slide01.svg"); background-repeat: no-repeat; background-size: cover;}
+	.full2{height: 100vh; background-color: #04befe; background-image: url("images/main/slide02.svg"); background-repeat: no-repeat; background-size: cover;}
+	.full3{height: 100vh; background-color: #4481eb; background-image: url("images/main/slide03.svg"); background-repeat: no-repeat; background-size: cover;}
+	.full4{height: 100vh; background-color: #04befe; background-image: url("images/main/slide04.svg"); background-repeat: no-repeat; background-size: cover;}
+	.full5{height: 100vh; background-color: #4481eb; background-image: url("images/main/slide05.svg"); background-repeat: no-repeat; background-size: cover;}
+	#fullpage span{display:block;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#000000;font-size:4em;font-weight:bold; text-align: center;}
 	.full2 span{color:#000;}
 
 	ul, li{margin:0;padding:0;list-style:none}
@@ -32,19 +32,19 @@
 	<div id="fullpage">
 		<div class='quick'><ul></ul></div>
 		<div class="fullsection full1" pageNum="1">
-			<span>1 PAGE</span>
+			<span>달려보세요!</span>
 		</div>
 		<div class="fullsection full2" pageNum="2">
-			<span>2 PAGE</span>
+			<span>자전거를 타고</span>
 		</div>
 		<div class="fullsection full3" pageNum="3">
-			<span>3 PAGE</span>
+			<span>가까운 동네 친구를</span>
 		</div>
 		<div class="fullsection full4" pageNum="4">
-			<span>4 PAGE</span>
+			<span>규칙적인 생활</span>
 		</div>
 		<div class="fullsection full5" pageNum="5">
-			<span>5 PAGE</span>
+			<span>우리 동네 운동 메이트</span>
 		</div>
 	</div>
 	
@@ -81,7 +81,7 @@
                 } 
                 if(page.index() > 0){ //첫번째 페이지가 아닐때 (index는 0부터 시작임) 
                     page=page.index()-1; 
-                    $("#fullpage").animate({"top": -pagelength + "px"},500, "swing"); 
+                    $("#fullpage").animate({"top": -pagelength + "px"},700, "swing"); 
                 }
             }else{ // 마우스 휠을 아래로 
                 var nextPage=parseInt(page.index()+1); //다음페이지번호 
@@ -97,7 +97,7 @@
                         //ex) 현재 1번페이지에서 2번페이지로 내려갈때는 1번페이지 길이 + 2번페이지 길이가 더해짐 
                         pagelength += $(".full"+i).height(); 
                     } 
-                    $("#fullpage").animate({"top": -pagelength + "px"},500, "swing"); 
+                    $("#fullpage").animate({"top": -pagelength + "px"},700, "swing"); 
                 } 
             } 
         }); 
