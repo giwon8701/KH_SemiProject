@@ -16,7 +16,9 @@
 <script type="text/javascript" src="./js/smarteditor2.min.js" charset="utf-8"></script>
 
 <!-- 사진첨부샘플  --> 
-<script type="text/javascript" src="./sample/js/plugin/hp_SE2M_AttachQuickPhoto.js" charset="utf-8"></script>
+<script type="text/javascript" src="./sample/js/plugin/hp_SE2M_AttachQuickPhoto.js" charset="utf-8">
+	oEditor.registerPlugin(new nhn.husky.SE2M_AttachQuickPhoto(elAppContainer));
+</script>
 </head>
 <body>
 
