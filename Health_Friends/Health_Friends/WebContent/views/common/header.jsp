@@ -17,7 +17,7 @@
 <link href="assets/css/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<% RegistDto Ldto = (RegistDto) session.getAttribute("dto"); %>
+<% RegistDto Ldto = (RegistDto) session.getAttribute("Ldto"); %>
 
 <%--header 로그인 상황에 따라 다르게 나와야함...! --%>
 		<!-- Header -->
@@ -27,7 +27,7 @@
 				<a href="./views/introduce/introduce.jsp">소개</a>
 				<a href="notice.do?command=list">공지사항</a>
 				<a href="board.do?command=list">동행게시판</a>
-				<a href="views/board/photoReviewBoard.jsp">후기게시판</a>
+				<a href="review.do?command=list">후기게시판</a>
 				<a href="shopping.do?command=shopping">쇼핑</a>
 				<a href="">고객센터</a>
 			</div>

@@ -129,6 +129,22 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 	}
 	
 	@Override
+	public int photo_insert(BoardDto dto) {
+		int res = 0;
+		
+		try(SqlSession session = getSqlSessionFactory().openSession(false)){
+			res = session.insert("BoardMapper.photo_insert", dto);
+			System.out.println(res);
+			if(res > 0) {
+				session.commit();
+			}
+		} catch(Exception e){
+			e.printStackTrace();
+		} 
+		return res;
+	}
+	
+	@Override
 	public int notice_insert(BoardDto dto) {
 		
 		int res = 0;

@@ -13,6 +13,7 @@ public interface BoardBiz {
 	public BoardDto photo_selectOne(int postId);
 	public BoardDto notice_selectOne(int postId);
 	public int accompany_insert(BoardDto dto);
+	public int photo_insert(BoardDto dto);
 	public int notice_insert(BoardDto dto);
 	public int accompany_update(BoardDto dto);
 	public int photo_update(BoardDto dto);
