@@ -24,18 +24,24 @@
 		<a href="photoReviewBoard.jsp">사진후기</a>
 		<a href="./notice.do?command=list">공지사항</a>
 	</section>
-	<br/>
 	<input type="button" value="글작성" onclick="location.href='../../board.do?command=insert'" />
 	
 <%--게시글리스트 --%>
-	<section id="Board_list">
+	<section id="accompanyBoard_list">
 		<table border="1">
 			<c:forEach items="${list }" var="dto">
 				<tr>
-					<td>${dto.postNo}</td>
-					<td>${dto.postId}</td>
-					<td>${dto.postTitle}</td>
-					<td>${dto.postContent}</td>
+					<td>
+					<c:choose>
+						<c:when test="${dto.postDelflag eq'Y' }">
+							<c:out value="---삭제된 게시글입니다---"></c:out>
+						</c:when>
+						<c:otherwise>
+							<a href="./board.do?command=select&postId=${dto.postId }">${dto.postTitle }</a>
+						</c:otherwise>
+					</c:choose>
+					</td>
+					<td>${dto.postId} 회원아이디 와야 함</td>
 					<td>${dto.postRegdate}</td>
 				</tr>
 			</c:forEach>

@@ -22,9 +22,9 @@
 	List<BoardDto> list = biz.notice_selectList();
 %>
 <body>
-<%---
-	<%@include file="header.jsp" %>
- --%>	
+<%--
+	<%@include file="../../views/common/header.jsp" %>
+ --%>
 	<section class="boardlist">
 		<a href="./board.do?command=list">동행 구해요</a>
 		<a href="photoReviewBoard.jsp">사진후기</a>
@@ -60,7 +60,7 @@
 	</table>
 	 <input type="button" value="글작성" onclick="location.href='./notice.do?command=insert'" />
 <%---	
-	<%@include file="footer.jsp" %>
+	<%@include file="../../views/common/footer.jsp" %>
 --%>
 </body>
 </html>

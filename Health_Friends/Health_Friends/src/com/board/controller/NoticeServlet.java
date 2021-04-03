@@ -43,7 +43,6 @@ public class NoticeServlet extends HttpServlet {
 				BoardDto dto = new BoardDto();
 				dto.setPostTitle(postTitle);
 				dto.setPostContent(postContent);
-				dto.setPostCategoryName("walk");
 				int res = biz.notice_insert(dto);
 				
 				if(res > 0) {
@@ -70,10 +69,10 @@ public class NoticeServlet extends HttpServlet {
 				String postTitle = request.getParameter("postTitle");
 				String postContent = request.getParameter("postContent");
 				BoardDto dto = new BoardDto();
-				dto.setPostNo(postUserNo);
 				dto.setPostId(postId);
 				dto.setPostTitle(postTitle);
 				dto.setPostContent(postContent);
+				dto.setPostUserNo(postUserNo);
 				
 				int res = biz.notice_update(dto);
 				if (res > 0) {

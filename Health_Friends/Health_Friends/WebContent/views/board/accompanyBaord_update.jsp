@@ -1,4 +1,3 @@
-<%@page import="com.login.dto.RegistDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
@@ -15,18 +14,16 @@
 <%--  
 	<%@include file="../../views/common/header.jsp" %>
 --%>
-
-<% RegistDto Ldto = (RegistDto) session.getAttribute("Ldto");%>
 	<section class="boardlist">
 		<a href="./board.do?command=list">동행 구해요</a>
 		<a href="photoReviewBoard.jsp">사진후기</a>
 		<a href="./notice.do?command=list">공지사항</a>
 	</section>
-	<form action="notice.do" method="post">
+	<form action="board.do" method="post">
 		<input type="hidden" name="command" value="updateres"/>
 		<c:forEach items="dto">
 			<input type="hidden" name="postId" value=${dto.postId } />
-			<input type="hidden" name="postUserNo" value=${Ldto.getMember_no() } />
+			<input type="hidden" name="postUserNo" value=${dto.postUserNo } />
 		<table border="1">
 				<tr>
 					<th colspan="3">
@@ -45,7 +42,7 @@
 				<tr>
 					<td>	
 						<input type="submit" value="확인"/>
-						<input type="button" value="취소" onclick="location.href='notice.do?command=list'"/>
+						<input type="button" value="취소" onclick="location.href='board.do?command=list'"/>
 					</td>
 				</tr>
 		</table>

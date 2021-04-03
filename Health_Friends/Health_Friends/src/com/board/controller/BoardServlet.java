@@ -31,27 +31,57 @@ public class BoardServlet extends HttpServlet {
 				request.setAttribute("list", list);
 				dispatch(request, response, "./views/board/accompanyBoard.jsp");
 				
-			}else if(command.equals("insert")) {
+			} else if(command.equals("insert")) {
 				response.sendRedirect("./views/board/accompanyBoard_post.jsp");
 				
-			}else if(command.equals("insertres")) {
-				String postId = request.getParameter("postId");
+			} else if(command.equals("insertres")) {
+				int postId = Integer.parseInt(request.getParameter("postId"));
 				String postCategoryName = request.getParameter("chooseExercise");
 				String postTitle = request.getParameter("postTitle");
 				String postContent = request.getParameter("content");
 				String postMdate = request.getParameter("postMdate");
 				String postRegdate = null;
 				String postLatitude = request.getParameter("MapAddress");
-			//	 ��¥�� ���޾��� ���� ����
-			//	BoardDto dto = new BoardDto(0, postId, 0, null, postCategoryName, postTitle, postContent, postMdate, postRegdate, 
-			//			null, 0, 0, 0, postLatitude, 0);
+			
+			} else if(command.equals("select")) {
+				int postId = Integer.parseInt(request.getParameter("postId"));
+				BoardDto dto = biz.accompany_selectOne(postId);
+				request.setAttribute("dto", dto);
+				dispatch(request, response, "./views/board/accompanyBoard_select.jsp");
 				
-			//	if (res > 0) {
-			//		response.sendRedirect("board.do?command=list");
-			//	} else {
-			//		response.sendRedirect("board.do?command=insert");
-			//	} 
-			} 
+			} else if(command.equals("updateform")) {	
+				int postId = Integer.parseInt(request.getParameter("postId"));
+				BoardDto dto = biz.accompany_selectOne(postId);
+				request.setAttribute("dto", dto);
+				dispatch(request, response, "./views/board/accompanyBaord_update.jsp");
+			
+			} else if(command.equals("updateres")) {	
+				int postId = Integer.parseInt(request.getParameter("postId"));
+				int postUserNo = Integer.parseInt(request.getParameter("postUserNo"));
+				String postTitle = request.getParameter("postTitle");
+				String postContent = request.getParameter("postContent");
+				BoardDto dto = new BoardDto();
+				dto.setPostId(postId);
+				dto.setPostTitle(postTitle);
+				dto.setPostContent(postContent);
+				
+				int res = biz.accompany_update(dto);
+				if (res > 0) {
+					response.sendRedirect("board.do?command=list&postId=" + postId);
+				} else {
+					response.sendRedirect("board.do?command=select&postId=" + postId);
+				}
+				
+			} else if(command.equals("delete")) {
+				int postId = Integer.parseInt(request.getParameter("postId"));
+				int res = biz.accompany_delete(postId);
+				if (res > 0) {
+					response.sendRedirect("board.do?command=list");
+				} else {
+					response.sendRedirect("board.do?command=select&postId=" + postId);
+				}
+			}
+			
 			
 			
 		} catch(Exception e){

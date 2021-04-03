@@ -42,10 +42,10 @@
 <%--
 	<%@include file="header.jsp" %>
  --%>	
- 	<section class="boardlist">
-		<a href="../../board.do?command=list">동행 구해요</a>
-		<a href="">후기</a>
-		<a href="../../notice.do?command=list">공지사항</a>
+	<section class="boardlist">
+		<a href="./board.do?command=list">동행 구해요</a>
+		<a href="photoReviewBoard.jsp">사진후기</a>
+		<a href="./notice.do?command=list">공지사항</a>
 	</section>
  
 	<section id="Board_writePost">

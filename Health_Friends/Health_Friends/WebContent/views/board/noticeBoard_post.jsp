@@ -20,13 +20,13 @@
 </style>
 </head>
 <body>
-<%--
-	<%@include file="header.jsp" %>
- --%>	
- 	<section class="boardlist">
-		<a href="">동행 구해요</a>
-		<a href="">후기</a>
-		<a href="">공지사항</a>
+<%--  
+	<%@include file="../../views/common/header.jsp" %>
+--%>	
+	<section class="boardlist">
+		<a href="./board.do?command=list">동행 구해요</a>
+		<a href="photoReviewBoard.jsp">사진후기</a>
+		<a href="./notice.do?command=list">공지사항</a>
 	</section>
  <!-- 
  postBoardName
@@ -59,11 +59,11 @@
 				</tr>
 			</table>
 			<input type="submit" value="등록">
-			<input type="button" value="취소" onclick="location.href='board.do?command=list'" />
+			<input type="button" value="취소" onclick="location.href='../../notice.do?command=list'" />
 		</form>
 	</section>
-<%--	
-	<%@include file="footer.jsp" %>
+<%---	
+	<%@include file="../../views/common/footer.jsp" %>
 --%>
 
 </body>
