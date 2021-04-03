@@ -20,6 +20,9 @@
 		<result property="postLatitude" column="POST_LATITUDE"/>
 		<result property="postLongitude" column="POST_LONGITUDE"/>
 	</resultMap>	
+	
+	
+	
 
 	<select id="accompany_selectList" resultMap="BoardMap">
 		SELECT POST_USER_NO, POST_ID, POST_NO,POST_BOARD_NAME,POST_CATEGORY_NAME,POST_TITLE,POST_CONTENT
@@ -80,6 +83,7 @@
 	
 	<update id="accompany_update" parameterType="BoardDto">
 		UPDATE POST SET 
+			POST_USER_NO,
 			POST_TITLE = #{postTitle},
 			POST_CONTENT = #{postContent},
 			POST_REGDATE = SYSDATE
@@ -88,7 +92,7 @@
 	
 	<update id="notice_update" parameterType="BoardDto">
 		UPDATE POST SET 
-			POST_USER_NO = #{postUserNo}
+			POST_USER_NO = 1,
 			POST_TITLE = #{postTitle},
 			POST_CONTENT = #{postContent},
 			POST_REGDATE = SYSDATE

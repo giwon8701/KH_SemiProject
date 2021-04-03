@@ -1,3 +1,4 @@
+<%@page import="com.login.dto.RegistDto"%>
 <%@page import="org.apache.commons.collections.bag.SynchronizedSortedBag"%>
 <%@page import="com.board.dto.BoardDto"%>
 <%@page import="java.util.List"%>
@@ -17,6 +18,8 @@
 <%--
 	<%@include file="header.jsp" %>
  --%>
+ 
+<% RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); %> 
  
 <%--게시판목록 --%>	
 	<section class="boardlist">
@@ -41,7 +44,7 @@
 						</c:otherwise>
 					</c:choose>
 					</td>
-					<td>${dto.postId} 회원아이디 와야 함</td>
+					<td>${Ldto.getMember_id() }</td>
 					<td>${dto.postRegdate}</td>
 				</tr>
 			</c:forEach>

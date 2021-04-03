@@ -35,14 +35,20 @@ public class BoardServlet extends HttpServlet {
 				response.sendRedirect("./views/board/accompanyBoard_post.jsp");
 				
 			} else if(command.equals("insertres")) {
-				int postId = Integer.parseInt(request.getParameter("postId"));
-				String postCategoryName = request.getParameter("chooseExercise");
 				String postTitle = request.getParameter("postTitle");
-				String postContent = request.getParameter("content");
-				String postMdate = request.getParameter("postMdate");
-				String postRegdate = null;
-				String postLatitude = request.getParameter("MapAddress");
-			
+				String postContent = request.getParameter("postContent");
+				
+				BoardDto dto = new BoardDto();
+				dto.setPostTitle(postTitle);
+				dto.setPostContent(postContent);
+				int res = biz.accompany_insert(dto);
+				
+				if(res > 0) {
+					response.sendRedirect("board.do?command=list");
+				} else {
+					response.sendRedirect("./views/board/accompany_post.jsp");
+				}
+				
 			} else if(command.equals("select")) {
 				int postId = Integer.parseInt(request.getParameter("postId"));
 				BoardDto dto = biz.accompany_selectOne(postId);
@@ -58,12 +64,15 @@ public class BoardServlet extends HttpServlet {
 			} else if(command.equals("updateres")) {	
 				int postId = Integer.parseInt(request.getParameter("postId"));
 				int postUserNo = Integer.parseInt(request.getParameter("postUserNo"));
+				System.out.println(postId);
+				System.out.println(postUserNo);
 				String postTitle = request.getParameter("postTitle");
 				String postContent = request.getParameter("postContent");
 				BoardDto dto = new BoardDto();
 				dto.setPostId(postId);
 				dto.setPostTitle(postTitle);
 				dto.setPostContent(postContent);
+				dto.setPostUserNo(postUserNo);
 				
 				int res = biz.accompany_update(dto);
 				if (res > 0) {

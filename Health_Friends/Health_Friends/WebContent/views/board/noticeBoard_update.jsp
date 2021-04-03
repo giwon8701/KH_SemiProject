@@ -16,7 +16,8 @@
 	<%@include file="../../views/common/header.jsp" %>
 --%>
 
-<% RegistDto Ldto = (RegistDto) session.getAttribute("Ldto");%>
+<% RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); %>
+
 	<section class="boardlist">
 		<a href="./board.do?command=list">동행 구해요</a>
 		<a href="photoReviewBoard.jsp">사진후기</a>
@@ -34,7 +35,7 @@
 					</th>		
 				</tr>
 				<tr>
-					<td colspan="2">회원id넣어야함</td>
+					<td colspan="2">${Ldto.getMember_id() }</td>
 					<td>${dto.postRegdate } </td>
 				</tr>
 				<tr>
