@@ -126,7 +126,7 @@
 								<li><a href="../../payment.do?command=paymentRoleUp&member_role=<%=Ldto.getMember_role()%>">프리미엄 등록</a></li>
 								<li><a href="../../payment.do?command=paymentRoleDown&member_role=<%=Ldto.getMember_role()%>">프리미엄 탈퇴</a></li>
 								<li><a href="../../payment.do?command=paymentListMy&member_email=<%=Ldto.getMember_email()%>">나의 결제내역</a>
-								<li><a href="../../payment.do?command=paymentList">모든회원결제내역(admin)</a>
+								<li><a href="../../payment.do?command=paymentListPaging">모든회원결제내역(admin)</a>
 							</ul>
 						</td>
 					</tr>
