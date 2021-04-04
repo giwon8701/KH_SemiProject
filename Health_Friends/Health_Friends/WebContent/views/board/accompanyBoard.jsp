@@ -57,7 +57,7 @@
 						</c:when>
 						<c:otherwise>
 							 <c:choose>
-							 	<c:when test="${empty session.Ldto}">
+							 	<c:when test="${empty Ldto.member_no}">
 									<a href="javascript:loginChk();">${dto.postTitle}</a>
 								</c:when>
 								<c:otherwise>
