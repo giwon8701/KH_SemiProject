@@ -65,7 +65,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td class="exercise">
 						운동종류	<br/>
 						<select name="chooseExercise">
 							<optgroup label="맨발운동">
