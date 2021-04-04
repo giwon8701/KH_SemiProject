@@ -126,7 +126,7 @@
 								<li><a href="../../payment.do?command=paymentRoleUp&member_role=<%=Ldto.getMember_role()%>">프리미엄 등록</a></li>
 								<li><a href="../../payment.do?command=paymentRoleDown&member_role=<%=Ldto.getMember_role()%>">프리미엄 탈퇴</a></li>
 								<li><a href="../../payment.do?command=paymentListMy&member_email=<%=Ldto.getMember_email()%>">나의 결제내역</a>
-								<li><a href="../../payment.do?command=paymentList">모든회원결제내역(admin)</a>
+								<li><a href="../../payment.do?command=paymentListPaging">모든회원결제내역(admin)</a>
 							</ul>
 						</td>
 					</tr>
@@ -202,7 +202,12 @@
 		
 		<div class="mypage-second-div3">
 			<div class="mypage-basket-div">찜한게시물</div>
-			<div class="mypage-follw-div">팔로우</div>
+			<div class="mypage-follw-div" id="follow">팔로우</div>
+			<script>
+				$("#follow").click(function(){
+					open("../../follow.do?command=follow", "followList", "width=500; height=800;");
+				});
+			</script>
 		</div>
 	</div>
 	

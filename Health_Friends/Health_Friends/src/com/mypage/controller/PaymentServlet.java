@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.common.Paging;
 import com.login.dto.RegistDto;
 import com.mypage.biz.PaymentBiz;
 import com.mypage.biz.PaymentBizImpl;
@@ -83,9 +84,9 @@ public class PaymentServlet extends HttpServlet {
 				
 				if(cnt > 0) {
 					HttpSession session = request.getSession();
-					RegistDto paymentDto = (RegistDto)session.getAttribute("dto");
+					RegistDto paymentDto = (RegistDto)session.getAttribute("Ldto");
 					paymentDto.setMember_role("PREMIUM");
-					session.setAttribute("dto", paymentDto);
+					session.setAttribute("Ldto", paymentDto);
 					jsResponse(response, "./views/mypage/mypage.jsp", "프리미엄 회원이 되신걸 환영합니다!");
 				}else {
 					jsResponse(response, "./views/mypage/mypage.jsp", "오루발생!");
@@ -108,9 +109,9 @@ public class PaymentServlet extends HttpServlet {
 			if(res > 0) {
 				
 				HttpSession session = request.getSession();
-				RegistDto paymentDto = (RegistDto)session.getAttribute("dto");
+				RegistDto paymentDto = (RegistDto)session.getAttribute("Ldto");
 				paymentDto.setMember_role("USER");
-				session.setAttribute("dto", paymentDto);
+				session.setAttribute("Ldto", paymentDto);
 				
 				jsResponse(response, "./views/mypage/mypage.jsp", "프리미엄이 탈퇴되었습니다!");
 				
@@ -135,6 +136,28 @@ public class PaymentServlet extends HttpServlet {
 			
 			dispatch(request, response, "./views/mypage/paymentListMy.jsp");
 			
+		}
+		else if(command.equals("paymentListPaging")) {
+			
+			
+			int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+			
+			int totalCount = biz.getTotalCount();
+			
+			Paging paging = new Paging();
+			paging.setPageNo(pageNum);
+			paging.setPageSize(10);
+			paging.setTotalCount(totalCount);
+			
+			pageNum = (pageNum - 1) * 10;// 1 이면 0, 2이면 10, 3이면 20...
+			
+			// 어디부터 어디까지 가져올 건지 쓰는것 -> 쿼리 안쪽에서 계산해줌
+			List<PaymentDto> list = biz.paymentListPaging(pageNum, paging.getPageSize());
+			System.out.println("서블릿"+list);
+			request.setAttribute("list", list);
+			request.setAttribute("pageNum", pageNum);
+			request.setAttribute("totalCount", totalCount);
+			dispatch(request, response, "./views/mypage/paymentList.jsp");
 		}
 	}
 	

@@ -12,4 +12,7 @@ public interface PaymentDao {
 	public int paymentInsert(PaymentDto dto);
 	public List<PaymentDto> paymentList();
 	public List<PaymentDto> paymentListMy(String member_email);
+	
+	public List<PaymentDto> paymentListPaging(int startRow, int endRow);
+	public int getTotalCount(); 
 }

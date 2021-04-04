@@ -69,7 +69,6 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 			session = getSqlSessionFactory().openSession(true);
 			dto = session.selectOne("BoardMapper.accompany_selectOne", postId);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -87,7 +86,6 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 			session = getSqlSessionFactory().openSession(true);
 			dto = session.selectOne("BoardMapper.notice_selectOne", postId);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -105,7 +103,6 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 			session = getSqlSessionFactory().openSession(true);
 			dto = session.selectOne("BoardMapper.notice_selectOne", postId);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -122,6 +119,22 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 		try(SqlSession session = getSqlSessionFactory().openSession(true)){
 			res = session.insert("BoardMapper.accompany_insert", dto);
 			System.out.println(res);
+		} catch(Exception e){
+			e.printStackTrace();
+		} 
+		return res;
+	}
+	
+	@Override
+	public int photo_insert(BoardDto dto) {
+		int res = 0;
+		
+		try(SqlSession session = getSqlSessionFactory().openSession(false)){
+			res = session.insert("BoardMapper.photo_insert", dto);
+			System.out.println(res);
+			if(res > 0) {
+				session.commit();
+			}
 		} catch(Exception e){
 			e.printStackTrace();
 		} 

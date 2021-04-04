@@ -1,3 +1,4 @@
+<%@page import="com.login.dto.RegistDto"%>
 <%@page import="com.board.dto.BoardDto"%>
 <%@page import="java.util.List"%>
 <%@page import="com.board.biz.BoardBizImpl"%>
@@ -12,7 +13,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>우리동네 운동친구 Health Friends</title>
+<script type="text/javascript">
+	function loginChk() {
+		alert("로그인 이후 사용가능합니다");
+	}
+</script>
 <style type="text/css">
 
 </style>
@@ -20,14 +26,15 @@
 <%
 	BoardBiz biz = new BoardBizImpl();
 	List<BoardDto> list = biz.notice_selectList();
+	RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); 
 %>
 <body>
-<%---
-	<%@include file="header.jsp" %>
- --%>	
+<%--
+	<%@include file="../../views/common/header.jsp" %>
+ --%>
 	<section class="boardlist">
 		<a href="./board.do?command=list">동행 구해요</a>
-		<a href="photoReviewBoard.jsp">사진후기</a>
+		<a href="./review.do?command=list">사진후기</a>
 		<a href="./notice.do?command=list">공지사항</a>
 	</section>
 	
@@ -49,18 +56,31 @@
 							<c:out value="---삭제된 게시글입니다---"></c:out>
 						</c:when>
 						<c:otherwise>
-							<a href="./notice.do?command=select&postId=${dto.postId }">${dto.postTitle }</a>
+							 <c:choose>
+							 	<c:when test="${empty session.Ldto}">
+									<a href="javascript:loginChk();">${dto.postTitle}</a>
+								</c:when>
+								<c:otherwise>
+									<a href="./notice.do?command=select&postId=${dto.postId }">${dto.postTitle }</a>
+								</c:otherwise>
+							</c:choose>
 						</c:otherwise>
 					</c:choose>
 				</td>
-				<td>회원id넣어야함</td>
+				<td>${Ldto.member_id }</td>
 				<td>${dto.postRegdate }</td>
 			</tr>
 		</c:forEach>
 	</table>
-	 <input type="button" value="글작성" onclick="location.href='./notice.do?command=insert'" />
+	<c:choose>
+      <c:when test="${Ldto.member_no eq 1 }">
+		<input type="button" value="글작성" onclick="location.href='./notice.do?command=insert'" />
+	  </c:when>
+    </c:choose>
+
+
 <%---	
-	<%@include file="footer.jsp" %>
+	<%@include file="../../views/common/footer.jsp" %>
 --%>
 </body>
 </html>

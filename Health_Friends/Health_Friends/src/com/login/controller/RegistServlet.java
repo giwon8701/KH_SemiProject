@@ -132,8 +132,8 @@ public class RegistServlet extends HttpServlet {
 		} else if(command.equals("login")) {
 			response.sendRedirect("./views/login/login.jsp");
 		} else if(command.equals("loginres")){
-			String memberId = request.getParameter("memberId");
-			String memberPw = getHash(request.getParameter("memberPw")+memberId);
+			String memberId = request.getParameter("loginMemberId");
+			String memberPw = getHash(request.getParameter("loginMemberPw")+memberId);
 			
 			RegistDto logindto = new RegistDto();
 			logindto.setMember_id(memberId);

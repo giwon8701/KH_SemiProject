@@ -1,3 +1,4 @@
+<%@page import="com.login.dto.RegistDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
@@ -20,21 +21,16 @@
 </style>
 </head>
 <body>
-<%--
-	<%@include file="header.jsp" %>
- --%>	
- 	<section class="boardlist">
-		<a href="">동행 구해요</a>
-		<a href="">후기</a>
-		<a href="">공지사항</a>
+<%--  
+	<%@include file="../../views/common/header.jsp" %>
+--%>	
+
+	<section class="boardlist">
+		<a href="../../board.do?command=list">동행 구해요</a>
+		<a href="../../review.do?command=list">사진후기</a>
+		<a href="../../notice.do?command=list">공지사항</a>
 	</section>
- <!-- 
- postBoardName
- postNo
- postId
- postTitle
- postContent (se2)
-  -->
+	
 	<section id="noticeBoard_post">
 		<form action="../../notice.do" method="post">
 			<input type="hidden" name="command" value="insertres"/>
@@ -59,12 +55,15 @@
 				</tr>
 			</table>
 			<input type="submit" value="등록">
-			<input type="button" value="취소" onclick="location.href='board.do?command=list'" />
+			<input type="button" value="취소" onclick="location.href='../../notice.do?command=list'" />
 		</form>
 	</section>
-<%--	
-	<%@include file="footer.jsp" %>
+<%---	
+	<%@include file="../../views/common/footer.jsp" %>
 --%>
 
 </body>
 </html>
+
+
+
