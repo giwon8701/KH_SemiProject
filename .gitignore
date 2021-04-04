@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/eclipse,java
 # Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,java
 
+# Created by https://www.toptal.com/developers/gitignore/api/eclipse,java
+# Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,java
+
 ### Eclipse ###
 Health_Friends/Servers
 Health_Friends/javawebsocket
@@ -95,6 +98,8 @@ local.properties
 
 # specific folder need to add (library .jar)
 !/Health_Friends/Health_Friends/WebContent/WEB-INF/lib/*
+!Health_Friends/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/Health_Friends/upload/*
+!Health_Friends/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/Health_Friends/profileimg/*
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid
