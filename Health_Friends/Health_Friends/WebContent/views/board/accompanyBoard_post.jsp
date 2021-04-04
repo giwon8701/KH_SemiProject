@@ -66,7 +66,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td class="exercise">
 						운동종류	<br/>
 						<select name="postCategoryName">
 							<optgroup label="맨발운동">
