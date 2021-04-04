@@ -21,7 +21,6 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <link href="https://fonts.googleapis.com/css?family=Jua"
 	rel="stylesheet">
-<link rel="stylesheet" href="introduce.css">
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -315,13 +314,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width" initial-scale="1">
 
+<link href="assets/css/main.css" rel="stylesheet" type="text/css">
 <title>쇼핑 검색 페이지</title>
 
 </head>
 
 <body>
-
-<link href="../../assets/css/main.css" rel="stylesheet" type="text/css">
 
 	<%@include file="../../header.jsp" %>
 
