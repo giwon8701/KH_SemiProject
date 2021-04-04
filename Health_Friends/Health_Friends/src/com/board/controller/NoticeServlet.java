@@ -11,10 +11,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.board.biz.BoardBiz;
 import com.board.biz.BoardBizImpl;
 import com.board.dto.BoardDto;
+import com.login.dto.RegistDto;
 
 @WebServlet("/notice.do")
 public class NoticeServlet extends HttpServlet {
@@ -26,6 +28,8 @@ public class NoticeServlet extends HttpServlet {
 		
 		String command = request.getParameter("command");
 		BoardBiz biz = new BoardBizImpl();
+		HttpSession session = request.getSession();
+		RegistDto ldto = (RegistDto)session.getAttribute("Ldto");
 		
 		try {
 			if(command.equals("list")) {
@@ -37,13 +41,14 @@ public class NoticeServlet extends HttpServlet {
 				response.sendRedirect("./views/board/noticeBoard_post.jsp");
 				
 			} else if(command.equals("insertres")) {
+				int postUserNo = ldto.getMember_no();
 				String postTitle = request.getParameter("postTitle");
 				String postContent = request.getParameter("postContent");
 				
 				BoardDto dto = new BoardDto();
+				dto.setPostUserNo(postUserNo);
 				dto.setPostTitle(postTitle);
 				dto.setPostContent(postContent);
-				dto.setPostCategoryName("walk");
 				int res = biz.notice_insert(dto);
 				
 				if(res > 0) {
@@ -64,13 +69,11 @@ public class NoticeServlet extends HttpServlet {
 				request.setAttribute("dto", dto);
 				dispatch(request, response, "./views/board/noticeBoard_update.jsp");
 				
-			} else if(command.equals("updateres")) {	
+			} else if(command.equals("updateres")) {
 				int postId = Integer.parseInt(request.getParameter("postId"));
-				int postUserNo = Integer.parseInt(request.getParameter("postUserNo"));
 				String postTitle = request.getParameter("postTitle");
 				String postContent = request.getParameter("postContent");
 				BoardDto dto = new BoardDto();
-				dto.setPostNo(postUserNo);
 				dto.setPostId(postId);
 				dto.setPostTitle(postTitle);
 				dto.setPostContent(postContent);

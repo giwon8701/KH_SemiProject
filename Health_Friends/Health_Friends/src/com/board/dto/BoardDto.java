@@ -160,4 +160,13 @@ public class BoardDto {
 	public void setPostLongitude(int postLongitude) {
 		this.postLongitude = postLongitude;
 	}
+
+	public String getPostDelflag() {
+		return postDelflag;
+	}
+
+	public void setPostDelflag(String postDelflag) {
+		this.postDelflag = postDelflag;
+	}
+	
 }

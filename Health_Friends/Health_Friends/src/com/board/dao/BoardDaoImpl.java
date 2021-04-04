@@ -69,7 +69,6 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 			session = getSqlSessionFactory().openSession(true);
 			dto = session.selectOne("BoardMapper.accompany_selectOne", postId);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -87,7 +86,6 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 			session = getSqlSessionFactory().openSession(true);
 			dto = session.selectOne("BoardMapper.notice_selectOne", postId);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -105,7 +103,6 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 			session = getSqlSessionFactory().openSession(true);
 			dto = session.selectOne("BoardMapper.notice_selectOne", postId);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			session.close();
