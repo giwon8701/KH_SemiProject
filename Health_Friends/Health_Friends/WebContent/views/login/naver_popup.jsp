@@ -20,15 +20,15 @@
 		let member_gender = naver_id_login.getProfileData("gender");
 		let birthmmdd = naver_id_login.getProfileData("birthday");
 		let member_birthday = birthmmdd.substring(0, 2) + birthmmdd.substring(3);
-		let phone = naver_id_login.getProfileData("mobile");
+		//let phone = naver_id_login.getProfileData("mobile");
 		console.log(naver_id_login);
 		console.log(member_name);
 		console.log(member_email);
 		console.log(member_id);
 		console.log(member_gender);
 		console.log(member_birthday);
-		console.log(phone);
-		let member_phone = phone.replace("-", "");
+		//console.log(phone);
+		//let member_phone = phone.replace("-", "");
 
 		opener.document.getElementById("id").value = member_id;
 		opener.document.getElementById("name").value = member_name;
