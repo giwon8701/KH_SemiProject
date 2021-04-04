@@ -21,6 +21,7 @@
 					$("#list").empty();
 					$("#list").text('내가 팔로잉 하는 사람이 아직 없습니다.');
 					$("#following").css("background-color", "skyblue");
+					
 				} else {
 					$("#list").empty();
 					$table = $("<table>");
@@ -34,6 +35,7 @@
 						$table.append($tr);
 					}
 					$("#list").append($table);
+					$("#following").css("background-color", "skyblue");
 				}
 			},
 			error : function(err){
