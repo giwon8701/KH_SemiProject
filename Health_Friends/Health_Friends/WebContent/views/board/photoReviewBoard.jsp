@@ -23,22 +23,35 @@ img{
 --%>	
 
 	<section class="boardlist">
-		<a href="accompanyBoard.jsp">동행 구해요</a>
-		<a href="photoReviewBoard.jsp">후기</a>
-		<a href="noticeBoard.jsp">공지사항</a>
-	</section>	
+		<a href="./board.do?command=list">동행 구해요</a>
+		<a href="./review.do?command=list">후기</a>
+		<a href="./notice.do?command=list">공지사항</a>
+	</section>
+	<br/>
+	<input type="button" value="글작성" onclick="location.href='review.do?command=insert'" />	
 	
 	<h2>사진후기</h2>
 	
 	<section id="photoReviewBoard_list">
 		<table border="1">
-			<c:forEach items="${list }" var="dto">
-				<tr>
-					<td><img src="../../reviewimg/<%=%>?"></td>
-					<td>${dto.postTitle}</td>
-					<td>${dto.postContent}</td>
-				</tr>
-			</c:forEach>
+			<c:choose>
+				<c:when test="${empty list }">
+					<tr>
+						<td>------------작성된 글이 없습니다-----------</td>
+					</tr>
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${list }" var="dto">
+						<tr>
+							<td><img src=""></td>
+							<td>${dto.postNo}</td>
+							<td>${dto.postTitle}</td>
+							<td>${dto.postContent}</td>
+							<td>${dto.postRegdate}</td>
+						</tr>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
 		</table>
 	</section>
 	

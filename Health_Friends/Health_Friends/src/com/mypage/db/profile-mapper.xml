@@ -10,4 +10,18 @@
 		WHERE MEMBER_EMAIL = #{member_email}
 	</update>
 	
+	<select id="imfollowing" parameterType="int" resultType="registDto">
+		SELECT MEMBER_PICTURE_PATH, MEMBER_ID
+		FROM MEMBER JOIN FOLLOW
+		ON(MEMBER_NO = FOLLOW_MEMBER_NO)
+		WHERE FOLLOW_FOLLOWING_NO = #{follow_following_no}
+	</select>
+		
+	<select id="followerofme" parameterType="int" resultType="registDto">
+		SELECT MEMBER_PICTURE_PATH, MEMBER_ID
+		FROM MEMBER
+		JOIN FOLLOW ON(MEMBER_NO = FOLLOW_FOLLOWING_NO)
+		WHERE FOLLOW_MEMBER_NO = #{follow_member_no}
+	</select>
+	
 </mapper>

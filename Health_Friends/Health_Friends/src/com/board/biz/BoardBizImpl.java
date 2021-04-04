@@ -22,7 +22,7 @@ public class BoardBizImpl implements BoardBiz {
 	
 	@Override
 	public List<BoardDto> photo_selectList() {
-		return dao.notice_selectList();
+		return dao.photo_selectList();
 	}
 
 	@Override
@@ -43,6 +43,11 @@ public class BoardBizImpl implements BoardBiz {
 	@Override
 	public int accompany_insert(BoardDto dto) {
 		return dao.accompany_insert(dto);
+	}
+	
+	@Override
+	public int photo_insert(BoardDto dto) {
+		return dao.photo_insert(dto);
 	}
 	
 	@Override
