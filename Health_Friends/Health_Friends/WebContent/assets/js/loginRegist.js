@@ -24,7 +24,7 @@
 		} else{
 			var queryString = "?command=idCheck&memberId="+newId;
 			$.ajax({
-				url: "../../regist.do"+queryString,
+				url: "regist.do"+queryString,
 				dataType: "text",
 				success: function(data){
 					if(data == 0){
@@ -87,7 +87,7 @@
 		} else{
 			var queryString = "?command=emailCheck&memberEmail="+newEmail;
 			$.ajax({
-				url: "../../regist.do"+queryString,
+				url: "regist.do"+queryString,
 				dataType: "text",
 				success: function(data){
 					if(data == 0){
