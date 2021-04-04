@@ -6,13 +6,14 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.common.SqlMapConfig;
+import com.login.dto.RegistDto;
 import com.mypage.dto.FollowDto;
 
 public class FollowDaoImpl  extends SqlMapConfig implements FollowDao {
 
 	@Override
-	public List<FollowDto> searchFollwing(int member_no) {
-		List<FollowDto> list = new ArrayList<FollowDto>();
+	public List<RegistDto> searchFollwing(int member_no) {
+		List<RegistDto> list = new ArrayList<RegistDto>();
 		
 		SqlSession session = null;
 		
@@ -41,8 +42,8 @@ public class FollowDaoImpl  extends SqlMapConfig implements FollowDao {
 	}
 
 	@Override
-	public List<FollowDto> searchFollowed(int member_no) {
-		List<FollowDto> list = new ArrayList<FollowDto>();
+	public List<RegistDto> searchFollowed(int member_no) {
+		List<RegistDto> list = new ArrayList<RegistDto>();
 		
 		SqlSession session = null;
 		

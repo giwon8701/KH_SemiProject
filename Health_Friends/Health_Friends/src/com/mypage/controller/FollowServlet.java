@@ -1,7 +1,10 @@
 package com.mypage.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,16 +40,28 @@ public class FollowServlet extends HttpServlet {
 		
 		FollowBiz biz = new FollowBizImpl();
 		
-		if(command.equals("following")) {
+		if(command.equals("follow")) {
+			response.sendRedirect("./views/mypage/follower.jsp");
 			
+		} else if(command.equals("following")) {
 			HttpSession session = request.getSession();
 			RegistDto Ldto = (RegistDto)session.getAttribute("Ldto");
 			int following_no = Ldto.getMember_no();
+
+			List<RegistDto> list = biz.searchFollwing(following_no);
 			
-			List<FollowDto> list = biz.searchFollwing(following_no);
+			List<Map> res = new ArrayList<Map>(); 
 			
-			request.setAttribute("list", list);
-			dispatch(request, response, "./views/mypage/follower.jsp");
+			for(int i = 0; i < list.size(); i++) {
+				Map<String, String> map = new HashMap<String, String>();
+				map.put("member_picture_path", list.get(i).getMember_picture_path());
+				map.put("member_id", list.get(i).getMember_id());
+				
+				res.add(map);
+			}
+			JSONArray result = JSONArray.fromObject(res);
+			System.out.println("result : " +result.toString());
+			response.getWriter().print(result.toString());
 			
 		} else if(command.equals("follower")) {
 			
@@ -54,31 +69,20 @@ public class FollowServlet extends HttpServlet {
 			RegistDto Ldto = (RegistDto)session.getAttribute("Ldto");
 			int follow_member_no = Ldto.getMember_no();
 			
-			List<FollowDto> list = biz.searchFollowed(follow_member_no);
+			List<RegistDto> list = biz.searchFollowed(follow_member_no);
 			
-			request.setAttribute("list", list);
-			dispatch(request, response, "./views/mypage/follower.jsp");
-			
-		} else if(command.equals("followingtest")) {
-			HttpSession session = request.getSession();
-			RegistDto Ldto = (RegistDto)session.getAttribute("Ldto");
-			int following_no = Ldto.getMember_no();
-			
-			List<FollowDto> list = biz.searchFollwing(following_no);
-			
-			JSONArray result = JSONArray.fromObject(list);
+			List<Map<String, String>> res = new ArrayList<Map<String, String>>(); 
+						
+			for(int i = 0; i < list.size(); i++) {
+				Map<String, String> map = new HashMap<String, String>();
+				map.put("member_picture_path", list.get(i).getMember_picture_path());
+				map.put("member_id", list.get(i).getMember_id());
+				
+				res.add(map);
+			}
+			JSONArray result = JSONArray.fromObject(res);
+			System.out.println(result.toString());
 			response.getWriter().print(result.toString());
-			
-		} else if(command.equals("followertest")) {
-			
-			HttpSession session = request.getSession();
-			RegistDto Ldto = (RegistDto)session.getAttribute("Ldto");
-			int follow_member_no = Ldto.getMember_no();
-			
-			List<FollowDto> list = biz.searchFollowed(follow_member_no);
-			
-			request.setAttribute("list", list);
-			dispatch(request, response, "./views/mypage/follower.jsp");
 			
 		}
 	}

@@ -205,7 +205,7 @@
 			<div class="mypage-follw-div" id="follow">팔로우</div>
 			<script>
 				$("#follow").click(function(){
-					open("../../follow.do?command=following");
+					open("../../follow.do?command=follow", "followList", "width=500; height=800;");
 				});
 			</script>
 		</div>

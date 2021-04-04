@@ -1,7 +1,9 @@
 package com.mypage.biz;
 
 import java.util.List;
+import java.util.Map;
 
+import com.login.dto.RegistDto;
 import com.mypage.dao.FollowDao;
 import com.mypage.dao.FollowDaoImpl;
 import com.mypage.dto.FollowDto;
@@ -11,7 +13,7 @@ public class FollowBizImpl implements FollowBiz {
 	FollowDao dao = new FollowDaoImpl();
 	
 	@Override
-	public List<FollowDto> searchFollwing(int member_no) {
+	public List<RegistDto> searchFollwing(int member_no) {
 		return dao.searchFollwing(member_no);
 	}
 
@@ -27,7 +29,7 @@ public class FollowBizImpl implements FollowBiz {
 	}
 
 	@Override
-	public List<FollowDto> searchFollowed(int member_no) {
+	public List<RegistDto> searchFollowed(int member_no) {
 		return dao.searchFollowed(member_no);
 	}
 

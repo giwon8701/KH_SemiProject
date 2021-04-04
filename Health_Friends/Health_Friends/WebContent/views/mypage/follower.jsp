@@ -10,43 +10,81 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
-	$("#following").click(function(){
+	
+	function following(){
+		var queryString = "?command=following";
 		$.ajax({
-			url: "../../follow.do?command=followingtest",
+			url: "../../follow.do"+queryString,
 			dataType: "json",
 			success: function(data){
-				if(data.list.length < 1) {
+				if(data.size < 1) {
+					$("#list").empty();
 					$("#list").text('내가 팔로잉 하는 사람이 아직 없습니다.');
-					$("#following").css("background-color", "skyblue")
+					$("#following").css("background-color", "skyblue");
 				} else {
+					$("#list").empty();
 					$table = $("<table>");
 					
-					for(var i = 0; i < data.list.length; i++){
+					for(var i = 0; i < data.length; i++){
 						$tr = $("<tr>");
-						for(var j = 0; j < 2; j++){
-							$td = $("<td>").
-						}
+						$td01 = $("<td>").append("<img src='../../profileimg/"+data[i].member_picture_path +"' style='width:100px; height:100px'>");
+						$td02 = $("<td>").append(data[i].member_id);
+						$tr.append($td01).append($td02);
+						
+						$table.append($tr);
 					}
+					$("#list").append($table);
+				}
+			},
+			error : function(err){
+				alert(err);
+			}
+		});
+	};
+	
+	function follower(){
+		$.ajax({
+			url: "../../follow.do?command=follower",
+			dataType: "json",
+			success: function(data){
+				if(data.size < 1) {
+					$("#list").empty();
+					$("#list").text('나를 팔로우 하는 사람이 아직 없습니다.');
+					$("#follower").css("background-color", "skyblue");
+				} else {
+					$("#list").empty();
+					$table = $("<table>");
+					
+					for(var i = 0; i < data.length; i++){
+						$tr = $("<tr>");
+						$td01 = $("<td>").append("<img src='../../profileimg/"+data[i].member_picture_path +"' style='width:100px; height:100px'>");
+						$td02 = $("<td>").append(data[i].member_id);
+						$tr.append($td01).append($td02);
+						
+						$table.append($tr);
+					}
+					$("#list").append($table);
 				}
 			},
 			error : function(err){
 				alert('통신 에러');
 			}
 		});
-	});
+	};
+	
 </script>
 </head>
 <body>
 		
 		
 		<div>
-			<div id="following">팔로잉</div>
-			<div id="follower"></div>
+			<div id="following" onclick="following()">팔로잉</div>
+			<div id="follower" onclick="follower()">팔로워</div>
 		</div>
 		<div id="list"></div>
 		
 		
-		
+		<!--  
 			<div>
 				<c:forEach items="${list }" var="dto">
 					<table>
@@ -66,7 +104,7 @@
 					</table>
 				</c:forEach>
 			</div>
-			
+		-->
 			
 		
 </body>
