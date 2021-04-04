@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,7 +38,7 @@ public class ShoppingServlet extends HttpServlet {
 		String command = request.getParameter("command");
 
 		if (command.equals("shopping")) {
-			response.sendRedirect("./views/shopping/view.jsp");
+			dispatch(request, response, "./views/shopping/view.jsp");
 			
 		} else if (command.equals("search")) {
 			String keyword = URLEncoder.encode(request.getParameter("keyword"), "UTF-8");
@@ -137,5 +138,10 @@ public class ShoppingServlet extends HttpServlet {
 		} catch (IOException e) {
 			throw new RuntimeException("API 응답을 읽는데 실패했습니다.", e);
 		}
+	}
+	
+	private void dispatch(HttpServletRequest request, HttpServletResponse response, String path) throws ServletException, IOException {
+		RequestDispatcher dispatch = request.getRequestDispatcher(path);
+		dispatch.forward(request, response);
 	}
 }

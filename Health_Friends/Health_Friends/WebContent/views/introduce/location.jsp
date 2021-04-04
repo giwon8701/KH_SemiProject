@@ -80,7 +80,7 @@ function GoTop() {
 
 <!-- header 영역 시작 -->
 	<header>
-		<%@include file="../../views/common/header.jsp" %>
+		<%@include file="../../header.jsp" %>
 	</header>
 <!-- header 영역 끝 -->
 	
@@ -219,7 +219,7 @@ function GoTop() {
 
 <!-- footer 시작 -->
 	<footer style="background-color: #000000; color: #ffffff">
-		<%@include file="../../views/common/footer.jsp" %>
+		<%@include file="../../footer.jsp" %>
 	</footer>
 <!-- footer 끝 -->
 

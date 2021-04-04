@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="../common/header.jsp" %>
+<%@ include file="../../header.jsp" %>
 <table>
 	<tr>
 		<td>프리미엄 회원을 취소하시면 다시 돌리실수 없습니다... 저희 health friends는...</td>
@@ -22,6 +22,6 @@
 	</tr>
 </table>
 
-<%@ include file="../common/footer.jsp" %>
+<%@ include file="../../footer.jsp" %>
 </body>
 </html>

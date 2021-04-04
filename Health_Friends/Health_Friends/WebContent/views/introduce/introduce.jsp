@@ -108,7 +108,7 @@
 	<!-- header 영역 시작 -->
 
 
-	<%@include file="../common/header.jsp" %>
+	<%@include file="../../header.jsp" %>
 
 <!-- header 영역 끝 -->
 	

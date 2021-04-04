@@ -261,7 +261,7 @@
 	</form>
 	
 
-	<%@include file="../common/footer.jsp" %>
+	<%@include file="../../footer.jsp" %>
 
 </body>
 </html>

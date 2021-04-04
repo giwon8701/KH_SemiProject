@@ -323,7 +323,7 @@
 
 <link href="../../assets/css/main.css" rel="stylesheet" type="text/css">
 
-	<%@include file="../../views/common/header.jsp" %>
+	<%@include file="../../header.jsp" %>
 
 	<div style="text-align: center">
 		<img

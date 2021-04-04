@@ -33,6 +33,7 @@
 		opener.document.getElementById("id").value = member_id;
 		opener.document.getElementById("name").value = member_name;
 		opener.document.getElementById("email").value = member_email;
+		opener.document.getElementById("sign-up-btn").click();
 		//opener.document.getElementById("birthday").value = member_birthday;
 		//opener.document.getElementById("phone").value = member_phone;
 		//opener.document.getElementById("id").value = member_gender;
