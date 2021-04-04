@@ -8,6 +8,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	#follow {
+		display :flex;
+	}
+	
+	#follow > div {
+		display : inline-block;
+		padding : 20px;
+	}
+</style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 	
@@ -20,7 +30,9 @@
 				if(data.length < 1) {
 					$("#list").empty();
 					$("#list").text('내가 팔로잉 하는 사람이 아직 없습니다.');
+					$("#list").css("background-color", "skyblue");
 					$("#following").css("background-color", "skyblue");
+					$("#follower").css("background-color", "");
 					
 				} else {
 					$("#list").empty();
@@ -35,7 +47,9 @@
 						$table.append($tr);
 					}
 					$("#list").append($table);
+					$("#list").css("background-color", "skyblue");
 					$("#following").css("background-color", "skyblue");
+					$("#follower").css("background-color", "");
 				}
 			},
 			error : function(err){
@@ -52,7 +66,9 @@
 				if(data.length < 1) {
 					$("#list").empty();
 					$("#list").text('나를 팔로우 하는 사람이 아직 없습니다.');
+					$("#list").css("background-color", "skyblue");
 					$("#follower").css("background-color", "skyblue");
+					$("#following").css("background-color", "");
 				} else {
 					$("#list").empty();
 					$table = $("<table>");
@@ -66,6 +82,9 @@
 						$table.append($tr);
 					}
 					$("#list").append($table);
+					$("#list").css("background-color", "skyblue");
+					$("#follower").css("background-color", "skyblue");
+					$("#following").css("background-color", "");
 				}
 			},
 			error : function(err){
@@ -79,7 +98,7 @@
 <body>
 		
 		
-		<div>
+		<div id="follow">
 			<div id="following" onclick="following()">팔로잉</div>
 			<div id="follower" onclick="follower()">팔로워</div>
 		</div>
