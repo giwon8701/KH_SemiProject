@@ -115,8 +115,8 @@ public class NaverServlet extends HttpServlet {
 			dto.setMember_birthday(member_birthday);
 			dto.setMember_phone(member_phone);
 			
-			//System.out.println(dto.getMember_email());
-			//System.out.println(dto.getMember_id());
+			System.out.println(dto.getMember_email());
+			System.out.println(dto.getMember_id());
 			
 			//가입 유무 확인
 			RegistBiz biz = new RegistBizImpl();
@@ -145,9 +145,10 @@ public class NaverServlet extends HttpServlet {
 						 + "alert('" + msg + "');"
 						 + "</script>";
 				out.println(s);
+				System.out.println("test");
 				
 				request.setAttribute("dto", dto);
-				dispatch(request, response, "/views/login/registSample.jsp");
+				//dispatch(request, response, "/views/login/registSample.jsp");
 			}
 
 	      }
