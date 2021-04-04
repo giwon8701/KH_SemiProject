@@ -17,7 +17,7 @@
 			url: "../../follow.do"+queryString,
 			dataType: "json",
 			success: function(data){
-				if(data.size < 1) {
+				if(data.length < 1) {
 					$("#list").empty();
 					$("#list").text('내가 팔로잉 하는 사람이 아직 없습니다.');
 					$("#following").css("background-color", "skyblue");
@@ -47,7 +47,7 @@
 			url: "../../follow.do?command=follower",
 			dataType: "json",
 			success: function(data){
-				if(data.size < 1) {
+				if(data.length < 1) {
 					$("#list").empty();
 					$("#list").text('나를 팔로우 하는 사람이 아직 없습니다.');
 					$("#follower").css("background-color", "skyblue");
