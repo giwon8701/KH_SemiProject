@@ -53,7 +53,7 @@ session.setAttribute("state", state);
             </ul>
             
            	<span class="header-search">
-				<input type="text" size="35" placeholder="동네 또는 운동명을 검색해 보세요!">
+				<input type="text" size="30" placeholder="동네 또는 운동명을 검색해 보세요!">
 			</span>
             
             <ul class="border-ul">

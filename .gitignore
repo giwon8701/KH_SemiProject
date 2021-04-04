@@ -1,3 +1,191 @@
+강원기
+#8624
+
+강원기 — 2021.04.01.
+메인페이지 css는 main.css에 몰아놨습니다!
+header 포함!
+임기원 — 2021.04.02.
+dddddd
+ㅇㅇㅇ
+ㅇㅇㅇ
+<c:choose>
+                <c:when test="${dto.getMember_id() == null}">
+                    <a href="regist.do?command=login">로그인</a>
+                    <a href="regist.do?command=registForm">회원가입</a>
+                </c:when>
+
+
+
+<c:otherwise>
+                    <a href="mypage.do?command=mypage">마이페이지</a>
+                    <a href="regist.do?command=logout">로그아웃</a>
+                </c:otherwise>
+            </c:choose>
+        </header>
+임기원 — 2021.04.02.
+
+
+강원기 — 2021.04.02.
+background: rgba(255, 255, 255, 0);
+지연 — 2021.04.03.
+https://unsplash.com/
+Beautiful Free Images & Pictures | Unsplash
+Beautiful, free images and photos that you can download and use for any project. Better than any royalty free or stock photos.
+
+지연 — 2021.04.03.
+>>정보-디자인에 추가해두었어요!
+지연 — 2021.04.03.
+UPDATE POST SET 
+            POST_USER_NO = #{postUserNo},
+            POST_TITLE = #{postTitle},
+            POST_CONTENT = #{postContent},
+            POST_REGDATE = SYSDATE
+        WHERE POST_ID = #{postId}
+제가 POST_ID라고 적어놨었어요!
+<input type="text" name="postTitle" value="${dto.postTitle }"/>
+>> name = title 이라고 적어놨었어요!
+content 도요,,,
+소윤정 — 2021.04.03.
+<table border="1">
+            <tr>
+                <th>글번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>날짜</th>
+            </tr>
+        <c:forEach items="${list }" var="dto">
+            <tr>
+                <td>${dto.postNo }</td>
+                <td>
+                    <c:choose>
+                        <c:when test="${dto.postDelflag eq'Y' }">
+                            <c:out value="---삭제된 게시글입니다---"></c:out>
+                        </c:when>
+                        <c:otherwise>
+                            <c:choose>
+                                <c:when test="${empty session.Ldto}">
+                                    <a href="javascript:loginChk();">${dto.postTitle }</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="./notice.do?command=select&postId=${dto.postId }">${dto.postTitle }</a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:otherwise>
+                    </c:choose>
+                </td>
+                <td>회원id넣어야함</td>
+                <td>${dto.postRegdate }</td>
+            </tr>
+        </c:forEach>
+    </table>
+    <c:choose>
+        <c:when test="${not empty session.Ldto }">
+         <input type="button" value="글작성" onclick="location.href='./notice.do?command=insert'" />
+         </c:when>
+     </c:choose>
+연님 이거 noticeboard
+수정한거요.
+지연 — 2021.04.03.
+넹 저도 수정해둘게요!!
+강원기 — 2021.04.03.
+KH_SemiProject\Health_Friends.metadata.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Health_Friends\profileimg
+손승현 — 2021.04.03.
+지금 다들 게시판 수정하고 계서서 꼬일까봐 제가 직접 게시판  jsp 파일은 건드리지 못하고 다른 프로젝트에서 html이랑 css 만들어 놓았습니다. 파일 하나 드릴텐데 확인하시길 바랍니다.
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
+확장
+board01.jsp
+5KB
+손승현 — 2021.04.03.
+제가 저녁에 일이 있어서 나갔다 다시들어오겠스빈다.
+임기원 — 2021.04.03.
+내가 팔로잉한사람, 나를 팔로우한사람 조회
+https://gather.town/
+Gather
+Gather is a video-calling space that lets multiple people hold separate conversations in parallel, walking in and out of those conversations just as easily as they would in real life.
+
+https://gather.town/i/A36gj9uU
+Gather
+Gather is a video-calling space that lets multiple people hold separate conversations in parallel, walking in and out of those conversations just as easily as they would in real life.
+
+지연 — 2021.04.03.
+
+소윤정 — 어제 오전 2:51
+원기님
+소윤정 — 어제 오전 3:07
+안들리시나요?
+소윤정 — 어제 오전 3:53
+저 마이크가 왜 안될까요
+소윤정 — 어제 오전 4:36
+하루가 48시간이었으면 좋겠어요...
+임기원 — 어제 오전 4:36
+48시간시간도
+모자라다고생각합니다요
+소윤정 — 어제 오전 4:36
+방금 저도 그 생각 했어요ㅋㅋㅠ
+일단 저는 조금만 자고 올게요
+임기원 — 어제 오전 4:37
+네..주무세요 ㅠㅠ
+소윤정 — 어제 오전 4:37
+기원님도 조금이라도 자면서 하세요ㅠ
+임기원 — 어제 오후 11:53
+기원 : sns로그인 하면 sign up 자동 클릭 및 정보 매핑
+썸머노트api로 교체
+이미지들어가는 폴더 gitignore에서 무시해야함
+카카오로그인도 네이버처럼 정보만 가져오게 해야함
+-------------------------------
+윤정 : 팔로잉팔로우 거의 끝남
+프로필사진교체문제 : Profileservlet 68번에 nullpointerexception뜸
+임기원 — 오늘 오전 12:00
+--------------------------------------
+유저 프로필 들어가면 팔로잉버튼 추가, 계정관리 등 안보이게 해야함
+-------------------------------------
+원기 : 로그인디자인, 메인디자인 거의 구현 끝
+프로필사진이 존재하는 사람이 사진을 변경할 때, 원래사진 삭제시켜야함(선택사항)
+-------------------------------------
+승현 : css를 파일로 만들어서 css폴더에 넣어야함
+--------------------------------------
+지연 : 카카오지도api에 마커정보를 담아서 자바스크립트 -> 서블릿으로 보내야하는데 안되고있음
+geolocation으로 현재위치도 담아오면 좋음(선택사항)
+
+linkedlin.com
+https://www.rocketpunch.com/
+로켓펀치 - 비즈니스 네트워크
+로켓펀치 - 비즈니스 네트워크
+국내 최대 비즈니스 네트워크 '로켓펀치'입니다. 프로필을 만들고 비즈니스와 커리어를 성장시킬 수 있는 많은 정보를 만나보세요!
+
+소윤정 — 오늘 오전 12:21
+했습니다
+지연 — 오늘 오전 12:22
+저두요
+강원기 — 오늘 오전 12:22
+걱정해주셔서 감사합니당
+손승현 — 오늘 오전 12:22
+커밋했습니다.
+지연 — 오늘 오전 12:23
+ㅎㅎㅎ
+공지사항 페이징이랑 css 부탁드려욤!
+강원기 — 오늘 오전 12:24
+페이징 늦어도 내일까지 완성시켜볼게요!
+지연 — 오늘 오전 12:25
+감사해요ㅎㅎ부탁드려욤!
+소윤정 — 오늘 오전 12:28
+KH_SemiProject\Health_Friends.metadata.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Health_Friends\profileimg
+임기원 — 오늘 오전 12:30
+# Created by https://www.toptal.com/developers/gitignore/api/eclipse,java
+# Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,java
+
+### Eclipse ###
+Health_Friends/Servers
+Health_Friends/javawebsocket
+확장
+message.txt
+3KB
+﻿
 # Created by https://www.toptal.com/developers/gitignore/api/eclipse,java
 # Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,java
 
@@ -95,8 +283,12 @@ local.properties
 
 # specific folder need to add (library .jar)
 !/Health_Friends/Health_Friends/WebContent/WEB-INF/lib/*
+!Health_Friends/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/Health_Friends/upload/*
+!Health_Friends/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/Health_Friends/profileimg/*
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java
+message.txt
+3KB

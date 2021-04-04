@@ -11,11 +11,17 @@ import com.login.dto.RegistDto;
 public class RegistDaoImpl extends SqlMapConfig implements RegistDao {
 
 	@Override
-	public int registCheck(String member) {
+	public int registCheck(String member, String check) {
 		int cnt = -1;
 		
 		try(SqlSession session = getSqlSessionFactory().openSession(true);){
-			cnt = session.selectOne("registmapper.registCheck", member);
+			RegistDto dto = new RegistDto();
+			if (check.equals("email")) {
+				dto.setMember_email(member);
+			} else if (check.equals("id")) {
+				dto.setMember_id(member);
+			}
+			cnt = session.selectOne("registmapper.registCheck", dto);
 			
 			if(cnt > 0) {
 				cnt = 1;
