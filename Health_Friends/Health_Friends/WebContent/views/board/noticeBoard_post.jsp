@@ -26,9 +26,9 @@
 --%>	
 
 	<section class="boardlist">
-		<a href="./board.do?command=list">동행 구해요</a>
-		<a href="./review.do?command=list">사진후기</a>
-		<a href="./notice.do?command=list">공지사항</a>
+		<a href="../../board.do?command=list">동행 구해요</a>
+		<a href="../../review.do?command=list">사진후기</a>
+		<a href="../../notice.do?command=list">공지사항</a>
 	</section>
 	
 	<section id="noticeBoard_post">

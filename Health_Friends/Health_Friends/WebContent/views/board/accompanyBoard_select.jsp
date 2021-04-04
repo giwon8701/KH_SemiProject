@@ -1,3 +1,4 @@
+<%@page import="com.login.dto.RegistDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
@@ -14,6 +15,9 @@
 <%--  
 	<%@include file="../../views/common/header.jsp" %>
 --%>
+
+<% RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); %> 
+
 	<section class="boardlist">
 		<a href="./board.do?command=list">동행 구해요</a>
 		<a href="./review.do?command=list">사진후기</a>
@@ -25,7 +29,7 @@
 				<th colspan="3">${dto.postTitle }</th>		
 			</tr>
 			<tr>
-				<td>${dto.postId } </td>
+				<td>${Ldto.member_id } </td>
 				<td>${dto.postRegdate } </td>
 			</tr>
 			<tr>

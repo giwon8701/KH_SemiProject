@@ -45,7 +45,6 @@ public class NoticeServlet extends HttpServlet {
 				String postTitle = request.getParameter("postTitle");
 				String postContent = request.getParameter("postContent");
 				
-				
 				BoardDto dto = new BoardDto();
 				dto.setPostUserNo(postUserNo);
 				dto.setPostTitle(postTitle);

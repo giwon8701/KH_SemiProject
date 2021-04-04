@@ -13,7 +13,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>우리동네 운동친구 Health Friends</title>
+<script type="text/javascript">
+	function loginChk() {
+		alert("로그인 이후 사용가능합니다");
+	}
+</script>
 <style type="text/css">
 
 </style>
@@ -51,7 +56,14 @@
 							<c:out value="---삭제된 게시글입니다---"></c:out>
 						</c:when>
 						<c:otherwise>
-							<a href="./notice.do?command=select&postId=${dto.postId }">${dto.postTitle }</a>
+							 <c:choose>
+							 	<c:when test="${empty session.Ldto}">
+									<a href="javascript:loginChk();">${dto.postTitle}</a>
+								</c:when>
+								<c:otherwise>
+									<a href="./notice.do?command=select&postId=${dto.postId }">${dto.postTitle }</a>
+								</c:otherwise>
+							</c:choose>
 						</c:otherwise>
 					</c:choose>
 				</td>
@@ -60,7 +72,13 @@
 			</tr>
 		</c:forEach>
 	</table>
-	 <input type="button" value="글작성" onclick="location.href='./notice.do?command=insert'" />
+	<c:choose>
+      <c:when test="${Ldto.member_no eq 1 }">
+		<input type="button" value="글작성" onclick="location.href='./notice.do?command=insert'" />
+	  </c:when>
+    </c:choose>
+
+
 <%---	
 	<%@include file="../../views/common/footer.jsp" %>
 --%>

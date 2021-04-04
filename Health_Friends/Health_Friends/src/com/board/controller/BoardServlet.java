@@ -9,10 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.board.biz.BoardBiz;
 import com.board.biz.BoardBizImpl;
 import com.board.dto.BoardDto;
+import com.login.dto.RegistDto;
 
 @WebServlet("/board.do")
 public class BoardServlet extends HttpServlet {
@@ -24,6 +26,8 @@ public class BoardServlet extends HttpServlet {
 		
 		String command = request.getParameter("command");
 		BoardBiz biz = new BoardBizImpl();
+		HttpSession session = request.getSession();
+		RegistDto ldto = (RegistDto)session.getAttribute("Ldto");
 		
 		try {
 			if(command.equals("list")) {
@@ -35,10 +39,16 @@ public class BoardServlet extends HttpServlet {
 				response.sendRedirect("./views/board/accompanyBoard_post.jsp");
 				
 			} else if(command.equals("insertres")) {
+				int postLatitude = Integer.parseInt(request.getParameter("latLng"));
+				int postUserNo = ldto.getMember_no();
+				String postCategoryName = request.getParameter("postCategoryName");
 				String postTitle = request.getParameter("postTitle");
 				String postContent = request.getParameter("postContent");
 				
 				BoardDto dto = new BoardDto();
+				dto.setPostUserNo(postUserNo);
+				dto.setPostLatitude(postLatitude);
+				dto.setPostCategoryName(postCategoryName);
 				dto.setPostTitle(postTitle);
 				dto.setPostContent(postContent);
 				int res = biz.accompany_insert(dto);
@@ -64,8 +74,6 @@ public class BoardServlet extends HttpServlet {
 			} else if(command.equals("updateres")) {	
 				int postId = Integer.parseInt(request.getParameter("postId"));
 				int postUserNo = Integer.parseInt(request.getParameter("postUserNo"));
-				System.out.println(postId);
-				System.out.println(postUserNo);
 				String postTitle = request.getParameter("postTitle");
 				String postContent = request.getParameter("postContent");
 				BoardDto dto = new BoardDto();
@@ -90,8 +98,6 @@ public class BoardServlet extends HttpServlet {
 					response.sendRedirect("board.do?command=select&postId=" + postId);
 				}
 			}
-			
-			
 			
 		} catch(Exception e){
 			response.sendRedirect("./views/common/error.jsp");

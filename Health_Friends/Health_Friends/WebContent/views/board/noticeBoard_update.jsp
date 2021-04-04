@@ -45,7 +45,7 @@
 				<tr>
 					<td>	
 						<input type="submit" value="확인"/>
-						<input type="button" value="취소" onclick="location.href='notice.do?command=list'"/>
+						<input type="button" value="취소" onclick="location.href='./notice.do?command=list'"/>
 					</td>
 				</tr>
 		</table>

@@ -13,6 +13,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function loginChk() {
+		alert("로그인 이후 사용가능합니다");
+	}
+</script>
 </head>
 <body>
 <%--
@@ -28,12 +33,22 @@
 		<a href="./notice.do?command=list">공지사항</a>
 	</section>
 	<br/>
-	<input type="button" value="글작성" onclick="location.href='board.do?command=insert'" />
 	
 <%--게시글리스트 --%>
 	<section id="accompanyBoard_list">
+	
+		<c:choose>
+			<c:when test="${empty Ldto.member_no}">
+					<a href="javascript:loginChk();"><input type="button" value="글작성"/></a>
+			</c:when>
+			<c:otherwise>
+				<input type="button" value="글작성" onclick="location.href='./board.do?command=insert'" />
+			</c:otherwise>
+		</c:choose>
+		
 		<table border="1">
 			<c:forEach items="${list }" var="dto">
+		
 				<tr>
 					<td>
 					<c:choose>
@@ -41,11 +56,19 @@
 							<c:out value="---삭제된 게시글입니다---"></c:out>
 						</c:when>
 						<c:otherwise>
-							<a href="./board.do?command=select&postId=${dto.postId }">${dto.postTitle }</a>
+							 <c:choose>
+							 	<c:when test="${empty session.Ldto}">
+									<a href="javascript:loginChk();">${dto.postTitle}</a>
+								</c:when>
+								<c:otherwise>
+									<a href="./board.do?command=select&postId=${dto.postId }">${dto.postTitle }</a>
+								</c:otherwise>
+							</c:choose>
 						</c:otherwise>
 					</c:choose>
 					</td>
-					<td>${Ldto.getMember_id() }</td>
+					<td>${Ldto.member_gender }</td>
+					<td>${Ldto.member_id }</td>
 					<td>${dto.postRegdate}</td>
 				</tr>
 			</c:forEach>
