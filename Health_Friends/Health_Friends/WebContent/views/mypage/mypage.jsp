@@ -202,7 +202,12 @@
 		
 		<div class="mypage-second-div3">
 			<div class="mypage-basket-div">찜한게시물</div>
-			<div class="mypage-follw-div">팔로우</div>
+			<div class="mypage-follw-div" id="follow">팔로우</div>
+			<script>
+				$("#follow").click(function(){
+					open("../../follow.do?command=following");
+				});
+			</script>
 		</div>
 	</div>
 	
