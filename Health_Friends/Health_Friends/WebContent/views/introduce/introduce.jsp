@@ -137,11 +137,11 @@
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
 	<div class="slider">
-		<div><img src="../../images/workhappy.png" alt="슬라이드 사진"></div>
-		<div><img src="../../images/workhappy.png" alt="슬라이드 사진"></div>
-		<div><img src="../../images/workhappy.png" alt="슬라이드 사진"></div>
-		<div><img src="../../images/workhappy.png" alt="슬라이드 사진"></div>
-		<div><img src="../../images/workhappy.png" alt="슬라이드 사진"></div>	
+		<div><img src="../../images/workhappy.png" alt="슬라이드 사진" style="width:1000px; height:500px"></div>
+		<div><img src="../../images/slide01.jpg" alt="슬라이드 사진" style="width:1000px; height:500px" ></div>
+		<div><img src="../../images/slide02.jpg" alt="슬라이드 사진" style="width:1000px; height:500px"></div>
+		<div><img src="../../images/slide03.jpg" alt="슬라이드 사진" style="width:1000px; height:500px"></div>
+		<div><img src="../../images/slide04.jpg" alt="슬라이드 사진" style="width:1000px; height:500px"></div>	
 	</div>
 	<div class="controls">
 		<button class="play">재생</button>
