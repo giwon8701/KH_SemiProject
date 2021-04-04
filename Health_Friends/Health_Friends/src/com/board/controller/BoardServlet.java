@@ -84,9 +84,9 @@ public class BoardServlet extends HttpServlet {
 				
 				int res = biz.accompany_update(dto);
 				if (res > 0) {
-					response.sendRedirect("board.do?command=list&postId=" + postId);
+					response.sendRedirect("board.do?command=list");
 				} else {
-					response.sendRedirect("board.do?command=select&postId=" + postId);
+					response.sendRedirect("./views/board/" );
 				}
 				
 			} else if(command.equals("delete")) {

@@ -57,7 +57,7 @@
 						</c:when>
 						<c:otherwise>
 							 <c:choose>
-							 	<c:when test="${empty session.Ldto}">
+							 	<c:when test="${empty Ldto.member_no}">
 									<a href="javascript:loginChk();">${dto.postTitle}</a>
 								</c:when>
 								<c:otherwise>
@@ -76,6 +76,9 @@
       <c:when test="${Ldto.member_no eq 1 }">
 		<input type="button" value="글작성" onclick="location.href='./notice.do?command=insert'" />
 	  </c:when>
+	  <c:otherwise>
+		<a href="javascript:loginChk();"><input type="button" value="글작성"/></a>
+	  </c:otherwise>
     </c:choose>
 
 
