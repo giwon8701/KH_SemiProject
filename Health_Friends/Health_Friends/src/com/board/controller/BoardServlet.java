@@ -1,6 +1,8 @@
 package com.board.controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -39,24 +41,30 @@ public class BoardServlet extends HttpServlet {
 				response.sendRedirect("./views/board/accompanyBoard_post.jsp");
 				
 			} else if(command.equals("insertres")) {
-				int postLatitude = Integer.parseInt(request.getParameter("latLng"));
-				int postUserNo = ldto.getMember_no();
-				String postCategoryName = request.getParameter("postCategoryName");
+				String postLatitude = request.getParameter("result");
+				System.out.println(postLatitude);
 				String postTitle = request.getParameter("postTitle");
+				System.out.println(postTitle);
+				String postCategoryName = request.getParameter("postCategoryName");
+				System.out.println(postCategoryName);
 				String postContent = request.getParameter("postContent");
-				
+				System.out.println(postContent);
+				int postUserNo = ldto.getMember_no();
+				String postMdate = request.getParameter("postMdate");
+				System.out.println(postMdate);
 				BoardDto dto = new BoardDto();
 				dto.setPostUserNo(postUserNo);
 				dto.setPostLatitude(postLatitude);
 				dto.setPostCategoryName(postCategoryName);
 				dto.setPostTitle(postTitle);
 				dto.setPostContent(postContent);
+				dto.setPostMdate(postMdate);
 				int res = biz.accompany_insert(dto);
 				
 				if(res > 0) {
 					response.sendRedirect("board.do?command=list");
 				} else {
-					response.sendRedirect("./views/board/accompany_post.jsp");
+					response.sendRedirect("board.do?command=insert");
 				}
 				
 			} else if(command.equals("select")) {
