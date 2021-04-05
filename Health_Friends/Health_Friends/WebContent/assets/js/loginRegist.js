@@ -55,7 +55,7 @@
 		} else{
 			var queryString = "?command=phoneCheck&memberPhone="+newPhone;
 			$.ajax({
-				url: "../../regist.do"+queryString,
+				url: "regist.do"+queryString,
 				dataType: "text",
 				success: function(data){
 					if(data == 0){
@@ -142,8 +142,10 @@
         }).open();
 	}
 	
+	
 	function onSubmit(){
-		if($("#id").prop("title") == "y" && $("#phone").prop("title") == "y" && $("#email").prop("title") == "y" && $("#pwchk").prop("title") == "y"){
+		if($("#id").prop("title") == "y" && $("#email").prop("title") == "y" && $("#pwchk").prop("title") == "y"){
+			
 			$("#registform").submit();
 		} else{
 			alert("입력하신 정보를 다시 확인해주세요.");

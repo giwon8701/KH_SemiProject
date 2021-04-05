@@ -51,10 +51,8 @@
 
 
 				<!-- 회원가입 form -->
-				<form action="regist.do" method="post" id="registform"
-					class="sign-up-form">
+				<form action="regist.do" method="post" id="registform" class="sign-up-form">
 					<input type="hidden" name="command" value="registres">
-
 					<h2 class="title">회원가입</h2>
 
 					<table>
@@ -100,7 +98,7 @@
 					<table>
 						<tr>
 							<div class="input-field">
-								<i class="fas fa-phone"></i> <input type="tel" id="phone" name="memberPhone" title="n" placeholder="전화번호" onkeyup="phoneChk()" required="required">
+								<i class="fas fa-phone"></i> <input type="tel" id="phone" name="memberPhone" title="n" placeholder="전화번호" required="required">
 							</div>
 						</tr>
 						<tr>

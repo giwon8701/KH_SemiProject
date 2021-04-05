@@ -50,6 +50,7 @@
 			opener.document.getElementById("email").readOnly = true;
 			opener.document.getElementById("name").style.color = "gray";
 			opener.document.getElementById("email").style.color = "gray";
+			opener.document.getElementById("email").title = "y";
 	
 			opener.document.getElementById("sign-up-btn").click();
 			opener.idCheck();
