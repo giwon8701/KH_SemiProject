@@ -42,19 +42,48 @@
 	}
 
 
-	
-	header{
-	    height: 100vh;
-	    background-size: cover;
-	    background-position: center;
+
+	.inner {
+	  max-width:1200px;
+	  margin:0 auto;
+	  padding:0 20px;
+	}
+	    /* 헤더에서 제일 중요한 효과!! */
+	#header {
+		background: rgba(0, 0, 0, .1);
+		color: #a6a6a6;
+		cursor: default;
+		height: 4em;
+		line-height: 3.5em;
+		text-align: right;
+		z-index: 20;
 	}
 	
 	
+	header{
+	    background-size: cover;
+	    background-position: center;
+	      position:fixed;
+		  width:100%;
+		  top:0;
+		  left:0;
+		  background-color:rgba(0,0,0,.1);
+		  -webkit-transition-duration:0.4s;
+		  -webkit-transition-timing-function:ease;
+		  transition-duration:0.4s;
+		  transition-timing-function:ease;
+	}
+	
+	header:after {
+	  display:block;
+	  width:100%;
+	  content:"";
+	}
 	
 	.border-ul{
 	    float: left;
 	    list-style-type: none; 
-	    margin-top: 20px;
+	    margin-top: 10px;
 	}
 	
 	.border-ul .border-li{
@@ -78,7 +107,7 @@
 	.login-ul{
 	    float: right;
 	    list-style-type: none; 
-	    margin-top: 25px;
+	    margin-top: 10px;
 	}
 	
 	.login-ul .login-li{
@@ -102,7 +131,7 @@
 	
 	
 	.logo img{
-		margin-top: 20px;
+		margin-top: 10px;
 	    float: left;
 	    width: 80px;
 	    height: 50px;
@@ -117,7 +146,7 @@
 		background-image: url("https://d1unjqcospf8gs.cloudfront.net/assets/home/base/header/search-icon-7008edd4f9aaa32188f55e65258f1c1905d7a9d1a3ca2a07ae809b5535380f14.svg");
 		background-repeat: no-repeat;
 		background-position: right;
-        margin-top: 30px;
+        margin-top: 15px;
         margin-right: 20px;
 		border-radius: 5px;
 		border: solid 1px #e9ecef;
@@ -139,20 +168,7 @@
 	}
 
 
-    /* 헤더에서 제일 중요한 효과!! */
-	#header {
-		background: rgba(255, 255, 255, 0);
-		color: #a6a6a6;
-		cursor: default;
-		height: 4em;
-		left: 0;
-		line-height: 3.5em;
-		position: fixed;
-		text-align: right;
-		top: 0;
-		width: 100%;
-		z-index: 20;
-	}
+
 
 
 
