@@ -10,20 +10,20 @@ public class BoardDto {
 	private String postCategoryName;
 	private String postTitle;
 	private String postContent;
-	private Date postMdate;
+	private String postMdate;
 	private Date postRegdate;
 	private int postHit;
 	private int postCommentHit;
 	private int postLike;
 	private String postDelflag;
-	private int postLatitude;
+	private String postLatitude;
 	private int postLongitude;
 	
 	public BoardDto() {}
 	
 	public BoardDto(int postUserNo, int postId, int postNo, String postBoardName, String postCategoryName,
-			String postTitle, String postContent, Date postMdate, Date postRegdate, int postHit, int postCommentHit,
-			int postLike, String postDelflag, int postLatitude, int postLongitude) {
+			String postTitle, String postContent, String postMdate, Date postRegdate, int postHit, int postCommentHit,
+			int postLike, String postDelflag, String postLatitude, int postLongitude) {
 		this.postUserNo = postUserNo;
 		this.postId = postId;
 		this.postNo = postNo;
@@ -97,11 +97,11 @@ public class BoardDto {
 		this.postContent = postContent;
 	}
 
-	public Date getPostMdate() {
+	public String getPostMdate() {
 		return postMdate;
 	}
 
-	public void setPostMdate(Date postMdate) {
+	public void setPostMdate(String postMdate) {
 		this.postMdate = postMdate;
 	}
 
@@ -145,11 +145,11 @@ public class BoardDto {
 		this.postDelflag = postDelflag;
 	}
 
-	public int getPostLatitude() {
+	public String getPostLatitude() {
 		return postLatitude;
 	}
 
-	public void setPostLatitude(int postLatitude) {
+	public void setPostLatitude(String postLatitude) {
 		this.postLatitude = postLatitude;
 	}
 

@@ -52,7 +52,7 @@
 	}
 
 	function handleScroll() {
-	  const elems = document.querySelectorAll('.title01, .title02, .text-danger, .text-info, .text06, .text07, .text04, .way01, .way02');
+	  const elems = document.querySelectorAll('.title01, .title02, .text-danger, .text-info, .text06, .text07');
 	  elems.forEach(elem => {
 	    if (isElementUnderBottom(elem, 20)) {
 	      elem.style.opacity = "0";
@@ -356,97 +356,6 @@
 </div>
 <!-- 조원 소개하기 끝 -->
 
-<br>
-<br>
-<hr>
-<br>
-	<a name="move01"></a>
-	<div class="container">
-		<div style="font-size: 36px; color: #00008B"><b>오시는 길</b></div>
-		<br>
-		<br>
-		<div id="map" style="width: auto; height: 500px;"></div>
-	</div>
-
-	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6920574193fbd921283dd9d416ec4e77"></script>
-	
-	<script>
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		mapOption = {
-			center : new kakao.maps.LatLng(37.49898969280782,
-					127.03286905513882), // 지도의 중심좌표
-			level : 3
-		// 지도의 확대 레벨
-		};
-
-		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-		// 마커가 표시될 위치입니다 
-		var markerPosition = new kakao.maps.LatLng(37.49898969280782,
-				127.03286905513882);
-
-		// 마커를 생성합니다
-		var marker = new kakao.maps.Marker({
-			position : markerPosition
-		});
-
-		// 마커가 지도 위에 표시되도록 설정합니다
-		marker.setMap(map);
-
-		// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-		// marker.setMap(null);
-	</script>
-
-	<br>
-
-	<div class="container">
-	
-	<div class="address">
-		<h2 class="text04"><b>서울특별시 강남구 테헤란로 14길 6 <span style="color:hotpink">남도빌딩 2F, 3F, 4F, 5F, 6F</b></span></h2>
-		<h2 class="text04">[TEL : 1544-9970]</h2>
-		<h3 class="text04" style="color:grey">서울특별시 강남구 역삼동 남도빌딩(역삼동, 남도빌딩)</h3>
-	</div>
-	</div>
-	<br>
-	<br>
-<hr>
-<br>
-<br>
-	<div class="container">
-	<div style="font-size: 36px; color: #00008B"><b>대중 교통 이용시</b></div><a name="move02"></a>
-	<br><br>
-		<div class="row">
-			<div class="col-sm-6">
-			 <img src="../../images/bus03.png" style="width:80px; height:80px;"><h3 class="way01"><b>&emsp;버스로 오시는 방법</b></h3><h4 style="color:gray" class="way01">&emsp;&nbsp;역삼역, 포스코P&S타워 정류장 하차</h4><br>
-				<br><br>
-				<img src="../../images/bus01.jpeg" style="width:20px; height:27px;"><h4 class="way02">&emsp;간선버스&emsp;146 / 740 / 341 / 360</h4><br>
-				<img src="../../images/bus02.jpeg" style="width:20px; height:27px;"><h4 class="way02">&emsp;지선버스&emsp;1100 / 1700 / 2000 / 7007 / 8001</h4>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-			<img src="../../images/bus05.png" style="width:80px; height:80px;"><h3 class="way01"><b>&emsp;자가용 이용시</b></h3><h4 style="color:gray" class="way01">&emsp;&nbsp;자가용 이용시 <span style="color:hotpink"><b>반드시 주차권을 발급</b></span> 받으시길 바랍니다.</h4><br>			
-
-	</div>
-
-			<div class="col-sm-6">
-				<img src="../../images/bus04.png" style="width:80px; height:80px;"><h3 class="way02"><b>&emsp;지하철로 오시는 방법</b></h3><h4 style="color:gray" class="way01">&emsp;&nbsp;지하철 2호선 <span style="color=pink">역삼역 3번 출구</span>로 나와서 100m 직진</h4>
-				<br><br><br>
-				<div></div><img src="../../images/yeoksam.png" style="width:450px; height:300px;"><div></div>
-
-			</div>
-		</div>
-	</div>
-	
-    <div id="container"></div>
-    	<div id="load" class="fa fa-circle-o-notch fa-spin"></div>
-    		<button id="btn" onClick="GoTop()">▲</button>
-    <script type="text/javascript" src="script.js"></script>
-
-
-<br>
 <br>
 <br>
 <br>

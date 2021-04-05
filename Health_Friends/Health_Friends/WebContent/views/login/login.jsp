@@ -9,14 +9,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../assets/css/login.css">
+<link rel="stylesheet" href="assets/css/login.css">
 <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>	<!-- 도로명주소 API -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>	<!-- jQuery API -->
 <script src="https://www.google.com/recaptcha/api.js"></script>			<!--  recaptcha API -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>	<!--  카카오 로그인 API -->
-<script type="text/javascript" src="../../assets/js/login.js"></script> <!-- 로그인 관련 -->
-<script type="text/javascript" src="../../assets/js/loginRegist.js"></script> <!-- 회원가입 관련 -->
+<script type="text/javascript" src="assets/js/login.js"></script> <!-- 로그인 관련 -->
+<script type="text/javascript" src="assets/js/loginRegist.js"></script> <!-- 회원가입 관련 -->
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 </head>
 <body>
@@ -24,7 +24,7 @@
 		<div class="forms-container">
 			<div class="signin-signup">
 				<!-- 로그인 form -->
-				<form action="../../regist.do" class="sign-in-form" method="post" id="loginForm">
+				<form action="regist.do" class="sign-in-form" method="post" id="loginForm">
 					<input type="hidden" name="command" value="loginres">
 					
 					<h2 class="title">로그인</h2>
@@ -40,7 +40,7 @@
 					<input type="button" value="로그인" class="btn solid g-recaptcha" data-sitekey="6LdY0Y0aAAAAAC55f1G3fyahKgyATLdZ1BZq_yt5" data-callback='onSubmitLogin' data-action='submit'>
 					<p class="social-text">SNS를 이용하여 간편로그인 해보세요!</p>
 					<div class="social-media">
-  						<div id="naver_id_login"></div>  <!-- 네이버 로그인 버튼 (맨밑에 javascript 있음) -->
+						&nbsp;<div id="naver_id_login"></div>&nbsp;&nbsp;  <!-- 네이버 로그인 버튼 (맨밑에 javascript 있음) -->
    						<a id="kakaologin" href="javascript:loginWithKakao()" class="kakao-icon">
    							<img src="https://t1.kakaocdn.net/kakaocorp/admin/main-banner/123" class="kakao-icon">
 						</a>
@@ -51,7 +51,7 @@
 
 
 				<!-- 회원가입 form -->
-				<form action="../../regist.do" method="post" id="registform"
+				<form action="regist.do" method="post" id="registform"
 					class="sign-up-form">
 					<input type="hidden" name="command" value="registres">
 
@@ -61,7 +61,7 @@
 						<tr>
 							<div class="input-field">
 								<i class="fas fa-user"></i>
-								<input type="text" id="id" name="memberId" title="n" placeholder="아이디입력" required="required" onchange="idCheck()">
+								<input type="text" id="id" name="memberId" title="n" placeholder="아이디입력" required="required" onkeyup="idCheck()">
 							</div>
 						</tr>
 						<tr>
@@ -71,12 +71,12 @@
 					<table>
 						<tr>
 							<div class="input-field">
-								<i class="fas fa-lock"></i> <input type="password" id="pw" name="memberPw" placeholder="비밀번호" required="required" onchange="chkPW()">
+								<i class="fas fa-lock"></i> <input type="password" id="pw" name="memberPw" placeholder="비밀번호" required="required" onkeyup="chkPW()">
 							</div>
 						</tr>
 						<tr>
 							<div class="input-field">
-								<i class="fas fa-lock"></i> <input type="password" id="pwchk" name="memberPwChk" title="n" placeholder="비밀번호 확인" required="required" onchange="chkPW()">
+								<i class="fas fa-lock"></i> <input type="password" id="pwchk" name="memberPwChk" title="n" placeholder="비밀번호 확인" required="required" onkeyup="chkPW()">
 							</div>
 						</tr>
 						<tr>
@@ -100,7 +100,7 @@
 					<table>
 						<tr>
 							<div class="input-field">
-								<i class="fas fa-phone"></i> <input type="tel" id="phone" name="memberPhone" title="n" placeholder="전화번호" onchange="phoneChk()" required="required">
+								<i class="fas fa-phone"></i> <input type="tel" id="phone" name="memberPhone" title="n" placeholder="전화번호" onkeyup="phoneChk()" required="required">
 							</div>
 						</tr>
 						<tr>
@@ -110,7 +110,7 @@
 					<table>
 						<tr>
 							<div class="input-field">
-								<i class="fas fa-envelope"></i> <input type="text" id="email" name="memberEmail" title="n" placeholder="이메일" required="required" onchange="emailChk()">
+								<i class="fas fa-envelope"></i> <input type="text" id="email" name="memberEmail" title="n" placeholder="이메일" required="required" onkeyup="emailChk()">
 							</div>
 						</tr>
 						<tr>
@@ -141,12 +141,25 @@
 					<br>
 					<table>
 						<tr>
-							<label for="f">Female</label>
-							<input type="radio" id="f" name="memberGender" value="F" checked="checked" />&nbsp;&nbsp;
+							<td>
+								<label for="f">Female</label>
+							</td>
+							<td>
+								&nbsp;&nbsp;&nbsp;
+							</td>
+							<td>
+								<label for="m">Male</label>
+							</td>
 						</tr>
 						<tr>
-							<label for="m">Male</label>
-							<input type="radio" id="m" name="memberGender" value="M" />
+							<td align="center">
+								<input type="radio" id="f" name="memberGender" value="F" checked="checked" />&nbsp;&nbsp;
+							</td>
+							<td>
+							</td>
+							<td align="center">
+								<input type="radio" id="m" name="memberGender" value="M" />
+							</td>
 						</tr>
 					</table>
 					<br>
@@ -170,7 +183,7 @@
 						<p>회원가입 후 이용하시면 더욱 다양한 서비스를 이용할 수 있습니다!</p>
 						<button class="btn transparent" id="sign-up-btn">Sign up</button>
 					</div>
-					<img src="../../images/login/log.svg" class="image" alt="">
+					<img src="images/login/log.svg" class="image" alt="">
 				</div>
 				
 				<div class="panel right-panel">
@@ -179,11 +192,11 @@
 						<p>이미 회원이시라면 로그인을 해주세요!</p>
 						<button class="btn transparent" id="sign-in-btn">Sign in</button>
 					</div>
-					<img src="../../images/login/register.svg" class="image" alt="">
+					<img src="images/login/register.svg" class="image" alt="">
 				</div>
 			</div>
 
-			<script src="../../assets/js/loginstyle.js"></script>
+			<script src="assets/js/loginstyle.js"></script>
 
 		</div>
 	</div>

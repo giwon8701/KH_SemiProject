@@ -19,6 +19,11 @@
 		alert("로그인 이후 사용가능합니다");
 	}
 </script>
+<script type="text/javascript">
+	function loginChk2() {
+		alert("관리자로그인 이후 사용가능합니다");
+	}
+</script>
 <style type="text/css">
 
 </style>
@@ -77,7 +82,7 @@
 		<input type="button" value="글작성" onclick="location.href='./notice.do?command=insert'" />
 	  </c:when>
 	  <c:otherwise>
-		<a href="javascript:loginChk();"><input type="button" value="글작성"/></a>
+		<a href="javascript:loginChk2();"><input type="button" value="글작성"/></a>
 	  </c:otherwise>
     </c:choose>
 

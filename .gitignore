@@ -8,8 +8,8 @@
 Health_Friends/Servers
 Health_Friends/javawebsocket
 .classpath
-.project
 .metadata
+.project
 bin/
 tmp/
 *.tmp

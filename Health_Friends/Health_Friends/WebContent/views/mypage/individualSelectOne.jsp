@@ -42,23 +42,22 @@
 				<td><%=Ldto.getMember_id() %></td>
 			</tr>
 			<tr>
-				<th>일정</th>
+				<th>운동 날짜</th>
 				<td>
 					<jsp:setProperty property="todates" name="util" value="${dto.individual_mdate }" />
 					<jsp:getProperty property="todates" name="util" />
 				</td>
 			</tr>
 			<tr>
-				<th>제목</th>
+				<th>요약</th>
 				<td>${dto.individual_title }</td>
 			</tr>
 			<tr>
-				<th>운동시간</th>
+				<th>운동 시간</th>
 				<td>${dto.individual_time }</td>
 			</tr>
 			<tr>
-				<th>내용</th>
-				<td><textarea rows="10" cols="60" name="content" readonly="readonly" >${dto.individual_content }</textarea></td>
+				<td colspan="2"><textarea rows="10" cols="60" name="content" readonly="readonly" >${dto.individual_content }</textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right">

@@ -26,7 +26,7 @@ public class ProfileServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		String member_email = request.getParameter("member_email");
-
+		
 		ProfileBiz biz = new ProfileBizImpl();
 		
 		String realFolder = "profileimg";
@@ -62,11 +62,13 @@ public class ProfileServlet extends HttpServlet {
 		
 		int res = biz.profileUpdate(dto);
 		
+		System.out.println(res);
+		
 		HttpSession session = request.getSession();
 		// 세션에 담겨있는 로그인정보 가져옴
-		RegistDto loginSessionDto = (RegistDto)session.getAttribute("dto");
+		RegistDto loginSessionDto = (RegistDto)session.getAttribute("Ldto");
 		loginSessionDto.setMember_picture_path(filename);
-		session.setAttribute("dto", loginSessionDto);
+		session.setAttribute("Ldto", loginSessionDto);
 	
 		if(res > 0) {
 			jsResponse(response, "./views/mypage/mypage.jsp", "프로필 사진이 변경되었습니다!");
