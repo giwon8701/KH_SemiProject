@@ -64,7 +64,7 @@
 						<h3>회원 정보를 찾아주세요!</h3>
 						<p>회원정보를 모두 잃어버리셨다면 관리자에게 문의주세요!</p>
 					</div>
-					<img src="images/login/registUpdate.svg" class="image" alt="">
+					<img src="images/login/idSearchForm.svg" class="image" alt="">
 				</div>
 
 			</div>
