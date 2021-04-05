@@ -83,7 +83,7 @@
 		
 		$("#pwReset").click(function(){
 			var member_id = $("#id").val();
-			open("../../mypage.do?command=pwReset&member_id="+member_id, "", "width=300px,height=300px");
+			open("../../mypage.do?command=pwReset&member_id="+member_id, "", "width=350px,height=280px");
 		});
 		
 	});
