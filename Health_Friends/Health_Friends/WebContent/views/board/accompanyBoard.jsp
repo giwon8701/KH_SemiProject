@@ -2,6 +2,7 @@
 <%@page import="org.apache.commons.collections.bag.SynchronizedSortedBag"%>
 <%@page import="com.board.dto.BoardDto"%>
 <%@page import="java.util.List"%>
+<%@page import="com.common.Paging"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -74,6 +75,32 @@
 			</c:forEach>
 		</table>
 	</section>
+	
+	
+		<%--  pagination 
+	<div class="pagination">
+		<input type="button" onclick="pageMove(<%=paging.getFirstPageNo()%>)"
+			value="◀"> <input type="button"
+			onclick="pageMove(<%=paging.getPrevPageNo()%>)" value="◁">
+
+		<%
+			for (int i = paging.getStartPageNo(); i <= paging.getEndPageNo(); i++) {
+		%>
+		<a onclick="pageMove(<%=i%>)"><%=i%></a>
+		<%
+			}
+		%>
+
+		<input type="button" onclick="pageMove(<%=paging.getNextPageNo()%>)"
+			value="▷"> <input type="button"
+			onclick="pageMove(<%=paging.getFinalPageNo()%>)" value="▶">
+	</div>
+
+	<script>
+			function pageMove(page){
+				location.href='payment.do?command=paymentListPaging&page='+page
+			}
+	</script>--%>
 
 <%--
 	<%@include file="footer.jsp" %>

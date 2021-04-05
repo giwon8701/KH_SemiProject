@@ -87,7 +87,7 @@
 			function pageMove(page){
 				location.href='payment.do?command=paymentListPaging&page='+page
 			}
-		</script>
+	</script>
 
 
 

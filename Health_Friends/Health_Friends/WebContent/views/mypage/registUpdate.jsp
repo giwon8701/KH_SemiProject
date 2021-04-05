@@ -8,8 +8,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../../assets/css/login.css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script><!-- 도로명주소 -->
+
+<script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>	<!-- jQuery API -->
 <script type="text/javascript">
 
 	function addrCheck(){
@@ -109,51 +113,114 @@
 </script>
 </head>
 <body>
-	<% RegistDto Ldto = (RegistDto) session.getAttribute("Ldto"); %>
+	<div class="container">
+		<div class="forms-container">
+			<div class="signin-signup">
+				<!-- 회원정보수정 form -->
+				<form action="../../regist.do" method="post" id="registform" class="sign-in-form">
+				<input type="hidden" name="command" value="registUpdateRes">
 
-	<h1>회원 정보 수정</h1>
+				<h2 class="title">회원정보 수정</h2>
 
-	<form action="../../mypage.do" method="post">
-		<input type="hidden" name="command" value="registUpdateRes">
-		<table>
-			<tr>
-				<th>아이디</th>
-				<td><input type="text" readonly="readonly" name="member_id" id="id" value="${Ldto.member_id }"></td>
-			</tr>
-			<tr>
-				<th>이름</th>
-				<td><input type="text" readonly="readonly" name="member_name" id="name" value="${Ldto.member_name }"></td>
-			</tr>
-			<tr>
-				<th>비밀번호</th>
-				<td>
-					<input type="button" id="pwReset" value="재설정">
-				</td>
-			</tr>
-			<tr>
-				<th>주소</th>
-				<td><input type="text" id="addr" name="member_addr" required="required" value="${Ldto.member_addr }" onclick="addrCheck()"></td>
-			</tr>
-			<tr>
-				<th>생일</th>
-				<td><%=Ldto.getMember_birthday().substring(0,4) %>년 <%=Ldto.getMember_birthday().substring(4,6) %>월 <%=Ldto.getMember_birthday().substring(6) %>일</td>
-			</tr>
-			<tr>
-				<th>이메일</th>
-				<td><input type="text" id="email" name="member_email" value="${Ldto.member_email }" readonly="readonly"></td>
-			</tr>
-			<tr>
-				<th>전화번호</th>
-				<td><input type="tel" id="phone" name="member_phone" required="required" title="y" value="${Ldto.member_phone }" onchange="phoneChk()"></td>
-			</tr>
-			<tr>
-				<td colspan="2" align="right">
-					<input type="submit" value="회원정보 수정">
-					<input type="button" value="회원 탈퇴" onclick="del()">
-				</td>
-			</tr>
-		</table>
-	</form>
+				<table>
+					<tr>
+						<div class="input-field">
+							<i class="fas fa-user"></i>
+							<input type="text" readonly="readonly" name="member_id" id="id" value="${Ldto.member_id }">
+						</div>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<div class="input-field">
+							<i class="fas fa-user"></i> 
+							<input type="text" readonly="readonly" name="member_name" id="name" value="${Ldto.member_name }">
+						</div>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<td>
+							<i class="fas fa-lock"></i>
+							<input type="button" id="pwReset" value="비밀번호 재설정" class="btn solid">
+						</td>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<div class="input-field">
+							<i class="fas fa-home"></i> 
+							<input type="text" id="addr" name="member_addr" required="required" value="${Ldto.member_addr }" onclick="addrCheck()">
+						</div>
+					</tr>
+				</table>
 
+				<table>
+					<tr>
+						<div class="input-field">
+							<i class="fas fa-envelope"></i> 
+							<input type="text" id="email" name="member_email" value="${Ldto.member_email }" readonly="readonly">
+						</div>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<div class="input-field">
+							<i class="fas fa-phone"></i> 
+							<input type="tel" id="phone" name="member_phone" required="required" title="y" value="${Ldto.member_phone }" onchange="phoneChk()">
+						</div>
+					</tr>
+				</table>
+				<br>
+				<table>
+					<tr>
+						<td><label for="birth">생년월일</label></td>
+						<td><select name="year" id="birth" required="required">
+								<c:forEach var="i" begin="1910" end="2021" step="1">
+									<option value="${i }" ${(i == 2000)? "selected" : ""}><c:out value="${i }"></c:out></option>
+								</c:forEach>
+						</select>년</td>
+						<td><select name="mm" id="birth" required="required">
+								<c:forEach var="i" begin="01" end="12" step="1">
+									<option value="${i }"><c:out value="${i }"></c:out></option>
+								</c:forEach>
+						</select>월</td>
+						<td><select name="dd" id="birth" required="required">
+								<c:forEach var="i" begin="01" end="31" step="1">
+									<option value="${i }"><c:out value="${i }"></c:out></option>
+								</c:forEach>
+						</select>일</td>
+					</tr>
+				</table>
+				<br>
+				<table>
+					<tr>
+						<td>
+							<input type="submit" class="btn solid g-recaptcha" data-sitekey="6LdY0Y0aAAAAAC55f1G3fyahKgyATLdZ1BZq_yt5" data-callback='onSubmit' data-action='submit' value="수정하기">
+						</td>
+						<td>
+							<input type="button" value="회원 탈퇴" class="btn solid" onclick="del()">
+						</td>
+					</tr>
+				</table>
+			</form>
+
+			</div>
+
+			<div class="panels-container">
+				<div class="panel left-panel">
+					<div class="content">
+						<h3>회원 정보를 수정해주세요!</h3>
+						<p>비밀번호는 재설정을 통해 변경 할 수 있습니다.</p>
+					</div>
+					<img src="../../images/login/registUpdate.svg" class="image" alt="">
+				</div>
+
+			</div>
+
+			<script src="../../assets/js/loginstyle.js"></script>
+
+		</div>
+	</div>
 </body>
 </html>

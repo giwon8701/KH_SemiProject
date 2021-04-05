@@ -32,8 +32,6 @@ public class ChartServlet extends HttpServlet {
 		if(command.equals("healthRecord")) {
 			String individual_id = request.getParameter("individual_id");
 			
-			System.out.println("서블릿 : "+todayDate());
-			
 			ChartBiz Cbiz = new ChartBizImpl();
 			int todayHealth = Cbiz.todayChart(individual_id, todayDate());
 			int yesterdayHealth = Cbiz.todayChart(individual_id, YesterdayDate());

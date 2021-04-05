@@ -26,7 +26,7 @@ public class ProfileServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		String member_email = request.getParameter("member_email");
-
+		
 		ProfileBiz biz = new ProfileBizImpl();
 		
 		String realFolder = "profileimg";
@@ -61,6 +61,8 @@ public class ProfileServlet extends HttpServlet {
 		dto.setMember_picture_path(filename);
 		
 		int res = biz.profileUpdate(dto);
+		
+		System.out.println(res);
 		
 		HttpSession session = request.getSession();
 		// 세션에 담겨있는 로그인정보 가져옴

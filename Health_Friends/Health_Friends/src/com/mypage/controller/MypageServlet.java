@@ -37,7 +37,7 @@ public class MypageServlet extends HttpServlet {
 		
 		if(command.equals("mypage")){
 			
-			response.sendRedirect("./views/mypage/mypage.jsp");
+			dispatch(request, response, "./views/mypage/mypage.jsp");
 			
 		} else if(command.equals("registUpdate")) {
 			response.sendRedirect("./views/mypage/registUpdate.jsp");

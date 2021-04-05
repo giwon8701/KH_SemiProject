@@ -49,7 +49,6 @@
 	int date = Integer.parseInt(request.getParameter("date"));
 	
 	IndividualDto dto = new IndividualDto();
-	
 %>
 
 	<jsp:useBean id="util" class="com.mypage.common.Util"></jsp:useBean>
@@ -65,10 +64,9 @@
 		<table border="1">
 			<tr>
 				<th><input type="checkbox" name="all" onclick="allCheck(this.checked);"></th>
-				<th>번호</th>
-				<th>제목</th>
+				<th>요약</th>
 				<th>운동시간</th>
-				<th>일정</th>
+				<th>운동날짜</th>
 				<th>작성일</th>
 			</tr>
 			
@@ -85,7 +83,6 @@
 					
 						<tr>
 							<th><input type="checkbox" name="chk" value="${dto.individual_no }"></th>
-							<td>${dto.individual_no }</td>
 							<td><a href="individual.do?command=individualSelectOne&individual_no=${dto.individual_no }&year=<%=year %>&month=<%=month %>&date=<%=date %>">${dto.individual_title }</a></td>
 							<td>${dto.individual_time }</td>
 							<td>

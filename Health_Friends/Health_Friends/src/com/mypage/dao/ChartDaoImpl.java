@@ -24,7 +24,7 @@ public class ChartDaoImpl extends SqlMapConfig implements ChartDao {
 			res = session.selectOne("chartmapper.todayChart", map);
 			System.out.println(res);
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e);
 		} finally {
 			session.close();
 		}

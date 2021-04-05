@@ -162,9 +162,10 @@ form.sign-up-form{
     border-color: #4AB34A;
 }
 
+
 .kakao-icon{
-    height: 46px;
-    width: 46px;
+    height: 41px;
+    width: 41px;
     border: 1px solid #FFE65A;
     margin: 0 0.45rem;
     display: flex;
@@ -173,7 +174,7 @@ form.sign-up-form{
     text-decoration: none;
     color: #FFE65A;
     font-size: 1.1rem;
-    border-radius: 50%;
+    border-radius: 10%;
     transition: 0.3s;
 }
 
