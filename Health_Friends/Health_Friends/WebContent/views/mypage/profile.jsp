@@ -159,7 +159,7 @@
 		
 		$.ajax({
 			type: "post",
-			url: "../../chart.do?command=healthRecord&individual_id="+individual_id,
+			url: "./chart.do?command=healthRecord&individual_id="+individual_id,
 			dataType: "json",
 			success: function(msg){
 				var todayHealth = msg.todayHealth;
