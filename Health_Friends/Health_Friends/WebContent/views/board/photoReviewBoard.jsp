@@ -18,16 +18,10 @@ img{
 </style>
 </head>
 <body>
-<%--
-	<%@include file="header.jsp" %>
---%>	
 
-	<section class="boardlist">
-		<a href="./board.do?command=list">동행 구해요</a>
-		<a href="./review.do?command=list">후기</a>
-		<a href="./notice.do?command=list">공지사항</a>
-	</section>
-	<br/>
+	<%@include file="../../header.jsp" %>
+	
+
 	<input type="button" value="글작성" onclick="location.href='review.do?command=insert'" />	
 	
 	<h2>사진후기</h2>
@@ -56,8 +50,8 @@ img{
 	</section>
 	
 	
-<%--	
-	<%@include file="footer.jsp" %>
---%>		
+	
+	<%@include file="../../footer.jsp" %>
+		
 </body>
 </html>

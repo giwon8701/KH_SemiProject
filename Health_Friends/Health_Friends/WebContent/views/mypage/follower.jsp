@@ -20,6 +20,10 @@
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
+
+	$(function(){
+		following();
+	});
 	
 	function following(){
 		var queryString = "?command=following";
@@ -40,7 +44,7 @@
 					
 					for(var i = 0; i < data.length; i++){
 						$tr = $("<tr>");
-						$td01 = $("<td>").append("<img src='../../profileimg/"+data[i].member_picture_path +"' style='width:100px; height:100px'>");
+						$td01 = $("<td>").append("<a href='../../follow.do?command=profile&member_id="+data[i].member_id+"'><img src='../../profileimg/"+data[i].member_picture_path +"' style='width:100px; height:100px'>");
 						$td02 = $("<td>").append(data[i].member_id);
 						$tr.append($td01).append($td02);
 						
@@ -75,7 +79,7 @@
 					
 					for(var i = 0; i < data.length; i++){
 						$tr = $("<tr>");
-						$td01 = $("<td>").append("<img src='../../profileimg/"+data[i].member_picture_path +"' style='width:100px; height:100px'>");
+						$td01 = $("<td>").append("<a href='../../follow.do?command=profile&member_id="+data[i].member_id+"'><img src='../../profileimg/"+data[i].member_picture_path +"' style='width:100px; height:100px'>");
 						$td02 = $("<td>").append(data[i].member_id);
 						$tr.append($td01).append($td02);
 						
