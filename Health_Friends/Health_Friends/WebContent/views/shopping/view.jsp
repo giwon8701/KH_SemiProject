@@ -12,82 +12,21 @@
 <head>
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<link href="https://fonts.googleapis.com/css?family=Jua"
-	rel="stylesheet">
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 
-
-	function goSearch(event) {
-
-		event.preventDefault();
-		var command = "search";
-		var search = $("#txt_search").val();
-		var keyword = encodeURIComponent(search);
-
-		if (!keyword) {
-			alert("먼저 검색어를 입력해 주십시오");
-			return false;
-		}
-		if (keyword) {
-
-						$.ajax({
-									url : "../../shopping.do",
-									method : "GET",
-									data : {
-										"command" : "search",
-										"keyword" : keyword,
-										"responseBody" : "responseBody"
-									},
-									dataType : "json",
-									success : function(msg) {
-			
-										var list = msg.result;
-										
-										$('#start').html("");
-										
-										for (var i = 0; i < list.length; i++) {
-											
-											$('#start').append(
-													'<div class="col-md-3 col-sm-6"> <div class="product-grid3"> <div class="product-image3"> <a href="' + list[i].link + '" target=_sub > <img class="pic" src="' + list[i].image + '" + ""> </a> </div> <div class="product-content"> <h3 class="title">' + list[i].title + '</a> </h3> <div class="price"> 최저가 : ' + list[i].lprice + '원 </div> <br> </div> </div> </div>');
-					
-										}
-									},
-									error : function() {
-										alert("통신 실패");
-									}
-								});
-		}
-		
-		var count = 0;
-		window.onscroll = function(e) {
-
-			if (list.length > 19) {
-				if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-
-					//실행할 로직 (콘텐츠 추가)
-					count++;
-				}
-			}
-		};
-	}
-
-	
 	function getSearch() {
 		let command = "search";
 		let search = $("#txt_search").val();
 		let keyword = encodeURIComponent(search);
-		
-		let url = "../../shopping.do?command="+command+"&keyword="+search;
+		console.log("search : " +search)
+		let url = "shopping.do?command="+command+"&keyword="+search;
 		
 		if (!keyword) {
 				alert("먼저 검색어를 입력해 주십시오");

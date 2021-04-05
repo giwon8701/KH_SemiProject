@@ -130,7 +130,7 @@ public class RegistServlet extends HttpServlet {
 				jsResponse(response, "./index.jsp", "가입 실패");
 			}
 		} else if(command.equals("login")) {
-			response.sendRedirect("./views/login/login.jsp");
+			dispatch(request, response, "views/login/login.jsp");
 		} else if(command.equals("loginres")){
 			String memberId = request.getParameter("loginMemberId");
 			String memberPw = getHash(request.getParameter("loginMemberPw")+memberId);

@@ -36,7 +36,7 @@ public class ShoppingServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 
 		String command = request.getParameter("command");
-
+		System.out.println("command : " + command);
 		if (command.equals("shopping")) {
 			dispatch(request, response, "./views/shopping/view.jsp");
 			

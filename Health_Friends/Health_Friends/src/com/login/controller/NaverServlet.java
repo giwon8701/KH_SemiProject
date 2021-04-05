@@ -38,7 +38,7 @@ public class NaverServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		
+		/*
 		String clientId = "WSSex0InjkcHuJcQW5ov";//애플리케이션 클라이언트 아이디값";
 	    String clientSecret = "yjJ34xQfNh";//애플리케이션 클라이언트 시크릿값";
 	    String code = request.getParameter("code");
@@ -117,44 +117,52 @@ public class NaverServlet extends HttpServlet {
 			
 			System.out.println(dto.getMember_email());
 			System.out.println(dto.getMember_id());
-			
+			*/
+			String member_name = request.getParameter("member_name");
+			String member_email = request.getParameter("member_email");
 			//가입 유무 확인
 			RegistBiz biz = new RegistBizImpl();
 			int regist = biz.registCheck(member_email, "email");
+			String exist = "exist";
+			PrintWriter out = response.getWriter();
 			
 			if(regist > 0) {
 				//로그인 처리
 				RegistDto Ldto = biz.selectByEmail(member_email);
+				System.out.println("회원존재");
 				
 				if(Ldto.getMember_enabled().equals("N")) {
-					
 					jsResponse(response, "./index.jsp", "탈퇴한 회원입니다.");
 					
 				} else {
 					HttpSession session = request.getSession();
 					session.setAttribute("Ldto", Ldto);
 					session.setMaxInactiveInterval(10 * 60);
-					
-					jsResponse(response, "./index.jsp", member_name+"님, 환영합니다.");
+					out.print(exist);
+					System.out.println("test");
+					//jsResponse(response, "./index.jsp", member_name+"님, 환영합니다.");
 				}
 			} else {
+
+				System.out.println("회원가입해야함");
 				//추가정보 입력창으로 이동
-				PrintWriter out = response.getWriter();
 				String msg = "회원정보가 존재하지 않습니다! 간편 회원가입 페이지로 이동합니다.";
 				String s = "<script type='text/javascript'>"
 						 + "alert('" + msg + "');"
 						 + "</script>";
-				out.println(s);
-				System.out.println("test");
+				//out.println(s);
+				exist = "false";
+				out.print(exist);
 				
-				request.setAttribute("dto", dto);
+				//request.setAttribute("dto", dto);
 				//dispatch(request, response, "/views/login/registSample.jsp");
 			}
-
+/*
 	      }
 	    } catch (Exception e) {
 	      System.out.println(e);
 	    }
+	    */
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
