@@ -100,11 +100,8 @@
 					<table>
 						<tr>
 							<div class="input-field">
-								<i class="fas fa-phone"></i> <input type="tel" id="phone" name="memberPhone" title="n" placeholder="전화번호" onkeyup="phoneChk()" required="required">
+								<i class="fas fa-phone"></i> <input type="tel" id="phone" name="memberPhone" placeholder="전화번호" required="required">
 							</div>
-						</tr>
-						<tr>
-							<td id="phonechk" style="font-size: 10px; text-align: start"></td>
 						</tr>
 					</table>
 					<table>

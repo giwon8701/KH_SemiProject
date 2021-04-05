@@ -22,6 +22,52 @@
 <script type="text/javascript" src="assets/js/chart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	
+	function unfollow(){
+		var following = $("#Ldto").val();
+		var followed = $("#dto").val();
+		console.log("followed" + following);
+		console.log("followed : " + followed);
+		var queryString = "?command=unfollow&following="+following+"&followed="+followed;
+		$.ajax({
+			url : "follow.do" + queryString,
+			dataType: "text",
+			success: function(data){
+				if(data > 0){
+					$("#unfollowBttn").css("display","none");
+					$("#followBttn").css("display","");
+				}
+			},
+			error: function(err){
+				alert(err);
+			}
+		});
+		
+	}
+	
+	function follow(){
+		var following = $("#Ldto").val();
+		var followed = $("#dto").val();
+		console.log("followed" + following);
+		console.log("followed : " + followed);
+		var queryString = "?command=addfollow&following="+following+"&followed="+followed;
+		$.ajax({
+			url : "follow.do" + queryString,
+			dataType: "text",
+			success: function(data){
+				if(data > 0){
+					$("#followBttn").css("display","none");
+					$("#unfollowBttn").css("display","");
+				}
+			},
+			error: function(err){
+				alert(err);
+			}
+		});
+	}
+	
+</script>
 <% RegistDto Ldto = (RegistDto) session.getAttribute("Ldto");
 	RegistDto dto = (RegistDto) request.getAttribute("dto");
 %>
@@ -33,7 +79,7 @@
 </style>
 </head>
 <body>
-<%--마이페이지! --%>
+<%--다른 회원 프로필 --%>
 
 
 	<div class="mypage-main-div">
@@ -41,33 +87,39 @@
 			<div class="mypage-profile-div">
 				<table border="1">
 					<tr>
-						<td colspan="2">
+						<td colspan="3">
 							<c:choose>
 								<c:when test="${dto.getMember_picture_path() == null}">
-									대표 프로필 사진이 존재하지 않습니다<br>프로필 사진을 등록해주세요!
+									대표 프로필 사진이 존재하지 않습니다
 								</c:when>
 								<c:otherwise>
- 
 									<img src="../../profileimg/<%=dto.getMember_picture_path()%>?" id="profile-img" />
-
 								</c:otherwise>
 							</c:choose>
-						</td>
-						<td rowspan="4">
-							<form action="../../profile.do?member_email=<%=dto.getMember_email()%>" method="post" enctype="multipart/form-data">
-								<input type="file" name="filename" size='20'><br>
-								<input type="submit" value="프사변경">
-							</form>
 						</td>
 					</tr>
 					<tr>
 						<th colspan="2" align="center"><%=dto.getMember_id() %></th>
+						<td>
+							<input type="hidden" id="Ldto" value="<%=Ldto.getMember_no()%>">
+							<input type="hidden" id="dto" value="<%=dto.getMember_no()%>">
+							<c:choose>
+								<c:when test="${res eq 1 }">
+									<button id="unfollowBttn" onclick="unfollow()">언팔로우</button>
+									<button id="followBttn" onclick="follow()" style="display: none;">팔로우</button>
+								</c:when>
+								<c:otherwise>
+									<button id="unfollowBttn" onclick="unfollow()" style="display: none;">언팔로우</button>
+									<button id="followBttn" onclick="follow()">팔로우</button>
+								</c:otherwise>
+							</c:choose>
+						</td>
 					</tr>
 					<tr>
-						<th colspan="2">매너점수</th>
+						<th colspan="3">매너점수</th>
 					</tr>
 					<tr>
-						<td align="center" colspan="2">
+						<td align="center" colspan="3">
 							<c:choose>
 								<c:when test="${dto.getMember_review() == 0}">
 									----------
@@ -77,9 +129,6 @@
 								</c:otherwise>
 							</c:choose>
 						</td>
-					</tr>
-					<tr>
-						<td colspan="3">자기소개란!</td>
 					</tr>
 
 				</table>

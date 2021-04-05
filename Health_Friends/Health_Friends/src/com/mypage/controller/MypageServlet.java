@@ -89,7 +89,9 @@ public class MypageServlet extends HttpServlet {
 				session.setAttribute("Ldto", Ldto);
 				session.setMaxInactiveInterval(10 * 60);
 				
-				jsResponse(response, "./views/mypage/mypage.jsp", "회원정보가 수정되었습니다.");
+				response.getWriter().print("<script>alert('회원정보가 수정되었습니다.')</script>");
+				dispatch(request, response, "./views/mypage/mypage.jsp");
+				//jsResponse(response, "./views/mypage/mypage.jsp", "회원정보가 수정되었습니다.");
 			} else {
 				jsResponse(response, "./views/mypage/registUpdate.jsp", "다시 시도해주세요.");
 			}

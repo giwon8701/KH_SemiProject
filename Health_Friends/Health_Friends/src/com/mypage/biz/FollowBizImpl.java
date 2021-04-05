@@ -18,14 +18,13 @@ public class FollowBizImpl implements FollowBiz {
 	}
 
 	@Override
-	public int addFollowing(int member_no) {
-		return 0;
+	public int addFollow(FollowDto dto) {
+		return dao.addFollow(dto);
 	}
 
 	@Override
-	public int removeFollowing(int member_no) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int removeFollow(FollowDto dto) {
+		return dao.removeFollow(dto);
 	}
 
 	@Override
@@ -37,6 +36,11 @@ public class FollowBizImpl implements FollowBiz {
 	public int removeFollowed(int member_no) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	@Override
+	public int followChk(FollowDto dto) {
+		return dao.followChk(dto);
 	}
 	
 

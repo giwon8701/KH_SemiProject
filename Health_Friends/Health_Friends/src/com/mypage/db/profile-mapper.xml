@@ -23,5 +23,22 @@
 		JOIN FOLLOW ON(MEMBER_NO = FOLLOW_FOLLOWING_NO)
 		WHERE FOLLOW_MEMBER_NO = #{follow_member_no}
 	</select>
+
+	<select id="followchk" parameterType="followDto" resultType="int">
+		SELECT COUNT(*) FROM FOLLOW
+		WHERE FOLLOW_FOLLOWING_NO = #{follow_following_no}
+		AND FOLLOW_MEMBER_NO = #{follow_member_no}
+	</select>	
+	
+	<insert id="addfollow" parameterType="followDto">
+		INSERT INTO FOLLOW
+		VALUES(FOLLOWNOSEQ.NEXTVAL, #{follow_following_no}, #{follow_member_no})
+	</insert>
+	
+	<delete id="removefollow" parameterType="followDto">
+		DELETE FROM FOLLOW
+		WHERE FOLLOW_FOLLOWING_NO = #{follow_following_no}
+		AND FOLLOW_MEMBER_NO = #{follow_member_no}
+	</delete>
 	
 </mapper>

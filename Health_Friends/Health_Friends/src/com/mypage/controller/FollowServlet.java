@@ -91,9 +91,55 @@ public class FollowServlet extends HttpServlet {
 			RegistBiz regiBiz = new RegistBizImpl();
 			
 			RegistDto dto = regiBiz.selectById(member_id);
+			HttpSession session = request.getSession();
+			RegistDto Ldto = (RegistDto)session.getAttribute("Ldto");
+			
+			FollowDto fdto = new FollowDto();
+			fdto.setFollow_following_no(Ldto.getMember_no());
+			fdto.setFollow_member_no(dto.getMember_no());
+			
+			int res = biz.followChk(fdto);
+			System.out.println(res);
 			
 			request.setAttribute("dto", dto);
+			request.setAttribute("res", res);
 			dispatch(request, response, "./views/mypage/profile.jsp");
+		} else if(command.equals("followchk")) {
+			int following_no = Integer.parseInt(request.getParameter("following_no"));
+			int followed_no = Integer.parseInt(request.getParameter("followed_no"));
+			
+			System.out.println("following:" + following_no);
+			System.out.println("followed: " + followed_no);
+			
+			FollowDto dto = new FollowDto();
+			dto.setFollow_following_no(following_no);
+			dto.setFollow_member_no(followed_no);
+			
+			int res = biz.followChk(dto);
+			
+			response.getWriter().print(res);
+		} else if(command.equals("addfollow")) {
+			int following_no = Integer.parseInt(request.getParameter("following"));
+			int followed_no = Integer.parseInt(request.getParameter("followed"));
+			
+			FollowDto dto = new FollowDto();
+			dto.setFollow_following_no(following_no);
+			dto.setFollow_member_no(followed_no);
+			
+			int res = biz.addFollow(dto);
+			
+			response.getWriter().print(res);
+		} else if(command.equals("unfollow")) {
+			int following_no = Integer.parseInt(request.getParameter("following"));
+			int followed_no = Integer.parseInt(request.getParameter("followed"));
+			
+			FollowDto dto = new FollowDto();
+			dto.setFollow_following_no(following_no);
+			dto.setFollow_member_no(followed_no);
+			
+			int res = biz.removeFollow(dto);
+			
+			response.getWriter().print(res);
 		}
 	}
 	

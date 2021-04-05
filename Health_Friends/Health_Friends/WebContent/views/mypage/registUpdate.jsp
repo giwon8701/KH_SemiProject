@@ -122,7 +122,7 @@
 		<div class="forms-container">
 			<div class="signin-signup">
 				<!-- 회원정보수정 form -->
-				<form action="../../regist.do" method="post" id="registform" class="sign-in-form">
+				<form action="../../mypage.do" method="post" id="registform" class="sign-in-form">
 				<input type="hidden" name="command" value="registUpdateRes">
 
 				<h2 class="title">회원정보 수정</h2>
@@ -184,7 +184,7 @@
 						<%
 							for(int i = 1910; i < 2022; i++){
 						%>
-							<option value="<%=i %>" <%=(i == yyyy)?"selected":"" %>><%=i %></option>
+							<option value="<%=i %>" <%=(i == yyyy)?"selected":"" %> ><%=i %></option>
 						<%								
 							}
 						%>
