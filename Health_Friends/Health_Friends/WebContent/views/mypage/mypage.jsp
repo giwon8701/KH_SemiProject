@@ -65,15 +65,26 @@
 	}
 	.mypage-profile-div, .mypage-chart-div{
 		float: left;
+		align: center;
+	}
+	.mypage-profile-div, .profile-border{
+		border: 1px solid black;
+	}
+	.profile-border{
+		border: 1px soild black;
+	}
+	.profile-font{
+		font-weight: bold;
+		font-size: 20px;
 	}
 	.mypage-calendar-div{
 		float: left;
 		margin-left: 10%;
-		margin-top: 15%;
+		margin-top: 10%;
 		text-align: center;
 	}
 	.mypage-list-div{
-		margin-top: 10%;
+		margin-top: 5%;
 		float: right;
 	}
 	
@@ -85,14 +96,15 @@
 </head>
 <body>
 <%--마이페이지! --%>
-<% RegistDto Ldto = (RegistDto) session.getAttribute("Ldto"); %>
+<%@ include file="../../header.jsp" %>
+
 
 	<div class="mypage-main-div">
 		<div class="mypage-second-div1">
 			<div class="mypage-profile-div">
-				<table border="1">
+				<table class="profile-border">
 					<tr>
-						<td colspan="2">
+						<td colspan="2" align="center" class="profile-border">
 							<c:choose>
 								<c:when test="${Ldto.getMember_picture_path() == null}">
 									대표 프로필 사진이 존재하지 않습니다<br>프로필 사진을 등록해주세요!
@@ -112,15 +124,15 @@
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2" align="center"><%=Ldto.getMember_email() %>(<span style="font-weight: bold;"><%=Ldto.getMember_id() %></span>)</td>
+						<td colspan="2" align="center" class="profile-border"><%=Ldto.getMember_email() %>(<span style="font-weight: bold;"><%=Ldto.getMember_id() %></span>)</td>
 					</tr>
 					<tr>
-						<th>회원등급</th>
-						<th>매너점수</th>
+						<td align="center" class="profile-font">회원등급</td>
+						<td align="center" class="profile-font">매너점수</td>
 					</tr>
 					<tr>
-						<td align="center" style="color: blue;"><%=Ldto.getMember_role() %></td>
-						<td align="center">
+						<td align="center" class="" style="color: blue;"><%=Ldto.getMember_role() %></td>
+						<td align="center" class="" >
 							<c:choose>
 								<c:when test="${Ldto.getMember_review() == 0}">
 									----------
@@ -146,12 +158,12 @@
 				
 					<tr>
 						<td colspan="7">
-							<a href="views/mypage/mypage.jsp?year=<%=year - 1%>&month=<%=month%> ">◁</a>
-							<a href="views/mypage/mypage.jsp?year=<%=year%>&month=<%=month - 1%> ">◀</a> 
+							<a href="mypage.do?command=yearMinus&year=<%=year - 1%>&month=<%=month%> ">◁</a>
+							<a href="mypage.do?command=monthMinus&year=<%=year%>&month=<%=month - 1%> ">◀</a> 
 							<span class="y"><%=year%></span>년 
 							<span class="m"><%=month%></span>월 
-							<a href="views/mypage/mypage.jsp?year=<%=year%>&month=<%=month + 1%> ">▶</a>
-							<a href="views/mypage/mypage.jsp?year=<%=year + 1%>&month=<%=month%> ">▷</a>
+							<a href="mypage.do?command=monthPlus&year=<%=year%>&month=<%=month + 1%> ">▶</a>
+							<a href="mypage.do?command=yearPlus&year=<%=year + 1%>&month=<%=month%> ">▷</a>
 						</td>
 					</tr>
 
@@ -209,7 +221,7 @@
 									</script>
 								<li><a href="payment.do?command=paymentRoleUp&member_role=<%=Ldto.getMember_role()%>">프리미엄 등록</a></li>
 								<li><a href="payment.do?command=paymentRoleDown&member_role=<%=Ldto.getMember_role()%>">프리미엄 탈퇴</a></li>
-								<li><a href="payment.do?command=paymentListMy&member_email=<%=Ldto.getMember_email()%>">나의 결제내역</a></li>
+								<li><a href="payment.do?command=paymentListMyPaging&member_email=<%=Ldto.getMember_email()%>">나의 결제내역</a></li>
 								<li><a href="payment.do?command=paymentListPaging">모든회원결제내역(admin)</a></li>
 							</ul>
 						</td>

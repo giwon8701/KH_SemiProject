@@ -39,6 +39,30 @@ public class MypageServlet extends HttpServlet {
 			
 			dispatch(request, response, "./views/mypage/mypage.jsp");
 			
+		} else if(command.equals("yearMinus")) {
+			String year = request.getParameter("year");
+			String month = request.getParameter("month");
+			
+			dispatch(request, response, "./views/mypage/mypage.jsp?year="+year+"&month="+month);
+			
+		} else if(command.equals("monthMinus")) {
+			String year = request.getParameter("year");
+			String month = request.getParameter("month");
+			
+			dispatch(request, response, "./views/mypage/mypage.jsp?year="+year+"&month="+month);
+			
+		} else if(command.equals("monthPlus")) {
+			String year = request.getParameter("year");
+			String month = request.getParameter("month");
+			
+			dispatch(request, response, "./views/mypage/mypage.jsp?year="+year+"&month="+month);
+			
+		} else if(command.equals("yearPlus")) {
+			String year = request.getParameter("year");
+			String month = request.getParameter("month");
+			
+			dispatch(request, response, "./views/mypage/mypage.jsp?year="+year+"&month="+month);
+			
 		} else if(command.equals("registUpdate")) {
 			response.sendRedirect("./views/mypage/registUpdate.jsp");
 		} else if(command.equals("pwReset")) {

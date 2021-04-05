@@ -2,8 +2,10 @@ package com.mypage.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Enumeration;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -71,15 +73,33 @@ public class ProfileServlet extends HttpServlet {
 		session.setAttribute("Ldto", loginSessionDto);
 	
 		if(res > 0) {
-			jsResponse(response, "./views/mypage/mypage.jsp", "프로필 사진이 변경되었습니다!");
+			PrintWriter out = response.getWriter();
+			String html = "<script type='text/javascript'>"
+						+ "alert('" + "프로필 사진이 변경되었습니다!" + "');"
+						+ "</script>";
+			out.println(html);
+			
+			dispatch(request, response, "./views/mypage/mypage.jsp");
+			//jsResponse(response, "./views/mypage/mypage.jsp", "프로필 사진이 변경되었습니다!");
 		} else {
-			jsResponse(response, "./views/mypage/mypage.jsp", "프로필 사진변경에 실패하였습니다!");
+			PrintWriter out = response.getWriter();
+			String html = "<script type='text/javascript'>"
+						+ "alert('" + "프로필 사진변경에 실패하였습니다!" + "');"
+						+ "</script>";
+			out.println(html);
+			dispatch(request, response, "./views/mypage/mypage.jsp");
+			//jsResponse(response, "./views/mypage/mypage.jsp", "프로필 사진변경에 실패하였습니다!");
 		}
 		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
+	}
+	
+	private void dispatch(HttpServletRequest request, HttpServletResponse response, String path) throws ServletException, IOException {
+		RequestDispatcher dispatch = request.getRequestDispatcher(path);
+		dispatch.forward(request, response);
 	}
 	
 	private void jsResponse(HttpServletResponse response, String url, String msg) throws IOException {

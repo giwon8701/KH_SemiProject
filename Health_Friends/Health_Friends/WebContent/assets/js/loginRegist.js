@@ -48,6 +48,7 @@
 		}
 	}
 	
+	/*
 	function phoneChk(){
 		var newPhone = $("#phone").val();
 		if($.trim(newPhone) == "" || $.trim(newPhone) == null){
@@ -55,7 +56,7 @@
 		} else{
 			var queryString = "?command=phoneCheck&memberPhone="+newPhone;
 			$.ajax({
-				url: "../../regist.do"+queryString,
+				url: "regist.do"+queryString,
 				dataType: "text",
 				success: function(data){
 					if(data == 0){
@@ -79,6 +80,7 @@
 			});
 		}
 	}
+	*/
 	
 	function emailChk(){
 		var newEmail = $("#email").val();

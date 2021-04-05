@@ -1,3 +1,9 @@
+<%@page import="com.common.Paging"%>
+<%@page import="com.board.biz.BoardBizImpl"%>
+<%@page import="com.board.biz.BoardBiz"%>
+<%@page import="com.login.dto.RegistDto"%>
+<%@page import="com.board.dto.BoardDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("UTF-8");%>
@@ -13,6 +19,51 @@
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 
 <title>후기 게시판</title>
+<%
+	RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); 
+	BoardBiz biz = new BoardBizImpl();
+	
+	List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
+
+	int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+	int totalCount = Integer.parseInt(request.getAttribute("totalCount") + "");
+	
+	Paging paging = new Paging();
+	paging.setPageNo(pageNum);
+	paging.setPageSize(10);
+	paging.setTotalCount(totalCount);
+%>
+<!-- 페이징 관련 JS -->
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		var pageNum = <%=pageNum-1%>;
+		
+		if(pageNum >= 10){
+			pageNum %= 10;
+		}
+		
+		$(".pagination>a").eq(pageNum).addClass("on");
+		
+	})
+</script>
+<!-- 페이징 관련 CSS -->
+<style>
+	.pagination {
+		padding: 10px 0;
+	}
+	
+	.pagination a {
+		padding: 5px;
+		margin: 5px;
+		cursor: pointer;
+	}
+	
+	.pagination a.on {
+		font-weight: bold;
+		font-size: 20px;
+	}
+</style>
 <style type="text/css">
 
 .main img {
@@ -102,6 +153,7 @@ img {
 	height: 200px;
 }
 </style>
+
 </head>
 <body>
 	<%--
@@ -220,6 +272,32 @@ img {
 		</table>
 	</section>
 
+
+
+	<!--  pagination -->
+	<div class="pagination">
+		<input type="button" onclick="pageMove(<%=paging.getFirstPageNo()%>)"
+			value="◀"> <input type="button"
+			onclick="pageMove(<%=paging.getPrevPageNo()%>)" value="◁">
+
+		<%
+			for (int i = paging.getStartPageNo(); i <= paging.getEndPageNo(); i++) {
+		%>
+		<a onclick="pageMove(<%=i%>)"><%=i%></a>
+		<%
+			}
+		%>
+
+		<input type="button" onclick="pageMove(<%=paging.getNextPageNo()%>)"
+			value="▷"> <input type="button"
+			onclick="pageMove(<%=paging.getFinalPageNo()%>)" value="▶">
+	</div>
+
+	<script>
+			function pageMove(page){
+				location.href='review.do?command=listPaging&page='+page
+			}
+	</script>
 
 	<%--	
 	<%@include file="footer.jsp" %>
