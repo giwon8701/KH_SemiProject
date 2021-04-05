@@ -45,7 +45,7 @@ public class ReviewServlet extends HttpServlet {
 			request.setAttribute("list", list);
 			dispatch(request, response, "./views/board/photoReviewBoard.jsp");
 		} else if (command.equals("insert")) {
-			response.sendRedirect("./views/board/photoReviewBoard_post.jsp");				
+			dispatch(request, response, "./views/board/photoReviewBoard_post.jsp");				
 		} else if (command.equals("insertRes")) {
 			int postUserNo = Integer.parseInt(request.getParameter("userNo"));
 			String postTitle = request.getParameter("postTitle");

@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.login.biz.RegistBiz;
+import com.login.biz.RegistBizImpl;
 import com.login.dto.RegistDto;
 import com.mypage.biz.FollowBiz;
 import com.mypage.biz.FollowBizImpl;
@@ -84,6 +86,14 @@ public class FollowServlet extends HttpServlet {
 			System.out.println(result.toString());
 			response.getWriter().print(result.toString());
 			
+		} else if(command.equals("profile")) {
+			String member_id = request.getParameter("member_id");
+			RegistBiz regiBiz = new RegistBizImpl();
+			
+			RegistDto dto = regiBiz.selectById(member_id);
+			
+			request.setAttribute("dto", dto);
+			dispatch(request, response, "./views/mypage/profile.jsp");
 		}
 	}
 	
