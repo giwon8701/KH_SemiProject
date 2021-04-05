@@ -51,7 +51,7 @@ $(window).scroll(function(evt) {
             </ul>
             
            	<span class="header-search">
-				<input type="text" size="30" placeholder="동네 또는 운동명을 검색해 보세요!">
+				<input type="text" size="25" placeholder="유저를 검색해 보세요!">
 			</span>
             
             <ul class="border-ul">
