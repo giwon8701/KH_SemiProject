@@ -24,7 +24,7 @@
 		<div class="forms-container">
 			<div class="signin-signup">
 				<!-- 로그인 form -->
-				<form action="../../regist.do" class="sign-in-form" method="post" id="loginForm">
+				<form action="regist.do" class="sign-in-form" method="post" id="loginForm">
 					<input type="hidden" name="command" value="loginres">
 					
 					<h2 class="title">로그인</h2>
@@ -51,7 +51,7 @@
 
 
 				<!-- 회원가입 form -->
-				<form action="../../regist.do" method="post" id="registform"
+				<form action="regist.do" method="post" id="registform"
 					class="sign-up-form">
 					<input type="hidden" name="command" value="registres">
 
