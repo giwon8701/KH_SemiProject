@@ -84,7 +84,8 @@ public class IndividualServlet extends HttpServlet {
 				
 				int res = biz.individualInsert(dto);
 				if(res > 0) {
-					response.sendRedirect("./views/mypage/mypage.jsp");
+					dispatch("./views/mypage/mypage.jsp", request, response);
+					//response.sendRedirect("./views/mypage/mypage.jsp");
 				} else {
 					request.setAttribute("msg", "일정 추가 실패");
 					dispatch("error.jsp", request, response);
@@ -133,7 +134,8 @@ public class IndividualServlet extends HttpServlet {
 				int res = biz.individualDelete(individual_no);
 				
 				if(res > 0){
-					response.sendRedirect("./views/mypage/mypage.jsp");
+					dispatch("./views/mypage/mypage.jsp", request, response);
+					//response.sendRedirect("./views/mypage/mypage.jsp");
 				} else {
 					dispatch("individual.do?command=individualSelectOne&individual_no="+individual_no, request, response);
 				} 
