@@ -209,7 +209,7 @@ public class RegistServlet extends HttpServlet {
 		} else if(command.equals("pwReset")) {
 			String member_id = request.getParameter("member_id");
 			String member_email = request.getParameter("member_email");
-			String member_pw = getHash(request.getParameter("member_pw"));
+			String member_pw = getHash(request.getParameter("member_pw")+member_id);
 			
 			RegistDto dto = new RegistDto();
 			dto.setMember_id(member_id);

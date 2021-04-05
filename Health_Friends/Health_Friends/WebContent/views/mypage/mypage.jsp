@@ -146,12 +146,12 @@
 				
 					<tr>
 						<td colspan="7">
-							<a href="mypage.jsp?year=<%=year - 1%>&month=<%=month%> ">◁</a>
-							<a href="mypage.jsp?year=<%=year%>&month=<%=month - 1%> ">◀</a> 
+							<a href="views/mypage/mypage.jsp?year=<%=year - 1%>&month=<%=month%> ">◁</a>
+							<a href="views/mypage/mypage.jsp?year=<%=year%>&month=<%=month - 1%> ">◀</a> 
 							<span class="y"><%=year%></span>년 
 							<span class="m"><%=month%></span>월 
-							<a href="mypage.jsp?year=<%=year%>&month=<%=month + 1%> ">▶</a>
-							<a href="mypage.jsp?year=<%=year + 1%>&month=<%=month%> ">▷</a>
+							<a href="views/mypage/mypage.jsp?year=<%=year%>&month=<%=month + 1%> ">▶</a>
+							<a href="views/mypage/mypage.jsp?year=<%=year + 1%>&month=<%=month%> ">▷</a>
 						</td>
 					</tr>
 
