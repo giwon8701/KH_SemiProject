@@ -113,6 +113,11 @@
 </script>
 </head>
 <body>
+<% RegistDto Ldto = (RegistDto) session.getAttribute("Ldto"); 
+	int yyyy = Integer.parseInt(Ldto.getMember_birthday().substring(0,4));
+	int mm = Integer.parseInt(Ldto.getMember_birthday().substring(4,5));
+	int dd = Integer.parseInt(Ldto.getMember_birthday().substring(5));
+%>
 	<div class="container">
 		<div class="forms-container">
 			<div class="signin-signup">
@@ -175,21 +180,33 @@
 				<table>
 					<tr>
 						<td><label for="birth">생년월일</label></td>
-						<td><select name="year" id="birth" required="required">
-								<c:forEach var="i" begin="1910" end="2021" step="1">
-									<option value="${i }" ${(i == 2000)? "selected" : ""}><c:out value="${i }"></c:out></option>
-								</c:forEach>
-						</select>년</td>
+						<td><select name="year" id="birth" required="required" >
+						<%
+							for(int i = 1910; i < 2022; i++){
+						%>
+							<option value="<%=i %>" <%=(i == yyyy)?"selected":"" %>><%=i %></option>
+						<%								
+							}
+						%>
+					</select>년</td>
 						<td><select name="mm" id="birth" required="required">
-								<c:forEach var="i" begin="01" end="12" step="1">
-									<option value="${i }"><c:out value="${i }"></c:out></option>
-								</c:forEach>
-						</select>월</td>
+						<%
+							for(int i = 1; i < 13; i++){
+						%>
+							<option value="<%=i %>" <%=(mm == i)?"selected":"" %>><%=i %></option>
+						<%								
+							}
+						%>
+					</select>월</td>
 						<td><select name="dd" id="birth" required="required">
-								<c:forEach var="i" begin="01" end="31" step="1">
-									<option value="${i }"><c:out value="${i }"></c:out></option>
-								</c:forEach>
-						</select>일</td>
+						<%
+							for(int i = 1; i < 32; i++){
+						%>
+							<option value="<%=i %>" <%=(dd == i)?"selected":"" %>><%=i %></option>
+						<%								
+							}
+						%>
+					</select>일</td>
 					</tr>
 				</table>
 				<br>

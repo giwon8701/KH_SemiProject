@@ -69,12 +69,12 @@
 			<tr>
 				<td>
 					<label for="pw"><b>비밀번호 재설정</b></label><br>
-					<input id="pw" type="password" placeholder="비밀번호를 입력해주세요." required="required" name="member_pw" onchange="chkPW()">
+					<input id="pw" type="password" placeholder="비밀번호를 입력해주세요." required="required" name="member_pw" onkeyup="chkPW()">
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input type="password" id="pwchk" title="n" placeholder="다시 한번 입력해주세요." required="required" onchange="chkPW()">
+					<input type="password" id="pwchk" title="n" placeholder="다시 한번 입력해주세요." required="required" onkeyup="chkPW()">
 				</td>
 			</tr>
 			<tr>
