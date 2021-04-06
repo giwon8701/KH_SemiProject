@@ -61,12 +61,10 @@ public class ScrapServlet extends HttpServlet {
 		} else if(command.equals("scrapList")) {
 			HttpSession session = request.getSession();
 			int scrap_user_no = ((RegistDto)session.getAttribute("Ldto")).getMember_no();
-			System.out.println("scrap_user_no" + scrap_user_no);
 			
 			List<BoardDto> list = new ArrayList<BoardDto>();
 			
 			list = biz.listScrap(scrap_user_no);
-			System.out.println("list : " + list.toString());
 			
 			request.setAttribute("list", list);
 			dispatch(request, response, "/views/mypage/scrapList.jsp");

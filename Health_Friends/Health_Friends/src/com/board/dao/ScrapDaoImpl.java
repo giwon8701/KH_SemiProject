@@ -48,7 +48,7 @@ public class ScrapDaoImpl extends SqlMapConfig implements ScrapDao  {
 	@Override
 	public List<BoardDto> listScrap(int scrap_user_no) {
 		List<BoardDto> list = new ArrayList<BoardDto>();
-		System.out.println("scrap_user_no : " + scrap_user_no);
+		
 		try(SqlSession session = getSqlSessionFactory().openSession(true)){
 			list = session.selectList("BoardMapper.scrapList", scrap_user_no);
 		} catch(Exception e) {

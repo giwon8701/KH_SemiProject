@@ -51,7 +51,7 @@
 				<c:otherwise>
 					<c:forEach items="${list }" var="dto">
 						<tr>
-							<td>${dto.postCategoryName }</td>
+							<td>${dto.postBoardName }</td>
 							<td>${dto.postTitle }</td>
 							<td>${dto.postRegdate }</td>
 						</tr>
