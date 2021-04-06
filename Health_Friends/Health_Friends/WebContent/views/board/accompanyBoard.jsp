@@ -98,7 +98,7 @@ $(document).ready(function(){
 		<div style="font-size: 40px; font-weight: bold">동행 게시판</div>
 		<br>
 		<p>우리 동네 운동 친구를 만나보세요.</p>
-		<br> <a href="  " class="btn btn02">메인 페이지</a> <a
+		<br> <a href="index.jsp" class="btn btn02">메인 페이지</a> <a
 			href="./board.do?command=list  " class="btn btn01">동행 구해요</a> <a
 			href="./review.do?command=list  " class="btn btn01">사진 후기</a> <a
 			href="./notice.do?command=list " class="btn btn01">공지사항</a>
@@ -175,19 +175,19 @@ $(document).ready(function(){
 		
 			<script>
 					function pageMove(page){
-						location.href='board.do?command=listPaging&page='+page
+						location.href='board.do?command=list&page='+page
 					}
 			</script>
 
 			<div class="board_list_warp02">
 
 				<div class="paging">
-					<a href="#" class="bt">첫 페이지</a>
-					<a href="#" class="bt">이전 페이지</a>
+				<a href="#" class="bt">첫 페이지</a>
+				<a href="#" class="bt">이전 페이지</a>
 					<a href="#" class="num on">1</a>
 					<a href="#" class="num">2</a>
 					<a href="#" class="num">3</a>
-					<a href="#" class="bt">다음 페이지</a>
+				<a href="#" class="bt">다음 페이지</a>
 					<a href="#" class="bt">마지막 페이지</a>
 				</div>
 

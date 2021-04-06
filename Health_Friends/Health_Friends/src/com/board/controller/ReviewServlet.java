@@ -41,11 +41,7 @@ public class ReviewServlet extends HttpServlet {
 		String command = request.getParameter("command");
 		BoardBiz biz = new BoardBizImpl();
 		
-		if (command.equals("list")) {
-			List<BoardDto> list = biz.photo_selectList();
-			request.setAttribute("list", list);
-			dispatch(request, response, "./views/board/photoReviewBoard.jsp");
-		} else if (command.equals("insert")) {
+		if (command.equals("insert")) {
 			dispatch(request, response, "./views/board/photoReviewBoard_post.jsp");				
 		} else if (command.equals("insertRes")) {
 			int postUserNo = Integer.parseInt(request.getParameter("userNo"));
@@ -64,7 +60,7 @@ public class ReviewServlet extends HttpServlet {
 				jsResponse(response, "오류가 발생하였습니다", "review.do?command=insert");
 			}
 			
-		} else if(command.equals("listPaging")) {
+		} else if(command.equals("list")) {
 			
 			int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 			

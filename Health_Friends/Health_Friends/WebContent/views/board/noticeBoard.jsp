@@ -148,7 +148,7 @@
 
 	<script>
 			function pageMove(page){
-				location.href='notice.do?command=listPaging&page='+page
+				location.href='notice.do?command=list&page='+page
 			}
 	</script>
 <%---	

@@ -33,12 +33,7 @@ public class NoticeServlet extends HttpServlet {
 		RegistDto ldto = (RegistDto)session.getAttribute("Ldto");
 		
 		try {
-			if(command.equals("list")) {
-				List<BoardDto> list = biz.notice_selectList();
-				request.setAttribute("list", list);
-				dispatch(request, response, "./views/board/noticeBoard.jsp");
-				
-			} else if(command.equals("insert")) {
+			if(command.equals("insert")) {
 				response.sendRedirect("./views/board/noticeBoard_post.jsp");
 				
 			} else if(command.equals("insertres")) {
@@ -94,7 +89,7 @@ public class NoticeServlet extends HttpServlet {
 				} else {
 					response.sendRedirect("notice.do?command=select&postId=" + postId);
 				}
-			} else if(command.equals("listPaging")) {
+			} else if(command.equals("list")) {
 				
 				int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 				System.out.println("서블릿 pageNum : " + pageNum);

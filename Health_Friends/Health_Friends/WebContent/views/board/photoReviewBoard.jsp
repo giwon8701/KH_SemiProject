@@ -175,7 +175,7 @@ img {
 		<div style="font-size: 40px; font-weight: bold">후기게시판</div>
 		<br>
 		<p>소중한 추억을 남겨보세요.</p>
-		<br> <a href="../../index.jsp" class="btn btn02">메인 페이지</a> <a
+		<br> <a href="index.jsp" class="btn btn02">메인 페이지</a> <a
 			href="./board.do?command=list  " class="btn btn01">동행 구해요</a> <a
 			href="./review.do?command=list  " class="btn btn01">사진 후기</a> <a
 			href=" ./notice.do?command=list " class="btn btn01">공지사항</a>
@@ -293,7 +293,7 @@ img {
 
 	<script>
 			function pageMove(page){
-				location.href='review.do?command=listPaging&page='+page
+				location.href='review.do?command=list&page='+page
 			}
 	</script>
 

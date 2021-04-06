@@ -34,12 +34,7 @@ public class BoardServlet extends HttpServlet {
 		RegistDto ldto = (RegistDto)session.getAttribute("Ldto");
 		
 		try {
-			if(command.equals("list")) {
-				List<BoardDto> list = biz.accompany_selectList();
-				request.setAttribute("list", list);
-				dispatch(request, response, "./views/board/accompanyBoard.jsp");
-				
-			} else if(command.equals("insert")) {
+			if(command.equals("insert")) {
 				dispatch(request, response, "./views/board/accompanyBoard_post.jsp");
 				
 			} else if(command.equals("insertres")) {
@@ -107,7 +102,7 @@ public class BoardServlet extends HttpServlet {
 				} else {
 					response.sendRedirect("board.do?command=select&postId=" + postId);
 				}
-			} else if(command.equals("listPaging")) {
+			} else if(command.equals("list")) {
 				
 				int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 				System.out.println("서블릿 pageNum : " + pageNum);
