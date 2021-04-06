@@ -111,6 +111,7 @@
         }).open();
 	}
 	
+	
 	function onSubmit(){
 		if($("#id").prop("title") == "y" && $("#email").prop("title") == "y" && $("#pwchk").prop("title") == "y"){
 			$("#registform").submit();

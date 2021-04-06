@@ -51,10 +51,8 @@
 
 
 				<!-- 회원가입 form -->
-				<form action="regist.do" method="post" id="registform"
-					class="sign-up-form">
+				<form action="regist.do" method="post" id="registform" class="sign-up-form">
 					<input type="hidden" name="command" value="registres">
-
 					<h2 class="title">회원가입</h2>
 
 					<table>
