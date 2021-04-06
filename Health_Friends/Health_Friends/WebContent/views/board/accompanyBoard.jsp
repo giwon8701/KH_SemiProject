@@ -10,8 +10,6 @@
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-%>
-<%
 	response.setContentType("text/html; charset=UTF-8");
 %>
 <!DOCTYPE html>
