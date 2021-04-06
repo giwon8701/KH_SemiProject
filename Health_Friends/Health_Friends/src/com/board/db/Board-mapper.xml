@@ -83,7 +83,7 @@
 	<insert id="accompany_insert" parameterType="BoardDto">
 		INSERT INTO POST VALUES
 		(#{postUserNo}, POST_ID_SEQ.NEXTVAL, POST_DONGHANG_SEQ.NEXTVAL, 'ACCOMPANY', #{postCategoryName},#{postTitle},#{postContent}
-		,#{postMdate},SYSDATE,#{postHit},#{postCommentHit},#{postLike},'N',#{postLatitude},#{postLongitude})
+		,#{postMdate},SYSDATE,0,0,0,'N',#{postLatitude},0)
 	</insert>
 	
 	<insert id="photo_insert" parameterType="BoardDto">
