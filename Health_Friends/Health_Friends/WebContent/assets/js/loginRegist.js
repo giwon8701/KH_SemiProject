@@ -18,17 +18,32 @@
 	function pwReg(){
 		var pw = $("#pw").val();
 		var reg = /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*&+=-]).*$/;
-		chkPW()
+		
 		if(!reg.test(pw)){
 			$("#pw").prop("title", "n");
 			$("#reg").text("8~16자의 영문자,숫자,특수문자의 조합으로 입력해주세요").css("color", "red");
 			$("#pw").css("background-color", "red");
 		} else{
 			$("#pw").prop("title", "y");
-			$("#reg").text("사용가능한 비밀번호 입니다.").css("color", "blue");
+			$("#reg").text("").css("color","blue");
+			chkPW()
 			$("#pw").css("background-color", "skyblue");
 		}
-
+	}
+	
+	function emailReg(){
+		var email = $("#email").val();
+		var reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+		if(!reg.test(email)){
+			$("#email").prop("title", "n");
+			$("#emailchk").text("올바른 형식의 이메일을 입력해주세요.").css("color", "red");
+			$("#email").css("background-color", "red");
+		} else {
+			$("#email").prop("title", "y");
+			$("#emailchk").text("").css("color", "blue");
+			emailChk()
+			$("#email").css("background-color", "skyblue");
+		}
 	}
 	
 	function idCheck(){
@@ -127,7 +142,7 @@
 	
 	
 	function onSubmit(){
-		if($("#id").prop("title") == "y" && $("#email").prop("title") == "y" &&("#pw").prop("title") == "y" && $("#pwchk").prop("title") == "y"){
+		if($("#id").prop("title") == "y" && $("#email").prop("title") == "y" && $("#pw").prop("title") == "y" && $("#pwchk").prop("title") == "y"){
 			$("#registform").submit();
 		} else{
 			alert("입력하신 정보를 다시 확인해주세요.");

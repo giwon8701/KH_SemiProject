@@ -116,7 +116,7 @@
 					<table>
 						<tr>
 							<div class="input-field">
-								<i class="fas fa-envelope"></i> <input type="text" id="email" name="memberEmail" title="n" placeholder="이메일" required="required" onkeyup="emailChk()">
+								<i class="fas fa-envelope"></i> <input type="text" id="email" name="memberEmail" title="n" placeholder="이메일" required="required" onkeyup="emailReg()">
 							</div>
 						</tr>
 						<tr>
