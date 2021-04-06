@@ -209,8 +209,8 @@ $(function(){
 						
 		<!-- 달력API -->
 						<td>
+							<p><em>달력을 클릭해주세요!</em></p>
 							<div id='postMdate'></div>
-					
 						 	<link href='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.css' rel='stylesheet' />
 						    <script src='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.js'></script>
 						    <script>

@@ -38,7 +38,7 @@ public class BoardServlet extends HttpServlet {
 				dispatch(request, response, "./views/board/accompanyBoard.jsp");
 				
 			} else if(command.equals("insert")) {
-				response.sendRedirect("./views/board/accompanyBoard_post.jsp");
+				dispatch(request, response, "./views/board/accompanyBoard_post.jsp");
 				
 			} else if(command.equals("insertres")) {
 				String postLatitude = request.getParameter("result");
