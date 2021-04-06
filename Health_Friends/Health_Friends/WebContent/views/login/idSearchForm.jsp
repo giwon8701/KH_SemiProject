@@ -31,7 +31,7 @@
 					<tr>
 						<div class="input-field">
 							<i class="fas fa-user"></i>
-							<input type="text" required="required" name="member_name" placeholder="아이디를 입력해주세요">
+							<input type="text" required="required" name="member_name" placeholder="이름을 입력해주세요">
 						</div>
 					</tr>
 				</table>
@@ -50,7 +50,7 @@
 							<input type="submit" value="아이디 찾기" class="btn solid g-recaptcha">
 						</td>
 						<td>
-							<input type="button" value="취소" class="btn solid g-recaptcha" onclick="location.href='mypage.do?command=mypage'">
+							<input type="button" value="취소" class="btn solid g-recaptcha" onclick="location.href='regist.do?command=login'">
 						</td>
 					</tr>
 				</table>

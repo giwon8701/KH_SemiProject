@@ -13,7 +13,7 @@
 <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>	<!-- 도로명주소 API -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>	<!-- jQuery API -->
-<script src="https://www.google.com/recaptcha/api.js"></script>			<!--  recaptcha API -->
+<script src="https://www.google.com/recaptcha/api.js?render=6LdY0Y0aAAAAAC55f1G3fyahKgyATLdZ1BZq_yt5"></script>			<!--  recaptcha API -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>	<!--  카카오 로그인 API -->
 <script type="text/javascript" src="assets/js/login.js"></script> <!-- 로그인 관련 -->
 <script type="text/javascript" src="assets/js/loginRegist.js"></script> <!-- 회원가입 관련 -->
@@ -77,8 +77,11 @@
 					<table>
 						<tr>
 							<div class="input-field">
-								<i class="fas fa-lock"></i> <input type="password" id="pw" name="memberPw" placeholder="비밀번호" required="required" onkeyup="chkPW()">
+								<i class="fas fa-lock"></i> <input type="password" id="pw" name="memberPw" title="n" placeholder="8~16자의 영문자,숫자,특수문자" required="required" onkeyup="pwReg()">
 							</div>
+						</tr>
+						<tr>
+							<td id="reg" style="font-size: 10px, text-align: start"></td>
 						</tr>
 						<tr>
 							<div class="input-field">
