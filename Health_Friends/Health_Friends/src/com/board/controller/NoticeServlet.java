@@ -48,9 +48,9 @@ public class NoticeServlet extends HttpServlet {
 				int res = biz.notice_insert(dto);
 				
 				if(res > 0) {
-					response.sendRedirect("notice.do?command=list");
+					response.sendRedirect("./notice.do?command=list");
 				} else {
-					response.sendRedirect("./views/board/noticeBoard_post.jsp");
+					response.sendRedirect("./notice.do?command=insert");
 				}
 				
 			} else if(command.equals("select")) {
@@ -67,9 +67,13 @@ public class NoticeServlet extends HttpServlet {
 				
 			} else if(command.equals("updateres")) {
 				int postId = Integer.parseInt(request.getParameter("postId"));
+				System.out.println(postId);
 				String postTitle = request.getParameter("postTitle");
+				System.out.println(postTitle);
 				String postContent = request.getParameter("postContent");
 				BoardDto dto = new BoardDto();
+				int postUserNo = Integer.parseInt(request.getParameter("postUserNo"));; 
+				dto.setPostUserNo(postUserNo);
 				dto.setPostId(postId);
 				dto.setPostTitle(postTitle);
 				dto.setPostContent(postContent);
@@ -82,7 +86,9 @@ public class NoticeServlet extends HttpServlet {
 				}
 				
 			} else if(command.equals("delete")) {
+				System.out.println("test");
 				int postId = Integer.parseInt(request.getParameter("postId"));
+				System.out.println(postId);
 				int res = biz.notice_delete(postId);
 				if (res > 0) {
 					response.sendRedirect("notice.do?command=list");

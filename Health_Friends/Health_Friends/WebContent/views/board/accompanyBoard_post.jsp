@@ -244,7 +244,7 @@ $(function(){
 				</tr>
 			</table>
 			<input type="submit" id="submit" value="등록">
-			<input type="button" value="취소" onclick="location.href='../../board.do?command=list'" />
+			<input type="button" value="취소" onclick="location.href='./board.do?command=list'" />
 		</form>
 	</section>
 <%--	

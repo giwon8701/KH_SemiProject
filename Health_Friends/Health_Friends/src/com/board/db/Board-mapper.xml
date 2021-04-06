@@ -162,7 +162,7 @@
 			POST_TITLE = #{postTitle},
 			POST_CONTENT = #{postContent},
 			POST_REGDATE = SYSDATE
-		WHERE POST_ID = #{POST_ID}
+		WHERE POST_ID = #{postId}
 	</update>
 	
 	<update id="notice_delete" parameterType="int">

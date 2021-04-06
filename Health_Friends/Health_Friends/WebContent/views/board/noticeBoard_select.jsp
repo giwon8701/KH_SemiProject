@@ -252,7 +252,7 @@ ul, li {
 			<div class="bt_wrap">
 				<a href="./notice.do?command=list" class="on">목록</a> 
 				<a href="./notice.do?command=updateform&postId=${dto.postId}" class="off">수정</a>
-				<a href="location.href='./notice.do?command=delete&postId=${dto.postId}" class="off">삭제</a>
+				<a href="./notice.do?command=delete&postId=${dto.postId}" class="off">삭제</a>
 			</div>
 		</div>
 	</div>
