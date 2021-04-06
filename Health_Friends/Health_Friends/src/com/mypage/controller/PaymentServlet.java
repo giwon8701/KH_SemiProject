@@ -136,8 +136,7 @@ public class PaymentServlet extends HttpServlet {
 			
 			dispatch(request, response, "./views/mypage/paymentListMy.jsp");
 			
-		}
-		else if(command.equals("paymentListPaging")) {
+		} else if(command.equals("paymentListPaging")) {
 			
 			
 			int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
@@ -150,6 +149,8 @@ public class PaymentServlet extends HttpServlet {
 			paging.setTotalCount(totalCount);
 			
 			pageNum = (pageNum - 1) * 10;// 1 이면 0, 2이면 10, 3이면 20...
+			System.out.println(pageNum);
+			System.out.println(paging.getPageSize());
 			
 			// 어디부터 어디까지 가져올 건지 쓰는것 -> 쿼리 안쪽에서 계산해줌
 			List<PaymentDto> list = biz.paymentListPaging(pageNum, paging.getPageSize());
@@ -158,6 +159,29 @@ public class PaymentServlet extends HttpServlet {
 			request.setAttribute("pageNum", pageNum);
 			request.setAttribute("totalCount", totalCount);
 			dispatch(request, response, "./views/mypage/paymentList.jsp");
+		} else if(command.equals("paymentListMyPaging")) {
+			
+			String member_email = request.getParameter("member_email");
+			int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+			
+			int totalCount = biz.getTotalCount();
+			
+			Paging paging = new Paging();
+			paging.setPageNo(pageNum);
+			paging.setPageSize(10);
+			paging.setTotalCount(totalCount);
+			
+			pageNum = (pageNum - 1) * 10;// 1 이면 0, 2이면 10, 3이면 20...
+			System.out.println(pageNum);
+			System.out.println(paging.getPageSize());
+			
+			// 어디부터 어디까지 가져올 건지 쓰는것 -> 쿼리 안쪽에서 계산해줌
+			List<PaymentDto> list = biz.paymentListMyPaging(member_email, pageNum, paging.getPageSize());
+			System.out.println("서블릿"+list);
+			request.setAttribute("list", list);
+			request.setAttribute("pageNum", pageNum);
+			request.setAttribute("totalCount", totalCount);
+			dispatch(request, response, "./views/mypage/paymentListMy.jsp");
 		}
 	}
 	

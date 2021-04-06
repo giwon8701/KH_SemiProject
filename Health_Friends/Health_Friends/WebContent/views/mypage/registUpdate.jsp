@@ -3,6 +3,7 @@
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,7 +84,7 @@
 		
 		$("#pwReset").click(function(){
 			var member_id = $("#id").val();
-			open("../../mypage.do?command=pwReset&member_id="+member_id, "", "width=300px,height=300px");
+			open("../../mypage.do?command=pwReset&member_id="+member_id, "", "width=350px,height=280px");
 		});
 		
 	});
@@ -147,7 +148,7 @@
 					<tr>
 						<td>
 							<i class="fas fa-lock"></i>
-							<input type="button" id="pwReset" value="비밀번호 재설정" class="btn solid">
+							<input type="button" id="pwReset" value="비밀번호 변경" class="btn solid">
 						</td>
 					</tr>
 				</table>
@@ -217,6 +218,9 @@
 						</td>
 						<td>
 							<input type="button" value="회원 탈퇴" class="btn solid" onclick="del()">
+						</td>
+						<td>
+							<input type="button" value="뒤로 가기" class="btn solid" onclick="location.href='../../mypage.do?command=mypage'">
 						</td>
 					</tr>
 				</table>

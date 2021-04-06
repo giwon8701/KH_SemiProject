@@ -16,7 +16,9 @@ import javax.servlet.http.HttpSession;
 import com.board.biz.BoardBiz;
 import com.board.biz.BoardBizImpl;
 import com.board.dto.BoardDto;
+import com.common.Paging;
 import com.login.dto.RegistDto;
+import com.mypage.dto.PaymentDto;
 
 @WebServlet("/board.do")
 public class BoardServlet extends HttpServlet {
@@ -105,6 +107,28 @@ public class BoardServlet extends HttpServlet {
 				} else {
 					response.sendRedirect("board.do?command=select&postId=" + postId);
 				}
+			} else if(command.equals("listPaging")) {
+				
+				int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+				System.out.println("서블릿 pageNum : " + pageNum);
+				int totalCount = biz.accompanyGetTotalCount();
+				System.out.println(totalCount);
+				
+				Paging paging = new Paging();
+				paging.setPageNo(pageNum);
+				paging.setPageSize(10);
+				paging.setTotalCount(totalCount);
+				
+				pageNum = (pageNum - 1) * 10;
+				
+				System.out.println(pageNum);
+				System.out.println(paging.getPageSize());
+				
+				List<BoardDto> list = biz.accompany_selectListPaging(pageNum, paging.getPageSize());
+				request.setAttribute("list", list);
+				request.setAttribute("pageNum", pageNum);
+				request.setAttribute("totalCount", totalCount);
+				dispatch(request, response, "./views/board/accompanyBoard.jsp");
 			}
 			
 		} catch(Exception e){

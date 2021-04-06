@@ -169,7 +169,7 @@ public class RegistServlet extends HttpServlet {
 			session.invalidate();
 			response.sendRedirect("./index.jsp");
 		} else if(command.equals("idSearch")) {
-			response.sendRedirect("./views/login/idSearchForm.jsp");
+			dispatch(request, response, "./views/login/idSearchForm.jsp");
 		} else if(command.equals("idSearchRes")) {
 			String member_name = request.getParameter("member_name");
 			String member_email = request.getParameter("member_email");

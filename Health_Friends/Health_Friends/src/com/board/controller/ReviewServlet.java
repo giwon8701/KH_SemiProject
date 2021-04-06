@@ -24,6 +24,7 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import com.board.biz.BoardBiz;
 import com.board.biz.BoardBizImpl;
 import com.board.dto.BoardDto;
+import com.common.Paging;
 
 @WebServlet("/review.do")
 public class ReviewServlet extends HttpServlet {
@@ -63,6 +64,24 @@ public class ReviewServlet extends HttpServlet {
 				jsResponse(response, "오류가 발생하였습니다", "review.do?command=insert");
 			}
 			
+		} else if(command.equals("listPaging")) {
+			
+			int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+			
+			int totalCount = biz.photoGetTotalCount();
+			
+			Paging paging = new Paging();
+			paging.setPageNo(pageNum);
+			paging.setPageSize(10);
+			paging.setTotalCount(totalCount);
+			
+			pageNum = (pageNum - 1) * 10;
+			
+			List<BoardDto> list = biz.photo_selectListPaging(pageNum, paging.getPageSize());
+			request.setAttribute("list", list);
+			request.setAttribute("pageNum", pageNum);
+			request.setAttribute("totalCount", totalCount);
+			dispatch(request, response, "./views/board/photoReviewBoard.jsp");
 		}
 	}
 	

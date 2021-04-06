@@ -14,5 +14,6 @@ public interface PaymentBiz {
 	public List<PaymentDto> paymentListMy(String member_email);
 	
 	public List<PaymentDto> paymentListPaging(int startRow, int endRow);
+	public List<PaymentDto> paymentListMyPaging(String member_email, int startRow, int endRow);
 	public int getTotalCount(); 
 }

@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="assets/css/login.css">
+<script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 	console.log("test");
@@ -62,28 +64,28 @@
 </script>
 </head>
 <body>
-
-	<h1>비밀번호 재설정</h1>
+	<h1 align="center">비밀번호 변경(재설정)</h1>
 		<input type="hidden" id="id" name="member_id" value="${member_id}">
-		<table>
+		<table style="">
 			<tr>
-				<td>
-					<label for="pw"><b>비밀번호 재설정</b></label><br>
-					<input id="pw" type="password" placeholder="비밀번호를 입력해주세요." required="required" name="member_pw" onkeyup="chkPW()">
-				</td>
+				<div class="input-field">
+					<i class="fas fa-lock"></i>
+					<input id="pw" type="password" placeholder="비밀번호를 입력해주세요." required="required" name="member_pw" onchange="chkPW()">
+				</div>
 			</tr>
 			<tr>
-				<td>
-					<input type="password" id="pwchk" title="n" placeholder="다시 한번 입력해주세요." required="required" onkeyup="chkPW()">
-				</td>
+				<div class="input-field">
+					<i class="fas fa-lock"></i>
+					<input type="password" id="pwchk" title="n" placeholder="다시 한번 입력해주세요." required="required" onchange="chkPW()">
+				</div>
 			</tr>
 			<tr>
 				<td id="same" style="font-size:10px; text-align: start"></td>
 			</tr>
 			<tr>
 				<td>
-					<input type="button" value="확인" onclick="pwReset()">
-					<input type="button" value="취소" onclick="self.close()">
+					<input type="button" value="확인" class="btn solid g-recaptcha" onclick="pwReset()">
+					<input type="button" value="취소" class="btn solid g-recaptcha" onclick="self.close()">
 				</td>
 			</tr>
 		</table>

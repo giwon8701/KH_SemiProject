@@ -19,7 +19,17 @@
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 
 <title>동행 게시판</title>
-
+	<%
+		List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
+	
+		int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+		int totalCount = Integer.parseInt(request.getAttribute("totalCount") + "");
+		
+		Paging paging = new Paging();
+		paging.setPageNo(pageNum);
+		paging.setPageSize(10);
+		paging.setTotalCount(totalCount);
+	%>
 <style>
 
 .board_list tbody tr td:nth-child(1) {
@@ -37,15 +47,42 @@ color: gray
 	}
 </script>
 
+
+<script>
+$(document).ready(function(){
+	
+	var pageNum = <%=pageNum-1%>;
+	
+	if(pageNum >= 10){
+		pageNum %= 10;
+	}
+	
+	$(".pagination>a").eq(pageNum).addClass("on");
+	
+})
+</script>
+<style>
+	.pagination {
+		padding: 10px 0;
+	}
+	
+	.pagination a {
+		padding: 5px;
+		margin: 5px;
+		cursor: pointer;
+	}
+	
+	.pagination a.on {
+		font-weight: bold;
+		font-size: 20px;
+	}
+</style>
 </head>
 <body>
-	<%--
-	<%@include file="header.jsp" %>
- --%>
 
-	<%
-		RegistDto Ldto = (RegistDto) session.getAttribute("Ldto");
-	%>
+	<%@include file="../../header.jsp" %>
+
+
 	<div class="main01">
 		<img
 			src="https://www.imgacademy.co.kr/sites/default/files/inline-images/coaching.jpg"
@@ -121,43 +158,44 @@ color: gray
 			</c:choose>
 <br>
 <br>
+			<%--  pagination --%>
+			<div class="pagination board_list_warp02">
+				<input type="button" onclick="pageMove(<%=paging.getFirstPageNo()%>)" value="◀" class="bt">
+				<input type="button" onclick="pageMove(<%=paging.getPrevPageNo()%>)" value="◁" class="bt">
+				<%
+					for (int i = paging.getStartPageNo(); i <= paging.getEndPageNo(); i++) {
+				%>
+				<a onclick="pageMove(<%=i%>)"><%=i%></a>
+				<%
+					}
+				%>
+				<input type="button" onclick="pageMove(<%=paging.getNextPageNo()%>)" value="▷" class="bt">
+				<input type="button" onclick="pageMove(<%=paging.getFinalPageNo()%>)" value="▶" class="bt">
+			</div>
+		
+			<script>
+					function pageMove(page){
+						location.href='board.do?command=listPaging&page='+page
+					}
+			</script>
 
 			<div class="board_list_warp02">
 
 				<div class="paging">
-					<a href="#" class="bt">첫 페이지</a> <a href="#" class="bt">이전 페이지</a>
-					<a href="#" class="num on">1</a> <a href="#" class="num">2</a> <a
-						href="#" class="num">3</a> <a href="#" class="bt">다음 페이지</a> <a
-						href="#" class="bt">마지막 페이지</a>
+					<a href="#" class="bt">첫 페이지</a>
+					<a href="#" class="bt">이전 페이지</a>
+					<a href="#" class="num on">1</a>
+					<a href="#" class="num">2</a>
+					<a href="#" class="num">3</a>
+					<a href="#" class="bt">다음 페이지</a>
+					<a href="#" class="bt">마지막 페이지</a>
 				</div>
 
 			</div>
 		</div>
 	</div>
-		<%--  pagination 
-	<div class="pagination">
-		<input type="button" onclick="pageMove(<%=paging.getFirstPageNo()%>)"
-			value="◀"> <input type="button"
-			onclick="pageMove(<%=paging.getPrevPageNo()%>)" value="◁">
+	
 
-		<%
-			for (int i = paging.getStartPageNo(); i <= paging.getEndPageNo(); i++) {
-		%>
-		<a onclick="pageMove(<%=i%>)"><%=i%></a>
-		<%
-			}
-		%>
-
-		<input type="button" onclick="pageMove(<%=paging.getNextPageNo()%>)"
-			value="▷"> <input type="button"
-			onclick="pageMove(<%=paging.getFinalPageNo()%>)" value="▶">
-	</div>
-
-	<script>
-			function pageMove(page){
-				location.href='payment.do?command=paymentListPaging&page='+page
-			}
-	</script>--%>
 
 	<%--
 	<%@include file="footer.jsp" %>
