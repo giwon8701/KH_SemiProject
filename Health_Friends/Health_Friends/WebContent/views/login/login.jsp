@@ -13,7 +13,7 @@
 <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>	<!-- 도로명주소 API -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>	<!-- jQuery API -->
-<script src="https://www.google.com/recaptcha/api.js"></script>			<!--  recaptcha API -->
+<script src="https://www.google.com/recaptcha/api.js?render=6LdY0Y0aAAAAAC55f1G3fyahKgyATLdZ1BZq_yt5"></script>			<!--  recaptcha API -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>	<!--  카카오 로그인 API -->
 <script type="text/javascript" src="assets/js/login.js"></script> <!-- 로그인 관련 -->
 <script type="text/javascript" src="assets/js/loginRegist.js"></script> <!-- 회원가입 관련 -->
@@ -26,6 +26,8 @@
 				<!-- 로그인 form -->
 				<form action="regist.do" class="sign-in-form" method="post" id="loginForm">
 					<input type="hidden" name="command" value="loginres">
+					<input type="hidden" id="id_hidden" name="encrypted_id">
+					<input type="hidden" id="pw_hidden" name="encrypted_pw">  
 					
 					<h2 class="title">로그인</h2>
 					<div class="input-field">

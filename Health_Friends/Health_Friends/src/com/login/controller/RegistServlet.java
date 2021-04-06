@@ -35,6 +35,7 @@ public class RegistServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		HttpSession session;
 		
 		String command = request.getParameter("command");
 		System.out.println("["+command+"]");
@@ -119,7 +120,7 @@ public class RegistServlet extends HttpServlet {
 			if(res > 0) {
 				RegistDto Ldto = biz.selectByEmail(memberEmail);
 				
-				HttpSession session = request.getSession();
+				session = request.getSession();
 				session.setAttribute("Ldto", Ldto);
 				session.setMaxInactiveInterval(10 * 60);
 				
@@ -130,6 +131,7 @@ public class RegistServlet extends HttpServlet {
 		} else if(command.equals("login")) {
 			dispatch(request, response, "views/login/login.jsp");
 		} else if(command.equals("loginres")){
+			session = request.getSession();
 			String memberId = request.getParameter("loginMemberId");
 			String memberPw = getHash(request.getParameter("loginMemberPw")+memberId);
 			
@@ -145,7 +147,7 @@ public class RegistServlet extends HttpServlet {
 				if(Ldto.getMember_enabled().equals("N")) {
 					jsResponse(response, "./views/login/login.jsp", "탈퇴한 회원입니다.");
 				} else {
-					HttpSession session = request.getSession();
+					session = request.getSession();
 					session.setAttribute("Ldto", Ldto);
 					session.setMaxInactiveInterval(10 * 60);
 					
@@ -165,7 +167,7 @@ public class RegistServlet extends HttpServlet {
 				jsResponse(response, "regist.do?command=login", "아이디와 비밀번호를 확인해주세요.");
 			}
 		} else if(command.equals("logout")){
-			HttpSession session = request.getSession();
+			session = request.getSession();
 			session.invalidate();
 			response.sendRedirect("./index.jsp");
 		} else if(command.equals("idSearch")) {
@@ -238,5 +240,4 @@ public class RegistServlet extends HttpServlet {
 				+ "</script>";
 		response.getWriter().print(s);
 	}
-
 }
