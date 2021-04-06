@@ -22,8 +22,6 @@ public class IntroduceServlet extends HttpServlet {
 		if (command.equals("introduce")) {
 			dispatch(request, response, "./views/introduce/introduce.jsp");
 			
-		} else if (command.equals("shopping")) {
-			dispatch(request, response, "./views/shpping/view.jsp");
 		} else {
 			response.sendRedirect("./views/common/error.jsp");
 		}

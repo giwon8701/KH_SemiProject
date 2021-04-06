@@ -74,14 +74,14 @@ ul, li {
 }
 
 .bt_wrap a.on {
-	background: white;
-	color: #FF4500;
+	background: #FF4500;
+	color: white;
 	border-radius: 100px
 }
 
 .bt_wrap a.off {
-	background: #FF4500;
-	color: #fff;
+	background: white;
+	color: #FF4500;
 	border-radius: 100px;
 }
 
@@ -205,6 +205,7 @@ ul, li {
 
 </head>
 <body>
+
 <%--  
 	<%@include file="../../views/common/header.jsp" %>
 --%>
@@ -235,7 +236,7 @@ ul, li {
 		<div class="board_title">
 		<div class="board_view_wrap">
 			<div class="board_view">
-				<div class="title" name="postTitle" contenteditable="true">${dto.postTitle }
+				<div class="title" name="postTitle" contenteditable="true" value="${dto.postTitle }">
 		</div>
 	<div class="info">
 					<dl>
@@ -251,7 +252,7 @@ ul, li {
 					${dto.postContent }
 				</div>
 				<div class="bt_wrap"> 
-				<a href="" class="off" type="submit">확인</a>
+				<a href="" class="on" type="submit">확인</a>
 				<a href="./notice.do?command=list" class="off">취소</a>
 			</div>
 		</div>
@@ -259,6 +260,9 @@ ul, li {
 	</div>
 </div>
 </form>
+
+
+<%-- 수정 전 코드 
 
 	<section class="boardlist">
 		<a href="./board.do?command=list">동행 구해요</a>
@@ -292,6 +296,9 @@ ul, li {
 				</tr>
 		</table>
 	</form>
+	
+--%> 	
+	
 	
 <%---	
 	<%@include file="../../views/common/footer.jsp" %>

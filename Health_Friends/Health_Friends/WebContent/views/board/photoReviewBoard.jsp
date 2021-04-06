@@ -139,12 +139,11 @@ img {
 							<th>사진</th>
 							<th>글번호</th>
 							<th>제목</th>
-							<th>글내용</th>
 							<th>작성일</th>
 						</tr>
 					</thead>
 					<tbody>
-									<c:choose>
+					<c:choose>
 				<c:when test="${empty list }">
 					<tr>
 						<td>------------작성된 글이 없습니다-----------</td>
@@ -156,7 +155,6 @@ img {
 							<td><img src=""></td>
 							<td>${dto.postNo}</td>
 							<td>${dto.postTitle}</td>
-							<td>${dto.postContent}</td>
 							<td>${dto.postRegdate}</td>
 						</tr>
 					</c:forEach>

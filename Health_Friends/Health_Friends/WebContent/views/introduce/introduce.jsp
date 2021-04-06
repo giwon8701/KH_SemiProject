@@ -32,7 +32,10 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <link href="https://fonts.googleapis.com/css?family=Jua"
 	rel="stylesheet">
-<link rel="stylesheet" href="introduce.css">
+
+<link href="../../assets/css/main.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../../assets/css/introduce.css">
+	
 
 <script type="text/javascript">
 	
@@ -104,9 +107,7 @@
 </head>
 <body>
 
-<link href="../../assets/css/main.css" rel="stylesheet" type="text/css">	
 	<!-- header 영역 시작 -->
-
 
 	<%@include file="../../header.jsp" %>
 
@@ -138,10 +139,10 @@
 
 	<div class="slider">
 		<div><img src="../../images/workhappy.png" alt="슬라이드 사진" style="width:1000px; height:500px"></div>
-		<div><img src="../../images/slide01.jpg" alt="슬라이드 사진" style="width:1000px; height:500px" ></div>
-		<div><img src="../../images/slide02.jpg" alt="슬라이드 사진" style="width:1000px; height:500px"></div>
-		<div><img src="../../images/slide03.jpg" alt="슬라이드 사진" style="width:1000px; height:500px"></div>
-		<div><img src="../../images/slide04.jpg" alt="슬라이드 사진" style="width:1000px; height:500px"></div>	
+		<div><img src="../../images/main/slide01.svg" alt="슬라이드 사진" style="width:1000px; height:500px" ></div>
+		<div><img src="../../images/main/slide02.svg" alt="슬라이드 사진" style="width:1000px; height:500px"></div>
+		<div><img src="../../images/main/slide03.svg" alt="슬라이드 사진" style="width:1000px; height:500px"></div>
+		<div><img src="../../images/main/slide04.svg" alt="슬라이드 사진" style="width:1000px; height:500px"></div>	
 	</div>
 	<div class="controls">
 		<button class="play">재생</button>
@@ -244,7 +245,7 @@
 				<br>
 				<br>
 				<br> <img
-					src="https://t1.daumcdn.net/cfile/tistory/145C4A4150E5381F2E?original"
+					src="../../images/main/runday.jpeg"
 					class="img-thumbnail" alt="Cinque Terre"><br>
 				<br>
 				<br>
