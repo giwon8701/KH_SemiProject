@@ -23,5 +23,5 @@ public interface FollowBiz {
 		
 		public int followChk(FollowDto dto);
 		
-		public List<String> searchId(String searchId);
+		public List<RegistDto> searchId(String searchId);
 }

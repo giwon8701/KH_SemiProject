@@ -41,8 +41,8 @@
 		AND FOLLOW_MEMBER_NO = #{follow_member_no}
 	</delete>
 	
-	<select id="searchId" parameterType="String" resultType="list">
-		SELECT MEMBER_ID
+	<select id="searchId" parameterType="String" resultType="RegistDto">
+		SELECT *
 		FROM MEMBER
 		WHERE MEMBER_ID LIKE #{searchId}
 	</select>

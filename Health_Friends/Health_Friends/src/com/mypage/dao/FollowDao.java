@@ -23,5 +23,5 @@ public interface FollowDao {
 	//팔로우 유무 체크
 	public int followChk(FollowDto dto);
 	
-	public List<String> searchId(String searchId);
+	public List<RegistDto> searchId(String searchId);
 }

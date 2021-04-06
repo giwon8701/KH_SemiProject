@@ -31,21 +31,10 @@ $(window).scroll(function(evt) {
 <script type="text/javascript">
       
   	function filter(){
-  		alert("유저검색");
-  		
   		var searchId = document.getElementById("search").value;
   		var queryString = "?command=searching&searchId="+searchId;
   		
-		$.ajax({
-			url: "follow.do"+queryString,
-			dataType: "json",
-			success: function(data){
-
-			},
-			error : function(err){
-				alert("에러발생 에러발생");
-			}
-		});
+		open("follow.do"+queryString, "searching", "width=650; height=650;");
 	};
 </script>
 </head>

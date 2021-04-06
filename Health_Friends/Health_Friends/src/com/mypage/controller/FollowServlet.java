@@ -145,15 +145,16 @@ public class FollowServlet extends HttpServlet {
 			String searchId = request.getParameter("searchId");
 			searchId = "%"+searchId+"%";
 			
-			System.out.println(searchId);
+			List<RegistDto> list = biz.searchId(searchId);
 			
-			List<String> list = biz.searchId(searchId);
-			
-			System.out.println("나오긴나오나?.. : "+list);
+			for(int i = 0; i < list.size(); i++) {
+				
+				System.out.println(list.get(i).getMember_id());
+			}
 			
 			request.setAttribute("list", list);
 			
-			dispatch(request, response, "");
+			dispatch(request, response, "search.jsp");
 			
 		}
 	}

@@ -44,7 +44,7 @@ public class FollowBizImpl implements FollowBiz {
 	}
 
 	@Override
-	public List<String> searchId(String searchId) {
+	public List<RegistDto> searchId(String searchId) {
 		return dao.searchId(searchId);
 	}
 	
