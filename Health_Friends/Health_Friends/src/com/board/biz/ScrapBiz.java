@@ -18,5 +18,5 @@ public interface ScrapBiz {
 		
 		//찜하기 유무 체크
 		public int scrapChk(ScrapDto dto);
-
+		
 }
