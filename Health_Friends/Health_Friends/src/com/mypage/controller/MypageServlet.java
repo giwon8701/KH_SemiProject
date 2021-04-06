@@ -36,7 +36,6 @@ public class MypageServlet extends HttpServlet {
 		
 		
 		if(command.equals("mypage")){
-			
 			dispatch(request, response, "./views/mypage/mypage.jsp");
 			
 		} else if(command.equals("yearMinus")) {

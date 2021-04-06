@@ -9,6 +9,9 @@
 <head>
 <meta charset="UTF-8">
 <title>인서트</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+<script src="/Health_Friends/assets/api/se2/js/HuskyEZCreator.js" type="text/javascript"></script>
+<script src="/Health_Friends/assets/api/se2/init.js" type="text/javascript"></script>
 </head>
 <body>
 <%--캘린더 게시판 insert --%>
@@ -118,14 +121,14 @@
 			</tr>
 			<tr>
 				<th>운동 시간</th>
-				<td><input type="text" name="individual_time">분</td>
+				<td><input type="text" name="individual_time" >분</td>
 			</tr>
 			<tr>
 				<th>요약</th>
 				<td><input type="text" name="individual_title"></td>
 			</tr>
 			<tr>
-				<td colspan="2"><textarea rows="10" cols="60" name="individual_content"></textarea></td>
+				<td colspan="2"><textarea rows="10" cols="60" name="individual_content"  class="smarteditor2"></textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2">
