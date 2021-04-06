@@ -16,6 +16,7 @@ import com.board.biz.ScrapBizImpl;
 import com.board.dto.BoardDto;
 import com.board.dto.ScrapDto;
 import com.login.dto.RegistDto;
+import com.mypage.dto.FollowDto;
 
 /**
  * Servlet implementation class ScrapServlet
@@ -62,6 +63,16 @@ public class ScrapServlet extends HttpServlet {
 			
 			list = biz.listScrap(scrap_user_no);
 			request.setAttribute("list", list);
+		} else if(command.equals("scrapchk")) {
+			int scrap_user_no = Integer.parseInt(request.getParameter("user_no"));
+			int scrap_post_id = Integer.parseInt(request.getParameter("post_id"));
+			
+			ScrapDto dto = new ScrapDto();
+			dto.setScrap_user_no(scrap_user_no);
+			dto.setScrap_post_id(scrap_post_id);
+			int res = biz.scrapChk(dto);
+			
+			response.getWriter().print(res);
 		}
 	}
 

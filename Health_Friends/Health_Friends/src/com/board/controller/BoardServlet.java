@@ -15,7 +15,10 @@ import javax.servlet.http.HttpSession;
 
 import com.board.biz.BoardBiz;
 import com.board.biz.BoardBizImpl;
+import com.board.biz.ScrapBiz;
+import com.board.biz.ScrapBizImpl;
 import com.board.dto.BoardDto;
+import com.board.dto.ScrapDto;
 import com.common.Paging;
 import com.login.dto.RegistDto;
 import com.mypage.dto.PaymentDto;
@@ -66,7 +69,19 @@ public class BoardServlet extends HttpServlet {
 				
 			} else if(command.equals("select")) {
 				int postId = Integer.parseInt(request.getParameter("postId"));
+				int user_no = ldto.getMember_no();
+				
 				BoardDto dto = biz.accompany_selectOne(postId);
+				
+				ScrapBiz sbiz = new ScrapBizImpl();
+				
+				ScrapDto sdto = new ScrapDto();
+				sdto.setScrap_post_id(postId);
+				sdto.setScrap_user_no(user_no);
+				
+				int res = sbiz.scrapChk(sdto);
+				
+				request.setAttribute("res", res);
 				request.setAttribute("dto", dto);
 				dispatch(request, response, "./views/board/accompanyBoard_select.jsp");
 				

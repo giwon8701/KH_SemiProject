@@ -173,7 +173,7 @@
 	
 	<insert id="addscrap" parameterType="scrapDto">
 		INSERT INTO SCRAP
-		VALUE(SCRAPNOSEQ.NEXTVAL,#{scrap_user_no},#{scrap_post_id})
+		VALUES(SCRAPNOSEQ.NEXTVAL,#{scrap_user_no},#{scrap_post_id})
 	</insert>
 	
 	<delete id="delscrap" parameterType="int">
@@ -189,6 +189,11 @@
 		WHERE SCRAP_USER_NO = #{scrap_user_no}
 	</select>
 	
+	<select id="scrapchk" parameterType="scrapDto" resultType="int">
+		SELECT COUNT(*) FROM SCRAP
+		WHERE SCRAP_USER_NO = #{scrap_user_no}
+		AND SCRAP_POST_ID = #{scrap_post_id}
+	</select>
 	
 	<select id="getTotalCount" resultType="int">
 		SELECT COUNT(*) FROM POST

@@ -26,4 +26,8 @@ public class ScrapBizImpl implements ScrapBiz {
 		return dao.listScrap(scrap_user_no);
 	}
 
+	@Override
+	public int scrapChk(ScrapDto dto) {
+		return dao.scrapChk(dto);
+	}
 }

@@ -55,5 +55,18 @@ public class ScrapDaoImpl extends SqlMapConfig implements ScrapDao  {
 		
 		return list;
 	}
+	
+	@Override
+	public int scrapChk(ScrapDto dto) {
+		int res = 0;
+		
+		try(SqlSession session = getSqlSessionFactory().openSession(true)){
+			res = session.selectOne("BoardMapper.scrapchk", dto);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
 
 }
