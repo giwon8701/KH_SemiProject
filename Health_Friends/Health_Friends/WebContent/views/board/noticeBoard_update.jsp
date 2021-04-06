@@ -236,7 +236,7 @@ ul, li {
 		<div class="board_title">
 		<div class="board_view_wrap">
 			<div class="board_view">
-				<div class="title" name="postTitle" contenteditable="true" value="${dto.postTitle }">
+				<div class="title" name="postTitle" contenteditable="true">${dto.postTitle }
 		</div>
 	<div class="info">
 					<dl>

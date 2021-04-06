@@ -44,7 +44,7 @@
 			</span>
             
             <ul class="border-ul">
-                <li class="border-li"><a href="./views/introduce/introduce.jsp">소개</a></li>
+                <li class="border-li"><a href="introduce.do?command=introduce">소개</a></li>
                 <li class="border-li"><a href="notice.do?command=list">공지사항</a></li>
                 <li class="border-li"><a href="board.do?command=list">동행게시판</a></li>
                 <li class="border-li"><a href="review.do?command=list">후기게시판</a></li>
