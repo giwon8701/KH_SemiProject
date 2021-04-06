@@ -15,7 +15,6 @@ ul>li{list-style: none}
 a{text-decoration: none;}
 .fix::after{content: "";display: block;clear: both;}
 
-#joinForm{width: 460px;margin: 50px auto;}
 #join{width: 460px;margin: 50px auto;}
 ul.box{border: 1px solid #ddd;background-color: #fff;}
 .checkBox,.checkBox>ul{position: relative;}
