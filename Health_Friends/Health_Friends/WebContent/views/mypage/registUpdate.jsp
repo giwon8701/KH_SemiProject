@@ -3,6 +3,7 @@
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,7 +84,7 @@
 		
 		$("#pwReset").click(function(){
 			var member_id = $("#id").val();
-			open("../../mypage.do?command=pwReset&member_id="+member_id, "", "width=300px,height=300px");
+			open("../../mypage.do?command=pwReset&member_id="+member_id, "", "width=350px,height=280px");
 		});
 		
 	});
@@ -113,11 +114,16 @@
 </script>
 </head>
 <body>
+<% RegistDto Ldto = (RegistDto) session.getAttribute("Ldto"); 
+	int yyyy = Integer.parseInt(Ldto.getMember_birthday().substring(0,4));
+	int mm = Integer.parseInt(Ldto.getMember_birthday().substring(4,5));
+	int dd = Integer.parseInt(Ldto.getMember_birthday().substring(5));
+%>
 	<div class="container">
 		<div class="forms-container">
 			<div class="signin-signup">
 				<!-- 회원정보수정 form -->
-				<form action="../../regist.do" method="post" id="registform" class="sign-in-form">
+				<form action="../../mypage.do" method="post" id="registform" class="sign-in-form">
 				<input type="hidden" name="command" value="registUpdateRes">
 
 				<h2 class="title">회원정보 수정</h2>
@@ -142,7 +148,7 @@
 					<tr>
 						<td>
 							<i class="fas fa-lock"></i>
-							<input type="button" id="pwReset" value="비밀번호 재설정" class="btn solid">
+							<input type="button" id="pwReset" value="비밀번호 변경" class="btn solid">
 						</td>
 					</tr>
 				</table>
@@ -175,21 +181,33 @@
 				<table>
 					<tr>
 						<td><label for="birth">생년월일</label></td>
-						<td><select name="year" id="birth" required="required">
-								<c:forEach var="i" begin="1910" end="2021" step="1">
-									<option value="${i }" ${(i == 2000)? "selected" : ""}><c:out value="${i }"></c:out></option>
-								</c:forEach>
-						</select>년</td>
+						<td><select name="year" id="birth" required="required" >
+						<%
+							for(int i = 1910; i < 2022; i++){
+						%>
+							<option value="<%=i %>" <%=(i == yyyy)?"selected":"" %> ><%=i %></option>
+						<%								
+							}
+						%>
+					</select>년</td>
 						<td><select name="mm" id="birth" required="required">
-								<c:forEach var="i" begin="01" end="12" step="1">
-									<option value="${i }"><c:out value="${i }"></c:out></option>
-								</c:forEach>
-						</select>월</td>
+						<%
+							for(int i = 1; i < 13; i++){
+						%>
+							<option value="<%=i %>" <%=(mm == i)?"selected":"" %>><%=i %></option>
+						<%								
+							}
+						%>
+					</select>월</td>
 						<td><select name="dd" id="birth" required="required">
-								<c:forEach var="i" begin="01" end="31" step="1">
-									<option value="${i }"><c:out value="${i }"></c:out></option>
-								</c:forEach>
-						</select>일</td>
+						<%
+							for(int i = 1; i < 32; i++){
+						%>
+							<option value="<%=i %>" <%=(dd == i)?"selected":"" %>><%=i %></option>
+						<%								
+							}
+						%>
+					</select>일</td>
 					</tr>
 				</table>
 				<br>
@@ -200,6 +218,9 @@
 						</td>
 						<td>
 							<input type="button" value="회원 탈퇴" class="btn solid" onclick="del()">
+						</td>
+						<td>
+							<input type="button" value="뒤로 가기" class="btn solid" onclick="location.href='../../mypage.do?command=mypage'">
 						</td>
 					</tr>
 				</table>

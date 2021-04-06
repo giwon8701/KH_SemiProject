@@ -48,38 +48,7 @@
 		}
 	}
 	
-	function phoneChk(){
-		var newPhone = $("#phone").val();
-		if($.trim(newPhone) == "" || $.trim(newPhone) == null){
-			$("#phonechk").text("전화 번호를 입력해주세요").css("color", "red");
-		} else{
-			var queryString = "?command=phoneCheck&memberPhone="+newPhone;
-			$.ajax({
-				url: "../../regist.do"+queryString,
-				dataType: "text",
-				success: function(data){
-					if(data == 0){
-						$("#phonechk").text("등록 가능한 번호입니다.");
-			            $("#phonechk").css("color", "blue");
-			            $("#phone").prop("title", "y");
-			            $("#phone").css("background-color", "skyblue");
-			            
-					} else if(data == 1) {
-						$("#phonechk").text("이미 사용중인 번호입니다.");
-			            $("#phonechk").css("color", "red");
-			            $("#phone").prop("title", "n");
-			            $("#phone").focus();
-			            $("#phone").css("background-color", "red");
-					}
-				},
-				error: function(){
-					$("#phonechk").text("통신오류");
-		            $("#phonechk").css("color", "blue");
-				}
-			});
-		}
-	}
-	
+		
 	function emailChk(){
 		var newEmail = $("#email").val();
 		if($.trim(newEmail) == "" || $.trim(newEmail) == null){
@@ -142,8 +111,9 @@
         }).open();
 	}
 	
+	
 	function onSubmit(){
-		if($("#id").prop("title") == "y" && $("#phone").prop("title") == "y" && $("#email").prop("title") == "y" && $("#pwchk").prop("title") == "y"){
+		if($("#id").prop("title") == "y" && $("#email").prop("title") == "y" && $("#pwchk").prop("title") == "y"){
 			$("#registform").submit();
 		} else{
 			alert("입력하신 정보를 다시 확인해주세요.");

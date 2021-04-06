@@ -10,6 +10,7 @@
 		<typeAlias type="com.login.dto.RegistDto" alias="registDto"/>
 		<typeAlias type="com.mypage.dto.PaymentDto" alias="paymentDto"/>
 		<typeAlias type="com.mypage.dto.FollowDto" alias="followDto"></typeAlias>
+		<typeAlias type="com.board.dto.ScrapDto" alias="scrapDto"/>
 	</typeAliases>
 
 	<environments default="development">

@@ -81,7 +81,34 @@ public class BoardBizImpl implements BoardBiz {
 		return dao.notice_delete(postId);
 	}
 
+	@Override
+	public List<BoardDto> notice_selectListPaging(int startRow, int endRow) {
+		return dao.notice_selectListPaging(startRow, endRow);
+	}
 
+	@Override
+	public List<BoardDto> accompany_selectListPaging(int startRow, int endRow) {
+		return dao.accompany_selectListPaging(startRow, endRow);
+	}
+	
+	@Override
+	public List<BoardDto> photo_selectListPaging(int startRow, int endRow) {
+		return dao.photo_selectListPaging(startRow, endRow);
+	}
+	
+	@Override
+	public int accompanyGetTotalCount() {
+		return dao.accompanyGetTotalCount();
+	}
 
+	@Override
+	public int noticeGetTotalCount() {
+		return dao.noticeGetTotalCount();
+	}
+
+	@Override
+	public int photoGetTotalCount() {
+		return dao.photoGetTotalCount();
+	}
 
 }

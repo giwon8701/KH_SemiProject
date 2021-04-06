@@ -17,8 +17,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="../../header.jsp" %>
 <%
-	RegistDto Ldto = (RegistDto) session.getAttribute("Ldto");
 	List<PaymentDto> list = (List<PaymentDto>) request.getAttribute("list");
 
 	int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));

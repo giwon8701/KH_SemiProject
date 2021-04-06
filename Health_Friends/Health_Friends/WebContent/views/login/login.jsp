@@ -36,8 +36,16 @@
 						<i class="fas fa-lock"></i>
 						<input type="password" name="loginMemberPw" placeholder="비밀번호를 입력해주세요">
 					</div>
-					
-					<input type="button" value="로그인" class="btn solid g-recaptcha" data-sitekey="6LdY0Y0aAAAAAC55f1G3fyahKgyATLdZ1BZq_yt5" data-callback='onSubmitLogin' data-action='submit'>
+					<table>
+						<tr>
+							<td>
+								<input type="button" value="로그인" class="btn solid g-recaptcha" data-sitekey="6LdY0Y0aAAAAAC55f1G3fyahKgyATLdZ1BZq_yt5" data-callback='onSubmitLogin' data-action='submit'>
+							</td>
+							<td>
+								<input type="button" value="아이디 찾기" class="btn solid g-recaptcha" onclick="location.href='regist.do?command=idSearch'">
+							</td>
+						</tr>
+					</table>
 					<p class="social-text">SNS를 이용하여 간편로그인 해보세요!</p>
 					<div class="social-media">
 						&nbsp;<div id="naver_id_login"></div>&nbsp;&nbsp;  <!-- 네이버 로그인 버튼 (맨밑에 javascript 있음) -->
@@ -51,10 +59,8 @@
 
 
 				<!-- 회원가입 form -->
-				<form action="regist.do" method="post" id="registform"
-					class="sign-up-form">
+				<form action="regist.do" method="post" id="registform" class="sign-up-form">
 					<input type="hidden" name="command" value="registres">
-
 					<h2 class="title">회원가입</h2>
 
 					<table>
@@ -100,11 +106,8 @@
 					<table>
 						<tr>
 							<div class="input-field">
-								<i class="fas fa-phone"></i> <input type="tel" id="phone" name="memberPhone" title="n" placeholder="전화번호" onkeyup="phoneChk()" required="required">
+								<i class="fas fa-phone"></i> <input type="tel" id="phone" name="memberPhone" placeholder="전화번호" required="required">
 							</div>
-						</tr>
-						<tr>
-							<td id="phonechk" style="font-size: 10px; text-align: start"></td>
 						</tr>
 					</table>
 					<table>

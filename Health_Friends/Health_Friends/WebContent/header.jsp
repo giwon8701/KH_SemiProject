@@ -18,12 +18,23 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script type="text/javascript">
+$(window).scroll(function(evt) {
+	   var y = $(this).scrollTop();
+	   if (y > 10) {
+	      $('#header').css("background-color", "#5995fd")
+
+	   } else{
+	      $('#header').css("background-color", "rgba(0,0,0,.1)")
+	   }
+	});
+</script>
 </head>
 <body>
 <% RegistDto Ldto = (RegistDto) session.getAttribute("Ldto"); %>
 	<header id="header">
-        <div class="main">
-            <div class="logo">
+        <div class="main inner">
+            <div class="logo logo-top">
                 <a href="index.jsp"><img src="images/logo.png"></a>
             </div>
             <ul class="login-ul">
@@ -40,7 +51,7 @@
             </ul>
             
            	<span class="header-search">
-				<input type="text" size="30" placeholder="동네 또는 운동명을 검색해 보세요!">
+				<input type="text" size="25" placeholder="유저를 검색해 보세요!">
 			</span>
             
             <ul class="border-ul">

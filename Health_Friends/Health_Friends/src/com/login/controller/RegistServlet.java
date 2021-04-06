@@ -3,8 +3,6 @@ package com.login.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -171,7 +169,7 @@ public class RegistServlet extends HttpServlet {
 			session.invalidate();
 			response.sendRedirect("./index.jsp");
 		} else if(command.equals("idSearch")) {
-			response.sendRedirect("./views/login/idSearchForm.jsp");
+			dispatch(request, response, "./views/login/idSearchForm.jsp");
 		} else if(command.equals("idSearchRes")) {
 			String member_name = request.getParameter("member_name");
 			String member_email = request.getParameter("member_email");

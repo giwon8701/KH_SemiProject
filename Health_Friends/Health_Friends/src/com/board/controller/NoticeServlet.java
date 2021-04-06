@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import com.board.biz.BoardBiz;
 import com.board.biz.BoardBizImpl;
 import com.board.dto.BoardDto;
+import com.common.Paging;
 import com.login.dto.RegistDto;
 
 @WebServlet("/notice.do")
@@ -32,12 +33,7 @@ public class NoticeServlet extends HttpServlet {
 		RegistDto ldto = (RegistDto)session.getAttribute("Ldto");
 		
 		try {
-			if(command.equals("list")) {
-				List<BoardDto> list = biz.notice_selectList();
-				request.setAttribute("list", list);
-				dispatch(request, response, "./views/board/noticeBoard.jsp");
-				
-			} else if(command.equals("insert")) {
+			if(command.equals("insert")) {
 				response.sendRedirect("./views/board/noticeBoard_post.jsp");
 				
 			} else if(command.equals("insertres")) {
@@ -93,14 +89,34 @@ public class NoticeServlet extends HttpServlet {
 				} else {
 					response.sendRedirect("notice.do?command=select&postId=" + postId);
 				}
+			} else if(command.equals("list")) {
+				
+				int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+				System.out.println("서블릿 pageNum : " + pageNum);
+				int totalCount = biz.noticeGetTotalCount();
+				System.out.println(totalCount);
+				
+				Paging paging = new Paging();
+				paging.setPageNo(pageNum);
+				paging.setPageSize(10);
+				paging.setTotalCount(totalCount);
+				
+				pageNum = (pageNum - 1) * 10;
+				
+				System.out.println("PageNum : " + pageNum);
+				System.out.println("PageSize : " + paging.getPageSize());
+				
+				List<BoardDto> list = biz.notice_selectListPaging(pageNum, paging.getPageSize());
+				request.setAttribute("list", list);
+				request.setAttribute("pageNum", pageNum);
+				request.setAttribute("totalCount", totalCount);
+				dispatch(request, response, "./views/board/noticeBoard.jsp");
 			}
 			
 		} catch(Exception e){
 			e.printStackTrace();
-			response.sendRedirect("./views/common/error.jsp");
+			response.sendRedirect("./error.jsp");
 		}
-
-		
 	
 	}
 

@@ -1,12 +1,15 @@
 package com.board.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.board.dto.BoardDto;
 import com.common.SqlMapConfig;
+import com.mypage.dto.PaymentDto;
 
 public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 	
@@ -217,5 +220,121 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 		return res;
 	}
 
+	@Override
+	public List<BoardDto> notice_selectListPaging(int startRow, int endRow) {
+		List<BoardDto> list = new ArrayList<BoardDto>();
+		endRow += startRow;
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("startRow", startRow);
+		map.put("endRow", endRow);
+		
+		System.out.println(map);
+		
+		try(SqlSession session = getSqlSessionFactory().openSession(true);){
+			list = session.selectList("BoardMapper.notice_selectListPaging", map);
+			System.out.println("다오"+list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		
+		return list;
+	}
 
+	@Override
+	public List<BoardDto> accompany_selectListPaging(int startRow, int endRow) {
+		List<BoardDto> list = new ArrayList<BoardDto>();
+		endRow += startRow;
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("startRow", startRow);
+		map.put("endRow", endRow);
+		
+		System.out.println(map);
+		
+		try(SqlSession session = getSqlSessionFactory().openSession(true);){
+			list = session.selectList("BoardMapper.accompany_selectListPaging", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		
+		return list;
+	}
+
+	@Override
+	public List<BoardDto> photo_selectListPaging(int startRow, int endRow) {
+		List<BoardDto> list = new ArrayList<BoardDto>();
+		endRow += startRow;
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("startRow", startRow);
+		map.put("endRow", endRow);
+		
+		System.out.println(map);
+		
+		try(SqlSession session = getSqlSessionFactory().openSession(true);){
+			list = session.selectList("BoardMapper.photo_selectListPaging", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		
+		return list;
+	}
+
+	@Override
+	public int accompanyGetTotalCount() {
+		SqlSession session = null;
+
+		int res = 0;
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			res = session.selectOne("BoardMapper.accompanyGetTotalCount");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	
+		return res;
+	}
+
+	@Override
+	public int noticeGetTotalCount() {
+		SqlSession session = null;
+
+		int res = 0;
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			res = session.selectOne("BoardMapper.noticeGetTotalCount");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	
+		return res;
+	}
+
+	@Override
+	public int photoGetTotalCount() {
+		SqlSession session = null;
+
+		int res = 0;
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			res = session.selectOne("BoardMapper.photoGetTotalCount");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	
+		return res;
+	}
 }

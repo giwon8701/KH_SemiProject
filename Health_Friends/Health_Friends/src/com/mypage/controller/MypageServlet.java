@@ -39,6 +39,30 @@ public class MypageServlet extends HttpServlet {
 			
 			dispatch(request, response, "./views/mypage/mypage.jsp");
 			
+		} else if(command.equals("yearMinus")) {
+			String year = request.getParameter("year");
+			String month = request.getParameter("month");
+			
+			dispatch(request, response, "./views/mypage/mypage.jsp?year="+year+"&month="+month);
+			
+		} else if(command.equals("monthMinus")) {
+			String year = request.getParameter("year");
+			String month = request.getParameter("month");
+			
+			dispatch(request, response, "./views/mypage/mypage.jsp?year="+year+"&month="+month);
+			
+		} else if(command.equals("monthPlus")) {
+			String year = request.getParameter("year");
+			String month = request.getParameter("month");
+			
+			dispatch(request, response, "./views/mypage/mypage.jsp?year="+year+"&month="+month);
+			
+		} else if(command.equals("yearPlus")) {
+			String year = request.getParameter("year");
+			String month = request.getParameter("month");
+			
+			dispatch(request, response, "./views/mypage/mypage.jsp?year="+year+"&month="+month);
+			
 		} else if(command.equals("registUpdate")) {
 			response.sendRedirect("./views/mypage/registUpdate.jsp");
 		} else if(command.equals("pwReset")) {
@@ -49,7 +73,7 @@ public class MypageServlet extends HttpServlet {
 			
 		} else if(command.equals("pwResetRes")) {
 			String member_id = request.getParameter("member_id");
-			String member_pw = getHash(request.getParameter("member_pw"));
+			String member_pw = getHash(request.getParameter("member_pw")+member_id);
 			
 			RegistDto dto = new RegistDto();
 			dto.setMember_id(member_id);
@@ -89,7 +113,9 @@ public class MypageServlet extends HttpServlet {
 				session.setAttribute("Ldto", Ldto);
 				session.setMaxInactiveInterval(10 * 60);
 				
-				jsResponse(response, "./views/mypage/mypage.jsp", "회원정보가 수정되었습니다.");
+				response.getWriter().print("<script>alert('회원정보가 수정되었습니다.')</script>");
+				dispatch(request, response, "./views/mypage/mypage.jsp");
+				//jsResponse(response, "./views/mypage/mypage.jsp", "회원정보가 수정되었습니다.");
 			} else {
 				jsResponse(response, "./views/mypage/registUpdate.jsp", "다시 시도해주세요.");
 			}

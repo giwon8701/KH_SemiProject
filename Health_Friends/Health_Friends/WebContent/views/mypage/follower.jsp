@@ -79,7 +79,7 @@
 					
 					for(var i = 0; i < data.length; i++){
 						$tr = $("<tr>");
-						$td01 = $("<td>").append("<a href='../../follow.do?command=profile&member_id="+data[i].member_id+"'><img src='../../profileimg/"+data[i].member_picture_path +"' style='width:100px; height:100px'>");
+						$td01 = $("<td>").append("<a class='profile' href='../../follow.do?command=profile&member_id="+data[i].member_id+"'><img src='../../profileimg/"+data[i].member_picture_path +"' style='width:100px; height:100px'>");
 						$td02 = $("<td>").append(data[i].member_id);
 						$tr.append($td01).append($td02);
 						
@@ -96,6 +96,7 @@
 			}
 		});
 	};
+	
 	
 </script>
 </head>

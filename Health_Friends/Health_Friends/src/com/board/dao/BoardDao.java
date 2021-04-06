@@ -21,4 +21,11 @@ public interface BoardDao {
 	public int accompany_delete(int postId);
 	public int notice_delete(int postId);
 	
+	
+	public List<BoardDto> notice_selectListPaging(int startRow, int endRow);
+	public List<BoardDto> accompany_selectListPaging(int startRow, int endRow);
+	public List<BoardDto> photo_selectListPaging(int startRow, int endRow);
+	public int accompanyGetTotalCount(); 
+	public int noticeGetTotalCount(); 
+	public int photoGetTotalCount(); 
 }
