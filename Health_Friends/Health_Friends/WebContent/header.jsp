@@ -14,10 +14,8 @@
 <title>Insert title here</title>
 <link href="assets/css/main.css" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<!-- 헤더 스크롤 내리면 색깔 들어가는 코드 -->
 <script type="text/javascript">
 $(window).scroll(function(evt) {
 	   var y = $(this).scrollTop();
@@ -25,9 +23,30 @@ $(window).scroll(function(evt) {
 	      $('#header').css("background-color", "#5995fd")
 
 	   } else{
-	      $('#header').css("background-color", "rgba(0,0,0,.1)")
+	      $('#header').css("background-color", "rgba(102,153,255,.1)")
 	   }
 	});
+</script>
+<!-- 검색관련 -->
+<script type="text/javascript">
+      
+  	function filter(){
+  		alert("유저검색");
+  		
+  		var searchId = document.getElementById("search").value;
+  		var queryString = "?command=searching&searchId="+searchId;
+  		
+		$.ajax({
+			url: "follow.do"+queryString,
+			dataType: "json",
+			success: function(data){
+
+			},
+			error : function(err){
+				alert("에러발생 에러발생");
+			}
+		});
+	};
 </script>
 </head>
 <body>
@@ -51,7 +70,7 @@ $(window).scroll(function(evt) {
             </ul>
             
            	<span class="header-search">
-				<input type="text" size="25" placeholder="유저를 검색해 보세요!">
+				<input type="text" size="25" placeholder="유저를 검색해 보세요!" id="search" onkeyup="if(window.event.keyCode==13){filter()}" />
 			</span>
             
             <ul class="border-ul">

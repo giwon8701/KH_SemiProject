@@ -50,7 +50,7 @@
 	}
 	    /* 헤더에서 제일 중요한 효과!! */
 	#header {
-		background: rgba(0, 0, 0, .1);
+		background: rgba(102,153,255,.1);
 		color: #a6a6a6;
 		cursor: default;
 		height: 4em;

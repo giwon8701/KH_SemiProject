@@ -98,7 +98,6 @@
 <%--마이페이지! --%>
 <%@ include file="../../header.jsp" %>
 
-
 	<div class="mypage-main-div">
 		<div class="mypage-second-div1">
 			<div class="mypage-profile-div">

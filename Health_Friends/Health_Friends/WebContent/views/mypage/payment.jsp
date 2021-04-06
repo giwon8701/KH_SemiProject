@@ -15,7 +15,7 @@
 <%-- 결제페이지인데 추후에 조금더 자세하게 수정해야함! --%>
 <% RegistDto Ldto = (RegistDto) session.getAttribute("Ldto"); %>
 <%
-	int price = 7900;
+	int price = 6900;
 %>
     <script>
     $(function(){
@@ -36,7 +36,7 @@
         }, function(rsp) {
             if ( rsp.success ) {
                 $.ajax({
-                    url: '../../payment.do?command=paymentUpdate', 
+                    url: 'payment.do?command=paymentUpdate', 
                     type: 'POST',
                     dataType: 'json',
                     data: {
@@ -60,14 +60,14 @@
                 });
                 //성공시 이동할 페이지
                 alert('결제가 완료되었습니다.');
-                location="mypage.jsp"
+                location="mypage.do?command=mypage"
                 //window.close();
             } else {
                 msg = '결제에 실패하였습니다.\n';
                 msg += '에러내용 : ' + rsp.error_msg;
                 //실패시 이동할 페이지
                 alert(msg);
-                location.href="paymentGuide.jsp";
+                location.href="mypage.do?command=paymentGuide";
                 //window.close();
             }
         });

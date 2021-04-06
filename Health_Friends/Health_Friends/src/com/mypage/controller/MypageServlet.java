@@ -117,7 +117,8 @@ public class MypageServlet extends HttpServlet {
 				dispatch(request, response, "./views/mypage/mypage.jsp");
 				//jsResponse(response, "./views/mypage/mypage.jsp", "회원정보가 수정되었습니다.");
 			} else {
-				jsResponse(response, "./views/mypage/registUpdate.jsp", "다시 시도해주세요.");
+				
+				jsResponse(response, "./myapge.do?command=mypage", "다시 시도해주세요.");
 			}
 		} else if(command.equals("delRegist")) {
 			String member_id = request.getParameter("member_id");
@@ -127,6 +128,12 @@ public class MypageServlet extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			out.println(res);
 			
+		} else if(command.equals("paymentRoleUpPage")) {
+			dispatch(request, response, "./views/mypage/paymentGuide.jsp");
+		} else if(command.equals("paymentRoleDownPage")) {
+			dispatch(request, response, "./views/mypage/paymentCancel.jsp");
+		} else if(command.equals("paymentGuide")) {
+			dispatch(request, response, "./views/mypage/paymentGuide.jsp");
 		}
 	}
 	

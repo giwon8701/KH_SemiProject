@@ -12,7 +12,7 @@
 </head>
 <body>
 <%--캘린더 게시판 insert --%>
-<% RegistDto Ldto = (RegistDto) session.getAttribute("Ldto"); %>
+<%@ include file="../../header.jsp" %>
 <%
 
 	Calendar cal = Calendar.getInstance();
@@ -50,6 +50,7 @@
 	int hour = cal.get(Calendar.HOUR_OF_DAY);
 	int min = cal.get(Calendar.MINUTE);
 %>
+
 
 	<h1>일정 작성</h1>
 	

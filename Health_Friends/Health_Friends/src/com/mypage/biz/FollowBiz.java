@@ -22,4 +22,6 @@ public interface FollowBiz {
 		public int removeFollowed(int member_no);
 		
 		public int followChk(FollowDto dto);
+		
+		public List<String> searchId(String searchId);
 }
