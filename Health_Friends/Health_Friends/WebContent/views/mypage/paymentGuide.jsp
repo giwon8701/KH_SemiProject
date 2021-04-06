@@ -13,10 +13,11 @@
 body{background-color: #f7f7f7;}
 ul>li{list-style: none}
 a{text-decoration: none;}
-.clearfix::after{content: "";display: block;clear: both;}
+.fix::after{content: "";display: block;clear: both;}
 
 #joinForm{width: 460px;margin: 50px auto;}
-ul.join_box{border: 1px solid #ddd;background-color: #fff;}
+#join{width: 460px;margin: 50px auto;}
+ul.box{border: 1px solid #ddd;background-color: #fff;}
 .checkBox,.checkBox>ul{position: relative;}
 .checkBox>ul>li{float: left;}
 .checkBox>ul>li:first-child{width: 85%;padding: 15px;font-weight: 600;color: #888;}
@@ -30,8 +31,10 @@ ul.join_box{border: 1px solid #ddd;background-color: #fff;}
 
 #mpage01 {
 border:none;
-background-Color:FireBrick;
-border: 1px solid FireBrick;  
+background-Color:SteelBlue
+;
+border: 1px solid SteelBlue
+;  
 font-size:16px;        
 color: white;    
 width: 86px;height:32px; 
@@ -42,9 +45,11 @@ vertical-align: 4px;
 #mpage02 {
 border:none;
 background-Color: white;
-border: 1px solid FireBrick;  
+border: 1px solid SteelBlue
+;  
 font-size:16px;       
-color: FireBrick;    
+color: SteelBlue
+;    
 width: 86px;height:32px; 
 cursor: pointer;
 vertical-align: 4px;
@@ -60,17 +65,17 @@ vertical-align: 4px;
 </head>
 <body>
 
-<form action="" id="joinForm">
-            <ul class="join_box">
+<form action="" id="join">
+            <ul class="box">
                 <li class="checkBox check01">
-                    <ul class="clearfix">
+                    <ul class="fix">
                         <li>이용약관, 개인정보 수집 및 이용,
                             위치정보 이용약관(선택), 프로모션 안내
                             메일 수신(선택)에 모두 동의합니다.</li>
                     </ul>
                 </li>
                 <li class="checkBox check02">
-                    <ul class="clearfix">
+                    <ul class="fix">
                         <li>이용약관 동의</li>
                     </ul>
                     <textarea name="" id="">여러분을 환영합니다.
@@ -78,7 +83,7 @@ vertical-align: 4px;
        </textarea>
                 </li>
                 <li class="checkBox check03">
-                    <ul class="clearfix">
+                    <ul class="fix">
                         <li>개인정보 수집 및 이용에 대한 안내</li>
                     </ul>
  
@@ -87,7 +92,7 @@ vertical-align: 4px;
        </textarea>
                 </li>
                 <li class="checkBox check03">
-                    <ul class="clearfix">
+                    <ul class="fix">
                         <li>위치정보 이용약관 동의</li>
                     </ul>
  
