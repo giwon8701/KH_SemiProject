@@ -59,9 +59,9 @@ $(function(){
 <% RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); %> 
  	
 	<section class="boardlist">
-		<a href="../../board.do?command=list">동행 구해요</a>
-		<a href="../../review.do?command=list">사진후기</a>
-		<a href="../../notice.do?command=list">공지사항</a>
+		<a href="./board.do?command=list">동행 구해요</a>
+		<a href="./review.do?command=list">사진후기</a>
+		<a href="./notice.do?command=list">공지사항</a>
 	</section>
  
 	<section id="Board_writePost">
@@ -101,13 +101,15 @@ $(function(){
 						<p><em>지도를 클릭해주세요!</em></p>
 						약속장소	<br/>
 						<div id="makerSpace" >
-							<input type="text" name="postLatitude" value=""/>
+							<input type="" name="postLatitude" value=""/>
 						</div>
 					
 						<input type="hidden" id="MapAddress" name="MapAddress" value="" /> 
 						<div class="map_wrap">
 						    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-						    <div class="hAddr">
+						    <div id="menu_wrap" class="bg_white">
+					 	   </div>
+							    <div class="hAddr">
 						        <span class="title">지도중심기준 행정동 주소정보</span>
 						        <span id="centerAddr"></span>
 						    </div>
@@ -139,7 +141,7 @@ $(function(){
 							    searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
 							        if (status === kakao.maps.services.Status.OK) {
 							        	
-							            var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+							            var detailAddr = !!result[0].road_address ? '<div>도로명 : ' + result[0].road_address.address_name + '</div>' : '';
 							            detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
 							            
 							            var MapAddresss = '<div class="bAddr">' +
@@ -164,9 +166,10 @@ $(function(){
 							            
 							            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
 							            infowindow.setContent(MapAddress);
-							            infowindow.open(map, marker);
+							            
 							            
 							        }   
+							        
 							    });
 							});
 							
