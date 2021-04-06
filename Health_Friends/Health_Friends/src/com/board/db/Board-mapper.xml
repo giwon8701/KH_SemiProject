@@ -113,5 +113,21 @@
 		WHERE POST_ID = #{postId}
 	</update>
 	
+	<insert id="addscrap" parameterType="scrapDto">
+		INSERT INTO SCRAP
+		VALUE(SCRAPNOSEQ.NEXTVAL,#{scrap_user_no},#{scrap_post_id})
+	</insert>
 	
+	<delete id="delscrap" parameterType="int">
+		DELETE FROM SCRAP
+		WHERE SCRAP_USER_NO = #{scrap_user_no}
+	</delete>
+	
+	<select id="scrapList" parameterType="int" resultType="BoardDto">
+		SELECT POST_ID, POST_BOARD_NAME, POST_TITLE, POST_USER_NO
+		FROM POST
+		JOIN SCRAP ON(POST_ID = SCRAP_POST_ID)
+		JOIN MEMBER ON(POST_USER_NO = MEMBER_NO)
+		WHERE SCRAP_USER_NO = #{scrap_user_no}
+	</select>
 </mapper>
