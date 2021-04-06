@@ -65,7 +65,7 @@ $(function(){
 	</section>
  
 	<section id="Board_writePost">
-		<form id="Acform" action="../../board.do" method="post">
+		<form action="./board.do" id="Acform"  method="post">
 			<input type="hidden" name="command" value="insertres"/>
 			<table border="1">
 				<tr>
@@ -98,8 +98,12 @@ $(function(){
 					
 					<td>
 						<!-- 지도API : c6a1fbbb0976413a4f4996beefa8a351 -->
-						약속장소	<br/>
 						<p><em>지도를 클릭해주세요!</em></p>
+						약속장소	<br/>
+						<div id="makerSpace" >
+							<input type="text" name="postLatitude" value=""/>
+						</div>
+					
 						<input type="hidden" id="MapAddress" name="MapAddress" value="" /> 
 						<div class="map_wrap">
 						    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
@@ -138,37 +142,29 @@ $(function(){
 							            var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
 							            detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
 							            
-							            var MapAddress = '<div class="bAddr">' +
+							            var MapAddresss = '<div class="bAddr">' +
 							                            '<span class="title">법정동 주소정보</span>' + 
 							                            detailAddr + 
 							                        '</div>';
 							                        
 							            $("#MapAddress").val(mouseEvent)
 										
+							           // var markerSpace = document.getElementById("makerSpace");
+							            var test = document.getElementsByName("postLatitude")[0];
+							            
+							            var afterString = detailAddr.slice(detailAddr.indexOf(">")+1, detailAddr.lastIndexOf("<"));
+							           // makerSpace.innerHTML = detailAddr;
+							         	test.value = afterString;
+							            
+							         	
+							            
 							            // 마커를 클릭한 위치에 표시합니다 
 							            marker.setPosition(mouseEvent.latLng);
 							            marker.setMap(map);
-							
+							            
 							            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
 							            infowindow.setContent(MapAddress);
 							            infowindow.open(map, marker);
-							            console.log(result[0]);
-							         
-							   			var data =  $.ajax({
-							            	   
-							                url: "../../board.do", // 클라이언트가 요청을 보낼 서버의 URL 주소
-							                data: { "result" : result[0],
-							                		"command" : insertres 
-							                	},                // HTTP 요청과 함께 서버로 보낼 데이터
-							                type: "GET",                             // HTTP 요청 방식(GET, POST)
-							                dataType: "json",                         // 서버에서 보내줄 데이터의 타입,
-							                success: function(data){
-							                	
-							                	
-							                	return data;
-							                }
-
-							            })
 							            
 							        }   
 							    });

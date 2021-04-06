@@ -38,7 +38,7 @@ public class BoardServlet extends HttpServlet {
 				dispatch(request, response, "./views/board/accompanyBoard_post.jsp");
 				
 			} else if(command.equals("insertres")) {
-				String postLatitude = request.getParameter("result");
+				String postLatitude = request.getParameter("postLatitude");
 				System.out.println(postLatitude);
 				String postTitle = request.getParameter("postTitle");
 				System.out.println(postTitle);
