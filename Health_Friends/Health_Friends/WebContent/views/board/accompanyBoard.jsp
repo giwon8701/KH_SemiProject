@@ -28,6 +28,9 @@
 	text-align: left;
 }
 
+.color01 {
+color: gray 
+}
 </style>
 
 <script type="text/javascript">

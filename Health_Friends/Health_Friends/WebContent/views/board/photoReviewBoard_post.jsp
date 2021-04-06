@@ -21,8 +21,6 @@
 <script
 	src="https://cdn.ckeditor.com/ckeditor5/27.0.0/classic/ckeditor.js"></script>
 
-
-
 <style>
 .main img {
 	width: 100%;
@@ -31,11 +29,11 @@
 }
 
 .btn01 {
-	background: #FF4500;
+	background: Royalblue;
 }
 
 .btn02 {
-	background: Tan;
+	background: teal;
 }
 
 html {
@@ -75,19 +73,19 @@ ul, li {
 	min-width: 80px;
 	margin-left: 10px;
 	padding: 10px;
-	border: 1px solid #FF4500;
+	border: 1px solid royalblue;
 	border-radius: 2px;
 	font-size: 1.4rem;
 }
 
 .bt_wrap a.on {
 	background: white;
-	color: #FF4500;
+	color: royalblue;
 	border-radius: 100px
 }
 
 .bt_wrap a.off {
-	background: #FF4500;
+	background: royalblue;
 	color: #fff;
 	border-radius: 100px;
 }
@@ -209,20 +207,18 @@ ul, li {
 	font-size: 1.4rem;
 }
 
-[contenteditable=true]:empty:before{
-  content: attr(placeholder);
-  display: block; /* For Firefox */
-}
-.title [contenteditable=true] {
-  border: 1px solid #ddd;
-  color : #333;
-  font-size: 12px;
-  width: 300px;
-  padding: 5px;
+.title11
+ {
+  border-bottom: 1px solid gray;
+  padding: 16px;
+  outline: none;
+  font-size:24px;
 }
 
-
-
+.title11[contentEditable="true"]:empty:not(:focus):before {
+  content: attr(data-ph);
+  color: #D3D3D3;
+}
 
 </style>
 
@@ -248,11 +244,11 @@ ul, li {
 	<div class="main02" style="text-align: center">
 		<div style="font-size: 40px; font-weight: bold">후기 게시판</div>
 		<br>
-		<p>소중한 추억을 남겨보세요.</p>
-		<br> <a href="  " class="btn btn02">메인 페이지</a> <a
-			href="./board.do?command=list  " class="btn btn01">동행 구해요</a> <a
-			href="./review.do?command=list  " class="btn btn01">사진 후기</a> <a
-			href="./notice.do?command=list " class="btn btn01">공지사항</a>
+		<p style="font-size: 16px">소중한 추억을 남겨보세요.</p>
+		<br> <a href="  " class="btn btn02" style="font-size:16px">메인 페이지</a> <a
+			href="./board.do?command=list  " class="btn btn01" style="font-size:16px">동행 구해요</a> <a
+			href="./review.do?command=list  " class="btn btn01" style="font-size:16px">사진 후기</a> <a
+			href="./notice.do?command=list " class="btn btn01" style="font-size:16px">공지사항</a>
 	</div>
 
 	<div class="board_wrap">
@@ -265,8 +261,7 @@ ul, li {
 				<div class="board_title">
 					<div class="board_view_wrap">
 						<div class="board_view">
-							<div class="title" name="postTitle" contenteditable="true" placeholder="제목을 입력하세요.">${dto.postTitle }
-							</div>
+							<div class="title11" name="postTitle" contenteditable="true" data-ph="제목을 입력하세요.">${dto.postTitle }</div>
 							<div class="info">
 								<dl>
 									<dt>작성자</dt>
@@ -275,11 +270,12 @@ ul, li {
 							</div>
 							<div class="cont" id="editor" name="postContent"
 								contenteditable="true"
-								style="width: 97%; height: 500px; overflow: auto; width: 97%; height: 500px;">
+								style="width: 97%; height: 500px; overflow: auto;">
 								${dto.postContent }</div>
+								
 							<div class="bt_wrap">
 								<a href="" class="off" type="submit">확인</a> <a
-									href="./notice.do?command=list" class="off">취소</a>
+									href="../../review.do?command=list" class="on">취소</a>
 							</div>
 						</div>
 					</div>
@@ -288,8 +284,6 @@ ul, li {
 		</section>
 
 	</div>
-
-
 
 	<section class="boardlist">
 		<a href="">동행 구해요</a> <a href="">후기</a> <a href="">공지사항</a>
