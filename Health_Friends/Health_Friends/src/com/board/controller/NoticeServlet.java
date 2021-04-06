@@ -67,9 +67,7 @@ public class NoticeServlet extends HttpServlet {
 				
 			} else if(command.equals("updateres")) {
 				int postId = Integer.parseInt(request.getParameter("postId"));
-				System.out.println(postId);
 				String postTitle = request.getParameter("postTitle");
-				System.out.println(postTitle);
 				String postContent = request.getParameter("postContent");
 				BoardDto dto = new BoardDto();
 				int postUserNo = Integer.parseInt(request.getParameter("postUserNo"));; 
@@ -86,9 +84,7 @@ public class NoticeServlet extends HttpServlet {
 				}
 				
 			} else if(command.equals("delete")) {
-				System.out.println("test");
 				int postId = Integer.parseInt(request.getParameter("postId"));
-				System.out.println(postId);
 				int res = biz.notice_delete(postId);
 				if (res > 0) {
 					response.sendRedirect("notice.do?command=list");

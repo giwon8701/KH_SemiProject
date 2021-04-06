@@ -165,6 +165,12 @@
 		WHERE POST_ID = #{postId}
 	</update>
 	
+	<update id="accompany_delete" parameterType="int">
+		UPDATE POST SET
+			POST_DELFLAG = 'Y'
+		WHERE POST_ID = #{postId}
+	</update>
+	
 	<update id="notice_delete" parameterType="int">
 		UPDATE POST SET
 			POST_DELFLAG = 'Y'
