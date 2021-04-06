@@ -9,6 +9,192 @@
 <head>
 <meta charset="UTF-8">
 <title>인서트</title>
+
+<style>
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.main01 {
+	width: 100%;
+	margin: 10px auto;
+	position: relative;
+}
+
+.main img {
+width: 100%;
+height: 2000px;
+vertical-align: middle;
+
+}
+
+.text01 {
+padding: 5px 10px;
+text-align: center;
+position: absolute;
+top: 37%;
+left: 50%;
+transform: translate( -63%, -50%);
+color: ghostwhite;
+}
+.text02 {
+padding: 5px 10px;
+text-align: center;
+position: absolute;
+top: 47%;
+left: 48%;
+transform: translate( -53%, -52%);
+color: ghostwhite;
+}
+
+
+.btn {
+    width: 130px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #1f1f39;
+    color: #fff;
+    display: inline-block;
+}
+
+.btn01 {
+background: #FF4500;
+}
+.btn02 {
+background : Tan;
+}
+
+
+.board {
+margin: 0 260px;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+caption {
+	display: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.board_list_wrap {
+	
+}
+
+.board_list_wrap {
+	padding: 50px;
+}
+
+.board_list {
+	width: 100%;
+	border-top: 1px solid #9932CC;
+}
+
+.board_list tr {
+	border-bottom: 1px solid #ccc
+}
+
+.board_list th, .board_list td {
+	padding: 13px;
+	font-size: 16px;
+}
+
+.board_list td {
+	text-align: left;
+}
+
+.board_list tbody tr td:nth-child(2) {
+	text-align: left;
+}
+
+.board_list .tit:hover {
+	text-decoration: underline;
+}
+
+.board_list_wrap .paging {
+	margin-top: 20px;
+	text-align: center;
+	font-size: 0;
+}
+
+.board_list_wrap .paging a {
+	display: inline-block;
+	margin-left: 10px;
+	padding: 5px 10px;
+	border: 1px solid #9932CC;
+	border-radius: 100px;
+	font-size: 14px;
+}
+.board_list_wrap .paging a:first-child {
+	margin-left: 0;
+}
+
+.board_list_wrap .paging a.bt {
+border: 1px solid #eee;
+background: #eee;
+}
+
+.board_list_wrap .paging a.num {
+border: 1px solid #9932CC;
+font-weight: 600;
+color: #9932CC;
+}
+
+.board_list_wrap .paging a.num.on{
+background: #9932CC;
+color: #fff;
+}
+
+.bt_wrap a {
+	display: inline-block;
+	min-width: 80px;
+	margin-left: 10px;
+	padding: 8px;
+	border: 1px solid OrangRed;
+	border-radius: 2px;
+	font-size: 14px;
+}
+
+.bt_wrap a.on {
+	background: #9932CC;
+	color: white;
+	border-radius: 100px;
+}
+
+#mpage01 {
+border:none;
+background-Color:#9932CC;
+border: 1px solid #9932CC;  
+font-size:16px;     
+border-radius: 100px;   
+color: white;    
+width: 86px;height:32px; 
+cursor: pointer;
+vertical-align: 4px;
+}
+
+#mpage02 {
+border:none;
+background-Color: white;
+border: 1px solid #9932CC;  
+font-size:16px;     
+border-radius: 100px;   
+color: #9932CC;    
+width: 86px;height:32px; 
+cursor: pointer;
+vertical-align: 4px;
+}
+
+</style>
+
 </head>
 <body>
 <%--캘린더 게시판 insert --%>
@@ -51,15 +237,33 @@
 	int min = cal.get(Calendar.MINUTE);
 %>
 
-	<h1>일정 작성</h1>
+<div class="main01">
+	<img src="https://www.imgacademy.co.kr/sites/default/files/inline-images/coaching.jpg" style="width:100% ;height:auto">
+	<div class=text01 style="font-size: 40px; font-weight:bold">마이 페이지입니다</div><br>
+	<div class=text02 style="font-size: 24px;">오늘도 즐거운 운동 즐기시길 바랍니다</div><br>
+</div>
+
+
+<div class="main02" style="text-align: center">
+<div style="font-size: 40px; font-weight:bold">운동 기록</div><br>
+<p style="font-size: 16px;">자신의 운동 내용을 기록해보세요.</p><br> 
+
+</div>>
 	
 	<form action="../../individual.do" method="post">
 		<input type="hidden" name="command" value="individualInsert">
 		
-		<table border="1">
+		
+		
+ <div class="board">
+	<div class="board_list_wrap">
+		<table class="board_list">
+			<caption>일정 작성</caption>
+			<thead>
+		
 			<tr>
 				<th>아이디</th>
-				<td><input type="text" name="individual_id" value="<%=Ldto.getMember_id() %>" readonly="readonly"></td>
+				<td><input type="text" name="individual_id" style="font-size: 18px; text-align:left; background-color:transparent;border:0 solid black;" value="<%=Ldto.getMember_id() %>" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>운동 날짜</th>
@@ -117,22 +321,24 @@
 			</tr>
 			<tr>
 				<th>운동 시간</th>
-				<td><input type="text" name="individual_time">분</td>
+				<td><input type="text" name="individual_time" style="background-color:transparent; border:0 solid black; text-align:left; font-size:18px;">분</td>
 			</tr>
 			<tr>
 				<th>요약</th>
-				<td><input type="text" name="individual_title"></td>
+				<td><input type="text" name="individual_title" style="text-align:left; background-color:transparent; border:0 solid black; font-size:18px;"></td>
 			</tr>
 			<tr>
-				<td colspan="2"><textarea rows="10" cols="60" name="individual_content"></textarea></td>
+				<td colspan="2"><textarea rows="30" cols="90" name="individual_content" placeholder="내용을 입력하세요" style="border: none; font-size: 18px; resize:none;"></textarea></td>
 			</tr>
 			<tr>
-				<td colspan="2">
-					<input type="submit" value="일정작성">
-					<input type="button" value="취소" onclick="location.href='../../individual.do?command=individualList&year=<%=year%>&month=<%=month%>&date=<%=date%>'">
+				<td colspan="2" style="text-align:right">
+					<input type="submit" id="mpage01" value="작성">
+					<input type="button" id="mpage02" value="취소" onclick="location.href='../../individual.do?command=individualList&year=<%=year%>&month=<%=month%>&date=<%=date%>'">
 				</td>
 			</tr>
 		</table>
+</div>
+</div>
 	</form>
 
 </body>

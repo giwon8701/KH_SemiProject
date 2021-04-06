@@ -262,7 +262,7 @@ ul, li {
 </form>
 
 
-<%-- 수정 전 코드 
+
 
 	<section class="boardlist">
 		<a href="./board.do?command=list">동행 구해요</a>
@@ -297,7 +297,12 @@ ul, li {
 		</table>
 	</form>
 	
---%> 	
+	
+	
+	
+	
+	
+	
 	
 	
 <%---	

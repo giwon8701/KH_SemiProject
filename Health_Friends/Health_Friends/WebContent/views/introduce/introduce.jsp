@@ -33,8 +33,8 @@
 <link href="https://fonts.googleapis.com/css?family=Jua"
 	rel="stylesheet">
 
-<link href="../../assets/css/main.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="../../assets/css/introduce.css">
+<link href="assets/css/main.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="assets/css/introduce.css">
 	
 
 <script type="text/javascript">
@@ -138,11 +138,11 @@
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
 	<div class="slider">
-		<div><img src="../../images/workhappy.png" alt="슬라이드 사진" style="width:1000px; height:500px"></div>
-		<div><img src="../../images/main/slide01.svg" alt="슬라이드 사진" style="width:1000px; height:500px" ></div>
-		<div><img src="../../images/main/slide02.svg" alt="슬라이드 사진" style="width:1000px; height:500px"></div>
-		<div><img src="../../images/main/slide03.svg" alt="슬라이드 사진" style="width:1000px; height:500px"></div>
-		<div><img src="../../images/main/slide04.svg" alt="슬라이드 사진" style="width:1000px; height:500px"></div>	
+		<div><img src="images/workhappy.png" alt="슬라이드 사진" style="width:1000px; height:500px"></div>
+		<div><img src="images/main/slide01.svg" alt="슬라이드 사진" style="width:1000px; height:500px" ></div>
+		<div><img src="images/main/slide02.svg" alt="슬라이드 사진" style="width:1000px; height:500px"></div>
+		<div><img src="images/main/slide03.svg" alt="슬라이드 사진" style="width:1000px; height:500px"></div>
+		<div><img src="images/main/slide04.svg" alt="슬라이드 사진" style="width:1000px; height:500px"></div>	
 	</div>
 	<div class="controls">
 		<button class="play">재생</button>
@@ -245,7 +245,7 @@
 				<br>
 				<br>
 				<br> <img
-					src="../../images/main/runday.jpeg"
+					src="images/main/runday.jpeg"
 					class="img-thumbnail" alt="Cinque Terre"><br>
 				<br>
 				<br>
@@ -419,23 +419,23 @@
 	<br><br>
 		<div class="row">
 			<div class="col-sm-6">
-			 <img src="../../images/bus03.png" style="width:80px; height:80px;"><h3 class="way01"><b>&emsp;버스로 오시는 방법</b></h3><h4 style="color:gray" class="way01">&emsp;&nbsp;역삼역, 포스코P&S타워 정류장 하차</h4><br>
+			 <img src="images/bus03.png" style="width:80px; height:80px;"><h3 class="way01"><b>&emsp;버스로 오시는 방법</b></h3><h4 style="color:gray" class="way01">&emsp;&nbsp;역삼역, 포스코P&S타워 정류장 하차</h4><br>
 				<br><br>
-				<img src="../../images/bus01.jpeg" style="width:20px; height:27px;"><h4 class="way02">&emsp;간선버스&emsp;146 / 740 / 341 / 360</h4><br>
-				<img src="../../images/bus02.jpeg" style="width:20px; height:27px;"><h4 class="way02">&emsp;지선버스&emsp;1100 / 1700 / 2000 / 7007 / 8001</h4>
+				<img src="images/bus01.jpeg" style="width:20px; height:27px;"><h4 class="way02">&emsp;간선버스&emsp;146 / 740 / 341 / 360</h4><br>
+				<img src="images/bus02.jpeg" style="width:20px; height:27px;"><h4 class="way02">&emsp;지선버스&emsp;1100 / 1700 / 2000 / 7007 / 8001</h4>
 				<br>
 				<br>
 				<br>
 				<br>
 				<br>
-			<img src="../../images/bus05.png" style="width:80px; height:80px;"><h3 class="way01"><b>&emsp;자가용 이용시</b></h3><h4 style="color:gray" class="way01">&emsp;&nbsp;자가용 이용시 <span style="color:hotpink"><b>반드시 주차권을 발급</b></span> 받으시길 바랍니다.</h4><br>			
+			<img src="images/bus05.png" style="width:80px; height:80px;"><h3 class="way01"><b>&emsp;자가용 이용시</b></h3><h4 style="color:gray" class="way01">&emsp;&nbsp;자가용 이용시 <span style="color:hotpink"><b>반드시 주차권을 발급</b></span> 받으시길 바랍니다.</h4><br>			
 
 	</div>
 
 			<div class="col-sm-6">
-				<img src="../../images/bus04.png" style="width:80px; height:80px;"><h3 class="way02"><b>&emsp;지하철로 오시는 방법</b></h3><h4 style="color:gray" class="way01">&emsp;&nbsp;지하철 2호선 <span style="color=pink">역삼역 3번 출구</span>로 나와서 100m 직진</h4>
+				<img src="images/bus04.png" style="width:80px; height:80px;"><h3 class="way02"><b>&emsp;지하철로 오시는 방법</b></h3><h4 style="color:gray" class="way01">&emsp;&nbsp;지하철 2호선 <span style="color=pink">역삼역 3번 출구</span>로 나와서 100m 직진</h4>
 				<br><br><br>
-				<div></div><img src="../../images/yeoksam.png" style="width:450px; height:300px;"><div></div>
+				<div></div><img src="images/yeoksam.png" style="width:450px; height:300px;"><div></div>
 
 			</div>
 		</div>

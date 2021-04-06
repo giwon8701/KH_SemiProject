@@ -19,49 +19,28 @@
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 
 <title>후기 게시판</title>
-<%
-	RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); 
-	BoardBiz biz = new BoardBizImpl();
-	
-	List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
 
-	int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-	int totalCount = Integer.parseInt(request.getAttribute("totalCount") + "");
-	
-	Paging paging = new Paging();
-	paging.setPageNo(pageNum);
-	paging.setPageSize(10);
-	paging.setTotalCount(totalCount);
-%>
-<!-- 페이징 관련 JS -->
-<script type="text/javascript">
-	$(document).ready(function(){
-		
-		var pageNum = <%=pageNum-1%>;
-		
-		if(pageNum >= 10){
-			pageNum %= 10;
-		}
-		
-		$(".pagination>a").eq(pageNum).addClass("on");
-		
-	})
-</script>
 <!-- 페이징 관련 CSS -->
 <style>
 	.pagination {
-		padding: 10px 0;
+		padding: 0 0;
+		text-align: center;
 	}
 	
 	.pagination a {
-		padding: 5px;
+		padding: 3px 8px;
 		margin: 5px;
 		cursor: pointer;
 	}
 	
 	.pagination a.on {
-		font-weight: bold;
-		font-size: 20px;
+	width: 30px;
+	height: 30px;
+	border: 1px solid royalblue;
+	border-radius: 100%;
+	background-color: royalblue;
+	color: white;
+	}
 	}
 </style>
 <style type="text/css">
@@ -144,14 +123,31 @@
 	color: Royalblue;
 }
 
-.boardlist {
-	
-}
-
 img {
 	width: 200px;
 	height: 200px;
 }
+
+div .pagemove {
+	width: 30px;
+	height: 30px;
+	border: 1px solid royalblue;
+	border-radius: 100%;
+	background-color: white;
+	color: royalblue;
+		
+}
+
+div .pagemove:hover {
+	width: 30px;
+	height: 30px;
+	border: 1px solid lightgray;
+	border-radius: 100%;
+	background-color: lightgray;
+	color: white;
+		
+}
+
 </style>
 
 </head>
@@ -159,6 +155,35 @@ img {
 	<%--
 	<%@include file="header.jsp" %>
 --%>
+
+<%
+	RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); 
+	BoardBiz biz = new BoardBizImpl();
+	
+	List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
+
+	int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+	int totalCount = Integer.parseInt(request.getAttribute("totalCount") + "");
+	
+	Paging paging = new Paging();
+	paging.setPageNo(pageNum);
+	paging.setPageSize(10);
+	paging.setTotalCount(totalCount);
+%>
+<!-- 페이징 관련 JS -->
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		var pageNum = <%=pageNum-1%>;
+		
+		if(pageNum >= 10){
+			pageNum %= 10;
+		}
+		
+		$(".pagination>a").eq(pageNum).addClass("on");
+		
+	})
+</script>
 
 	<div class="main01">
 		<img
@@ -220,16 +245,19 @@ img {
 				</div>
 <br>
 <br>
-<br>
 
-			<div class="board_list_warp02">
-
-				<div class="paging">
-					<a href="#" class="bt">첫 페이지</a> <a href="#" class="bt">이전 페이지</a>
-					<a href="#" class="num on">1</a> <a href="#" class="num">2</a> <a
-						href="#" class="num">3</a> <a href="#" class="bt">다음 페이지</a> <a
-						href="#" class="bt">마지막 페이지</a>
-				</div>
+				<div class="pagination board_list_warp02">
+				<input type="button" onclick="pageMove(<%=paging.getFirstPageNo()%>)" value="첫 페이지" class="bt" id="paging">
+				<input type="button" onclick="pageMove(<%=paging.getPrevPageNo()%>)" value="이전 페이지" class="bt" id="paging">
+				<%
+					for (int i = paging.getStartPageNo(); i <= paging.getEndPageNo(); i++) {
+				%>
+				<a class="pagemove" onclick="pageMove(<%=i%>)"><%=i%></a>
+				<%
+					}
+				%>
+				<input type="button" onclick="pageMove(<%=paging.getNextPageNo()%>)" value="다음 페이지" class="bt" id="paging">
+				<input type="button" onclick="pageMove(<%=paging.getFinalPageNo()%>)" value="끝 페이지" class="bt" id="paging">
 			</div>
 			
 		</div>

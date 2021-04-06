@@ -202,6 +202,39 @@ ul, li {
 	line-height: 160%;
 	font-size: 1.4rem;
 }
+
+.button {
+
+    width:100px;
+
+    background-color: #f8585b;
+
+    border: none;
+
+    color:#fff;
+
+    padding: 15px 0;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    display: inline-block;
+
+    font-size: 15px;
+
+    margin: 4px;
+
+    cursor: pointer;
+
+}
+
+
+
+출처: https://nimolove.tistory.com/44 [Chaeni_vlog 🌈]
+
+
+
 </style>
 
 </head>
@@ -250,6 +283,7 @@ ul, li {
 					</c:forEach>
 			</div>
 			<div class="bt_wrap">
+			
 				<a href="./notice.do?command=list" class="on">목록</a> 
 				<a href="./notice.do?command=updateform&postId=${dto.postId}" class="off">수정</a>
 				<a href="location.href='./notice.do?command=delete&postId=${dto.postId}" class="off">삭제</a>
@@ -279,7 +313,7 @@ ul, li {
 			</tr>
 			<tr>
 				<td colspan="3">
-					<input type="button" value="목록" onclick="location.href='./notice.do?command=list'"/>
+					<input type="button" class="button" value="목록" onclick="location.href='./notice.do?command=list'"/>
 					<input type="button" value="수정" onclick="location.href='./notice.do?command=updateform&postId=${dto.postId}'"/>
 					<input type="button" value="삭제" onclick="location.href='./notice.do?command=delete&postId=${dto.postId}'"/>
 				</td>

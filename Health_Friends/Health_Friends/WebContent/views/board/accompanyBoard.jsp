@@ -19,6 +19,61 @@
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 
 <title>동행 게시판</title>
+
+	
+<style>
+
+.board_list tbody tr td:nth-child(1) {
+	text-align: left;
+}
+
+.color01 {
+color: gray 
+}
+
+div .pagemove:hover {
+	width: 30px;
+	height: 30px;
+	border: 1px solid lightgray;
+	border-radius: 100%;
+	background-color: lightgray;
+	color: white;
+		
+}
+
+	.pagination {
+		padding: 0 0;
+		text-align: center;
+	}
+	
+	.pagination a {
+		padding: 3px 8px;
+		margin: 5px;
+		cursor: pointer;
+	}
+	
+	.pagination a.on {
+	width: 30px;
+	height: 30px;
+	border: 1px solid teal;
+	border-radius: 100%;
+	background-color: teal;
+	color: white;
+	}
+	
+</style>
+
+<script type="text/javascript">
+	function loginChk() {
+		alert("로그인 이후 사용가능합니다");
+	}
+</script>
+
+</head>
+<body>
+
+	<%@include file="../../header.jsp" %>
+
 	<%
 		List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
 	
@@ -30,25 +85,8 @@
 		paging.setPageSize(10);
 		paging.setTotalCount(totalCount);
 	%>
-<style>
-
-.board_list tbody tr td:nth-child(1) {
-	text-align: left;
-}
-
-.color01 {
-color: gray 
-}
-</style>
-
-<script type="text/javascript">
-	function loginChk() {
-		alert("로그인 이후 사용가능합니다");
-	}
-</script>
-
-
-<script>
+	
+	<script>
 $(document).ready(function(){
 	
 	var pageNum = <%=pageNum-1%>;
@@ -61,26 +99,6 @@ $(document).ready(function(){
 	
 })
 </script>
-<style>
-	.pagination {
-		padding: 10px 0;
-	}
-	
-	.pagination a {
-		padding: 5px;
-		margin: 5px;
-		cursor: pointer;
-	}
-	
-	.pagination a.on {
-		font-weight: bold;
-		font-size: 20px;
-	}
-</style>
-</head>
-<body>
-
-	<%@include file="../../header.jsp" %>
 
 
 	<div class="main01">
@@ -160,17 +178,17 @@ $(document).ready(function(){
 <br>
 			<%--  pagination --%>
 			<div class="pagination board_list_warp02">
-				<input type="button" onclick="pageMove(<%=paging.getFirstPageNo()%>)" value="◀" class="bt">
-				<input type="button" onclick="pageMove(<%=paging.getPrevPageNo()%>)" value="◁" class="bt">
+				<input type="button" onclick="pageMove(<%=paging.getFirstPageNo()%>)" value="첫 페이지" class="bt" id="paging">
+				<input type="button" onclick="pageMove(<%=paging.getPrevPageNo()%>)" value="이전 페이지" class="bt" id="paging">
 				<%
 					for (int i = paging.getStartPageNo(); i <= paging.getEndPageNo(); i++) {
 				%>
-				<a onclick="pageMove(<%=i%>)"><%=i%></a>
+				<a class="pagemove" onclick="pageMove(<%=i%>)"><%=i%></a>
 				<%
 					}
 				%>
-				<input type="button" onclick="pageMove(<%=paging.getNextPageNo()%>)" value="▷" class="bt">
-				<input type="button" onclick="pageMove(<%=paging.getFinalPageNo()%>)" value="▶" class="bt">
+				<input type="button" onclick="pageMove(<%=paging.getNextPageNo()%>)" value="다음 페이지" class="bt" id="paging">
+				<input type="button" onclick="pageMove(<%=paging.getFinalPageNo()%>)" value="끝 페이지" class="bt" id="paging">
 			</div>
 		
 			<script>
@@ -178,8 +196,11 @@ $(document).ready(function(){
 						location.href='board.do?command=list&page='+page
 					}
 			</script>
+			</div>
+			</div>
 
-			<div class="board_list_warp02">
+
+<%--			<div class="board_list_warp02">
 
 				<div class="paging">
 				<a href="#" class="bt">첫 페이지</a>
@@ -195,7 +216,7 @@ $(document).ready(function(){
 		</div>
 	</div>
 	
-
+--%>
 
 	<%--
 	<%@include file="footer.jsp" %>

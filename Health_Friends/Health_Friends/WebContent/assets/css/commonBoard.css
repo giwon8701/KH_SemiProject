@@ -112,24 +112,24 @@ a {
 	font-size: 14px;
 }
 
-.paging a:first-child {
-	margin-left: 0;
+#paging {
+border:none;
+background-Color:#F5F5F5;  
+font:18px;     
+border-radius: 100px;   
+color:black;    
+width:86px;height:32px; 
+cursor: pointer;
 }
 
-.paging a.bt {
-	border: 1px solid #eee;
-	background: #eee;
-}
-
-.paging a.num {
-	border: 1px solid teal;
-	font-weight: 600;
-	color: royalblue;
-}
-
-.paging a.num.on {
-	background: teal;
-	color: #fff;
+#paging:hover {
+border:none;
+background-Color: lightgray;  
+font:18px;     
+border-radius: 100px;   
+color:black;    
+width:86px;height:32px; 
+cursor: pointer;
 }
 
 .bt_wrap {
@@ -162,3 +162,14 @@ a {
 .bt_wrap a.off {
 	color: teal;
 }
+
+div .pagemove {
+	width: 30px;
+	height: 30px;
+	border: 1px solid teal;
+	border-radius: 100%;
+	color: teal;
+		
+}
+
+

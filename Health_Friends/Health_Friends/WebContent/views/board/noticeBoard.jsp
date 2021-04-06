@@ -14,6 +14,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
+
 <title>우리동네 운동친구 Health Friends</title>
 
 <style>
@@ -159,7 +162,83 @@ background: OrangeRed;
 color: #fff;
 }
 
+.bt_wrap a {
+	display: inline-block;
+	min-width: 80px;
+	margin-left: 10px;
+	padding: 8px;
+	border: 1px solid OrangeRed;
+	border-radius: 2px;
+	font-size: 14px;
+}
+
+.bt_wrap a.on {
+	background: OrangeRed;
+	color: white;
+	border-radius: 100px;
+}
+
+
+div .pagemove:hover {
+	width: 30px;
+	height: 30px;
+	border: 1px solid lightgray;
+	border-radius: 100%;
+	background-color: lightgray;
+	color: white;
+		
+}
+
+		
+.pagination {
+		padding: 0 0;
+		text-align: center;
+	}
+	
+	.pagination a {
+		padding: 3px 8px;
+		margin: 5px;
+		cursor: pointer;
+	}
+	
+
+		
+div .pagemove {
+	width: 30px;
+	height: 30px;
+	border: 1px solid OrangeRed;
+	border-radius: 100%;
+	color: OrangeRed;
+			}
+		.pagination a.on {
+	width: 30px;
+	height: 30px;
+	border: 1px solid OrangeRed;
+	border-radius: 100%;
+	background-color: OrangeRed;
+	color: white;
+
+}
+
 </style>
+
+<script type="text/javascript">
+	function loginChk() {
+		alert("로그인 이후 사용가능합니다");
+	}
+</script>
+<script type="text/javascript">
+	function loginChk2() {
+		alert("관리자로그인 이후 사용가능합니다");
+	}
+</script>
+
+</head>
+
+<body>
+<%--
+	<%@include file="../../views/common/header.jsp" %>
+ --%>
 
 <%
 	RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); 
@@ -175,20 +254,8 @@ color: #fff;
 	paging.setPageSize(10);
 	paging.setTotalCount(totalCount);
 %>
-<script type="text/javascript">
-	function loginChk() {
-		alert("로그인 이후 사용가능합니다");
-	}
-</script>
-<script type="text/javascript">
-	function loginChk2() {
-		alert("관리자로그인 이후 사용가능합니다");
-	}
-</script>
 
-
-	<!-- 페이징 관련 JS -->
-	<script type="text/javascript">
+	<script>
 		$(document).ready(function(){
 			
 			var pageNum = <%=pageNum-1%>;
@@ -201,31 +268,8 @@ color: #fff;
 			
 		})
 	</script>
-	<!-- 페이징 관련 CSS -->
-	<style>
-		.pagination {
-			padding: 10px 0;
-		}
-		
-		.pagination a {
-			padding: 5px;
-			margin: 5px;
-			cursor: pointer;
-		}
-		
-		.pagination a.on {
-			font-weight: bold;
-			font-size: 20px;
-		}
-	</style>
-</head>
 
-<body>
-<%--
-	<%@include file="../../views/common/header.jsp" %>
- --%>
- 
- 
+
 <div class="main01">
 	<img src="https://www.imgacademy.co.kr/sites/default/files/inline-images/coaching.jpg" style="width:100% ;height:auto">
 	<div class=text01 style="font-size: 40px; font-weight:bold">게시판 페이지입니다</div><br>
@@ -239,7 +283,7 @@ color: #fff;
 	<section class="boardlist">
 <a href="  " class="btn btn02">메인 페이지</a>
 <a href="./board.do?command=list" class="btn btn01">동행 게시판</a>
-<a href="photoReviewBoard.jsp" class="btn btn01">후기 게시판</a>
+<a href="./review.do?command=list" class="btn btn01">후기 게시판</a>
 <a href="./notice.do?command=list" class="btn btn01">공지사항</a>
 	</section>
 </div>
@@ -284,13 +328,36 @@ color: #fff;
 			</tbody>
 			
 		</table>
-					<div class="bt_wrap">
-					<a href="board.do?command=list" class="on">목록</a> <a
-						href="board.do?command=updateform&postId=${dto.postId}" class="off">수정</a>
-					<a
-						href="board.do?command=delete&postId=${dto.postId}" class="off">삭제</a>
-						</div>
-		
+						<div class="bt_wrap">
+						<a href="./notice.do?command=insert" class="on" value="글작성">글작성</a>
+				</div>
+				<br>
+				<br>
+				
+				
+							<div class="pagination board_list_warp02">
+				<input type="button" onclick="pageMove(<%=paging.getFirstPageNo()%>)" value="첫 페이지" class="bt" id="paging">
+				<input type="button" onclick="pageMove(<%=paging.getPrevPageNo()%>)" value="이전 페이지" class="bt" id="paging">
+				<%
+					for (int i = paging.getStartPageNo(); i <= paging.getEndPageNo(); i++) {
+				%>
+				<a class="pagemove" onclick="pageMove(<%=i%>)"><%=i%></a>
+				<%
+					}
+				%>
+				<input type="button" onclick="pageMove(<%=paging.getNextPageNo()%>)" value="다음 페이지" class="bt" id="paging">
+				<input type="button" onclick="pageMove(<%=paging.getFinalPageNo()%>)" value="끝 페이지" class="bt" id="paging">
+			</div>
+</div>
+</div>
+
+<!--			
+<br>
+<br>
+<br>
+	
+	
+				
 		<div class="paging">
 			<a href="#" class="bt">첫 페이지</a> 
 			<a href="#" class="bt">이전 페이지</a> 
@@ -303,11 +370,11 @@ color: #fff;
 
 	</div>
 	</div>
+   -->	
  
  
  
- 
- 
+ <!-- 
  
 	<section class="boardlist">
 		<a href="./board.do?command=list">동행 구해요</a>
@@ -357,12 +424,17 @@ color: #fff;
 		<a href="javascript:loginChk2();"><input type="button" value="글작성"/></a>
 	  </c:otherwise>
     </c:choose>
-
-	<!--  pagination -->
+ -->
+ 
+ 
+ 
+ 
+	<!--  pagination 
 	<div class="pagination">
 		<input type="button" onclick="pageMove(<%=paging.getFirstPageNo()%>)"
 			value="◀"> <input type="button"
 			onclick="pageMove(<%=paging.getPrevPageNo()%>)" value="◁">
+			
 
 		<%
 			for (int i = paging.getStartPageNo(); i <= paging.getEndPageNo(); i++) {
@@ -376,7 +448,7 @@ color: #fff;
 			value="▷"> <input type="button"
 			onclick="pageMove(<%=paging.getFinalPageNo()%>)" value="▶">
 	</div>
-
+-->
 	<script>
 			function pageMove(page){
 				location.href='notice.do?command=list&page='+page
