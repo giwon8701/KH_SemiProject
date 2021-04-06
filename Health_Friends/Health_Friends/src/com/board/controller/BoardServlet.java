@@ -139,6 +139,16 @@ public class BoardServlet extends HttpServlet {
 				request.setAttribute("pageNum", pageNum);
 				request.setAttribute("totalCount", totalCount);
 				dispatch(request, response, "./views/board/accompanyBoard.jsp");
+			} else if(command.equals("scrapSelect")) {
+				int postid = Integer.parseInt(request.getParameter("postid"));
+				
+				BoardDto dto = biz.selectOneByPostId(postid);
+				String boardname = dto.getPostBoardName();
+				System.out.println(dto.toString());
+				System.out.println(boardname);
+				if(boardname.equals("ACCOMPANY")) {
+					dispatch(request, response, "board.do?command=select&postId="+postid);
+				}
 			}
 			
 		} catch(Exception e){

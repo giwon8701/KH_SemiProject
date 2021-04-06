@@ -52,7 +52,7 @@
 					<c:forEach items="${list }" var="dto">
 						<tr>
 							<td>${dto.postBoardName }</td>
-							<td>${dto.postTitle }</td>
+							<td><a href="./board.do?command=scrapSelect&postid=${dto.postId }">${dto.postTitle }</a></td>
 							<td>${dto.postRegdate }</td>
 						</tr>
 					</c:forEach>

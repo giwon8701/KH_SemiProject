@@ -41,6 +41,11 @@ public class BoardBizImpl implements BoardBiz {
 	}
 
 	@Override
+	public BoardDto selectOneByPostId(int postId) {
+		return dao.selectOneByPostId(postId);
+	};
+	
+	@Override
 	public int accompany_insert(BoardDto dto) {
 		return dao.accompany_insert(dto);
 	}

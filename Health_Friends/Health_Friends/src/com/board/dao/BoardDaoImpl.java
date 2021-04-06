@@ -63,6 +63,22 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 	}
 	
 	@Override
+	public BoardDto selectOneByPostId(int postId) {
+		SqlSession session = null;
+		BoardDto dto = new BoardDto();
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			dto = session.selectOne("BoardMapper.selectOneByPostid", postId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return dto;
+	};
+	
+	@Override
 	public BoardDto accompany_selectOne(int postId) {
 		
 		SqlSession session = null;
