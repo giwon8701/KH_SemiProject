@@ -112,7 +112,7 @@
 						<td colspan="2" align="center" class="profile-border">
 							<c:choose>
 								<c:when test="${Ldto.getMember_picture_path() == null}">
-									대표 프로필 사진이 존재하지 않습니다<br>프로필 사진을 등록해주세요!
+									<img src="images/icon/nonprofile.png" id="profile-img">
 								</c:when>
 								<c:otherwise>
 									<img src="profileimg/<%=Ldto.getMember_picture_path()%>?" id="profile-img" />

@@ -75,7 +75,7 @@ public class ProfileServlet extends HttpServlet {
 		if(res > 0) {
 			jsResponse(response, "./mypage.do?command=mypage", "프로필 사진이 변경되었습니다!");
 		} else {
-			jsResponse(response, "./mypage.do?command=mypage", "프로필 사진변경에 실패하였습니다!");
+			jsResponse(response, "./mypage.do?command=mypage", "프로필 사진변경에 실패하였거나 프로필 사진이 삭제 되었습니다!");
 		}
 		
 	}

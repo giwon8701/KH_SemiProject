@@ -87,10 +87,10 @@
 			<div class="mypage-profile-div">
 				<table border="1">
 					<tr>
-						<td colspan="3">
+						<td colspan="3" align="center">
 							<c:choose>
 								<c:when test="${dto.getMember_picture_path() == null}">
-									대표 프로필 사진이 존재하지 않습니다
+									<img src="images/icon/nonprofile.png" style="width:100px; height:100px;">
 								</c:when>
 								<c:otherwise>
 									<img src="../../profileimg/<%=dto.getMember_picture_path()%>?" id="profile-img" />

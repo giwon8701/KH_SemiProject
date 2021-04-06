@@ -141,21 +141,12 @@ public class FollowServlet extends HttpServlet {
 			
 			response.getWriter().print(res);
 		} else if(command.equals("searching")) {
-			
 			String searchId = request.getParameter("searchId");
 			searchId = "%"+searchId+"%";
 			
 			List<RegistDto> list = biz.searchId(searchId);
-			
-			for(int i = 0; i < list.size(); i++) {
-				
-				System.out.println(list.get(i).getMember_id());
-			}
-			
 			request.setAttribute("list", list);
-			
 			dispatch(request, response, "search.jsp");
-			
 		}
 	}
 	

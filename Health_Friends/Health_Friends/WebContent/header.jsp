@@ -34,7 +34,7 @@ $(window).scroll(function(evt) {
   		var searchId = document.getElementById("search").value;
   		var queryString = "?command=searching&searchId="+searchId;
   		
-		open("follow.do"+queryString, "searching", "width=650; height=650;");
+		open("follow.do"+queryString, "searching", "width=600; height=600;");
 	};
 </script>
 </head>
