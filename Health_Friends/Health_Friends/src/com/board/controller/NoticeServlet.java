@@ -17,6 +17,8 @@ import com.board.biz.BoardBiz;
 import com.board.biz.BoardBizImpl;
 import com.board.dto.BoardDto;
 import com.common.Paging;
+import com.login.biz.RegistBiz;
+import com.login.biz.RegistBizImpl;
 import com.login.dto.RegistDto;
 
 @WebServlet("/notice.do")
@@ -56,6 +58,13 @@ public class NoticeServlet extends HttpServlet {
 			} else if(command.equals("select")) {
 				int postId = Integer.parseInt(request.getParameter("postId"));
 				BoardDto dto = biz.notice_selectOne(postId);
+				int post_user_no = dto.getPostUserNo();
+				
+				RegistBiz rbiz = new RegistBizImpl();
+				RegistDto rdto = rbiz.selectByNo(post_user_no);
+				String member_id = rdto.getMember_id();
+				
+				request.setAttribute("member_id", member_id);
 				request.setAttribute("dto", dto);
 				dispatch(request, response, "./views/board/noticeBoard_select.jsp");
 			

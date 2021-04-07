@@ -1,3 +1,5 @@
+<%@page import="com.login.biz.RegistBizImpl"%>
+<%@page import="com.login.biz.RegistBiz"%>
 <%@page import="com.common.Paging"%>
 <%@page import="com.board.biz.BoardBizImpl"%>
 <%@page import="com.board.biz.BoardBiz"%>
@@ -23,6 +25,8 @@
 	RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); 
 	BoardBiz biz = new BoardBizImpl();
 	
+	RegistBiz rbiz = new RegistBizImpl();
+	
 	List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
 
 	int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
@@ -35,6 +39,12 @@
 %>
 <!-- 페이징 관련 JS -->
 <script type="text/javascript">
+
+	function loginChk() {
+		alert("로그인 이후 사용가능합니다");
+	}
+
+
 	$(document).ready(function(){
 		
 		var pageNum = <%=pageNum-1%>;
@@ -191,6 +201,7 @@ img {
 							<th>사진</th>
 							<th>글번호</th>
 							<th>제목</th>
+							<th>작성자</th>
 							<th>작성일</th>
 						</tr>
 					</thead>
@@ -202,14 +213,43 @@ img {
 					</tr>
 				</c:when>
 				<c:otherwise>
-					<c:forEach items="${list }" var="dto">
-						<tr>
-							<td><img src=""></td>
-							<td>${dto.postNo}</td>
-							<td>${dto.postTitle}</td>
-							<td>${dto.postRegdate}</td>
-						</tr>
-					</c:forEach>
+<%
+	for(int i = 0; i < list.size(); i++){
+		RegistDto rdto = rbiz.selectByNo(list.get(i).getPostUserNo());
+		String member_id = rdto.getMember_id();
+		if(list.get(i).getPostDelflag().equals('Y')){
+%>
+				<tr>
+					<td>======삭제된 게시글 입니다=========</td>
+				</tr>
+
+<%			
+		} else{
+%>
+			<tr>
+				<td><img src=""></td>
+				<td><%=list.get(i).getPostNo()%></td>
+				<td>
+<%
+			if(Ldto == null){
+%>
+					<a href="javascript:loginChk();"><%=list.get(i).getPostTitle()%></a>
+<%
+			} else{
+%>
+					<a href="./board.do?command=select&postId=<%=list.get(i).getPostId()%>"><%=list.get(i).getPostTitle()%></a>		
+<%
+			}
+%>
+				</td>
+				<td><%=member_id%></td>
+				<td><%=list.get(i).getPostRegdate()%></td>
+			</tr>
+				
+<%	
+		}
+	}
+%>
 				</c:otherwise>
 			</c:choose>
 					</tbody>

@@ -10,6 +10,11 @@ public class RegistBizImpl implements RegistBiz {
 	RegistDao dao = new RegistDaoImpl();
 
 	@Override
+	public RegistDto selectByNo(int member_no) {
+		return dao.selectByNo(member_no);
+	}
+	
+	@Override
 	public int registCheck(String member, String check) {
 		return dao.registCheck(member, check);
 	}

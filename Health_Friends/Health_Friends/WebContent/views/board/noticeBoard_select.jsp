@@ -237,7 +237,7 @@ ul, li {
 				<div class="info">
 					<dl>
 						<dt>작성자</dt>
-						<dd>${Ldto.member_id } </dd>
+						<dd>${member_id } </dd>
 			 		</dl>
 					<dl>
 						<dt>작성일</dt>
@@ -271,7 +271,7 @@ ul, li {
 				<th colspan="3">${dto.postTitle }</th>		
 			</tr>
 			<tr>
-				<td>${Ldto.member_id } </td>
+				<td>${member_id } </td>
 				<td>${dto.postRegdate } </td>
 			</tr>
 			<tr>

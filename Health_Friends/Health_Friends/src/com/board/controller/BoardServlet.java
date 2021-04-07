@@ -20,6 +20,8 @@ import com.board.biz.ScrapBizImpl;
 import com.board.dto.BoardDto;
 import com.board.dto.ScrapDto;
 import com.common.Paging;
+import com.login.biz.RegistBiz;
+import com.login.biz.RegistBizImpl;
 import com.login.dto.RegistDto;
 import com.mypage.dto.PaymentDto;
 
@@ -69,9 +71,13 @@ public class BoardServlet extends HttpServlet {
 				
 			} else if(command.equals("select")) {
 				int postId = Integer.parseInt(request.getParameter("postId"));
-				int user_no = ldto.getMember_no();
 				
 				BoardDto dto = biz.accompany_selectOne(postId);
+				int user_no = dto.getPostUserNo();
+				
+				RegistBiz rbiz = new RegistBizImpl();
+				RegistDto rdto = rbiz.selectByNo(user_no);
+				String member_id = rdto.getMember_id();
 				
 				ScrapBiz sbiz = new ScrapBizImpl();
 				
@@ -83,6 +89,7 @@ public class BoardServlet extends HttpServlet {
 				
 				request.setAttribute("res", res);
 				request.setAttribute("dto", dto);
+				request.setAttribute("member_id", member_id);
 				dispatch(request, response, "./views/board/accompanyBoard_select.jsp");
 				
 			} else if(command.equals("updateform")) {	
@@ -148,6 +155,8 @@ public class BoardServlet extends HttpServlet {
 				System.out.println(boardname);
 				if(boardname.equals("ACCOMPANY")) {
 					dispatch(request, response, "board.do?command=select&postId="+postid);
+				} else if(boardname.equals("PHOTO")) {
+					dispatch(request, response, "review.do?command=select&postId="+postid);
 				}
 			}
 			

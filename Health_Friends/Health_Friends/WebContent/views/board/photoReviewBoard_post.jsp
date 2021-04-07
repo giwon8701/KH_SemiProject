@@ -18,8 +18,29 @@
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-latest.js"></script>
 	<link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
-<script
-	src="https://cdn.ckeditor.com/ckeditor5/27.0.0/classic/ckeditor.js"></script>
+<script type="text/javascript" src="/Health_Friends/assets/api/smarteditor2/js/HuskyEZCreator.js" charset="UTF-8"></script>
+<script type="text/javascript">
+	
+	$(function(){
+		
+		var oEditors = [];
+		
+		nhn.husky.EZCreator.createInIFrame({
+			oAppRef: oEditors,
+			elPlaceHolder : "postContent",
+			sSkinURI : "/Health_Friends/assets/api/smarteditor2/SmartEditor2Skin.html",
+			fCreator : "createSEditor2"
+		});
+		
+		//oEditors.getById["postContent"].exec("UPDATE_CONTENTS_FIELD",[]);
+		
+		$("#reviewsubmit").click(function(){
+			oEditors.getById["postContent"].exec("POST_CONTENT");
+			$("#reviewForm").submit();
+		});
+		
+	});
+</script>
 
 <style>
 .main img {
@@ -222,6 +243,7 @@ ul, li {
 
 </style>
 
+
 </head>
 <body>
 
@@ -250,7 +272,7 @@ ul, li {
 			href="./review.do?command=list  " class="btn btn01" style="font-size:16px">사진 후기</a> <a
 			href="./notice.do?command=list " class="btn btn01" style="font-size:16px">공지사항</a>
 	</div>
-
+<!-- 
 	<div class="board_wrap">
 		<section id="">
 			<form action="../../review.do" method="post">
@@ -268,7 +290,7 @@ ul, li {
 									<dd>${Ldto.member_id }</dd>
 								</dl>
 							</div>
-							<div class="cont" id="editor" name="postContent"
+							<div class="cont" id="postContent" name="postContent"
 								contenteditable="true"
 								style="width: 97%; height: 500px; overflow: auto;">
 								${dto.postContent }</div>
@@ -284,46 +306,30 @@ ul, li {
 		</section>
 
 	</div>
-
+ -->
 	<section class="boardlist">
 		<a href="">동행 구해요</a> <a href="">후기</a> <a href="">공지사항</a>
 	</section>
 
 	<section id="">
-		<form action="../../review.do" method="post">
+		<form id="reviewForm" action="../review.do" method="post">
 			<input type="hidden" name="command" value="insertRes" /> <input
 				type="hidden" name="userNo" value="${Ldto.getMember_no() }">
-			<table border="1">
+			<table border="1" style="width: 580px;">
 				<tr>
 					<th colspan="3">사진후기</th>
 				</tr>
 				<tr>
-					<td colspan="3"><input type="text" placeholder="게시글 제목을 적어주세요"
+					<td colspan="3"><input type="text" id="postTitle" placeholder="게시글 제목을 적어주세요"
 						name="postTitle" /></td>
 				</tr>
 				<tr>
-					<td colspan="3"><textarea id="editor" name="postContent"
-							placeholder="내용을 입력해주세요"></textarea></td>
+					<td colspan="3"><textarea class="form-control" id="postContent" name="postContent" placeholder="내용을 입력해주세요"></textarea></td>
 				</tr>
 			</table>
-			<input type="submit" value="등록" /> <input type="button" value="취소"
-				onclick="location.href='../../review.do?command=list'" />
+			<input type="submit" id="reviewsubmit" value="등록" /> <input type="button" value="취소" onclick="location.href='../../review.do?command=list'" />
 		</form>
 	</section>
-	<script>
-	    ClassicEditor
-	        .create( document.querySelector( '#editor' ), {
-	        	ckfinder: {
-	        		uploadUrl: '../../fileupload.do'
-	        	}
-	        }).then(editor => {
-	        	window.editor = editor
-	        })
-	        .catch( error => {
-	            console.error( error );
-	        } );
-	</script>
-
 </body>
 </html>
 
