@@ -215,7 +215,7 @@
 						<td>
 							<ul class="list-ul">
 								<li><a href="mypage.do?command=registUpdate">회원정보 수정</a></li>
-								<li><a href="">찜한게시물</a></li>
+								<li><a href="scrap.do?command=scrapList">찜한게시물</a></li>
 								<li><div class="mypage-follw-div" onclick="follow();" id="follow">팔로우</div></li>
 								<li><a href="payment.do?command=paymentRoleUp&member_role=<%=Ldto.getMember_role()%>">프리미엄 등록</a></li>
 								<li><a href="payment.do?command=paymentRoleDown&member_role=<%=Ldto.getMember_role()%>">프리미엄 탈퇴</a></li>

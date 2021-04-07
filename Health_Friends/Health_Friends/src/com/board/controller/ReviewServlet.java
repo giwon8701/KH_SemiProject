@@ -23,8 +23,14 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.board.biz.BoardBiz;
 import com.board.biz.BoardBizImpl;
+import com.board.biz.ScrapBiz;
+import com.board.biz.ScrapBizImpl;
 import com.board.dto.BoardDto;
+import com.board.dto.ScrapDto;
 import com.common.Paging;
+import com.login.biz.RegistBiz;
+import com.login.biz.RegistBizImpl;
+import com.login.dto.RegistDto;
 
 @WebServlet("/review.do")
 public class ReviewServlet extends HttpServlet {
@@ -42,7 +48,7 @@ public class ReviewServlet extends HttpServlet {
 		BoardBiz biz = new BoardBizImpl();
 		
 		if (command.equals("insert")) {
-			dispatch(request, response, "./views/board/photoReviewBoard_post.jsp");				
+			dispatch(request, response, "./views/board/photoReviewBoard_post2.jsp");				
 		} else if (command.equals("insertRes")) {
 			int postUserNo = Integer.parseInt(request.getParameter("userNo"));
 			String postTitle = request.getParameter("postTitle");
@@ -78,6 +84,27 @@ public class ReviewServlet extends HttpServlet {
 			request.setAttribute("pageNum", pageNum);
 			request.setAttribute("totalCount", totalCount);
 			dispatch(request, response, "./views/board/photoReviewBoard.jsp");
+		} else if(command.equals("select")) {
+			int postId = Integer.parseInt(request.getParameter("postId"));
+			BoardDto dto = biz.selectOneByPostId(postId);
+			int post_user_no = dto.getPostUserNo();
+			
+			RegistBiz rbiz = new RegistBizImpl();
+			RegistDto rdto = rbiz.selectByNo(post_user_no);
+			String member_id = rdto.getMember_id();
+			
+			ScrapBiz sbiz = new ScrapBizImpl();
+			
+			ScrapDto sdto = new ScrapDto();
+			sdto.setScrap_post_id(postId);
+			sdto.setScrap_user_no(post_user_no);
+			
+			int res = sbiz.scrapChk(sdto);
+			
+			request.setAttribute("res", res);
+			request.setAttribute("dto", dto);
+			request.setAttribute("member_id", member_id);
+			dispatch(request, response, "./views/board/photoReviewBoard_select.jsp");
 		}
 	}
 	

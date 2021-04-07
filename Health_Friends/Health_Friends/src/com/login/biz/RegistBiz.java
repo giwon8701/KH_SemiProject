@@ -8,6 +8,8 @@ import com.login.dto.RegistDto;
 
 public interface RegistBiz {
 	
+	public RegistDto selectByNo(int member_no);
+	
 	//id 중복체크
 	public int registCheck(String member, String check);
 	

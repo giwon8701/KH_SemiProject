@@ -28,4 +28,6 @@ public interface BoardDao {
 	public int accompanyGetTotalCount(); 
 	public int noticeGetTotalCount(); 
 	public int photoGetTotalCount(); 
+	
+	public BoardDto selectOneByPostId(int postId);
 }

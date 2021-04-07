@@ -77,8 +77,11 @@
 					<table>
 						<tr>
 							<div class="input-field">
-								<i class="fas fa-lock"></i> <input type="password" id="pw" name="memberPw" placeholder="비밀번호" required="required" onkeyup="chkPW()">
+								<i class="fas fa-lock"></i> <input type="password" id="pw" name="memberPw" title="n" placeholder="8~16자의 영문자,숫자,특수문자" required="required" onkeyup="pwReg()">
 							</div>
+						</tr>
+						<tr>
+							<td id="reg" style="font-size: 10px, text-align: start"></td>
 						</tr>
 						<tr>
 							<div class="input-field">
@@ -113,7 +116,7 @@
 					<table>
 						<tr>
 							<div class="input-field">
-								<i class="fas fa-envelope"></i> <input type="text" id="email" name="memberEmail" title="n" placeholder="이메일" required="required" onkeyup="emailChk()">
+								<i class="fas fa-envelope"></i> <input type="text" id="email" name="memberEmail" title="n" placeholder="이메일" required="required" onkeyup="emailReg()">
 							</div>
 						</tr>
 						<tr>

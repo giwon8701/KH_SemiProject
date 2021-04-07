@@ -12,6 +12,11 @@
 		</trim>
 	</select>
 	
+	<select id="selectByNo" parameterType="int" resultType="registDto">
+		SELECT * FROM MEMBER
+		WHERE MEMBER_NO = #{member_no}
+	</select>
+	
 	<select id="selectCnt" parameterType="registDto" resultType="int">
 		SELECT COUNT(*) FROM MEMBER
 		<trim prefix="WHERE" prefixOverrides="AND">

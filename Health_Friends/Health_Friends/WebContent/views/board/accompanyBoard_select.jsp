@@ -14,7 +14,7 @@
 <head>
 <meta charset="UTF-8">
 <title>동행 게시판 글보기</title>
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 
 <style>
@@ -250,6 +250,44 @@ ul, li {
 
 </style>
 
+<script>
+	function scrap(){
+		var post_id = $("#post_id").val();
+		var queryString = "post_id="+ post_id;
+		$.ajax({
+			url: "scrap.do?command=addScrap&" + queryString,
+			dataType: "text",
+			success: function(data){
+				if(data > 0){
+					$("#unscrapBttn").css("display", "");
+					$("#scrapBttn").css("display", "none");
+				}
+			},
+			error: function(err){
+				alert(err);
+			}
+		});
+	}
+					
+	function unscrap(){
+		var post_id = $("#post_id").val();
+		var queryString = "post_id="+ post_id;
+		$.ajax({
+			url: "scrap.do?command=delScrap&" + queryString,
+			dataType: "text",
+			success: function(data){
+				if(data > 0){
+					$("#unscrapBttn").css("display", "none");
+					$("#scrapBttn").css("display", "");
+				}
+			},
+			error: function(err){
+				alert(err);
+			}
+		});
+	}
+</script>
+
 </head>
 <body>
 	<%--  
@@ -295,12 +333,13 @@ ul, li {
 						<div class="info">
 							<dl>
 								<dt>작성자</dt>
-								<dd>${Ldto.member_id }</dd>
+								<dd>${member_id }</dd>
 							</dl>
 							<dl>
 								<dt>작성일</dt>
 								<dd>${dto.postRegdate }</dd>
 							</dl>
+							<dl></dl>
 						</div>
 						<div class="cont">${dto.postContent }</div>
 					</c:forEach>
@@ -328,7 +367,7 @@ ul, li {
 				<th colspan="3">${dto.postTitle }</th>
 			</tr>
 			<tr>
-				<td>${Ldto.member_id }</td>
+				<td>${member_id }</td>
 				<td colspan="2">작성일 ${dto.postRegdate }</td>
 			</tr>
 			<tr>
@@ -395,6 +434,21 @@ ul, li {
 						    } 
 						});    
 					</script>
+				</td>	
+			</tr>
+			<tr>
+				<td>
+					<input type="hidden" id="post_id" value="${dto.postId }">
+					<c:choose>
+						<c:when test="${res eq 1 }">
+							<button id="unscrapBttn" onclick="unscrap()">찜하기해제</button>
+							<button id="scrapBttn" onclick="scrap()" style="display: none;">찜하기</button>
+						</c:when>
+						<c:otherwise>
+							<button id="unscrapBttn" onclick="unscrap()" style="display: none;">찜하기해제</button>
+							<button id="scrapBttn" onclick="scrap()">찜하기</button>
+						</c:otherwise>
+					</c:choose>
 				</td>
 			</tr>
 			

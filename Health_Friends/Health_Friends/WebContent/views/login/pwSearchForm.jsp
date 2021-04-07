@@ -51,19 +51,36 @@
 	        	$("#same").text("비밀번호가 일치합니다");
 	        	$("#same").css("color", "blue");
 	        	$("#pwchk").prop("title", "y");
+	        	$("#pwchk").css("background-color", "skyblue");
 	          
 	        } else {
 	        	$("#same").text("비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
 	            $("#same").css("color", "red");
 	            $("#pwchk").prop("title", "n");
+	            $("#pwchk").css("background-color", "red");
 	        }
 	    }
+	}
+	
+	function pwReg(){
+		var pw = $("#pw").val();
+		var reg = /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*&+=-]).*$/;
+		chkPW()
+		if(!reg.test(pw)){
+			$("#pw").prop("title", "n");
+			$("#reg").text("8~16자의 영문자,숫자,특수문자의 조합으로 입력해주세요").css("color", "red");
+			$("#pw").css("background-color", "red");
+		} else{
+			$("#pw").prop("title", "y");
+			$("#reg").text("사용가능한 비밀번호 입니다.").css("color", "blue");
+			$("#pw").css("background-color", "skyblue");
+		}
 	}
 	
 	$(function(){
 		
 		$("#pwReset").submit(function(e){
-			if($("#pwchk").prop("title") == "y"){
+			if($("#pwchk").prop("title") == "y" && $("#pw").prop("title") == "y"){
 				$("#pwReset").submit();
 			} else{
 				alert("비밀번호를 다시 확인해주세요.");
@@ -117,8 +134,11 @@
 			<tr>
 				<td>
 					<label for="pw"><b>비밀번호 재설정</b></label><br>
-					<input id="pw" type="password" placeholder="비밀번호를 입력해주세요." required="required" name="member_pw" onkeyup="chkPW()">
+					<input id="pw" type="password" placeholder="비밀번호를 입력해주세요." title="n" required="required" name="member_pw" onkeyup="pwReg()">
 				</td>
+			</tr>
+			<tr>
+				<td><td id="reg" style="font-size:10px; text-align: start"></td>
 			</tr>
 			<tr>
 				<td>

@@ -21,34 +21,36 @@
 				<input type="hidden" name="command" value="idSearchRes">
 
 				<h2 class="title">아이디 찾기</h2>
-					<table>
-						<tr>
-							<div class="input-field">
-								<i class="fas fa-user"></i>
-								<input type="text" required="required" name="member_name" placeholder="아이디를 입력해주세요">
-							</div>
-						</tr>
-					</table>
-					
-					<table>
-						<tr>
-							<div class="input-field">
-								<i class="fas fa-envelope"></i> 
-								<input type="text" required="required" name="member_email"  placeholder="이메일을 입력해주세요">
-							</div>
-						</tr>
-					</table>
-					<table>
-						<tr>
-							<td>
-								<input type="submit" value="찾기" class="btn solid g-recaptcha">
-							</td>
-							<td>
-								<input type="button" value="메인으로" class="btn solid g-recaptcha" onclick="location.href='index.jsp'">
-							</td>
-						</tr>
-					</table>
-				</form>
+
+				<table>
+					<tr>
+						<div class="input-field">
+							<i class="fas fa-user"></i>
+							<input type="text" required="required" name="member_name" placeholder="이름을 입력해주세요">
+						</div>
+					</tr>
+				</table>
+				
+				<table>
+					<tr>
+						<div class="input-field">
+							<i class="fas fa-envelope"></i> 
+							<input type="text" required="required" name="member_email"  placeholder="이메일을 입력해주세요">
+						</div>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<td>
+							<input type="submit" value="아이디 찾기" class="btn solid g-recaptcha">
+						</td>
+						<td>
+							<input type="button" value="취소" class="btn solid g-recaptcha" onclick="location.href='regist.do?command=login'">
+						</td>
+					</tr>
+				</table>
+			</form>
+
 			</div>
 			<div class="panels-container">
 				<div class="panel left-panel">

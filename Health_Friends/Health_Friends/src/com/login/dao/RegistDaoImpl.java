@@ -11,6 +11,20 @@ import com.login.dto.RegistDto;
 public class RegistDaoImpl extends SqlMapConfig implements RegistDao {
 
 	@Override
+	public RegistDto selectByNo(int member_no) {
+		
+		RegistDto dto = new RegistDto();
+		
+		try(SqlSession session = getSqlSessionFactory().openSession(true);){
+			dto = session.selectOne("registmapper.selectByNo", member_no);
+		}  catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+	
+	@Override
 	public int registCheck(String member, String check) {
 		int cnt = -1;
 		

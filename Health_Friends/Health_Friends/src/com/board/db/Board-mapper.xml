@@ -138,6 +138,13 @@
 		AND POST_ID = #{POST_ID}
 	</select>
 	
+	<select id="selectOneByPostid" parameterType="int" resultMap="BoardMap">
+		SELECT POST_USER_NO, POST_ID, POST_NO,POST_BOARD_NAME,POST_CATEGORY_NAME,POST_TITLE,POST_CONTENT
+		,POST_MDATE,POST_REGDATE,POST_HIT,POST_COMMENT_HIT,POST_LIKE,POST_DELFLAG,POST_LATITUDE,POST_LONGITUDE
+		FROM POST
+		WHERE POST_ID = #{post_id}
+	</select>
+	
 	<insert id="accompany_insert" parameterType="BoardDto">
 		INSERT INTO POST VALUES
 		(#{postUserNo}, POST_ID_SEQ.NEXTVAL, POST_DONGHANG_SEQ.NEXTVAL, 'ACCOMPANY', #{postCategoryName},#{postTitle},#{postContent},
@@ -190,7 +197,7 @@
 	
 	<insert id="addscrap" parameterType="scrapDto">
 		INSERT INTO SCRAP
-		VALUE(SCRAPNOSEQ.NEXTVAL,#{scrap_user_no},#{scrap_post_id})
+		VALUES(SCRAPNOSEQ.NEXTVAL,#{scrap_user_no},#{scrap_post_id})
 	</insert>
 	
 	<delete id="delscrap" parameterType="int">
@@ -198,18 +205,22 @@
 		WHERE SCRAP_USER_NO = #{scrap_user_no}
 	</delete>
 	
-	<select id="scrapList" parameterType="int" resultType="BoardDto">
-		SELECT POST_ID, POST_BOARD_NAME, POST_TITLE, POST_USER_NO
+	<select id="scrapList" parameterType="int" resultMap="BoardMap">
+		SELECT POST_USER_NO, POST_ID, POST_NO, POST_BOARD_NAME, POST_CATEGORY_NAME, POST_TITLE, POST_CONTENT
+		, POST_MDATE, POST_REGDATE, POST_HIT, POST_COMMENT_HIT, POST_LIKE, POST_DELFLAG, POST_LATITUDE, POST_LONGITUDE
 		FROM POST
 		JOIN SCRAP ON(POST_ID = SCRAP_POST_ID)
-		JOIN MEMBER ON(POST_USER_NO = MEMBER_NO)
 		WHERE SCRAP_USER_NO = #{scrap_user_no}
 	</select>
 	
+	<select id="scrapchk" parameterType="scrapDto" resultType="int">
+		SELECT COUNT(*) FROM SCRAP
+		WHERE SCRAP_USER_NO = #{scrap_user_no}
+		AND SCRAP_POST_ID = #{scrap_post_id}
+	</select>
 	
 	<select id="getTotalCount" resultType="int">
 		SELECT COUNT(*) FROM POST
 	</select>
-	
 	
 </mapper>

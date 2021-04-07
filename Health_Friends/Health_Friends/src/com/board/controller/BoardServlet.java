@@ -15,8 +15,13 @@ import javax.servlet.http.HttpSession;
 
 import com.board.biz.BoardBiz;
 import com.board.biz.BoardBizImpl;
+import com.board.biz.ScrapBiz;
+import com.board.biz.ScrapBizImpl;
 import com.board.dto.BoardDto;
+import com.board.dto.ScrapDto;
 import com.common.Paging;
+import com.login.biz.RegistBiz;
+import com.login.biz.RegistBizImpl;
 import com.login.dto.RegistDto;
 import com.mypage.dto.PaymentDto;
 
@@ -61,8 +66,25 @@ public class BoardServlet extends HttpServlet {
 				
 			} else if(command.equals("select")) {
 				int postId = Integer.parseInt(request.getParameter("postId"));
+				
 				BoardDto dto = biz.accompany_selectOne(postId);
+				int user_no = dto.getPostUserNo();
+				
+				RegistBiz rbiz = new RegistBizImpl();
+				RegistDto rdto = rbiz.selectByNo(user_no);
+				String member_id = rdto.getMember_id();
+				
+				ScrapBiz sbiz = new ScrapBizImpl();
+				
+				ScrapDto sdto = new ScrapDto();
+				sdto.setScrap_post_id(postId);
+				sdto.setScrap_user_no(user_no);
+				
+				int res = sbiz.scrapChk(sdto);
+				
+				request.setAttribute("res", res);
 				request.setAttribute("dto", dto);
+				request.setAttribute("member_id", member_id);
 				dispatch(request, response, "./views/board/accompanyBoard_select.jsp");
 				
 			} else if(command.equals("updateform")) {	
@@ -123,6 +145,18 @@ public class BoardServlet extends HttpServlet {
 				request.setAttribute("pageNum", pageNum);
 				request.setAttribute("totalCount", totalCount);
 				dispatch(request, response, "./views/board/accompanyBoard.jsp");
+			} else if(command.equals("scrapSelect")) {
+				int postid = Integer.parseInt(request.getParameter("postid"));
+				
+				BoardDto dto = biz.selectOneByPostId(postid);
+				String boardname = dto.getPostBoardName();
+				System.out.println(dto.toString());
+				System.out.println(boardname);
+				if(boardname.equals("ACCOMPANY")) {
+					dispatch(request, response, "board.do?command=select&postId="+postid);
+				} else if(boardname.equals("PHOTO")) {
+					dispatch(request, response, "review.do?command=select&postId="+postid);
+				}
 			}
 			
 		} catch(Exception e){
