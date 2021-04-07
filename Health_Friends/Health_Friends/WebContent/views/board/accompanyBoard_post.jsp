@@ -101,15 +101,14 @@ $(function(){
 						<p><em>지도를 클릭해주세요!</em></p>
 						약속장소	<br/>
 						<div id="makerSpace" >
-							<input type="" name="postLatitude" value=""/>
+					도로명주소<input type="text" name="postLatitude" value=""/>	<br/>
+					 지번주소<input type="text" name="postLongitude" value=""/>
 						</div>
 					
 						<input type="hidden" id="MapAddress" name="MapAddress" value="" /> 
 						<div class="map_wrap">
 						    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-						    <div id="menu_wrap" class="bg_white">
-					 	   </div>
-							    <div class="hAddr">
+						    <div class="hAddr">
 						        <span class="title">지도중심기준 행정동 주소정보</span>
 						        <span id="centerAddr"></span>
 						    </div>
@@ -141,24 +140,25 @@ $(function(){
 							    searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
 							        if (status === kakao.maps.services.Status.OK) {
 							        	
-							            var detailAddr = !!result[0].road_address ? '<div>도로명 : ' + result[0].road_address.address_name + '</div>' : '';
+							            var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
 							            detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
 							            
-							            var MapAddresss = '<div class="bAddr">' +
-							                            '<span class="title">법정동 주소정보</span>' + 
-							                            detailAddr + 
-							                        '</div>';
-							                        
+							            var MapAddresss = '<div class="bAddr">' +  '<span class="title">법정동 주소정보</span>' + detailAddr + '</div>';
+							                    
+							            var roadAddr = !!result[0].road_address ? '<div>' + result[0].road_address.address_name + '</div>' : '';
+							            var Addr = '<div>' + result[0].address.address_name + '</div>';
+							            
 							            $("#MapAddress").val(mouseEvent)
 										
 							           // var markerSpace = document.getElementById("makerSpace");
-							            var test = document.getElementsByName("postLatitude")[0];
-							            
-							            var afterString = detailAddr.slice(detailAddr.indexOf(">")+1, detailAddr.lastIndexOf("<"));
 							           // makerSpace.innerHTML = detailAddr;
-							         	test.value = afterString;
-							            
+							            var test1 = document.getElementsByName("postLatitude")[0];
+							            var afterString1 = roadAddr.slice(roadAddr.indexOf(">")+1, roadAddr.lastIndexOf("<"));
+							         	test1.value = afterString1;
 							         	
+							         	var test2 = document.getElementsByName("postLongitude")[0];
+								        var afterString2 = Addr.slice(Addr.indexOf(">")+1, Addr.lastIndexOf("<"));
+								        test2.value = afterString2;
 							            
 							            // 마커를 클릭한 위치에 표시합니다 
 							            marker.setPosition(mouseEvent.latLng);
@@ -167,9 +167,7 @@ $(function(){
 							            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
 							            infowindow.setContent(MapAddress);
 							            
-							            
 							        }   
-							        
 							    });
 							});
 							

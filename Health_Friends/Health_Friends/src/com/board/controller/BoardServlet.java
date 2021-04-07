@@ -39,19 +39,16 @@ public class BoardServlet extends HttpServlet {
 				
 			} else if(command.equals("insertres")) {
 				String postLatitude = request.getParameter("postLatitude");
-				System.out.println(postLatitude);
+				String postLongitude = request.getParameter("postLongitude");
 				String postTitle = request.getParameter("postTitle");
-				System.out.println(postTitle);
 				String postCategoryName = request.getParameter("postCategoryName");
-				System.out.println(postCategoryName);
 				String postContent = request.getParameter("postContent");
-				System.out.println(postContent);
 				int postUserNo = ldto.getMember_no();
 				String postMdate = request.getParameter("postMdate");
-				System.out.println(postMdate);
 				BoardDto dto = new BoardDto();
 				dto.setPostUserNo(postUserNo);
 				dto.setPostLatitude(postLatitude);
+				dto.setPostLongitude(postLongitude);
 				dto.setPostCategoryName(postCategoryName);
 				dto.setPostTitle(postTitle);
 				dto.setPostContent(postContent);
