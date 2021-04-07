@@ -20,29 +20,6 @@
 
 <title>후기 게시판</title>
 
-<!-- 페이징 관련 CSS -->
-<style>
-	.pagination {
-		padding: 0 0;
-		text-align: center;
-	}
-	
-	.pagination a {
-		padding: 3px 8px;
-		margin: 5px;
-		cursor: pointer;
-	}
-	
-	.pagination a.on {
-	width: 30px;
-	height: 30px;
-	border: 1px solid royalblue;
-	border-radius: 100%;
-	background-color: royalblue;
-	color: white;
-	}
-	}
-</style>
 <style type="text/css">
 
 .main img {
@@ -52,11 +29,38 @@
 }
 
 .btn01 {
-	background: Royalblue;
+background: royalblue;
+	border: 1px solid royalblue;
+
+}
+
+.btn01:hover {
+	width: 130px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: white;
+	text-decoration: underline royalblue;
+	color: royalblue;
+	display: inline-block;
+	border: 1px solid royalblue;
 }
 
 .btn02 {
-	background: teal;
+background : teal;
+	border: 1px solid teal;
+}
+
+.btn02:hover {
+	width: 130px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: white;
+	text-decoration: underline teal;
+	color: teal;
+	display: inline-block;
+	border: 1px solid teal;
 }
 
 .board_list {
@@ -113,14 +117,27 @@
 	font-size: 14px;
 }
 
+.bt_wrap a {
+	display: inline-block;
+	min-width: 80px;
+	margin-left: 10px;
+	padding: 10px;
+	border: 1px solid Royalblue;
+	border-radius: 2px;
+	font-size: 16px;
+}
+
 .bt_wrap a.on {
 	background: Royalblue;
 	color: white;
 	border-radius: 100px;
 }
 
-.bt_wrap a.off {
-	color: Royalblue;
+.bt_wrap a.on:hover {
+	background: Royalblue;
+	color: white;
+	text-decoration: underline white;
+	border-radius: 100px;
 }
 
 img {
@@ -147,6 +164,26 @@ div .pagemove:hover {
 	color: white;
 		
 }
+
+	.pagination {
+		padding: 0 0;
+		text-align: center;
+	}
+	
+	.pagination a {
+		padding: 3px 8px;
+		margin: 5px;
+		cursor: pointer;
+	}
+	
+	.pagination a.on {
+	width: 30px;
+	height: 30px;
+	border: 1px solid royalblue;
+	border-radius: 100%;
+	background-color: royalblue;
+	color: white;
+	}
 
 </style>
 

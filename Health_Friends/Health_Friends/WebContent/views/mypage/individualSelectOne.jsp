@@ -177,8 +177,21 @@ color: #fff;
 border:none;
 background-Color:#9932CC;
 border: 1px solid #9932CC;  
-font-size:16px;     
+font-size:14px;     
 border-radius: 100px;   
+color: white;    
+width: 86px;height:32px; 
+cursor: pointer;
+vertical-align: 4px;
+}
+
+#mpage01:hover {
+border:none;
+background-Color:#9932CC;
+border: 1px solid #9932CC;  
+font-size:14px;     
+border-radius: 100px; 
+text-decoration: underline white;    
 color: white;    
 width: 86px;height:32px; 
 cursor: pointer;
@@ -189,12 +202,29 @@ vertical-align: 4px;
 border:none;
 background-Color: white;
 border: 1px solid #9932CC;  
-font-size:16px;     
+font-size:14px;     
 border-radius: 100px;   
 color: #9932CC;    
 width: 86px;height:32px; 
 cursor: pointer;
 vertical-align: 4px;
+}
+
+#mpage02:hover {
+border:none;
+background-Color:white;
+border: 1px solid #9932CC;  
+font-size:14px;     
+border-radius: 100px;
+text-decoration: underline #9932CC;   
+color: #9932CC;    
+width: 86px;height:32px; 
+cursor: pointer;
+vertical-align: 4px;
+}
+
+.individual01 {
+margin-top:10px;
 }
 
 </style>
@@ -261,14 +291,13 @@ vertical-align: 4px;
 			<tr>
 				<td colspan="2"><textarea style="resize:none; border:none; font-size:18px;" rows="30" cols="90" name="content" readonly="readonly" >${dto.individual_content }</textarea></td>
 			</tr>
-			<tr>
-				<td colspan="2" style="text-align:right">
-					<input type="button" id="mpage01" value="수정" onclick="location.href='individual.do?command=individualUpdate&individual_no=${dto.individual_no }&date=<%=date%>'">
-					<input type="button" id="mpage01" value="삭제" onclick="location.href='individual.do?command=individualDelete&individual_no=${dto.individual_no }'">
-					<input type="button" id="mpage02" value="목록" onclick="location.href='individual.do?command=individualList&individual_id=<%=Ldto.getMember_id()%>&year=<%=year%>&month=<%=month%>&date=<%=date%>'">
-				</td>
-			</tr>
 		</table>
+			<div class="individual01" style="text-align:right">
+		<input type="button" id="mpage01" value="수정" onclick="location.href='individual.do?command=individualUpdate&individual_no=${dto.individual_no }&date=<%=date%>'">
+					<input type="button" id="mpage01" value="삭제" onclick="location.href='individual.do?command=individualDelete&individual_no=${dto.individual_no }'">
+	
+				<input type="button" id="mpage02" value="목록" onclick="location.href='individual.do?command=individualList&individual_id=<%=Ldto.getMember_id()%>&year=<%=year%>&month=<%=month%>&date=<%=date%>'">
+</div>
 </div>
 </div>
 

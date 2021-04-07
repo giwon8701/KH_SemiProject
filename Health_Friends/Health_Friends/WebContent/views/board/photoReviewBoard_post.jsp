@@ -79,16 +79,30 @@ ul, li {
 }
 
 .bt_wrap a.on {
-	background: white;
-	color: royalblue;
-	border-radius: 100px
+	background: Royalblue;
+	color: white;
+	border-radius: 100px;
+}
+
+.bt_wrap a.on:hover {
+	background: Royalblue;
+	color: white;
+	text-decoration: underline white;
+	border-radius: 100px;
 }
 
 .bt_wrap a.off {
-	background: royalblue;
-	color: #fff;
+	color: Royalblue;
 	border-radius: 100px;
 }
+
+.bt_wrap a.off:hover {
+	color: Royalblue;
+	border-radius: 100px;
+	text-decoration: underline Royalblue;
+	border-radius: 100px;
+}
+
 
 .board_list {
 	width: 100%;

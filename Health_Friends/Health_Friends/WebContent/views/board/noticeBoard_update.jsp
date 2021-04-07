@@ -23,11 +23,37 @@ vertical-align: middle;
 }
 
 .btn01 {
-background: #FF4500;
+	background: #FF4500;
+	border: 1px solid OrangeRed;
+}
+
+.btn01:hover {
+	width: 130px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: white;
+	text-decoration: underline OrangeRed;
+	color: OrangeRed;
+	display: inline-block;
+	border: 1px solid OrangeRed;
 }
 
 .btn02 {
-background : Tan;
+	background: Tan;
+	border: 1px solid Tan;
+}
+
+.btn02:hover {
+	width: 130px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: white;
+	text-decoration: underline Tan;
+	color: Tan;
+	display: inline-block;
+	border: 1px solid Tan;
 }
 
 html {
@@ -73,15 +99,31 @@ ul, li {
 	font-size: 1.4rem;
 }
 
-.bt_wrap a.on {
-	background: #FF4500;
+.bt_wrap a.off {
+	background: OrangeRed;
 	color: white;
-	border-radius: 100px
+	border-radius: 100px;
 }
 
-.bt_wrap a.off {
-	background: white;
-	color: #FF4500;
+.bt_wrap a.off:hover {
+	background: OrangeRed;
+	color: white;
+	border-radius: 100px;;
+	text-decoration: underline white;
+	border-radius: 100px;
+}
+
+.bt_wrap a.on {
+	color: OrangeRed;
+	border-radius: 100px;
+	background:white;
+}
+
+.bt_wrap a.on:hover {
+	color: OrangeRed;
+	border-radius: 100px;
+	background:white;
+	text-decoration: underline OrangeRed;
 	border-radius: 100px;
 }
 

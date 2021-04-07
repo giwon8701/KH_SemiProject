@@ -24,11 +24,37 @@ vertical-align: middle;
 }
 
 .btn01 {
-background: #FF4500;
+	background: #FF4500;
+	border: 1px solid OrangeRed;
+}
+
+.btn01:hover {
+	width: 130px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: white;
+	text-decoration: underline OrangeRed;
+	color: OrangeRed;
+	display: inline-block;
+	border: 1px solid OrangeRed;
 }
 
 .btn02 {
-background : Tan;
+	background: Tan;
+	border: 1px solid Tan;
+}
+
+.btn02:hover {
+	width: 130px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: white;
+	text-decoration: underline Tan;
+	color: Tan;
+	display: inline-block;
+	border: 1px solid Tan;
 }
 
 html {
@@ -74,15 +100,29 @@ ul, li {
 	font-size: 1.4rem;
 }
 
-.bt_wrap a.on {
-	background: white;
-	color: #FF4500;
-	border-radius: 100px
+.bt_wrap a.off {
+	background: OrangeRed;
+	color: white;
+	border-radius: 100px;
 }
 
-.bt_wrap a.off {
-	background: #FF4500;
-	color: #fff;
+.bt_wrap a.off:hover {
+	background: OrangeRed;
+	color: white;
+	text-decoration: underline white;
+	border-radius: 100px;
+}
+
+.bt_wrap a.on {
+	color: OrangeRed;
+	background:white;
+	border-radius: 100px;
+}
+
+.bt_wrap a.on:hover {
+	color: OrangeRed;
+	background:white;
+	text-decoration: underline OrangeRed;
 	border-radius: 100px;
 }
 
@@ -202,38 +242,6 @@ ul, li {
 	line-height: 160%;
 	font-size: 1.4rem;
 }
-
-.button {
-
-    width:100px;
-
-    background-color: #f8585b;
-
-    border: none;
-
-    color:#fff;
-
-    padding: 15px 0;
-
-    text-align: center;
-
-    text-decoration: none;
-
-    display: inline-block;
-
-    font-size: 15px;
-
-    margin: 4px;
-
-    cursor: pointer;
-
-}
-
-
-
-출처: https://nimolove.tistory.com/44 [Chaeni_vlog 🌈]
-
-
 
 </style>
 

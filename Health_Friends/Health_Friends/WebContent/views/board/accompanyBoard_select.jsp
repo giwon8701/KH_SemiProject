@@ -28,10 +28,37 @@ vertical-align: middle;
 
 .btn01 {
 background: teal;
+	border: 1px solid teal;
+
+}
+
+.btn01:hover {
+	width: 130px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: white;
+	text-decoration: underline teal;
+	color: teal;
+	display: inline-block;
+	border: 1px solid teal;
 }
 
 .btn02 {
 background : royalblue;
+	border: 1px solid royalblue;
+}
+
+.btn02:hover {
+	width: 130px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: white;
+	text-decoration: underline royalblue;
+	color: royalblue;
+	display: inline-block;
+	border: 1px solid royalblue;
 }
 
 html {
@@ -77,15 +104,29 @@ ul, li {
 	font-size: 1.4rem;
 }
 
-.bt_wrap a.on {
-	background: white;
-	color: teal;
-	border-radius: 100px
-}
-
 .bt_wrap a.off {
 	background: teal;
-	color: #fff;
+	color: white;
+	border-radius: 100px;
+}
+
+.bt_wrap a.off:hover {
+	background: teal;
+	color: white;
+	text-decoration: underline white;
+	border-radius: 100px;
+}
+
+.bt_wrap a.on {
+	color: teal;
+	background:white;
+	border-radius: 100px;
+}
+
+.bt_wrap a.on:hover {
+	color: teal;
+	background:white;
+	text-decoration: underline teal;
 	border-radius: 100px;
 }
 

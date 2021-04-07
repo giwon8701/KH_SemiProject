@@ -10,25 +10,236 @@
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-	response.setContentType("text/html; charset=UTF-8");
+response.setContentType("text/html; charset=UTF-8");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 
-<title>동행 게시판</title>
-
-	
 <style>
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.main01 {
+	width: 100%;
+	margin: 10px auto;
+	position: relative;
+}
+
+.main img {
+	width: 100%;
+	vertical-align: middle;
+}
+
+.text01 {
+	padding: 5px 10px;
+	text-align: center;
+	position: absolute;
+	top: 37%;
+	left: 50%;
+	transform: translate(-63%, -50%);
+	color: ghostwhite;
+}
+
+.text02 {
+	padding: 5px 10px;
+	text-align: center;
+	position: absolute;
+	top: 47%;
+	left: 48%;
+	transform: translate(-53%, -52%);
+	color: ghostwhite;
+}
+
+.btn {
+	width: 130px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: #1f1f39;
+	color: #fff;
+	display: inline-block;
+}
+
+.btn01 {
+background: teal;
+	border: 1px solid teal;
+
+}
+
+.btn01:hover {
+	width: 130px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: white;
+	text-decoration: underline teal;
+	color: teal;
+	display: inline-block;
+	border: 1px solid teal;
+}
+
+.btn02 {
+background : royalblue;
+	border: 1px solid royalblue;
+}
+
+.btn02:hover {
+	width: 130px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: white;
+	text-decoration: underline royalblue;
+	color: royalblue;
+	display: inline-block;
+	border: 1px solid royalblue;
+}
+
+
+.board {
+	margin: 0 260px;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+caption {
+	display: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.board_list_wrap {
+	padding: 50px;
+}
+
+.board_list {
+	width: 100%;
+	border-top: 1px solid royalblue;
+}
+
+.board_list tr {
+	border-bottom: 1px solid #ccc
+}
+
+.board_list th, .board_list td {
+	padding: 10px;
+	font-size: 14px;
+}
+
+.board_list td {
+	text-align: center;
+}
+
+
+.board_list .tit:hover {
+	text-decoration: underline;
+}
+
+.paging {
+	margin-top: 40px;
+	margin-bottom: 50px;
+	text-align: center;
+	font-size: 0;
+}
+
+.paging a {
+	display: inline-block;
+	margin-left: 10px;
+	padding: 5px 10px;
+	border: 1px solid teal;
+	border-radius: 100px;
+	font-size: 14px;
+}
+
+#paging {
+border:none;
+background-Color:#F5F5F5;  
+font:18px;     
+border-radius: 100px;   
+color:black;    
+width:86px;height:32px; 
+cursor: pointer;
+}
+
+#paging:hover {
+border:none;
+background-Color: lightgray;  
+font:18px;     
+border-radius: 100px;   
+color:black;    
+width:86px;height:32px; 
+cursor: pointer;
+}
+
+.bt_wrap {
+	margin-top: 30px;
+	float: right;
+	text-align: center;
+	font-size: 0;
+}
+
+.bt_wrap a {
+	display: inline-block;
+	min-width: 80px;
+	margin-left: 10px;
+	padding: 8px;
+	border: 1px solid teal;
+	border-radius: 2px;
+	font-size: 14px;
+}
+
+.bt_wrap a:first-child {
+	margin-left: 0;
+}
+
+.bt_wrap a.on {
+	background: teal;
+	color: white;
+	border-radius: 100px;
+}
+
+.bt_wrap a.on:hover {
+	background: teal;
+	color: white;
+	text-decoration: underline white;
+	border-radius: 100px;
+}
+
+.bt_wrap a.off {
+	color: teal;
+}
+
+.bt_wrap a.off:hover {
+color: teal;
+	text-decoration: underline teal;
+	border-radius: 100px;
+}
+
+div .pagemove {
+	width: 30px;
+	height: 30px;
+	border: 1px solid teal;
+	border-radius: 100%;
+	color: teal;
+		
+}
 
 .board_list tbody tr td:nth-child(1) {
 	text-align: left;
 }
 
 .color01 {
-color: gray 
+	color: gray
 }
 
 div .pagemove:hover {
@@ -38,30 +249,31 @@ div .pagemove:hover {
 	border-radius: 100%;
 	background-color: lightgray;
 	color: white;
-		
 }
 
-	.pagination {
-		padding: 0 0;
-		text-align: center;
-	}
-	
-	.pagination a {
-		padding: 3px 8px;
-		margin: 5px;
-		cursor: pointer;
-	}
-	
-	.pagination a.on {
+.pagination {
+	padding: 0 0;
+	text-align: center;
+}
+
+.pagination a {
+	padding: 3px 8px;
+	margin: 5px;
+	cursor: pointer;
+}
+
+.pagination a.on {
 	width: 30px;
 	height: 30px;
 	border: 1px solid teal;
 	border-radius: 100%;
 	background-color: teal;
 	color: white;
-	}
-	
+}
+
 </style>
+
+<title>동행 게시판</title>
 
 <script type="text/javascript">
 	function loginChk() {
@@ -72,22 +284,22 @@ div .pagemove:hover {
 </head>
 <body>
 
-	<%@include file="../../header.jsp" %>
+	<%@include file="../../header.jsp"%>
 
 	<%
 		List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
-	
-		int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-		int totalCount = Integer.parseInt(request.getAttribute("totalCount") + "");
-		
-		Paging paging = new Paging();
-		paging.setPageNo(pageNum);
-		paging.setPageSize(10);
-		paging.setTotalCount(totalCount);
+
+	int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+	int totalCount = Integer.parseInt(request.getAttribute("totalCount") + "");
+
+	Paging paging = new Paging();
+	paging.setPageNo(pageNum);
+	paging.setPageSize(10);
+	paging.setTotalCount(totalCount);
 	%>
-	
+
 	<script>
-$(document).ready(function(){
+		$(document).ready(function(){
 	
 	var pageNum = <%=pageNum-1%>;
 	
@@ -99,7 +311,6 @@ $(document).ready(function(){
 	
 })
 </script>
-
 
 	<div class="main01">
 		<img
@@ -164,9 +375,9 @@ $(document).ready(function(){
 
 			<c:choose>
 				<c:when test="${empty Ldto.member_no}">
-				<div class="bt_wrap">
+					<div class="bt_wrap">
 						<a href="javascript:loginChk();" class="on" value="글작성">글작성</a>
-				</div>
+					</div>
 				</c:when>
 				<c:otherwise>
 					<div class="bt_wrap">
@@ -174,12 +385,14 @@ $(document).ready(function(){
 					</div>
 				</c:otherwise>
 			</c:choose>
-<br>
-<br>
+			<br> <br>
 			<%--  pagination --%>
 			<div class="pagination board_list_warp02">
-				<input type="button" onclick="pageMove(<%=paging.getFirstPageNo()%>)" value="첫 페이지" class="bt" id="paging">
-				<input type="button" onclick="pageMove(<%=paging.getPrevPageNo()%>)" value="이전 페이지" class="bt" id="paging">
+				<input type="button"
+					onclick="pageMove(<%=paging.getFirstPageNo()%>)" value="첫 페이지"
+					class="bt" id="paging"> <input type="button"
+					onclick="pageMove(<%=paging.getPrevPageNo()%>)" value="이전 페이지"
+					class="bt" id="paging">
 				<%
 					for (int i = paging.getStartPageNo(); i <= paging.getEndPageNo(); i++) {
 				%>
@@ -187,20 +400,22 @@ $(document).ready(function(){
 				<%
 					}
 				%>
-				<input type="button" onclick="pageMove(<%=paging.getNextPageNo()%>)" value="다음 페이지" class="bt" id="paging">
-				<input type="button" onclick="pageMove(<%=paging.getFinalPageNo()%>)" value="끝 페이지" class="bt" id="paging">
+				<input type="button" onclick="pageMove(<%=paging.getNextPageNo()%>)"
+					value="다음 페이지" class="bt" id="paging"> <input type="button"
+					onclick="pageMove(<%=paging.getFinalPageNo()%>)" value="끝 페이지"
+					class="bt" id="paging">
 			</div>
-		
+
 			<script>
 					function pageMove(page){
 						location.href='board.do?command=list&page='+page
 					}
 			</script>
-			</div>
-			</div>
+		</div>
+	</div>
 
 
-<%--			<div class="board_list_warp02">
+	<%--			<div class="board_list_warp02">
 
 				<div class="paging">
 				<a href="#" class="bt">첫 페이지</a>

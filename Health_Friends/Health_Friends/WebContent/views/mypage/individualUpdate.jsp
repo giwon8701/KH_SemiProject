@@ -173,8 +173,21 @@ color: #fff;
 border:none;
 background-Color:#9932CC;
 border: 1px solid #9932CC;  
-font-size:16px;     
+font-size:14px;     
 border-radius: 100px;   
+color: white;    
+width: 86px;height:32px; 
+cursor: pointer;
+vertical-align: 4px;
+}
+
+#mpage01:hover {
+border:none;
+background-Color:#9932CC;
+border: 1px solid #9932CC;  
+font-size:14px;     
+border-radius: 100px; 
+text-decoration: underline white;    
 color: white;    
 width: 86px;height:32px; 
 cursor: pointer;
@@ -185,7 +198,7 @@ vertical-align: 4px;
 border:none;
 background-Color: white;
 border: 1px solid #9932CC;  
-font-size:16px;     
+font-size:14px;     
 border-radius: 100px;   
 color: #9932CC;    
 width: 86px;height:32px; 
@@ -193,6 +206,22 @@ cursor: pointer;
 vertical-align: 4px;
 }
 
+#mpage02:hover {
+border:none;
+background-Color:white;
+border: 1px solid #9932CC;  
+font-size:14px;     
+border-radius: 100px;
+text-decoration: underline #9932CC;   
+color: #9932CC;    
+width: 86px;height:32px; 
+cursor: pointer;
+vertical-align: 4px;
+}
+
+.individual01 {
+margin-top:10px;
+}
 </style>
 </head>
 <body>
@@ -260,13 +289,11 @@ vertical-align: 4px;
 			<tr>
 				<td colspan="2"><textarea rows="30" cols="90" style="border: none; font-size: 18px; resize:none;" name="individual_content">${dto.individual_content }</textarea></td>
 			</tr>
-			<tr>
-				<td colspan="2" style="text-align:right">
-					<input type="submit" id="mpage01" value="수정">
-					<input type="button" id="mpage02" value="취소" onclick="location.href='../../individual.do?command=indivipdate&seq=${dto.individual_no}'">
-				</td>
-			</tr>
 		</table>
+			<div class="individual01" style="text-align:right">
+		<input type="submit" id="mpage01" value="수정">
+					<input type="button" id="mpage02" value="취소" onclick="location.href='../../individual.do?command=indivipdate&seq=${dto.individual_no}'">
+		</div>
 		</div>
 		</div>
 		

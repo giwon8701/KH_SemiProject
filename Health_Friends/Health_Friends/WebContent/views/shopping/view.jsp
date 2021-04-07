@@ -124,7 +124,7 @@
 
 	<div style="text-align: center">
 		<img
-			src="https://image.freepik.com/free-vector/people-doing-different-actions_52683-2299.jpg"
+			src="images/shopping.jpeg"
 			style="width: 850px; height: 550px"> <br>
 
 		<form id="search_form" onsubmit="enter_event(event);">

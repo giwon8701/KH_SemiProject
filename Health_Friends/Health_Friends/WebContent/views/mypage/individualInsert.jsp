@@ -29,7 +29,6 @@ height: 2000px;
 vertical-align: middle;
 
 }
-
 .text01 {
 padding: 5px 10px;
 text-align: center;
@@ -50,6 +49,7 @@ color: ghostwhite;
 }
 
 
+
 .btn {
     width: 130px;
     height: 40px;
@@ -66,8 +66,6 @@ background: #FF4500;
 .btn02 {
 background : Tan;
 }
-
-
 .board {
 margin: 0 260px;
 }
@@ -80,6 +78,7 @@ caption {
 	display: none;
 }
 
+
 a {
 	text-decoration: none;
 	color: inherit;
@@ -88,6 +87,7 @@ a {
 .board_list_wrap {
 	
 }
+
 
 .board_list_wrap {
 	padding: 50px;
@@ -132,8 +132,7 @@ a {
 	border: 1px solid #9932CC;
 	border-radius: 100px;
 	font-size: 14px;
-}
-.board_list_wrap .paging a:first-child {
+}.board_list_wrap .paging a:first-child {
 	margin-left: 0;
 }
 
@@ -141,6 +140,7 @@ a {
 border: 1px solid #eee;
 background: #eee;
 }
+
 
 .board_list_wrap .paging a.num {
 border: 1px solid #9932CC;
@@ -152,7 +152,6 @@ color: #9932CC;
 background: #9932CC;
 color: #fff;
 }
-
 .bt_wrap a {
 	display: inline-block;
 	min-width: 80px;
@@ -162,6 +161,7 @@ color: #fff;
 	border-radius: 2px;
 	font-size: 14px;
 }
+
 
 .bt_wrap a.on {
 	background: #9932CC;
@@ -173,8 +173,21 @@ color: #fff;
 border:none;
 background-Color:#9932CC;
 border: 1px solid #9932CC;  
-font-size:16px;     
+font-size:14px;     
 border-radius: 100px;   
+color: white;    
+width: 86px;height:32px; 
+cursor: pointer;
+vertical-align: 4px;
+}
+
+#mpage01:hover {
+border:none;
+background-Color:#9932CC;
+border: 1px solid #9932CC;  
+font-size:14px;     
+border-radius: 100px; 
+text-decoration: underline white;    
 color: white;    
 width: 86px;height:32px; 
 cursor: pointer;
@@ -185,12 +198,29 @@ vertical-align: 4px;
 border:none;
 background-Color: white;
 border: 1px solid #9932CC;  
-font-size:16px;     
+font-size:14px;     
 border-radius: 100px;   
 color: #9932CC;    
 width: 86px;height:32px; 
 cursor: pointer;
 vertical-align: 4px;
+}
+
+#mpage02:hover {
+border:none;
+background-Color:white;
+border: 1px solid #9932CC;  
+font-size:14px;     
+border-radius: 100px;
+text-decoration: underline #9932CC;   
+color: #9932CC;    
+width: 86px;height:32px; 
+cursor: pointer;
+vertical-align: 4px;
+}
+
+.individual01 {
+margin-top:10px;
 }
 
 </style>
@@ -330,13 +360,13 @@ vertical-align: 4px;
 			<tr>
 				<td colspan="2"><textarea rows="30" cols="90" name="individual_content" placeholder="내용을 입력하세요" style="border: none; font-size: 18px; resize:none;"></textarea></td>
 			</tr>
-			<tr>
-				<td colspan="2" style="text-align:right">
+		</table>
+		<div class="individual01" style="text-align:right">
+			
 					<input type="submit" id="mpage01" value="작성">
 					<input type="button" id="mpage02" value="취소" onclick="location.href='../../individual.do?command=individualList&year=<%=year%>&month=<%=month%>&date=<%=date%>'">
-				</td>
-			</tr>
-		</table>
+			
+			</div>
 </div>
 </div>
 	</form>
