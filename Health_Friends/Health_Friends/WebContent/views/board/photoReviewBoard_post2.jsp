@@ -16,7 +16,7 @@
 	
 <body>
 
-	<form id="reviewForm" action="../../review.do" method="post">
+	<form id="reviewForm" action="./review.do" method="post">
 			<input type="hidden" name="command" value="insertRes" /> <input
 				type="hidden" name="userNo" value="${Ldto.getMember_no() }">
 			<table border="1" style="width: 1000px">
@@ -49,8 +49,9 @@
           ['table', ['table']],
           ['insert', ['link', 'picture', 'video']],
           ['view', ['fullscreen', 'codeview', 'help']]
-        ],
-        callbacks: {
+        ]
+      });
+     /*   callbacks: {
             onImageUpload: function(files, editor, welEditable) {
               for (var i = files.length - 1; i >= 0; i--) {
                 sendFile(files[i], this);
@@ -75,7 +76,7 @@
               $('#imageBoard > ul').append('<li><img src="'+url+'" width="480" height="auto"/></li>');
             }
           });
-        }
+        }*/
     </script>
 		
 

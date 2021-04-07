@@ -237,7 +237,7 @@ img {
 <%
 			} else{
 %>
-					<a href="./board.do?command=select&postId=<%=list.get(i).getPostId()%>"><%=list.get(i).getPostTitle()%></a>		
+					<a href="./review.do?command=select&postId=<%=list.get(i).getPostId()%>"><%=list.get(i).getPostTitle()%></a>		
 <%
 			}
 %>
