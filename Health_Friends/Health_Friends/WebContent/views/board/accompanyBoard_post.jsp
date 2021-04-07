@@ -8,11 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <title>우리동네 운동친구 Health Friends</title>
-<!-- 
-	kakao map javascript key :  c6a1fbbb0976413a4f4996beefa8a351
-	naver calendar : id: p6N_JsQoah3hCrLJR428
-					 pw: Ekh0RH5rfu
--->
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="/Health_Friends/assets/api/se2/js/HuskyEZCreator.js" type="text/javascript"></script>
 <script src="/Health_Friends/assets/api/se2/init.js" type="text/javascript"></script>
@@ -77,7 +72,7 @@ $(function(){
 					</td>
 				</tr>
 				<tr>
-					<td class="exercise">
+					<td>
 						운동종류	<br/>
 						<select name="postCategoryName">
 							<optgroup label="맨발운동">
@@ -101,7 +96,6 @@ $(function(){
 						<p><em>지도를 클릭해주세요!</em></p>
 						약속장소	<br/>
 						<div id="makerSpace" >
-					도로명주소<input type="text" name="postLatitude" value=""/>	<br/>
 					 지번주소<input type="text" name="postLongitude" value=""/>
 						</div>
 					
@@ -152,9 +146,6 @@ $(function(){
 										
 							           // var markerSpace = document.getElementById("makerSpace");
 							           // makerSpace.innerHTML = detailAddr;
-							            var test1 = document.getElementsByName("postLatitude")[0];
-							            var afterString1 = roadAddr.slice(roadAddr.indexOf(">")+1, roadAddr.lastIndexOf("<"));
-							         	test1.value = afterString1;
 							         	
 							         	var test2 = document.getElementsByName("postLongitude")[0];
 								        var afterString2 = Addr.slice(Addr.indexOf(">")+1, Addr.lastIndexOf("<"));
@@ -203,11 +194,9 @@ $(function(){
 							
 						</script>
 						</td>
-						
-		<!-- 달력API -->
 						<td>
 							<p><em>달력을 클릭해주세요!</em></p>
-							<div id='postMdate'></div>
+	<!-- 달력API -->			<div id='postMdate'></div>
 						 	<link href='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.css' rel='stylesheet' />
 						    <script src='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.js'></script>
 						    <script>
@@ -230,9 +219,8 @@ $(function(){
 						      });
 						    </script>
 						    <input type="hidden" name="postMdate" value="" />
-					    <div id='calendar'></div>
-					    
-					</td>
+					 	   <div id='calendar'></div>
+						</td>
 				</tr> 
 				<tr>
 					<td colspan="3" id="Board_writeContent">

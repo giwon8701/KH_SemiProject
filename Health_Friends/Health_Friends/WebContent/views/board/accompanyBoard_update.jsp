@@ -10,11 +10,38 @@
 <head>
 <meta charset="UTF-8">
 <title>동행 게시판 글수정</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+<script src="/Health_Friends/assets/api/se2/js/HuskyEZCreator.js" type="text/javascript"></script>
+<script src="/Health_Friends/assets/api/se2/init.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+	$("#submit").click(function(){
+		oEditors.getById["postContent"].exec("POST_CONTENT");
+		$("Acform").submit();
+	})
+})
 
+$(function(){
+	$("#submit").click(function(){
+		oEditors.getById["postMdate"].exec("POST_MDATE");
+		$("Acform").submit();
+	})
+})
+</script>
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 
 <style>
-
+.map_wrap {position:relative;width:100%;height:350px;}
+.title {font-weight:bold;display:block;}
+.hAddr {position:absolute;left:10px;top:10px;border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;}
+#centerAddr {display:block;margin-top:2px;font-weight: normal;}
+.bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}    
+table{
+	width: 1000px;
+}
+tr > th{
+	text-align: left;
+}
 .main img {
 width: 100%;
 height: 2000px;
@@ -284,6 +311,156 @@ ul, li {
 					<td>${dto.postRegdate } </td>
 				</tr>
 				<tr>
+					<td>
+						운동종류	<br/>
+						<select name="postCategoryName">
+							<optgroup label="맨발운동">
+								<option value="walk">걷기</option>
+								<option value="running">달리기</option>
+							</optgroup>
+							<optgroup label="라이딩">
+								<option value="bike_riding">자전거</option>
+								<option value="inline_skating">인라인스케이트(롤러브레이드)</option>
+							</optgroup>
+							<optgroup label="구기운동">
+								<option value="basketball">농구</option>
+								<option value="dodgeball">피구</option>
+								<option value="tennis">테니스</option>
+							</optgroup>
+						</select>
+					</td>
+					<td>
+						<!-- 지도API : c6a1fbbb0976413a4f4996beefa8a351 -->
+						<p><em>지도를 클릭해주세요!</em></p>
+						약속장소	<br/>
+						<div id="makerSpace" >
+					 지번주소<input type="text" name="postLongitude" value=""/>
+						</div>
+					
+						<input type="hidden" id="MapAddress" name="MapAddress" value="" /> 
+						<div class="map_wrap">
+						    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+						    <div class="hAddr">
+						        <span class="title">지도중심기준 행정동 주소정보</span>
+						        <span id="centerAddr"></span>
+						    </div>
+						</div>
+					
+						<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c6a1fbbb0976413a4f4996beefa8a351&libraries=services"></script>
+						<script>
+							var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+							    mapOption = {
+							        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+							        level: 1 // 지도의 확대 레벨
+							    };  
+							
+							// 지도를 생성합니다    
+							var map = new kakao.maps.Map(mapContainer, mapOption); 
+							
+							// 주소-좌표 변환 객체를 생성합니다
+							var geocoder = new kakao.maps.services.Geocoder();
+							
+							var marker = new kakao.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
+							    infowindow = new kakao.maps.InfoWindow({zindex:1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
+							
+							    
+							// 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
+							searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+							
+							// 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
+							kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+							    searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
+							        if (status === kakao.maps.services.Status.OK) {
+							        	
+							            var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+							            detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+							            
+							            var MapAddresss = '<div class="bAddr">' +  '<span class="title">법정동 주소정보</span>' + detailAddr + '</div>';
+							                    
+							            var roadAddr = !!result[0].road_address ? '<div>' + result[0].road_address.address_name + '</div>' : '';
+							            var Addr = '<div>' + result[0].address.address_name + '</div>';
+							            
+							            $("#MapAddress").val(mouseEvent)
+										
+							           // var markerSpace = document.getElementById("makerSpace");
+							           // makerSpace.innerHTML = detailAddr;
+							         	
+							         	var test2 = document.getElementsByName("postLongitude")[0];
+								        var afterString2 = Addr.slice(Addr.indexOf(">")+1, Addr.lastIndexOf("<"));
+								        test2.value = afterString2;
+							            
+							            // 마커를 클릭한 위치에 표시합니다 
+							            marker.setPosition(mouseEvent.latLng);
+							            marker.setMap(map);
+							            
+							            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+							            infowindow.setContent(MapAddress);
+							            
+							        }   
+							    });
+							});
+							
+							// 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
+							kakao.maps.event.addListener(map, 'idle', function() {
+							    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+							});
+							
+							function searchAddrFromCoords(coords, callback) {
+							    // 좌표로 행정동 주소 정보를 요청합니다
+							    geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);         
+							}
+							
+							function searchDetailAddrFromCoords(coords, callback) {
+							    // 좌표로 법정동 상세 주소 정보를 요청합니다
+							    geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+							}
+							
+							// 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
+							function displayCenterInfo(result, status) {
+							    if (status === kakao.maps.services.Status.OK) {
+							        var infoDiv = document.getElementById('centerAddr');
+							
+							        for(var i = 0; i < result.length; i++) {
+							            // 행정동의 region_type 값은 'H' 이므로
+							            if (result[i].region_type === 'H') {
+							                infoDiv.innerHTML = result[i].address_name;
+							                break;
+							            }
+							        }
+							    }    
+							}
+							
+						</script>
+						</td>
+						<td>
+							<p><em>달력을 클릭해주세요!</em></p>
+	<!-- 달력API -->			<div id='postMdate'></div>
+						 	<link href='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.css' rel='stylesheet' />
+						    <script src='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.js'></script>
+						    <script>
+						      document.addEventListener('DOMContentLoaded', function() {
+						        var calendarEl = document.getElementById('calendar');
+						        var calendar = new FullCalendar.Calendar(calendarEl, {
+						            selectable: true,
+						            headerToolbar: {
+						              left: 'prev,next today',
+						              center: 'title',
+						              right: 'dayGridMonth,timeGridWeek,timeGridDay'
+						            },
+						       		dateClick: function(info){
+										var postMdate = document.getElementById('postMdate');
+										postMdate.innerHTML = "약속일자 : " + info.dateStr;
+										document.getElementsByName("postMdate")[0].value = info.dateStr;
+						       		}
+						          });
+						        calendar.render();
+						      });
+						    </script>
+						    <input type="hidden" name="postMdate" value="" />
+					   	 <div id='calendar'></div>
+						</td>
+				</tr>
+				<tr>
 					<td colspan="3">
 						<textarea name="postContent">${dto.postContent }</textarea>
 					</td>
@@ -291,7 +468,7 @@ ul, li {
 				<tr>
 					<td>	
 						<input type="submit" value="확인"/>
-						<input type="button" value="취소" onclick="location.href='./board.do?command=list'"/>
+						<input type="button" value="취소" onclick="location.href='board.do?command=list'" />
 					</td>
 				</tr>
 		</table>

@@ -38,7 +38,6 @@ public class BoardServlet extends HttpServlet {
 				dispatch(request, response, "./views/board/accompanyBoard_post.jsp");
 				
 			} else if(command.equals("insertres")) {
-				String postLatitude = request.getParameter("postLatitude");
 				String postLongitude = request.getParameter("postLongitude");
 				String postTitle = request.getParameter("postTitle");
 				String postCategoryName = request.getParameter("postCategoryName");
@@ -47,7 +46,6 @@ public class BoardServlet extends HttpServlet {
 				String postMdate = request.getParameter("postMdate");
 				BoardDto dto = new BoardDto();
 				dto.setPostUserNo(postUserNo);
-				dto.setPostLatitude(postLatitude);
 				dto.setPostLongitude(postLongitude);
 				dto.setPostCategoryName(postCategoryName);
 				dto.setPostTitle(postTitle);
@@ -71,22 +69,26 @@ public class BoardServlet extends HttpServlet {
 				int postId = Integer.parseInt(request.getParameter("postId"));
 				BoardDto dto = biz.accompany_selectOne(postId);
 				request.setAttribute("dto", dto);
-				dispatch(request, response, "./views/board/accompanyBaord_update.jsp");
+				dispatch(request, response, "./views/board/accompanyBoard_update.jsp");
 			
-			} else if(command.equals("updateres")) {	
+			} else if(command.equals("updateres")) {
 				int postId = Integer.parseInt(request.getParameter("postId"));
-				int postUserNo = Integer.parseInt(request.getParameter("postUserNo"));
+				String postLongitude = request.getParameter("postLongitude");
 				String postTitle = request.getParameter("postTitle");
+				String postCategoryName = request.getParameter("postCategoryName");
 				String postContent = request.getParameter("postContent");
+				String postMdate = request.getParameter("postMdate");
 				BoardDto dto = new BoardDto();
-				dto.setPostId(postId);
+				dto.setPostLongitude(postLongitude);
+				dto.setPostCategoryName(postCategoryName);
 				dto.setPostTitle(postTitle);
 				dto.setPostContent(postContent);
-				dto.setPostUserNo(postUserNo);
+				dto.setPostMdate(postMdate);
+				dto.setPostId(postId);
 				
 				int res = biz.accompany_update(dto);
 				if (res > 0) {
-					response.sendRedirect("board.do?command=list");
+					response.sendRedirect("board.do?command=list&postId=" + postId);
 				} else {
 					response.sendRedirect("./views/board/" );
 				}

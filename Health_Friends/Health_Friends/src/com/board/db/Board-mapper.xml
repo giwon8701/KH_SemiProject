@@ -141,7 +141,7 @@
 	<insert id="accompany_insert" parameterType="BoardDto">
 		INSERT INTO POST VALUES
 		(#{postUserNo}, POST_ID_SEQ.NEXTVAL, POST_DONGHANG_SEQ.NEXTVAL, 'ACCOMPANY', #{postCategoryName},#{postTitle},#{postContent},
-		#{postMdate},SYSDATE,0,0,0,'N',#{postLatitude}, #{postLongitude})
+		#{postMdate},SYSDATE,0,0,0,'N', NULL, #{postLongitude})
 	</insert>
 	
 	<insert id="photo_insert" parameterType="BoardDto">
@@ -155,6 +155,17 @@
 		(#{postUserNo}, POST_ID_SEQ.NEXTVAL, POST_NOTICE_SEQ.NEXTVAL, 'NOTICE', 'walk', #{postTitle},#{postContent},
 		NULL, TO_CHAR(SYSDATE,'YYYY.MM.DD HH24:MI'),0,0,0,'N',0,0)
 	</insert>
+	
+	<update id="accompany_update" parameterType="BoardDto">
+		UPDATE POST SET 
+			POST_ID = #{postId},
+			POST_TITLE = #{postTitle},
+			POST_CONTENT = #{postContent},
+			POST_MDATE = #{postMdate},
+			POST_REGDATE = SYSDATE,
+			POST_LONGITUDE = #{postLongitude}
+		WHERE POST_ID = #{postId}
+	</update>
 	
 	<update id="notice_update" parameterType="BoardDto">
 		UPDATE POST SET 
