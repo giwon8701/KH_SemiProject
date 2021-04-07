@@ -14,8 +14,6 @@
 <title>Insert title here</title>
 <link href="assets/css/main.css" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-<!-- 헤더 스크롤 내리면 색깔 들어가는 코드 -->
 <script type="text/javascript">
 $(window).scroll(function(evt) {
 	   var y = $(this).scrollTop();
@@ -63,7 +61,7 @@ $(window).scroll(function(evt) {
 			</span>
             
             <ul class="border-ul">
-                <li class="border-li"><a href="./views/introduce/introduce.jsp">소개</a></li>
+                <li class="border-li"><a href="introduce.do?command=introduce">소개</a></li>
                 <li class="border-li"><a href="notice.do?command=list">공지사항</a></li>
                 <li class="border-li"><a href="board.do?command=list">동행게시판</a></li>
                 <li class="border-li"><a href="review.do?command=list">후기게시판</a></li>

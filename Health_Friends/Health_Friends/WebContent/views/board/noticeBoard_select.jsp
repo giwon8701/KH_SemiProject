@@ -24,11 +24,37 @@ vertical-align: middle;
 }
 
 .btn01 {
-background: #FF4500;
+	background: #FF4500;
+	border: 1px solid OrangeRed;
+}
+
+.btn01:hover {
+	width: 130px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: white;
+	text-decoration: underline OrangeRed;
+	color: OrangeRed;
+	display: inline-block;
+	border: 1px solid OrangeRed;
 }
 
 .btn02 {
-background : Tan;
+	background: Tan;
+	border: 1px solid Tan;
+}
+
+.btn02:hover {
+	width: 130px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: white;
+	text-decoration: underline Tan;
+	color: Tan;
+	display: inline-block;
+	border: 1px solid Tan;
 }
 
 html {
@@ -74,15 +100,29 @@ ul, li {
 	font-size: 1.4rem;
 }
 
-.bt_wrap a.on {
-	background: white;
-	color: #FF4500;
-	border-radius: 100px
+.bt_wrap a.off {
+	background: OrangeRed;
+	color: white;
+	border-radius: 100px;
 }
 
-.bt_wrap a.off {
-	background: #FF4500;
-	color: #fff;
+.bt_wrap a.off:hover {
+	background: OrangeRed;
+	color: white;
+	text-decoration: underline white;
+	border-radius: 100px;
+}
+
+.bt_wrap a.on {
+	color: OrangeRed;
+	background:white;
+	border-radius: 100px;
+}
+
+.bt_wrap a.on:hover {
+	color: OrangeRed;
+	background:white;
+	text-decoration: underline OrangeRed;
 	border-radius: 100px;
 }
 
@@ -202,6 +242,7 @@ ul, li {
 	line-height: 160%;
 	font-size: 1.4rem;
 }
+
 </style>
 
 </head>
@@ -250,6 +291,7 @@ ul, li {
 					</c:forEach>
 			</div>
 			<div class="bt_wrap">
+			
 				<a href="./notice.do?command=list" class="on">목록</a> 
 				<a href="./notice.do?command=updateform&postId=${dto.postId}" class="off">수정</a>
 				<a href="./notice.do?command=delete&postId=${dto.postId}" class="off">삭제</a>
@@ -281,9 +323,9 @@ ul, li {
 				<td colspan="3">
 				<c:choose>
       				<c:when test="${Ldto.member_no eq 1 }">	
-      					<input type="button" value="목록" onclick="location.href='board.do?command=list'" />
-						<input type="button" value="수정" onclick="location.href='board.do?command=updateform&postId=${dto.postId}'" />
-						<input type="button" value="삭제" onclick="location.href='board.do?command=delete&postId=${dto.postId}'" />
+      					<input type="button" class="button" value="목록" onclick="location.href='board.do?command=list'" />
+						<input type="button" class="button" value="수정" onclick="location.href='board.do?command=updateform&postId=${dto.postId}'" />
+						<input type="button" class="button" value="삭제" onclick="location.href='board.do?command=delete&postId=${dto.postId}'" />
 					 </c:when>
 	 				 <c:otherwise>
 	 				 	<input type="button" value="목록" onclick="location.href='board.do?command=list'" />
