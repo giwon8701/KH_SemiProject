@@ -279,9 +279,16 @@ ul, li {
 			</tr>
 			<tr>
 				<td colspan="3">
-					<input type="button" value="목록" onclick="location.href='./notice.do?command=list'"/>
-					<input type="button" value="수정" onclick="location.href='./notice.do?command=updateform&postId=${dto.postId}'"/>
-					<input type="button" value="삭제" onclick="location.href='./notice.do?command=delete&postId=${dto.postId}'"/>
+				<c:choose>
+      				<c:when test="${Ldto.member_no eq 1 }">	
+      					<input type="button" value="목록" onclick="location.href='board.do?command=list'" />
+						<input type="button" value="수정" onclick="location.href='board.do?command=updateform&postId=${dto.postId}'" />
+						<input type="button" value="삭제" onclick="location.href='board.do?command=delete&postId=${dto.postId}'" />
+					 </c:when>
+	 				 <c:otherwise>
+	 				 	<input type="button" value="목록" onclick="location.href='board.do?command=list'" />
+	 				 </c:otherwise>
+ 			   </c:choose>
 				</td>
 			</tr>
 		</c:forEach>

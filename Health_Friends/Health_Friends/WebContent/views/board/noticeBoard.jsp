@@ -127,7 +127,7 @@
 	  </c:otherwise>
     </c:choose>
 
-	<!--  pagination -->
+	<!-- pagination -->
 	<div class="pagination">
 		<input type="button" onclick="pageMove(<%=paging.getFirstPageNo()%>)"
 			value="◀"> <input type="button"
