@@ -47,6 +47,7 @@ public class BoardServlet extends HttpServlet {
 				String postTitle = request.getParameter("postTitle");
 				String postCategoryName = request.getParameter("postCategoryName");
 				String postContent = request.getParameter("postContent");
+				System.out.println("postContent : " + postContent);
 				int postUserNo = ldto.getMember_no();
 				String postMdate = request.getParameter("postMdate");
 				BoardDto dto = new BoardDto();

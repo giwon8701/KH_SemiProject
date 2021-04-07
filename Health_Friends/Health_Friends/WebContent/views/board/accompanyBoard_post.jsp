@@ -10,24 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>우리동네 운동친구∴∵Heath Friends</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
-<script src="/Health_Friends/assets/api/se2/js/HuskyEZCreator.js" type="text/javascript"></script>
-<script src="/Health_Friends/assets/api/se2/init.js" type="text/javascript"></script>
-<script type="text/javascript">
-$(function(){
-	$("#submit").click(function(){
-		oEditors.getById["postContent"].exec("POST_CONTENT");
-		$("Acform").submit();
-	})
-})
-$(function(){
-	$("#submit").click(function(){
-		oEditors.getById["postMdate"].exec("POST_MDATE");
-		$("Acform").submit();
-	})
-})
-</script>
+<title>우리동네 운동친구 Health Friends</title>
 
 <style type="text/css">
 	.map_wrap {position:relative;width:100%;height:350px;}
@@ -100,8 +83,7 @@ $(function(){
 						약속장소	<br/>
 						<div id="makerSpace" >
 					 지번주소<input type="text" name="postLongitude" value=""/>
-						</div>
-					
+						</div>					
 						<input type="hidden" id="MapAddress" name="MapAddress" value="" /> 
 						<div class="map_wrap">
 						    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
@@ -109,125 +91,24 @@ $(function(){
 						        <span class="title">지도중심기준 행정동 주소정보</span>
 						        <span id="centerAddr"></span>
 						    </div>
-						</div>
-					
-						<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c6a1fbbb0976413a4f4996beefa8a351&libraries=services"></script>
-						<script>
-							var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-							    mapOption = {
-							        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-							        level: 1 // 지도의 확대 레벨
-							    };  
-							
-							// 지도를 생성합니다    
-							var map = new kakao.maps.Map(mapContainer, mapOption); 
-							
-							// 주소-좌표 변환 객체를 생성합니다
-							var geocoder = new kakao.maps.services.Geocoder();
-							
-							var marker = new kakao.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
-							    infowindow = new kakao.maps.InfoWindow({zindex:1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
-							
-							    
-							// 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
-							searchAddrFromCoords(map.getCenter(), displayCenterInfo);
-							
-							// 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
-							kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
-							    searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
-							        if (status === kakao.maps.services.Status.OK) {
-							        	
-							            var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
-							            detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
-							            
-							            var MapAddresss = '<div class="bAddr">' +  '<span class="title">법정동 주소정보</span>' + detailAddr + '</div>';
-							                    
-							            var roadAddr = !!result[0].road_address ? '<div>' + result[0].road_address.address_name + '</div>' : '';
-							            var Addr = '<div>' + result[0].address.address_name + '</div>';
-							            
-							            $("#MapAddress").val(mouseEvent)
-										
-							           // var markerSpace = document.getElementById("makerSpace");
-							           // makerSpace.innerHTML = detailAddr;
-							         	
-							         	var test2 = document.getElementsByName("postLongitude")[0];
-								        var afterString2 = Addr.slice(Addr.indexOf(">")+1, Addr.lastIndexOf("<"));
-								        test2.value = afterString2;
-							            
-							            // 마커를 클릭한 위치에 표시합니다 
-							            marker.setPosition(mouseEvent.latLng);
-							            marker.setMap(map);
-							            
-							            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
-							            infowindow.setContent(MapAddress);
-							            
-							        }   
-							    });
-							});
-							
-							// 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
-							kakao.maps.event.addListener(map, 'idle', function() {
-							    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
-							});
-							
-							function searchAddrFromCoords(coords, callback) {
-							    // 좌표로 행정동 주소 정보를 요청합니다
-							    geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);         
-							}
-							
-							function searchDetailAddrFromCoords(coords, callback) {
-							    // 좌표로 법정동 상세 주소 정보를 요청합니다
-							    geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
-							}
-							
-							// 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
-							function displayCenterInfo(result, status) {
-							    if (status === kakao.maps.services.Status.OK) {
-							        var infoDiv = document.getElementById('centerAddr');
-							
-							        for(var i = 0; i < result.length; i++) {
-							            // 행정동의 region_type 값은 'H' 이므로
-							            if (result[i].region_type === 'H') {
-							                infoDiv.innerHTML = result[i].address_name;
-							                break;
-							            }
-							        }
-							    }    
-							}
-							
-						</script>
-						</td>
-						<td>
-							<p><em>달력을 클릭해주세요!</em></p>
-	<!-- 달력API -->			<div id='postMdate'></div>
-						 	<link href='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.css' rel='stylesheet' />
-						    <script src='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.js'></script>
-						    <script>
-						    document.addEventListener('DOMContentLoaded', function() {
-						        var calendarEl = document.getElementById('calendar');
-						        var calendar = new FullCalendar.Calendar(calendarEl, {
-						            selectable: true,
-						            headerToolbar: {
-						              left: 'prev,next today',
-						              center: 'title',
-						              right: 'dayGridMonth,timeGridWeek,timeGridDay'
-						            },
-						       		dateClick: function(info){
-										var postMdate = document.getElementById('postMdate');
-										postMdate.innerHTML = "약속일자 : " + info.dateStr;
-										document.getElementsByName("postMdate")[0].value = info.dateStr;
-						       		}
-						          });
-						        calendar.render();
-						      });
-						    </script>
+						</div> 
+						
+<%-- 카카오 맵 관련 api, js --%>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c6a1fbbb0976413a4f4996beefa8a351&libraries=services"></script>
+<script src="/Health_Friends/assets/js/kakaoMap.js"></script>
+
+					</td>
+					<td>
+						<p><em>달력을 클릭해주세요!</em></p>
+	<!-- 달력API -->		<div id='postMdate'></div>
+
 						    <input type="hidden" name="postMdate" value="" />
-					 	   <div id='calendar'></div>
-						</td>
+					 	<div id='calendar'></div>
+					</td>
 				</tr> 
 				<tr>
 					<td colspan="3" id="Board_writeContent">
-						<textarea id="postContent" name="postContent" class="smarteditor2"></textarea>
+						<textarea rows="30" cols="100" id="summernote" name="postContent"></textarea>
 					</td>
 				</tr>
 			</table>
@@ -237,7 +118,19 @@ $(function(){
 	</section>
 <%--	
 	<%@include file="footer.jsp" %>
---%>
+--%>	
+<%-- summernote관련 부트스트랩, api, js --%>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+<script src="assets/js/summernote.js"></script>
+<%-- 글쓰기에 들어가는 캘린더 api, js --%>
+<link href='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.css' rel='stylesheet' />
+<script src='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.js'></script>
+<script src='/Health_Friends/assets/js/boardCalendar.js'></script>
 </body>
 </html>
 

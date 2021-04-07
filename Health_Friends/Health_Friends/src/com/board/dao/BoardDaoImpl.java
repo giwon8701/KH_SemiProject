@@ -137,7 +137,7 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 		
 		try(SqlSession session = getSqlSessionFactory().openSession(true)){
 			res = session.insert("BoardMapper.accompany_insert", dto);
-			System.out.println(res);
+			System.out.println("res: " +res);
 		} catch(Exception e){
 			e.printStackTrace();
 		} 
