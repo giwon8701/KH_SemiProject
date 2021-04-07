@@ -244,23 +244,8 @@ div .pagemove:hover {
 </head>
 <body>
 	<%--
-	<%@include file="header.jsp" %>
+	<%@include file="../../header.jsp" %>
 --%>
-
-<%
-	RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); 
-	BoardBiz biz = new BoardBizImpl();
-	
-	List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
-
-	int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-	int totalCount = Integer.parseInt(request.getAttribute("totalCount") + "");
-	
-	Paging paging = new Paging();
-	paging.setPageNo(pageNum);
-	paging.setPageSize(10);
-	paging.setTotalCount(totalCount);
-%>
 <!-- 페이징 관련 JS -->
 <script type="text/javascript">
 	$(document).ready(function(){

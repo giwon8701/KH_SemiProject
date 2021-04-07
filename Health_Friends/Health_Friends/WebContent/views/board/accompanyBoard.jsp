@@ -302,19 +302,6 @@ div .pagemove:hover {
 <body>
 
 	<%@include file="../../header.jsp"%>
-
-	<%
-		List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
-
-	int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-	int totalCount = Integer.parseInt(request.getAttribute("totalCount") + "");
-
-	Paging paging = new Paging();
-	paging.setPageNo(pageNum);
-	paging.setPageSize(10);
-	paging.setTotalCount(totalCount);
-	%>
-
 	<script>
 		$(document).ready(function(){
 	
@@ -357,6 +344,7 @@ div .pagemove:hover {
 				<caption>게시판 목록</caption>
 				<thead>
 					<tr>
+						<th>글번호</th>
 						<th>제목</th>
 						<th>성별</th>
 						<th>작성자</th>
