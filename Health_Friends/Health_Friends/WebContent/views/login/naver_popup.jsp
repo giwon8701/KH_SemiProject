@@ -17,18 +17,11 @@
 		let member_name = naver_id_login.getProfileData("name");
 		let member_email = naver_id_login.getProfileData("email");
 		let member_id = member_email.split("@")[0];
-		let member_gender = naver_id_login.getProfileData("gender");
+		let gender = naver_id_login.getProfileData("gender");
 		let birthmmdd = naver_id_login.getProfileData("birthday");
-		const member_birthday_month = birthmmdd.substring(0, 2);
-		const member_birthday_date =  birthmmdd.substring(3);
-		let phone = naver_id_login.getProfileData("mobile");
-		console.log(member_name);
-		console.log(member_email);
-		console.log(member_id);
-		console.log(member_gender);
-		//console.log(member_birthday);
-		opener.console.log(phone);
-		//let member_phone = phone.replace("-", "");
+		opener.console.log(gender);
+		const birthmonth = birthmmdd.substring(0, 2);
+		const birthdate =  birthmmdd.substring(3);
 		var exist = await fetch("../../naver.do?member_name="+member_name+"&member_email="+member_email)
 			.then(response => {
 				return response.text();
@@ -42,9 +35,20 @@
 			opener.document.getElementById("id").value = member_id;
 			opener.document.getElementById("name").value = member_name;
 			opener.document.getElementById("email").value = member_email;
-			//opener.document.getElementById("birthday").value = member_birthday;
-			//opener.document.getElementById("phone").value = member_phone;
-			//opener.document.getElementById("id").value = member_gender;
+			let month = opener.document.getElementsByName("mm")[0];
+			let date = opener.document.getElementsByName("dd")[0];
+			for (let i=0; i<month.length; i++) {
+				if (month[i].value == birthmonth) {
+					month[i].selected = "selected";
+				}
+			}
+			for (let i=0; i<date.length; i++) {
+				if (date[i].value == birthdate) {
+					date[i].selected = "selected";
+				}
+			}
+			if (gender == "M") opener.document.getElementById("m").checked = true;
+			else if (gender == "F") opener.document.getElementById("f").checked = true;
 			
 			opener.document.getElementById("name").readOnly = true;
 			opener.document.getElementById("email").readOnly = true;
@@ -54,7 +58,6 @@
 			opener.document.getElementById("sign-up-btn").click();
 			opener.idCheck();
 			
-			//opener.emailChk();
 			window.close();
 		}
 	}
