@@ -135,11 +135,6 @@
 
 
 
-
-
-
-
-
 	<h1>운동 기록</h1>
 	
 	<form action="individual.do" method="post">
