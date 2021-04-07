@@ -50,7 +50,7 @@
 				</tr>
 				<tr>
 					<td colspan="3">
-						<textarea id="se2" name="postContent" class="smarteditor2" ></textarea>
+						<textarea id="summernote" name="postContent"  ></textarea>
 					</td>
 				</tr>
 			</table>
