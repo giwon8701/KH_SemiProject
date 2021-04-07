@@ -20,9 +20,8 @@
 
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 
-<title>후기 게시판</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 <%
-	RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); 
 	BoardBiz biz = new BoardBizImpl();
 	
 	RegistBiz rbiz = new RegistBizImpl();
@@ -243,9 +242,7 @@ div .pagemove:hover {
 
 </head>
 <body>
-	<%--
 	<%@include file="../../header.jsp" %>
---%>
 <!-- 페이징 관련 JS -->
 <script type="text/javascript">
 	$(document).ready(function(){

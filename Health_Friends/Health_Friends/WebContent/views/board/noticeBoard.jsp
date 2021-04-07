@@ -20,7 +20,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 
-<title>우리동네 운동친구 Health Friends</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 <style>
 * {
 	margin: 0;
@@ -310,12 +310,8 @@ cursor: pointer;
 </head>
 
 <body>
-	<%--
 	<%@include file="../../header.jsp" %>
- --%>
-
 <%
-	RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); 
 	BoardBiz biz = new BoardBizImpl();
 	RegistBiz rbiz = new RegistBizImpl();
 	

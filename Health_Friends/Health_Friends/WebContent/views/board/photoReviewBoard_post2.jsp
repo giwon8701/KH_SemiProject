@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>우리동네 운동친구 Health Friends</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>ends</title>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -15,7 +15,7 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 	
 <body>
-
+	<%@include file="../../header.jsp" %>
 	<form id="reviewForm" action="./review.do" method="post">
 			<input type="hidden" name="command" value="insertRes" /> <input
 				type="hidden" name="userNo" value="${Ldto.getMember_no() }">

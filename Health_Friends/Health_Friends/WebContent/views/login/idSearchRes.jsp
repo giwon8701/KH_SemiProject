@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 </head>
 <link rel="stylesheet" href="assets/css/login.css">
 <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>

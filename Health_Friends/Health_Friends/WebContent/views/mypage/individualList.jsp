@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 
 <link href="assets/css/individual.css" rel="stylesheet" type="text/css" />
 
@@ -107,7 +107,7 @@
 						<tr>
 							<th><input type="checkbox" name="chk" value="${dto.individual_no }"></th>
 							<td><a href="individual.do?command=individualSelectOne&individual_no=${dto.individual_no }&year=<%=year %>&month=<%=month %>&date=<%=date %>">${dto.individual_title }</a></td>
-							<td>${dto.individual_time }</td>
+							<td>${dto.individual_time }분</td>
 							<td>
 								<jsp:setProperty property="todates" name="util" value="${dto.individual_mdate }" />
 								<jsp:getProperty property="todates" name="util" />
@@ -123,76 +123,15 @@
 			</tbody>
 		</table>
 			<div class="individual01" style="text-align:right">
-					<input type="button" id="mpage01" value="작성" onclick="location.href='./views/mypage/individualInsert.jsp?year=<%=year %>&month=<%=month %>&date=<%=date %>'">
+					<input type="button" id="mpage01" value="작성" onclick="location.href='./individual.do?command=individualInsert&year=<%=year %>&month=<%=month %>&date=<%=date %>'">
 					<input type="submit" id="mpage01" value="삭제">
-					<input type="button" id="mpage02" value="마이페이지" onclick="location.href='./views/mypage/mypage.jsp'">
+					<input type="button" id="mpage02" value="마이페이지" onclick="location.href='./mypage.do?command=mypage'">
 				</div>
 		</div>
 </div>
 	</form>
 		
 
-
-
-
-
-
-
-
-
-	<h1>운동 기록</h1>
-	
-	<form action="individual.do" method="post">
-		<input type="hidden" name="command" value="individualMultiDelete">
-		<input type="hidden" name="individual_id" value="<%=Ldto.getMember_id()%>">
-		<input type="hidden" name="year" value="<%=year %>">
-		<input type="hidden" name="month" value="<%=month %>">
-		<input type="hidden" name="date" value="<%=date %>">
-		<table border="1">
-			<tr>
-				<th><input type="checkbox" name="all" onclick="allCheck(this.checked);"></th>
-				<th>요약</th>
-				<th>운동시간</th>
-				<th>운동날짜</th>
-				<th>작성일</th>
-			</tr>
-			
-
-			<c:choose>
-				<c:when test="${empty list }">
-					<tr>
-						<th colspan="6">----------기록이 없습니다----------</th>
-					</tr>
-				</c:when>
-				
-				<c:otherwise>
-					<c:forEach items="${list}" var="dto">
-					
-						<tr>
-							<th><input type="checkbox" name="chk" value="${dto.individual_no }"></th>
-							<td><a href="individual.do?command=individualSelectOne&individual_no=${dto.individual_no }&year=<%=year %>&month=<%=month %>&date=<%=date %>">${dto.individual_title }</a></td>
-							<td>${dto.individual_time }</td>
-							<td>
-								<jsp:setProperty property="todates" name="util" value="${dto.individual_mdate }" />
-								<jsp:getProperty property="todates" name="util" />
-							</td>
-							<td>
-								<fmt:formatDate value="${dto.individual_regdate }" pattern="yyyy.MM.dd" />
-							</td>
-						</tr>
-
-					</c:forEach>
-				</c:otherwise>
-			</c:choose>
-			<tr>
-				<td colspan="6" style="text-align:right">
-					<input type="button" value="작성" onclick="location.href='./views/mypage/individualInsert.jsp?year=<%=year %>&month=<%=month %>&date=<%=date %>'">
-					<input type="submit" value="삭제">
-					<input type="button" value="마이페이지" onclick="location.href='./views/mypage/mypage.jsp'">
-				</td>
-			</tr>
-		</table>
-	</form>
 
 
 

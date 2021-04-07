@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>나의 결제 목록</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 
 <style>
 
@@ -306,7 +306,7 @@ div .pagemove:hover {
 		</tbody>
 		</table>
 		<br>
-<br>
+		<br>
 
 				<div class="pagination board_list_warp02">
 				<input type="button" onclick="pageMove(<%=paging.getFirstPageNo()%>)" value="첫 페이지" class="bt" id="paging">
@@ -324,50 +324,7 @@ div .pagemove:hover {
 			
 		</div>
 	</div>
-		
 
-<!--  
-<table border="1">
-	<tr>
-		<th>결제번호</th>
-		<th>email</th>
-		<th>결제금액</th>
-		<th>결제일</th>
-	</tr>
-	<%
-		for(int i = 0; i < list.size(); i++ ){
-	%>
-	<tr>
-		<td><%=list.get(i).getPayment_no() %></td>
-		<td><%=list.get(i).getMember_email() %></td>
-		<td><%=list.get(i).getPayment_account() %></td>
-		<td><%=list.get(i).getPayment_date() %></td>
-	</tr>
-
-	<%
-		}
-	%>
-</table>
--->
-	<!--  pagination 
-	<div class="pagination">
-		<input type="button" onclick="pageMove(<%=paging.getFirstPageNo()%>)"
-			value="◀"> <input type="button"
-			onclick="pageMove(<%=paging.getPrevPageNo()%>)" value="◁">
-
-		<%
-			for (int i = paging.getStartPageNo(); i <= paging.getEndPageNo(); i++) {
-		%>
-		<a onclick="pageMove(<%=i%>)"><%=i%></a>
-		<%
-			}
-		%>
-
-		<input type="button" onclick="pageMove(<%=paging.getNextPageNo()%>)"
-			value="▷"> <input type="button"
-			onclick="pageMove(<%=paging.getFinalPageNo()%>)" value="▶">
-	</div>
--->
 	<script>
 			function pageMove(page){
 				location.href='payment.do?command=paymentListMyPaging&page='+page

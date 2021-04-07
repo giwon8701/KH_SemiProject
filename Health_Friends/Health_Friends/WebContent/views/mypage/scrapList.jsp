@@ -16,7 +16,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>우리동네 운동친구 Health Friends</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 <%
 	RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); 
 	

@@ -20,7 +20,7 @@ response.setContentType("text/html; charset=UTF-8");
 <head>
 <meta charset="UTF-8">
 
-<title>동행 게시판</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 	<%
 		List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
 		

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="/Health_Friends/assets/api/se2/js/HuskyEZCreator.js" type="text/javascript"></script>
 <script src="/Health_Friends/assets/api/se2/init.js" type="text/javascript"></script>
@@ -21,9 +21,7 @@
 </style>
 </head>
 <body>
-<%--  
-	<%@include file="../../views/common/header.jsp" %>
---%>	
+	<%@include file="../../header.jsp" %>
 
 	<section class="boardlist">
 		<a href="../../board.do?command=list">동행 구해요</a>

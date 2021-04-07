@@ -16,4 +16,5 @@ public interface PaymentDao {
 	public List<PaymentDto> paymentListPaging(int startRow, int endRow);
 	public List<PaymentDto> paymentListMyPaging(String member_email, int startRow, int endRow);
 	public int getTotalCount(); 
+	public int getMyTotalCount(String member_email);
 }

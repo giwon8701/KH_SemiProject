@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항 글수정</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 
@@ -248,11 +248,7 @@ ul, li {
 </head>
 <body>
 
-<%--  
-	<%@include file="../../views/common/header.jsp" %>
---%>
-
-<% RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); %>
+	<%@include file="../../header.jsp" %>
 
 <div class="main01">
 	<img src="https://www.imgacademy.co.kr/sites/default/files/inline-images/coaching.jpg" style="width:100% ;height:auto">

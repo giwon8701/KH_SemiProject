@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 </head>
 <body>
 잘못왔다ㅠ

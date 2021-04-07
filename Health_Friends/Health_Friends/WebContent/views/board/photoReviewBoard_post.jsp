@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-latest.js"></script>
@@ -260,10 +260,7 @@ ul, li {
 
 </head>
 <body>
-
-	<%
-		RegistDto Ldto = (RegistDto) session.getAttribute("Ldto");
-	%>
+	<%@include file="../../header.jsp" %>
 
 	<div class="main01">
 		<img

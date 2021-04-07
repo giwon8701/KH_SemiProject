@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Web Socket Example</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 <style>
 /* 여러 채팅창 간의 간격과 배열 위치*/
 .float-left {

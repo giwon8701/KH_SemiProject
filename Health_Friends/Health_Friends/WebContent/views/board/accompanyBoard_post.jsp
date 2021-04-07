@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>우리동네 운동친구 Health Friends</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="/Health_Friends/assets/api/se2/js/HuskyEZCreator.js" type="text/javascript"></script>
 <script src="/Health_Friends/assets/api/se2/init.js" type="text/javascript"></script>
@@ -46,12 +46,11 @@ $(function(){
 
 		<%--동행게시판 --%>
 
-<%--
-	<%@include file="header.jsp" %>
- --%>	
+
+	<%@include file="../../header.jsp" %>
+
  
 <jsp:useBean id="dto" class="com.board.dto.BoardDto" scope="request"></jsp:useBean>
-<% RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); %> 
  	
 	<section class="boardlist">
 		<a href="./board.do?command=list">동행 구해요</a>
