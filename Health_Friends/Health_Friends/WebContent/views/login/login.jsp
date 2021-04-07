@@ -15,8 +15,8 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>	<!-- jQuery API -->
 <script src="https://www.google.com/recaptcha/api.js?render=6LdY0Y0aAAAAAC55f1G3fyahKgyATLdZ1BZq_yt5"></script>			<!--  recaptcha API -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>	<!--  카카오 로그인 API -->
-<script type="text/javascript" src="assets/js/login.js"></script> <!-- 로그인 관련 -->
 <script type="text/javascript" src="assets/js/loginRegist.js"></script> <!-- 회원가입 관련 -->
+<script type="text/javascript" src="assets/js/login.js"></script> <!-- 로그인 관련 -->
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 </head>
 <body>
@@ -26,18 +26,17 @@
 				<!-- 로그인 form -->
 				<form action="regist.do" class="sign-in-form" method="post" id="loginForm">
 					<input type="hidden" name="command" value="loginres">
-					<input type="hidden" id="id_hidden" name="encrypted_id">
-					<input type="hidden" id="pw_hidden" name="encrypted_pw">  
 					
 					<h2 class="title">로그인</h2>
 					<div class="input-field">
-						<i class="fas fa-user"></i> <input type="text" name="loginMemberId" placeholder="아이디를 입력해주세요">
+						<i class="fas fa-user"></i> <input type="text" name="loginMemberId" placeholder="아이디를 입력해주세요" onkeyup="enter();">
 					</div>
-					
+					<div id="id_alert" style="display:none;">아이디를 입력해주세요.</div>
 					<div class="input-field">
 						<i class="fas fa-lock"></i>
-						<input type="password" name="loginMemberPw" placeholder="비밀번호를 입력해주세요">
+						<input type="password" name="loginMemberPw" placeholder="비밀번호를 입력해주세요" onkeyup="enter();">
 					</div>
+					<div id="pw_alert" style="display:none;">비밀번호를 입력해주세요.</div>
 					<table>
 						<tr>
 							<td>
@@ -56,7 +55,6 @@
 						</a>
 					</div>
 				</form>
-
 
 
 

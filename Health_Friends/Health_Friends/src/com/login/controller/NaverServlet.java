@@ -139,7 +139,6 @@ public class NaverServlet extends HttpServlet {
 					session.setAttribute("Ldto", Ldto);
 					session.setMaxInactiveInterval(10 * 60);
 					out.print(exist);
-					System.out.println("test");
 					//jsResponse(response, "./index.jsp", member_name+"님, 환영합니다.");
 				}
 			} else {
