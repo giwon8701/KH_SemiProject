@@ -99,4 +99,22 @@ public class FollowDaoImpl  extends SqlMapConfig implements FollowDao {
 		return 0;
 	}
 
+	@Override
+	public List<RegistDto> searchId(String searchId) {
+		List<RegistDto> list = new ArrayList<RegistDto>();
+		
+		SqlSession session = null;
+		
+		try {
+			session = getSqlSessionFactory().openSession(false);
+			list = session.selectList("profilemapper.searchId", searchId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
+		return list;
+	}
+
 }

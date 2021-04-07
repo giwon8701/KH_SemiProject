@@ -92,12 +92,17 @@
 		list-style: none;
 	}
 </style>
-
+<script>
+	function follow(){
+		$("#follow").click(function(){
+			open("follow.do?command=follow", "followList", "width=500; height=800;");
+		});
+	}
+</script>
 </head>
 <body>
 <%--마이페이지! --%>
 <%@ include file="../../header.jsp" %>
-
 
 	<div class="mypage-main-div">
 		<div class="mypage-second-div1">
@@ -107,7 +112,7 @@
 						<td colspan="2" align="center" class="profile-border">
 							<c:choose>
 								<c:when test="${Ldto.getMember_picture_path() == null}">
-									대표 프로필 사진이 존재하지 않습니다<br>프로필 사진을 등록해주세요!
+									<img src="images/icon/nonprofile.png" id="profile-img">
 								</c:when>
 								<c:otherwise>
 									<img src="profileimg/<%=Ldto.getMember_picture_path()%>?" id="profile-img" />
@@ -212,13 +217,6 @@
 								<li><a href="mypage.do?command=registUpdate">회원정보 수정</a></li>
 								<li><a href="">찜한게시물</a></li>
 								<li><div class="mypage-follw-div" onclick="follow();" id="follow">팔로우</div></li>
-									<script>
-										function follow(){
-											$("#follow").click(function(){
-												open("follow.do?command=follow", "followList", "width=500; height=800;");
-											});
-										}
-									</script>
 								<li><a href="payment.do?command=paymentRoleUp&member_role=<%=Ldto.getMember_role()%>">프리미엄 등록</a></li>
 								<li><a href="payment.do?command=paymentRoleDown&member_role=<%=Ldto.getMember_role()%>">프리미엄 탈퇴</a></li>
 								<li><a href="payment.do?command=paymentListMyPaging&member_email=<%=Ldto.getMember_email()%>">나의 결제내역</a></li>

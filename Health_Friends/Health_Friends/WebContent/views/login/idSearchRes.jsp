@@ -38,6 +38,16 @@
 						${dto.member_id }입니다.
 					</tr>
 				</table>
+				<table>
+					<tr>
+						<td>
+							<input type="button" value="로그인" class="btn solid g-recaptcha" onclick="location.href='regist.do?command=login'">
+						</td>
+						<td>
+							<input type="button" value="메인으로" class="btn solid g-recaptcha" onclick="location.href='index.jsp'">
+						</td>
+					</tr>
+				</table>
 			</form>
 
 			</div>

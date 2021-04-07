@@ -140,6 +140,13 @@ public class FollowServlet extends HttpServlet {
 			int res = biz.removeFollow(dto);
 			
 			response.getWriter().print(res);
+		} else if(command.equals("searching")) {
+			String searchId = request.getParameter("searchId");
+			searchId = "%"+searchId+"%";
+			
+			List<RegistDto> list = biz.searchId(searchId);
+			request.setAttribute("list", list);
+			dispatch(request, response, "search.jsp");
 		}
 	}
 	

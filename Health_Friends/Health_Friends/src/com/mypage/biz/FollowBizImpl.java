@@ -42,6 +42,11 @@ public class FollowBizImpl implements FollowBiz {
 	public int followChk(FollowDto dto) {
 		return dao.followChk(dto);
 	}
+
+	@Override
+	public List<RegistDto> searchId(String searchId) {
+		return dao.searchId(searchId);
+	}
 	
 
 }

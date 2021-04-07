@@ -34,18 +34,18 @@ public class PaymentServlet extends HttpServlet {
 		PaymentBiz biz = new PaymentBizImpl();
 		
 		if(command.equals("payment")){
-			response.sendRedirect("./views/mypage/payment.jsp");
 			
+			dispatch(request, response, "./views/mypage/payment.jsp");
 			
 		} else if(command.equals("paymentRoleUp")) {
 			String member_role = request.getParameter("member_role");
 			
 			if(member_role.equals("PREMIUM")) {
-				jsResponse(response, "./views/mypage/mypage.jsp", "이미 프리미엄 회원입니다!");
+				jsResponse(response, "./mypage.do?command=mypage", "이미 프리미엄 회원입니다!");
 			} else if(member_role.equals("USER")) {
-				jsResponse(response, "./views/mypage/paymentGuide.jsp", "프리미엄 회원 등록 전 약관을 잘 읽어주세요!");
+				jsResponse(response, "./mypage.do?command=paymentRoleUpPage", "프리미엄 회원 등록 전 약관을 잘 읽어주세요!");
 			} else {
-				jsResponse(response, "./views/mypage/mypage.jsp", "관리자입니다! 관리자가 아니라면 관리자에게 문의해주세요!");
+				jsResponse(response, "./mypage.do?command=mypage", "관리자입니다! 관리자가 아니라면 관리자에게 문의해주세요!");
 			}
 			
 			
@@ -54,11 +54,11 @@ public class PaymentServlet extends HttpServlet {
 			String member_role = request.getParameter("member_role");
 			
 			if(member_role.equals("USER")) {
-				jsResponse(response, "./views/mypage/mypage.jsp", "프리미엄 회원이 아닙니다!");
+				jsResponse(response, "./mypage.do?command=mypage", "프리미엄 회원이 아닙니다!");
 			} else if(member_role.equals("PREMIUM")) {
-				jsResponse(response, "./views/mypage/paymentCancel.jsp", "프리미엄 회원 탈퇴 전 약관을 잘 읽어주세요!");
+				jsResponse(response, "./mypage.do?command=paymentRoleDownPage", "프리미엄 회원 탈퇴 전 약관을 잘 읽어주세요!");
 			} else {
-				jsResponse(response, "./views/mypage/myapge.jsp", "관리자입니다! 관리자가 아니라면 관리자에게 문의해주세요!");
+				jsResponse(response, "./mypage.do?command=mypage", "관리자입니다! 관리자가 아니라면 관리자에게 문의해주세요!");
 			}
 			
 			
@@ -87,12 +87,12 @@ public class PaymentServlet extends HttpServlet {
 					RegistDto paymentDto = (RegistDto)session.getAttribute("Ldto");
 					paymentDto.setMember_role("PREMIUM");
 					session.setAttribute("Ldto", paymentDto);
-					jsResponse(response, "./views/mypage/mypage.jsp", "프리미엄 회원이 되신걸 환영합니다!");
+					jsResponse(response, "./mypage.do?command=mypage", "프리미엄 회원이 되신걸 환영합니다!");
 				}else {
-					jsResponse(response, "./views/mypage/mypage.jsp", "오루발생!");
+					jsResponse(response, "./mypage.do?command=mypage", "오류발생!");
 				}
 			} else {
-				jsResponse(response, "./views/mypage/mypage.jsp", "프리미엄 등록에 실패하였습니다! 다시 시도해주세요!");
+				jsResponse(response, "./mypage.do?command=mypage", "프리미엄 등록에 실패하였습니다! 다시 시도해주세요!");
 			}
 			
 
@@ -113,10 +113,10 @@ public class PaymentServlet extends HttpServlet {
 				paymentDto.setMember_role("USER");
 				session.setAttribute("Ldto", paymentDto);
 				
-				jsResponse(response, "./views/mypage/mypage.jsp", "프리미엄이 탈퇴되었습니다!");
+				jsResponse(response, "./mypage.do?command=mypage", "프리미엄이 탈퇴되었습니다!");
 				
 			} else {
-				jsResponse(response, "./views/mypage/mypage.jsp", "탈퇴에 실패하셨습니다! 다시 시도 해주세요.");
+				jsResponse(response, "./mypage.do?command=mypage", "탈퇴에 실패하셨습니다! 다시 시도 해주세요.");
 			}
 		} else if(command.equals("paymentList")) {
 			
@@ -194,6 +194,15 @@ public class PaymentServlet extends HttpServlet {
 	}
 	
 	private void dispatch(HttpServletRequest request, HttpServletResponse response, String path) throws ServletException, IOException {
+		RequestDispatcher dispatch = request.getRequestDispatcher(path);
+		dispatch.forward(request, response);
+	}
+	
+	private void dispatchmsg(HttpServletRequest request, HttpServletResponse response, String path, String msg) throws ServletException, IOException {
+		String s = "<script type='text/javascript'>"
+				+ "alert('"+ msg +"');"
+				+ "</script>";
+		response.getWriter().print(s);
 		RequestDispatcher dispatch = request.getRequestDispatcher(path);
 		dispatch.forward(request, response);
 	}
