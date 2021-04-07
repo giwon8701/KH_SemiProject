@@ -249,13 +249,8 @@ ul, li {
 
 </head>
 <body>
-	<%--  
-	<%@include file="../../views/common/header.jsp" %>
---%>
-
-	<%
-		RegistDto Ldto = (RegistDto) session.getAttribute("Ldto");
-	%>
+	 
+	<%@include file="../../header.jsp" %>
 
 	<div class="main01">
 		<img
@@ -269,10 +264,10 @@ ul, li {
 	</div>
 
 	<div class="main02" style="text-align: center">
-		<div style="font-size: 40px; font-weight: bold">동행 게시판 글보기</div>
+		<div style="font-size: 40px; font-weight: bold">후기 게시판 글보기</div>
 		<br>
 		<p style="font-size: 16px">우리 동네 운동 친구를 만나보세요.</p>
-		<br> <br> <a href="../../index.jsp" class="btn btn02"
+		<br> <br> <a href="./index.jsp" class="btn btn02"
 			style="font-size: 16px">메인 페이지</a> <a
 			href="./board.do?command=list  " class="btn btn01"
 			style="font-size: 16px">동행 구해요</a> <a

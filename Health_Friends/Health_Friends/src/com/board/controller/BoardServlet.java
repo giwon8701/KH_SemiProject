@@ -76,9 +76,11 @@ public class BoardServlet extends HttpServlet {
 				
 				ScrapBiz sbiz = new ScrapBizImpl();
 				
+				int scrap_user_no = ldto.getMember_no();
+				
 				ScrapDto sdto = new ScrapDto();
 				sdto.setScrap_post_id(postId);
-				sdto.setScrap_user_no(user_no);
+				sdto.setScrap_user_no(scrap_user_no);
 				
 				int res = sbiz.scrapChk(sdto);
 				
@@ -148,14 +150,24 @@ public class BoardServlet extends HttpServlet {
 			} else if(command.equals("scrapSelect")) {
 				int postid = Integer.parseInt(request.getParameter("postid"));
 				
+				int scrap_user_no = ((RegistDto)session.getAttribute("Ldto")).getMember_no();
+				
+				ScrapBiz sbiz = new ScrapBizImpl();
+				
+				ScrapDto sdto = new ScrapDto();
+				sdto.setScrap_post_id(postid);
+				sdto.setScrap_user_no(scrap_user_no);
+				
+				int res = sbiz.scrapChk(sdto);
+				
 				BoardDto dto = biz.selectOneByPostId(postid);
 				String boardname = dto.getPostBoardName();
 				System.out.println(dto.toString());
 				System.out.println(boardname);
 				if(boardname.equals("ACCOMPANY")) {
-					dispatch(request, response, "board.do?command=select&postId="+postid);
+					dispatch(request, response, "board.do?command=select&postId="+postid+"&res="+res);
 				} else if(boardname.equals("PHOTO")) {
-					dispatch(request, response, "review.do?command=select&postId="+postid);
+					dispatch(request, response, "review.do?command=select&postId="+postid+"&res="+res);
 				}
 			}
 			
