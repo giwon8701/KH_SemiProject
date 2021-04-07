@@ -384,7 +384,6 @@ cursor: pointer;
 				<tbody>
 					<%
 	for(int i = 0; i < list.size(); i++){
-		System.out.println("list.get(i).getPostUserNo() : " + list.get(i).getPostUserNo());
 		RegistDto rdto = rbiz.selectByNo(list.get(i).getPostUserNo());
 		String member_id = rdto.getMember_id();
 		if(list.get(i).getPostDelflag().equals('Y')){
