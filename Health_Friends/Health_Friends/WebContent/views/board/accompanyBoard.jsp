@@ -356,10 +356,10 @@ div .pagemove:hover {
 	for(int i = 0; i < list.size(); i++){
 		RegistDto rdto = rbiz.selectByNo(list.get(i).getPostUserNo());
 		String member_id = rdto.getMember_id();
-		if(list.get(i).getPostDelflag().equals('Y')){
+		if(list.get(i).getpostDelflag().equals("Y")){
 %>
 			<tr>
-				<td>======삭제된 게시글 입니다=========</td>
+				<td colspan="4">======삭제된 게시글 입니다=========</td>
 			</tr>
 
 <%			
