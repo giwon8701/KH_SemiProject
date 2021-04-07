@@ -3,11 +3,14 @@
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>우리동네 운동친구 Health Friends</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="/Health_Friends/assets/api/se2/js/HuskyEZCreator.js" type="text/javascript"></script>
 <script src="/Health_Friends/assets/api/se2/init.js" type="text/javascript"></script>
@@ -18,7 +21,6 @@ $(function(){
 		$("Acform").submit();
 	})
 })
-
 $(function(){
 	$("#submit").click(function(){
 		oEditors.getById["postMdate"].exec("POST_MDATE");
@@ -52,6 +54,7 @@ $(function(){
  
 <jsp:useBean id="dto" class="com.board.dto.BoardDto" scope="request"></jsp:useBean>
 <% RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); %> 
+ 	
  	
 	<section class="boardlist">
 		<a href="./board.do?command=list">동행 구해요</a>
@@ -200,7 +203,7 @@ $(function(){
 						 	<link href='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.css' rel='stylesheet' />
 						    <script src='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.js'></script>
 						    <script>
-						      document.addEventListener('DOMContentLoaded', function() {
+						    document.addEventListener('DOMContentLoaded', function() {
 						        var calendarEl = document.getElementById('calendar');
 						        var calendar = new FullCalendar.Calendar(calendarEl, {
 						            selectable: true,

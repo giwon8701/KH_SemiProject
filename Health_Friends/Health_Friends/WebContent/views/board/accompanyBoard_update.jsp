@@ -5,11 +5,12 @@
 <% response.setContentType("text/html; charset=UTF-8"); %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>동행 게시판 글수정</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="/Health_Friends/assets/api/se2/js/HuskyEZCreator.js" type="text/javascript"></script>
 <script src="/Health_Friends/assets/api/se2/init.js" type="text/javascript"></script>
@@ -314,7 +315,7 @@ ul, li {
 			 		</dl>
 					<dl>
 						<dt>작성일</dt>
-						<dd>${dto.postRegdate }</dd>
+						<dd><fmt:formatDate value="${dto.postRegdate}" pattern="yyyy-MM-dd HH:mm" /></dd>
 					</dl>
 				</div>
 				<div class="cont" name="postContent" contenteditable="true" style="width:97%; height:500px; overflow:auto; width:97%; height:500px;">

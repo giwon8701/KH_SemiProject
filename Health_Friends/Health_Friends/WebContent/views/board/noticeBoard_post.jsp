@@ -1,13 +1,22 @@
+<%@page import="com.login.biz.RegistBiz"%>
+<%@page import="com.login.biz.RegistBizImpl"%>
+<%@page import="com.board.biz.BoardBizImpl"%>
+<%@page import="com.board.biz.BoardBiz"%>
+<%@page import="com.board.dto.BoardDto"%>
+<%@page import="java.util.List"%>
 <%@page import="com.login.dto.RegistDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="/Health_Friends/assets/api/se2/js/HuskyEZCreator.js" type="text/javascript"></script>
 <script src="/Health_Friends/assets/api/se2/init.js" type="text/javascript"></script>
@@ -24,7 +33,7 @@
 <%--  
 	<%@include file="../../views/common/header.jsp" %>
 --%>	
-
+	
 	<section class="boardlist">
 		<a href="../../board.do?command=list">동행 구해요</a>
 		<a href="../../review.do?command=list">사진후기</a>

@@ -1,22 +1,23 @@
 <%@page import="com.login.dto.RegistDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
-<%
-	response.setContentType("text/html; charset=UTF-8");
-%>
+<%request.setCharacterEncoding("UTF-8");%>
+<%response.setContentType("text/html; charset=UTF-8");%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>동행 게시판 글보기</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+var postPlace = document.getElementsByName("postPlace")[0];
+var afterString = postPlace.slice(0,2);
+postPlace.value = afterString;
+</script>
 <style>
 
 .main img {
@@ -286,6 +287,16 @@ ul, li {
 			}
 		});
 	}
+	
+	var calendar = new Calendar(calendarEl, {
+		  titleFormat: { // will produce something like "Tuesday, September 18, 2018"
+		    month: 'long',
+		    year: 'numeric',
+		    day: 'numeric',
+		    weekday: 'long'
+		  }
+		})
+	
 </script>
 
 </head>
@@ -297,7 +308,7 @@ ul, li {
 	<%
 		RegistDto Ldto = (RegistDto) session.getAttribute("Ldto");
 	%>
-
+	
 	<div class="main01">
 		<img
 			src="https://www.imgacademy.co.kr/sites/default/files/inline-images/coaching.jpg"
@@ -337,7 +348,10 @@ ul, li {
 							</dl>
 							<dl>
 								<dt>작성일</dt>
-								<dd>${dto.postRegdate }</dd>
+								<dd>
+								<input type="text" id="postPlace" value=""/>
+								${dto.postRegdate}
+								</dd>
 							</dl>
 							<dl></dl>
 						</div>
@@ -345,16 +359,13 @@ ul, li {
 					</c:forEach>
 				</div>
 				<div class="bt_wrap">
-					<a href="board.do?command=list" class="on">목록</a> <a
-						href="board.do?command=updateform&postId=${dto.postId}" class="off">수정</a>
-					<a
-						href="board.do?command=delete&postId=${dto.postId}" class="off">삭제</a>
+					<a href="board.do?command=list" class="on">목록</a> 
+					<a href="board.do?command=updateform&postId=${dto.postId}" class="off">수정</a>
+					<a href="board.do?command=delete&postId=${dto.postId}" class="off">삭제</a>
 				</div>
 			</div>
 		</div>
 	</div>
-
-
 
 	<section class="boardlist">
 		<a href="./board.do?command=list">동행 구해요</a> <a
@@ -399,6 +410,25 @@ ul, li {
 				</td>
 				<td>약속시간<br/>
 					${dto.postMdate}
+						<link href='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.css' rel='stylesheet' />
+						    <script src='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.js'></script>
+						    <script>
+						      document.addEventListener('DOMContentLoaded', function() {
+						        var calendarEl = document.getElementById('calendar');
+						        var calendar = new FullCalendar.Calendar(calendarEl, {
+						            editable: false,
+						            events:[
+						            	{
+						            	title: '',
+						            	start: '${dto.postMdate}'
+						            	}
+						            ]
+						          });
+						        calendar.render();
+						      });
+						    </script>
+						    <input type="hidden" name="postMdate" value="" />
+					 	   <div id='calendar'></div>
 				</td>
 				<td>약속장소<br/>
 					${dto.postLongitude}
@@ -457,9 +487,16 @@ ul, li {
 			</tr>
 			<tr>
 				<td colspan="3">
-					<input type="button" value="목록" onclick="location.href='board.do?command=list'" />
-					<input type="button" value="수정" onclick="location.href='board.do?command=updateform&postId=${dto.postId}'" />
-					<input type="button" value="삭제" onclick="location.href='board.do?command=delete&postId=${dto.postId}'" />
+					<c:choose>
+	      				<c:when test="${Ldto.member_no eq 1 || Ldto.member_no eq dto.postUserNo }">	
+							<input type="button" value="목록" onclick="location.href='board.do?command=list'" />
+							<input type="button" value="수정" onclick="location.href='board.do?command=updateform&postId=${dto.postId}'" />
+							<input type="button" value="삭제" onclick="location.href='board.do?command=delete&postId=${dto.postId}'" />
+						</c:when>
+						 <c:otherwise>
+						 	<input type="button" value="목록" onclick="location.href='board.do?command=list'" />
+		 				 </c:otherwise>
+					 </c:choose>		
 				</td>
 			</tr>
 		</c:forEach>
