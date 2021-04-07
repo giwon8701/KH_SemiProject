@@ -45,7 +45,7 @@
 </head>
 <body>
 <%--캘린더 게시판 해당날짜 리스트 --%>
-<% RegistDto Ldto = (RegistDto) session.getAttribute("Ldto"); %>
+<%@ include file="../../header.jsp" %>
 <%
 	int year = Integer.parseInt(request.getParameter("year"));
 	int month = Integer.parseInt(request.getParameter("month"));

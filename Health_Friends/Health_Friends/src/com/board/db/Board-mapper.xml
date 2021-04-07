@@ -21,12 +21,12 @@
 		<result property="postLongitude" column="POST_LONGITUDE"/>
 	</resultMap>	
 
-	<select id="accompany_selectList" resultMap="BoardMap">
+	<select id="accompany_selectList" parameterType="int" resultMap="BoardMap">
 		SELECT POST_USER_NO, POST_ID, POST_NO,POST_BOARD_NAME,POST_CATEGORY_NAME,POST_TITLE,POST_CONTENT
 		,POST_MDATE,POST_REGDATE,POST_HIT,POST_COMMENT_HIT,POST_LIKE,POST_DELFLAG,POST_LATITUDE,POST_LONGITUDE
 		FROM POST
 		WHERE POST_BOARD_NAME = 'ACCOMPANY'
-		ORDER BY POST_NO DESC
+		ORDER BY POST_ID ASC
 	</select>
 	
 	<select id="accompany_selectListPaging" parameterType="map" resultMap="BoardMap">
@@ -54,10 +54,10 @@
 	
 	<select id="notice_selectList" resultMap="BoardMap">
 		SELECT POST_USER_NO, POST_ID, POST_NO,POST_BOARD_NAME,POST_CATEGORY_NAME,POST_TITLE,POST_CONTENT
-		,POST_MDATE,POST_REGDATE,POST_HIT,POST_COMMENT_HIT,POST_LIKE,POST_DELFLAG,POST_LATITUDE,POST_LONGITUDE
+		,POST_MDATE, POST_REGDATE,POST_HIT,POST_COMMENT_HIT,POST_LIKE,POST_DELFLAG,POST_LATITUDE,POST_LONGITUDE
 		FROM POST
 		WHERE POST_BOARD_NAME = 'NOTICE'
-		ORDER BY POST_NO DESC
+		ORDER BY POST_NO ASC
 	</select>
 	
 	<select id="notice_selectListPaging" parameterType="map" resultMap="BoardMap">
@@ -84,11 +84,11 @@
 	</select>
 	
 	<select id="photo_selectList" resultMap="BoardMap">
-		SELECT POST_USER_NO, POST_ID, POST_NO, POST_BOARD_NAME, POST_CATEGORY_NAME, POST_TITLE, POST_CONTENT
-		, POST_MDATE, POST_REGDATE, POST_HIT, POST_COMMENT_HIT, POST_LIKE, POST_DELFLAG, POST_LATITUDE, POST_LONGITUDE
+		SELECT POST_USER_NO, POST_ID, POST_NO, POST_BOARD_NAME, POST_CATEGORY_NAME, POST_TITLE, POST_CONTENT,
+		POST_MDATE, POST_REGDATE, POST_HIT, POST_COMMENT_HIT, POST_LIKE, POST_DELFLAG, POST_LATITUDE, POST_LONGITUDE
 		FROM POST
 		WHERE POST_BOARD_NAME = 'PHOTO'
-		ORDER BY POST_NO DESC
+		ORDER BY POST_NO ASC
 	</select>
 	
 		<select id="photo_selectListPaging" parameterType="map" resultMap="BoardMap">
@@ -115,33 +115,40 @@
 	</select>
 	
 	<select id="accompany_selectOne" parameterType="int" resultMap="BoardMap">
-		SELECT POST_USER_NO, POST_ID, POST_NO,POST_BOARD_NAME,POST_CATEGORY_NAME,POST_TITLE,POST_CONTENT
-		,POST_MDATE,POST_REGDATE,POST_HIT,POST_COMMENT_HIT,POST_LIKE,POST_DELFLAG,POST_LATITUDE,POST_LONGITUDE
+		SELECT POST_USER_NO, POST_ID, POST_NO,POST_BOARD_NAME,POST_CATEGORY_NAME,POST_TITLE,POST_CONTENT,
+		POST_MDATE,POST_REGDATE,POST_HIT,POST_COMMENT_HIT,POST_LIKE,POST_DELFLAG,POST_LATITUDE,POST_LONGITUDE
 		FROM POST
 		WHERE POST_BOARD_NAME = 'ACCOMPANY'
 		AND POST_ID = #{POST_ID}
 	</select>
 	
 	<select id="notice_selectOne" parameterType="int" resultMap="BoardMap">
-		SELECT POST_USER_NO, POST_ID, POST_NO,POST_BOARD_NAME,POST_CATEGORY_NAME,POST_TITLE,POST_CONTENT
-		,POST_MDATE,POST_REGDATE,POST_HIT,POST_COMMENT_HIT,POST_LIKE,POST_DELFLAG,POST_LATITUDE,POST_LONGITUDE
+		SELECT POST_USER_NO, POST_ID, POST_NO,POST_BOARD_NAME,POST_CATEGORY_NAME,POST_TITLE,POST_CONTENT,
+		POST_MDATE,POST_REGDATE,POST_HIT,POST_COMMENT_HIT,POST_LIKE,POST_DELFLAG,POST_LATITUDE,POST_LONGITUDE
 		FROM POST
 		WHERE POST_BOARD_NAME = 'NOTICE'
 		AND POST_ID = #{POST_ID}
 	</select>
 	
 	<select id="photo_selectOne" parameterType="int" resultMap="BoardMap">
-		SELECT POST_USER_NO, POST_ID, POST_NO,POST_BOARD_NAME,POST_CATEGORY_NAME,POST_TITLE,POST_CONTENT
-		,POST_MDATE,POST_REGDATE,POST_HIT,POST_COMMENT_HIT,POST_LIKE,POST_DELFLAG,POST_LATITUDE,POST_LONGITUDE
+		SELECT POST_USER_NO, POST_ID, POST_NO,POST_BOARD_NAME,POST_CATEGORY_NAME,POST_TITLE,POST_CONTENT,
+		POST_MDATE,POST_REGDATE,POST_HIT,POST_COMMENT_HIT,POST_LIKE,POST_DELFLAG,POST_LATITUDE,POST_LONGITUDE
 		FROM POST
 		WHERE POST_BOARD_NAME = 'PHOTO'
 		AND POST_ID = #{POST_ID}
 	</select>
 	
+	<select id="selectOneByPostid" parameterType="int" resultMap="BoardMap">
+		SELECT POST_USER_NO, POST_ID, POST_NO,POST_BOARD_NAME,POST_CATEGORY_NAME,POST_TITLE,POST_CONTENT
+		,POST_MDATE,POST_REGDATE,POST_HIT,POST_COMMENT_HIT,POST_LIKE,POST_DELFLAG,POST_LATITUDE,POST_LONGITUDE
+		FROM POST
+		WHERE POST_ID = #{post_id}
+	</select>
+	
 	<insert id="accompany_insert" parameterType="BoardDto">
 		INSERT INTO POST VALUES
-		(#{postUserNo}, POST_ID_SEQ.NEXTVAL, POST_DONGHANG_SEQ.NEXTVAL, 'ACCOMPANY', #{postCategoryName},#{postTitle},#{postContent}
-		,#{postMdate},SYSDATE,0,0,0,'N',#{postLatitude},0)
+		(#{postUserNo}, POST_ID_SEQ.NEXTVAL, POST_DONGHANG_SEQ.NEXTVAL, 'ACCOMPANY', #{postCategoryName},#{postTitle},#{postContent},
+		#{postMdate},SYSDATE,0,0,0,'N', NULL, #{postLongitude})
 	</insert>
 	
 	<insert id="photo_insert" parameterType="BoardDto">
@@ -153,8 +160,19 @@
 	<insert id="notice_insert" parameterType="BoardDto">
 		INSERT INTO POST VALUES
 		(#{postUserNo}, POST_ID_SEQ.NEXTVAL, POST_NOTICE_SEQ.NEXTVAL, 'NOTICE', 'walk', #{postTitle},#{postContent},
-		NULL, SYSDATE,0,0,0,'N',0,0)
+		NULL, TO_CHAR(SYSDATE,'YYYY.MM.DD HH24:MI'),0,0,0,'N',0,0)
 	</insert>
+	
+	<update id="accompany_update" parameterType="BoardDto">
+		UPDATE POST SET 
+			POST_ID = #{postId},
+			POST_TITLE = #{postTitle},
+			POST_CONTENT = #{postContent},
+			POST_MDATE = #{postMdate},
+			POST_REGDATE = SYSDATE,
+			POST_LONGITUDE = #{postLongitude}
+		WHERE POST_ID = #{postId}
+	</update>
 	
 	<update id="notice_update" parameterType="BoardDto">
 		UPDATE POST SET 
@@ -162,7 +180,13 @@
 			POST_TITLE = #{postTitle},
 			POST_CONTENT = #{postContent},
 			POST_REGDATE = SYSDATE
-		WHERE POST_ID = #{POST_ID}
+		WHERE POST_ID = #{postId}
+	</update>
+	
+	<update id="accompany_delete" parameterType="int">
+		UPDATE POST SET
+			POST_DELFLAG = 'Y'
+		WHERE POST_ID = #{postId}
 	</update>
 	
 	<update id="notice_delete" parameterType="int">
@@ -173,7 +197,7 @@
 	
 	<insert id="addscrap" parameterType="scrapDto">
 		INSERT INTO SCRAP
-		VALUE(SCRAPNOSEQ.NEXTVAL,#{scrap_user_no},#{scrap_post_id})
+		VALUES(SCRAPNOSEQ.NEXTVAL,#{scrap_user_no},#{scrap_post_id})
 	</insert>
 	
 	<delete id="delscrap" parameterType="int">
@@ -181,18 +205,22 @@
 		WHERE SCRAP_USER_NO = #{scrap_user_no}
 	</delete>
 	
-	<select id="scrapList" parameterType="int" resultType="BoardDto">
-		SELECT POST_ID, POST_BOARD_NAME, POST_TITLE, POST_USER_NO
+	<select id="scrapList" parameterType="int" resultMap="BoardMap">
+		SELECT POST_USER_NO, POST_ID, POST_NO, POST_BOARD_NAME, POST_CATEGORY_NAME, POST_TITLE, POST_CONTENT
+		, POST_MDATE, POST_REGDATE, POST_HIT, POST_COMMENT_HIT, POST_LIKE, POST_DELFLAG, POST_LATITUDE, POST_LONGITUDE
 		FROM POST
 		JOIN SCRAP ON(POST_ID = SCRAP_POST_ID)
-		JOIN MEMBER ON(POST_USER_NO = MEMBER_NO)
 		WHERE SCRAP_USER_NO = #{scrap_user_no}
 	</select>
 	
+	<select id="scrapchk" parameterType="scrapDto" resultType="int">
+		SELECT COUNT(*) FROM SCRAP
+		WHERE SCRAP_USER_NO = #{scrap_user_no}
+		AND SCRAP_POST_ID = #{scrap_post_id}
+	</select>
 	
 	<select id="getTotalCount" resultType="int">
 		SELECT COUNT(*) FROM POST
 	</select>
-	
 	
 </mapper>

@@ -226,7 +226,7 @@ margin-top:10px;
 </head>
 <body>
 <%--캘린더 게시판 게시글 수정 --%>
-<% RegistDto Ldto = (RegistDto) session.getAttribute("Ldto"); %>
+<%@ include file="../../header.jsp" %>gistDto) session.getAttribute("Ldto"); %>
 <%
 	Calendar cal = Calendar.getInstance();
 	

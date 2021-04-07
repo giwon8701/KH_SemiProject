@@ -278,7 +278,7 @@ ul, li {
 				<div class="info">
 					<dl>
 						<dt>작성자</dt>
-						<dd>${Ldto.member_id } </dd>
+						<dd>${member_id } </dd>
 			 		</dl>
 					<dl>
 						<dt>작성일</dt>
@@ -294,7 +294,7 @@ ul, li {
 			
 				<a href="./notice.do?command=list" class="on">목록</a> 
 				<a href="./notice.do?command=updateform&postId=${dto.postId}" class="off">수정</a>
-				<a href="location.href='./notice.do?command=delete&postId=${dto.postId}" class="off">삭제</a>
+				<a href="./notice.do?command=delete&postId=${dto.postId}" class="off">삭제</a>
 			</div>
 		</div>
 	</div>
@@ -313,7 +313,7 @@ ul, li {
 				<th colspan="3">${dto.postTitle }</th>		
 			</tr>
 			<tr>
-				<td>${Ldto.member_id } </td>
+				<td>${member_id } </td>
 				<td>${dto.postRegdate } </td>
 			</tr>
 			<tr>
@@ -321,9 +321,16 @@ ul, li {
 			</tr>
 			<tr>
 				<td colspan="3">
-					<input type="button" class="button" value="목록" onclick="location.href='./notice.do?command=list'"/>
-					<input type="button" value="수정" onclick="location.href='./notice.do?command=updateform&postId=${dto.postId}'"/>
-					<input type="button" value="삭제" onclick="location.href='./notice.do?command=delete&postId=${dto.postId}'"/>
+				<c:choose>
+      				<c:when test="${Ldto.member_no eq 1 }">	
+      					<input type="button" class="button" value="목록" onclick="location.href='board.do?command=list'" />
+						<input type="button" class="button" value="수정" onclick="location.href='board.do?command=updateform&postId=${dto.postId}'" />
+						<input type="button" class="button" value="삭제" onclick="location.href='board.do?command=delete&postId=${dto.postId}'" />
+					 </c:when>
+	 				 <c:otherwise>
+	 				 	<input type="button" value="목록" onclick="location.href='board.do?command=list'" />
+	 				 </c:otherwise>
+ 			   </c:choose>
 				</td>
 			</tr>
 		</c:forEach>

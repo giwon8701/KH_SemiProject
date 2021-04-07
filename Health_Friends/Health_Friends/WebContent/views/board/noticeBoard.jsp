@@ -1,3 +1,6 @@
+<%@page import="org.apache.commons.collections.bag.SynchronizedSortedBag"%>
+<%@page import="com.login.biz.RegistBizImpl"%>
+<%@page import="com.login.biz.RegistBiz"%>
 <%@page import="com.common.Paging"%>
 <%@page import="com.login.dto.RegistDto"%>
 <%@page import="com.board.dto.BoardDto"%>
@@ -14,11 +17,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 
 <title>우리동네 운동친구 Health Friends</title>
-
 <style>
 * {
 	margin: 0;
@@ -309,12 +311,13 @@ cursor: pointer;
 
 <body>
 	<%--
-	<%@include file="../../views/common/header.jsp" %>
+	<%@include file="../../header.jsp" %>
  --%>
 
 <%
 	RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); 
 	BoardBiz biz = new BoardBizImpl();
+	RegistBiz rbiz = new RegistBizImpl();
 	
 	List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
 
@@ -379,28 +382,42 @@ cursor: pointer;
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${list }" var="dto">
-						<tr>
-							<td>${dto.postNo }</td>
-							<td><c:choose>
-									<c:when test="${dto.postDelflag eq'Y' }">
-										<c:out value="---삭제된 게시글입니다---"></c:out>
-									</c:when>
-									<c:otherwise>
-										<c:choose>
-											<c:when test="${empty Ldto.member_no}">
-												<a href="javascript:loginChk();">${dto.postTitle}</a>
-											</c:when>
-											<c:otherwise>
-												<a href="./notice.do?command=select&postId=${dto.postId }">${dto.postTitle }</a>
-											</c:otherwise>
-										</c:choose>
-									</c:otherwise>
-								</c:choose></td>
-							<td>${Ldto.member_id }</td>
-							<td>${dto.postRegdate }</td>
-						</tr>
-					</c:forEach>
+					<%
+	for(int i = 0; i < list.size(); i++){
+		System.out.println("list.get(i).getPostUserNo() : " + list.get(i).getPostUserNo());
+		RegistDto rdto = rbiz.selectByNo(list.get(i).getPostUserNo());
+		String member_id = rdto.getMember_id();
+		if(list.get(i).getPostDelflag().equals('Y')){
+%>
+			<tr>
+				<td>======삭제된 게시글 입니다=========</td>
+			</tr>
+<%			
+		} else{
+%>
+			<tr>
+				<td><%=list.get(i).getPostNo()%></td>
+				<td>
+<%
+			if(Ldto == null){
+%>
+					<a href="javascript:loginChk();"><%=list.get(i).getPostTitle()%></a>
+<%
+			} else{
+%>
+					<a href="./notice.do?command=select&postId=<%=list.get(i).getPostId()%>"><%=list.get(i).getPostTitle()%></a>		
+<%
+			}
+%>
+				</td>
+				<td><%=member_id%></td>
+				<td><%=list.get(i).getPostRegdate()%></td>
+			</tr>
+				
+<%	
+		}
+	}
+%>
 				</tbody>
 
 			</table>
@@ -438,111 +455,13 @@ cursor: pointer;
 		</div>
 	</div>
 
-	<!--			
-<br>
-<br>
-<br>
-	
-	
-				
-		<div class="paging">
-			<a href="#" class="bt">첫 페이지</a> 
-			<a href="#" class="bt">이전 페이지</a> 
-			<a href="#" class="num on">1</a>
-			<a href="#" class="num">2</a>
-			<a href="#" class="num">3</a>
-			<a href="#" class="bt">다음 페이지</a> 
-			<a href="#" class="bt">마지막 페이지</a>
-		</div>
-
-	</div>
-	</div>
-   -->
-
-
-
-	<!-- 
- 
-	<section class="boardlist">
-		<a href="./board.do?command=list">동행 구해요</a>
-		<a href="./review.do?command=list">사진후기</a>
-		<a href="./notice.do?command=list">공지사항</a>
-	</section>
-	
-	<h2>공지사항</h2>
-	
-	<table border="1">
-			<tr>
-				<th>글번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>날짜</th>
-			</tr>
-		<c:forEach items="${list }" var="dto">
-			<tr>
-				<td>${dto.postNo }</td>
-				<td>
-					<c:choose>
-						<c:when test="${dto.postDelflag eq'Y' }">
-							<c:out value="---삭제된 게시글입니다---"></c:out>
-						</c:when>
-						<c:otherwise>
-							 <c:choose>
-							 	<c:when test="${empty Ldto.member_no}">
-									<a href="javascript:loginChk();">${dto.postTitle}</a>
-								</c:when>
-								<c:otherwise>
-									<a href="./notice.do?command=select&postId=${dto.postId }">${dto.postTitle }</a>
-								</c:otherwise>
-							</c:choose>
-						</c:otherwise>
-					</c:choose>
-				</td>
-				<td>${Ldto.member_id }</td>
-				<td>${dto.postRegdate }</td>
-			</tr>
-		</c:forEach>
-	</table>
-	<c:choose>
-      <c:when test="${Ldto.member_no eq 1 }">
-		<input type="button" value="글작성" onclick="location.href='./notice.do?command=insert'" />
-	  </c:when>
-	  <c:otherwise>
-		<a href="javascript:loginChk2();"><input type="button" value="글작성"/></a>
-	  </c:otherwise>
-    </c:choose>
- -->
-
-
-
-
-	<!--  pagination 
-	<div class="pagination">
-		<input type="button" onclick="pageMove(<%=paging.getFirstPageNo()%>)"
-			value="◀"> <input type="button"
-			onclick="pageMove(<%=paging.getPrevPageNo()%>)" value="◁">
-			
-
-		<%
-			for (int i = paging.getStartPageNo(); i <= paging.getEndPageNo(); i++) {
-		%>
-		<a onclick="pageMove(<%=i%>)"><%=i%></a>
-		<%
-			}
-		%>
-
-		<input type="button" onclick="pageMove(<%=paging.getNextPageNo()%>)"
-			value="▷"> <input type="button"
-			onclick="pageMove(<%=paging.getFinalPageNo()%>)" value="▶">
-	</div>
--->
 	<script>
 			function pageMove(page){
 				location.href='notice.do?command=list&page='+page
 			}
 	</script>
 	<%---	
-	<%@include file="../../views/common/footer.jsp" %>
+	<%@include file="../../footer.jsp" %>
 --%>
 </body>
 </html>

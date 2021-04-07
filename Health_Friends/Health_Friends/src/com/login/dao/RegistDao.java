@@ -4,6 +4,8 @@ import com.login.dto.RegistDto;
 
 
 public interface RegistDao {
+	//회원고유번호로 정보 가져오기
+	public RegistDto selectByNo(int member_no);
 	
 	//중복체크
 	public int registCheck(String member, String check);

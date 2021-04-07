@@ -132,31 +132,9 @@ vertical-align: 4px;
               
             </ul>
            <div style="text-align:center"><br>
-           <input type="button" id="mpage01" onclick="location.href='../../payment.do?command=payment'" value="결제하기">
+           <input type="button" id="mpage01" onclick="location.href='payment.do?command=payment'" value="결제하기">
 			<input type="button" id="mpage02" onclick="location.href='mypage.jsp'" value="돌아가기">
 			</div>
         </form>
-
-
-<%-- 결제 전 안내 페이지... --%>
-
-
-<!--  
-<table border="1">
-	<tr>
-		<th colspan="2">이용약관</th>
-	</tr>
-	<tr>
-		<td colspan="2">저희 health friends를 이용해주셔서 감사합니다....</td>
-		
-	</tr>
-	<tr>
-		<td align="center">
-			<input type="button" onclick="location.href='../../payment.do?command=payment'" value="결제하기">
-			<input type="button" onclick="location.href='mypage.jsp'" value="돌아가기">
-		</td>
-	</tr>
-</table>
--->
 </body>
 </html>

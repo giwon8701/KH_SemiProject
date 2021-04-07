@@ -1,3 +1,5 @@
+<%@page import="com.login.biz.RegistBizImpl"%>
+<%@page import="com.login.biz.RegistBiz"%>
 <%@page import="com.login.dto.RegistDto"%>
 <%@page
 	import="org.apache.commons.collections.bag.SynchronizedSortedBag"%>
@@ -8,6 +10,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>​
 <%
 	request.setCharacterEncoding("UTF-8");
 response.setContentType("text/html; charset=UTF-8");
@@ -17,6 +20,20 @@ response.setContentType("text/html; charset=UTF-8");
 <head>
 <meta charset="UTF-8">
 
+<title>동행 게시판</title>
+	<%
+		List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
+		
+		RegistBiz rbiz = new RegistBizImpl();
+	
+		int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+		int totalCount = Integer.parseInt(request.getAttribute("totalCount") + "");
+		
+		Paging paging = new Paging();
+		paging.setPageNo(pageNum);
+		paging.setPageSize(10);
+		paging.setTotalCount(totalCount);
+	%>
 <style>
 
 * {
@@ -285,19 +302,6 @@ div .pagemove:hover {
 <body>
 
 	<%@include file="../../header.jsp"%>
-
-	<%
-		List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
-
-	int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-	int totalCount = Integer.parseInt(request.getAttribute("totalCount") + "");
-
-	Paging paging = new Paging();
-	paging.setPageNo(pageNum);
-	paging.setPageSize(10);
-	paging.setTotalCount(totalCount);
-	%>
-
 	<script>
 		$(document).ready(function(){
 	
@@ -340,6 +344,7 @@ div .pagemove:hover {
 				<caption>게시판 목록</caption>
 				<thead>
 					<tr>
+						<th>글번호</th>
 						<th>제목</th>
 						<th>성별</th>
 						<th>작성자</th>
@@ -347,29 +352,43 @@ div .pagemove:hover {
 					</tr>
 				</thead>
 				<tbody id="accompanyBoard_list">
-					<c:forEach items="${list }" var="dto">
+<%
+	for(int i = 0; i < list.size(); i++){
+		RegistDto rdto = rbiz.selectByNo(list.get(i).getPostUserNo());
+		String member_id = rdto.getMember_id();
+		if(list.get(i).getPostDelflag().equals('Y')){
+%>
+			<tr>
+				<td>======삭제된 게시글 입니다=========</td>
+			</tr>
 
-						<tr>
-							<td><c:choose>
-									<c:when test="${dto.postDelflag eq'Y' }">
-										<c:out value="---삭제된 게시글입니다---"></c:out>
-									</c:when>
-									<c:otherwise>
-										<c:choose>
-											<c:when test="${empty Ldto.member_no}">
-												<a href="javascript:loginChk();">${dto.postTitle}</a>
-											</c:when>
-											<c:otherwise>
-												<a href="./board.do?command=select&postId=${dto.postId }">${dto.postTitle }</a>
-											</c:otherwise>
-										</c:choose>
-									</c:otherwise>
-								</c:choose></td>
-							<td>${Ldto.member_gender }</td>
-							<td>${Ldto.member_id }</td>
-							<td>${dto.postRegdate}</td>
-						</tr>
-					</c:forEach>
+<%			
+		} else{
+%>
+			<tr>
+				<td><%=list.get(i).getPostNo()%></td>
+				<td>
+<%
+			if(Ldto == null){
+%>
+					<a href="javascript:loginChk();"><%=list.get(i).getPostTitle()%></a>
+<%
+			} else{
+%>
+					<a href="./board.do?command=select&postId=<%=list.get(i).getPostId()%>"><%=list.get(i).getPostTitle()%></a>		
+<%
+			}
+%>
+				</td>
+				<td><%=rdto.getMember_gender() %>
+				<td><%=member_id%></td>
+				<td><%=list.get(i).getPostRegdate()%></td>
+			</tr>
+				
+<%	
+		}
+	}
+%>
 				</tbody>
 			</table>
 

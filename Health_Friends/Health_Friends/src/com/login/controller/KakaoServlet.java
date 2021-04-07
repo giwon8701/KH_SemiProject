@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.login.biz.RegistBiz;
 import com.login.biz.RegistBizImpl;
 import com.login.dto.RegistDto;
@@ -34,9 +36,8 @@ public class KakaoServlet extends HttpServlet {
 			String member_email = request.getParameter("email");
 			
 			int cnt = biz.registCheck(member_email, "email");
-			
 			PrintWriter out = response.getWriter();
-			out.println(cnt);
+			out.print(cnt);
 			
 		} else if(command.equals("kakaoRegist")) {
 			String member_id = request.getParameter("email").split("@")[0];

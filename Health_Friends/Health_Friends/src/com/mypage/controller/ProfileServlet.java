@@ -73,13 +73,9 @@ public class ProfileServlet extends HttpServlet {
 		session.setAttribute("Ldto", loginSessionDto);
 	
 		if(res > 0) {
-			response.getWriter().print("<script>alert('프로필 사진이 변경되었습니다!')</script>");
-			dispatch(request, response, "./views/mypage/mypage.jsp");
-			//jsResponse(response, "./views/mypage/mypage.jsp", "프로필 사진이 변경되었습니다!");
+			jsResponse(response, "./mypage.do?command=mypage", "프로필 사진이 변경되었습니다!");
 		} else {
-			response.getWriter().print("<script>alert('프로필 사진변경에 실패하였습니다!')</script>");
-			dispatch(request, response, "./views/mypage/mypage.jsp");
-			//jsResponse(response, "./views/mypage/mypage.jsp", "프로필 사진변경에 실패하였습니다!");
+			jsResponse(response, "./mypage.do?command=mypage", "프로필 사진변경에 실패하였거나 프로필 사진이 삭제 되었습니다!");
 		}
 		
 	}

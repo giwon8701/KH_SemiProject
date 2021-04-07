@@ -17,6 +17,8 @@ import com.board.biz.BoardBiz;
 import com.board.biz.BoardBizImpl;
 import com.board.dto.BoardDto;
 import com.common.Paging;
+import com.login.biz.RegistBiz;
+import com.login.biz.RegistBizImpl;
 import com.login.dto.RegistDto;
 
 @WebServlet("/notice.do")
@@ -48,14 +50,21 @@ public class NoticeServlet extends HttpServlet {
 				int res = biz.notice_insert(dto);
 				
 				if(res > 0) {
-					response.sendRedirect("notice.do?command=list");
+					response.sendRedirect("./notice.do?command=list");
 				} else {
-					response.sendRedirect("./views/board/noticeBoard_post.jsp");
+					response.sendRedirect("./notice.do?command=insert");
 				}
 				
 			} else if(command.equals("select")) {
 				int postId = Integer.parseInt(request.getParameter("postId"));
 				BoardDto dto = biz.notice_selectOne(postId);
+				int post_user_no = dto.getPostUserNo();
+				
+				RegistBiz rbiz = new RegistBizImpl();
+				RegistDto rdto = rbiz.selectByNo(post_user_no);
+				String member_id = rdto.getMember_id();
+				
+				request.setAttribute("member_id", member_id);
 				request.setAttribute("dto", dto);
 				dispatch(request, response, "./views/board/noticeBoard_select.jsp");
 			
@@ -70,6 +79,8 @@ public class NoticeServlet extends HttpServlet {
 				String postTitle = request.getParameter("postTitle");
 				String postContent = request.getParameter("postContent");
 				BoardDto dto = new BoardDto();
+				int postUserNo = Integer.parseInt(request.getParameter("postUserNo"));; 
+				dto.setPostUserNo(postUserNo);
 				dto.setPostId(postId);
 				dto.setPostTitle(postTitle);
 				dto.setPostContent(postContent);

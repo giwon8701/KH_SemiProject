@@ -8,11 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <title>우리동네 운동친구 Health Friends</title>
-<!-- 
-	kakao map javascript key :  c6a1fbbb0976413a4f4996beefa8a351
-	naver calendar : id: p6N_JsQoah3hCrLJR428
-					 pw: Ekh0RH5rfu
--->
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="/Health_Friends/assets/api/se2/js/HuskyEZCreator.js" type="text/javascript"></script>
 <script src="/Health_Friends/assets/api/se2/init.js" type="text/javascript"></script>
@@ -59,13 +54,13 @@ $(function(){
 <% RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); %> 
  	
 	<section class="boardlist">
-		<a href="../../board.do?command=list">동행 구해요</a>
-		<a href="../../review.do?command=list">사진후기</a>
-		<a href="../../notice.do?command=list">공지사항</a>
+		<a href="./board.do?command=list">동행 구해요</a>
+		<a href="./review.do?command=list">사진후기</a>
+		<a href="./notice.do?command=list">공지사항</a>
 	</section>
  
 	<section id="Board_writePost">
-		<form id="Acform" action="../../board.do" method="post">
+		<form action="./board.do" id="Acform"  method="post">
 			<input type="hidden" name="command" value="insertres"/>
 			<table border="1">
 				<tr>
@@ -77,7 +72,7 @@ $(function(){
 					</td>
 				</tr>
 				<tr>
-					<td class="exercise">
+					<td>
 						운동종류	<br/>
 						<select name="postCategoryName">
 							<optgroup label="맨발운동">
@@ -98,8 +93,12 @@ $(function(){
 					
 					<td>
 						<!-- 지도API : c6a1fbbb0976413a4f4996beefa8a351 -->
-						약속장소	<br/>
 						<p><em>지도를 클릭해주세요!</em></p>
+						약속장소	<br/>
+						<div id="makerSpace" >
+					 지번주소<input type="text" name="postLongitude" value=""/>
+						</div>
+					
 						<input type="hidden" id="MapAddress" name="MapAddress" value="" /> 
 						<div class="map_wrap">
 						    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
@@ -138,37 +137,26 @@ $(function(){
 							            var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
 							            detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
 							            
-							            var MapAddress = '<div class="bAddr">' +
-							                            '<span class="title">법정동 주소정보</span>' + 
-							                            detailAddr + 
-							                        '</div>';
-							                        
+							            var MapAddresss = '<div class="bAddr">' +  '<span class="title">법정동 주소정보</span>' + detailAddr + '</div>';
+							                    
+							            var roadAddr = !!result[0].road_address ? '<div>' + result[0].road_address.address_name + '</div>' : '';
+							            var Addr = '<div>' + result[0].address.address_name + '</div>';
+							            
 							            $("#MapAddress").val(mouseEvent)
 										
+							           // var markerSpace = document.getElementById("makerSpace");
+							           // makerSpace.innerHTML = detailAddr;
+							         	
+							         	var test2 = document.getElementsByName("postLongitude")[0];
+								        var afterString2 = Addr.slice(Addr.indexOf(">")+1, Addr.lastIndexOf("<"));
+								        test2.value = afterString2;
+							            
 							            // 마커를 클릭한 위치에 표시합니다 
 							            marker.setPosition(mouseEvent.latLng);
 							            marker.setMap(map);
-							
+							            
 							            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
 							            infowindow.setContent(MapAddress);
-							            infowindow.open(map, marker);
-							            console.log(result[0]);
-							         
-							   			var data =  $.ajax({
-							            	   
-							                url: "../../board.do", // 클라이언트가 요청을 보낼 서버의 URL 주소
-							                data: { "result" : result[0],
-							                		"command" : insertres 
-							                	},                // HTTP 요청과 함께 서버로 보낼 데이터
-							                type: "GET",                             // HTTP 요청 방식(GET, POST)
-							                dataType: "json",                         // 서버에서 보내줄 데이터의 타입,
-							                success: function(data){
-							                	
-							                	
-							                	return data;
-							                }
-
-							            })
 							            
 							        }   
 							    });
@@ -206,11 +194,9 @@ $(function(){
 							
 						</script>
 						</td>
-						
-		<!-- 달력API -->
 						<td>
 							<p><em>달력을 클릭해주세요!</em></p>
-							<div id='postMdate'></div>
+	<!-- 달력API -->			<div id='postMdate'></div>
 						 	<link href='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.css' rel='stylesheet' />
 						    <script src='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.js'></script>
 						    <script>
@@ -233,9 +219,8 @@ $(function(){
 						      });
 						    </script>
 						    <input type="hidden" name="postMdate" value="" />
-					    <div id='calendar'></div>
-					    
-					</td>
+					 	   <div id='calendar'></div>
+						</td>
 				</tr> 
 				<tr>
 					<td colspan="3" id="Board_writeContent">
@@ -244,7 +229,7 @@ $(function(){
 				</tr>
 			</table>
 			<input type="submit" id="submit" value="등록">
-			<input type="button" value="취소" onclick="location.href='../../board.do?command=list'" />
+			<input type="button" value="취소" onclick="location.href='./board.do?command=list'" />
 		</form>
 	</section>
 <%--	

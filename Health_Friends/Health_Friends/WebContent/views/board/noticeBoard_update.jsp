@@ -278,8 +278,9 @@ ul, li {
 		<div class="board_title">
 		<div class="board_view_wrap">
 			<div class="board_view">
-				<div class="title" name="postTitle" contenteditable="true">${dto.postTitle }
-		</div>
+				<div class="title">
+					<input type="text" name="postTitle" value="${dto.postTitle }"/>
+				</div>
 	<div class="info">
 					<dl>
 						<dt>작성자</dt>
@@ -290,63 +291,20 @@ ul, li {
 						<dd>${dto.postRegdate }</dd>
 					</dl>
 				</div>
-				<div class="cont" name="postContent" contenteditable="true" style="width:97%; height:500px; overflow:auto; width:97%; height:500px;">
-					${dto.postContent }
+				<div class="cont" contenteditable="true" style="width:97%; height:500px; overflow:auto; width:97%; height:500px;">
+					<textarea name="postContent">${dto.postContent }</textarea>
 				</div>
 				<div class="bt_wrap"> 
-				<a href="" class="on" type="submit">확인</a>
-				<a href="./notice.do?command=list" class="off">취소</a>
+					<input class="on" type="submit" value="확인" 	/>
+						<a href="./notice.do?command=list" class="off">취소</a>
+				</div>
+			</div>
 			</div>
 		</div>
-		</div>
 	</div>
-</div>
 </form>
 
 
-
-
-	<section class="boardlist">
-		<a href="./board.do?command=list">동행 구해요</a>
-		<a href="./review.do?command=list">사진후기</a>
-		<a href="./notice.do?command=list">공지사항</a>
-	</section>
-	<form action="notice.do" method="post">
-		<input type="hidden" name="command" value="updateres"/>
-			<input type="hidden" name="postId" value=${dto.postId } />
-			<input type="hidden" name="postUserNo" value=${Ldto.member_no } />
-		<table border="1">
-				<tr>
-					<th colspan="3">
-						<input type="text" name="postTitle" value="${dto.postTitle }"/>
-					</th>		
-				</tr>
-				<tr>
-					<td colspan="2">${Ldto.member_id }</td>
-					<td>${dto.postRegdate } </td>
-				</tr>
-				<tr>
-					<td colspan="3">
-						<textarea name="postContent">${dto.postContent }</textarea>
-					</td>
-				</tr>
-				<tr>
-					<td>	
-						<input type="submit" value="확인"/>
-						<input type="button" value="취소" onclick="location.href='./notice.do?command=list'"/>
-					</td>
-				</tr>
-		</table>
-	</form>
-	
-	
-	
-	
-	
-	
-	
-	
-	
 <%---	
 	<%@include file="../../views/common/footer.jsp" %>
 --%>

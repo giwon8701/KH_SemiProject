@@ -21,9 +21,19 @@ $(window).scroll(function(evt) {
 	      $('#header').css("background-color", "#5995fd")
 
 	   } else{
-	      $('#header').css("background-color", "rgba(0,0,0,.1)")
+	      $('#header').css("background-color", "rgba(102,153,255,.1)")
 	   }
 	});
+</script>
+<!-- 검색관련 -->
+<script type="text/javascript">
+      
+  	function filter(){
+  		var searchId = document.getElementById("search").value;
+  		var queryString = "?command=searching&searchId="+searchId;
+  		
+		open("follow.do"+queryString, "searching", "width=600; height=600;");
+	};
 </script>
 </head>
 <body>
@@ -47,7 +57,7 @@ $(window).scroll(function(evt) {
             </ul>
             
            	<span class="header-search">
-				<input type="text" size="25" placeholder="유저를 검색해 보세요!">
+				<input type="text" size="25" placeholder="유저를 검색해 보세요!" id="search" onkeyup="if(window.event.keyCode==13){filter()}" />
 			</span>
             
             <ul class="border-ul">

@@ -17,13 +17,13 @@ public class BoardDto {
 	private int postLike;
 	private String postDelflag;
 	private String postLatitude;
-	private int postLongitude;
+	private String postLongitude;
 	
 	public BoardDto() {}
 	
 	public BoardDto(int postUserNo, int postId, int postNo, String postBoardName, String postCategoryName,
 			String postTitle, String postContent, String postMdate, Date postRegdate, int postHit, int postCommentHit,
-			int postLike, String postDelflag, String postLatitude, int postLongitude) {
+			int postLike, String postDelflag, String postLatitude, String postLongitude) {
 		this.postUserNo = postUserNo;
 		this.postId = postId;
 		this.postNo = postNo;
@@ -153,11 +153,11 @@ public class BoardDto {
 		this.postLatitude = postLatitude;
 	}
 
-	public int getPostLongitude() {
+	public String getPostLongitude() {
 		return postLongitude;
 	}
 
-	public void setPostLongitude(int postLongitude) {
+	public void setPostLongitude(String postLongitude) {
 		this.postLongitude = postLongitude;
 	}
 

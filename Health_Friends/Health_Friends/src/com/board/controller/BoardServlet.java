@@ -15,8 +15,13 @@ import javax.servlet.http.HttpSession;
 
 import com.board.biz.BoardBiz;
 import com.board.biz.BoardBizImpl;
+import com.board.biz.ScrapBiz;
+import com.board.biz.ScrapBizImpl;
 import com.board.dto.BoardDto;
+import com.board.dto.ScrapDto;
 import com.common.Paging;
+import com.login.biz.RegistBiz;
+import com.login.biz.RegistBizImpl;
 import com.login.dto.RegistDto;
 import com.mypage.dto.PaymentDto;
 
@@ -38,20 +43,15 @@ public class BoardServlet extends HttpServlet {
 				dispatch(request, response, "./views/board/accompanyBoard_post.jsp");
 				
 			} else if(command.equals("insertres")) {
-				String postLatitude = request.getParameter("result");
-				System.out.println(postLatitude);
+				String postLongitude = request.getParameter("postLongitude");
 				String postTitle = request.getParameter("postTitle");
-				System.out.println(postTitle);
 				String postCategoryName = request.getParameter("postCategoryName");
-				System.out.println(postCategoryName);
 				String postContent = request.getParameter("postContent");
-				System.out.println(postContent);
 				int postUserNo = ldto.getMember_no();
 				String postMdate = request.getParameter("postMdate");
-				System.out.println(postMdate);
 				BoardDto dto = new BoardDto();
 				dto.setPostUserNo(postUserNo);
-				dto.setPostLatitude(postLatitude);
+				dto.setPostLongitude(postLongitude);
 				dto.setPostCategoryName(postCategoryName);
 				dto.setPostTitle(postTitle);
 				dto.setPostContent(postContent);
@@ -66,30 +66,51 @@ public class BoardServlet extends HttpServlet {
 				
 			} else if(command.equals("select")) {
 				int postId = Integer.parseInt(request.getParameter("postId"));
+				
 				BoardDto dto = biz.accompany_selectOne(postId);
+				int user_no = dto.getPostUserNo();
+				
+				RegistBiz rbiz = new RegistBizImpl();
+				RegistDto rdto = rbiz.selectByNo(user_no);
+				String member_id = rdto.getMember_id();
+				
+				ScrapBiz sbiz = new ScrapBizImpl();
+				
+				ScrapDto sdto = new ScrapDto();
+				sdto.setScrap_post_id(postId);
+				sdto.setScrap_user_no(user_no);
+				
+				int res = sbiz.scrapChk(sdto);
+				
+				request.setAttribute("res", res);
 				request.setAttribute("dto", dto);
+				request.setAttribute("member_id", member_id);
 				dispatch(request, response, "./views/board/accompanyBoard_select.jsp");
 				
 			} else if(command.equals("updateform")) {	
 				int postId = Integer.parseInt(request.getParameter("postId"));
 				BoardDto dto = biz.accompany_selectOne(postId);
 				request.setAttribute("dto", dto);
-				dispatch(request, response, "./views/board/accompanyBaord_update.jsp");
+				dispatch(request, response, "./views/board/accompanyBoard_update.jsp");
 			
-			} else if(command.equals("updateres")) {	
+			} else if(command.equals("updateres")) {
 				int postId = Integer.parseInt(request.getParameter("postId"));
-				int postUserNo = Integer.parseInt(request.getParameter("postUserNo"));
+				String postLongitude = request.getParameter("postLongitude");
 				String postTitle = request.getParameter("postTitle");
+				String postCategoryName = request.getParameter("postCategoryName");
 				String postContent = request.getParameter("postContent");
+				String postMdate = request.getParameter("postMdate");
 				BoardDto dto = new BoardDto();
-				dto.setPostId(postId);
+				dto.setPostLongitude(postLongitude);
+				dto.setPostCategoryName(postCategoryName);
 				dto.setPostTitle(postTitle);
 				dto.setPostContent(postContent);
-				dto.setPostUserNo(postUserNo);
+				dto.setPostMdate(postMdate);
+				dto.setPostId(postId);
 				
 				int res = biz.accompany_update(dto);
 				if (res > 0) {
-					response.sendRedirect("board.do?command=list");
+					response.sendRedirect("board.do?command=list&postId=" + postId);
 				} else {
 					response.sendRedirect("./views/board/" );
 				}
@@ -124,6 +145,18 @@ public class BoardServlet extends HttpServlet {
 				request.setAttribute("pageNum", pageNum);
 				request.setAttribute("totalCount", totalCount);
 				dispatch(request, response, "./views/board/accompanyBoard.jsp");
+			} else if(command.equals("scrapSelect")) {
+				int postid = Integer.parseInt(request.getParameter("postid"));
+				
+				BoardDto dto = biz.selectOneByPostId(postid);
+				String boardname = dto.getPostBoardName();
+				System.out.println(dto.toString());
+				System.out.println(boardname);
+				if(boardname.equals("ACCOMPANY")) {
+					dispatch(request, response, "board.do?command=select&postId="+postid);
+				} else if(boardname.equals("PHOTO")) {
+					dispatch(request, response, "review.do?command=select&postId="+postid);
+				}
 			}
 			
 		} catch(Exception e){

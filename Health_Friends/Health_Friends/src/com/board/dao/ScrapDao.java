@@ -16,4 +16,7 @@ public interface ScrapDao {
 	//찜목록 조회
 	public List<BoardDto> listScrap(int scrap_user_no);
 	
+	//찜하기 유무 체크
+	public int scrapChk(ScrapDto dto);
+	
 }
