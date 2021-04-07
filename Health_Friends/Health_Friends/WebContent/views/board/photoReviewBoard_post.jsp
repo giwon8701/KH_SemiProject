@@ -341,7 +341,7 @@ ul, li {
 					<td colspan="3"><textarea class="form-control" id="postContent" name="postContent" placeholder="내용을 입력해주세요"></textarea></td>
 				</tr>
 			</table>
-			<input type="submit" id="reviewsubmit" value="등록" /> <input type="button" value="취소" onclick="location.href='../../review.do?command=list'" />
+			<input type="submit" id="reviewsubmit" value="등록" /> <input type="button" value="취소" onclick="location.href='review.do?command=list'" />
 		</form>
 	</section>
 </body>

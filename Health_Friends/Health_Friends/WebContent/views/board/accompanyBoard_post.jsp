@@ -8,7 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <title>우리동네 운동친구 Health Friends</title>
-
 <style type="text/css">
 	.map_wrap {position:relative;width:100%;height:350px;}
     .title {font-weight:bold;display:block;}

@@ -5,14 +5,13 @@
 <% response.setContentType("text/html; charset=UTF-8"); %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>동행 게시판 글수정</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
-<script src="/Health_Friends/assets/api/se2/js/HuskyEZCreator.js" type="text/javascript"></script>
-<script src="/Health_Friends/assets/api/se2/init.js" type="text/javascript"></script>
+<title>우리동네 운동친구∴∵Heath Friends</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
 $(function(){
 	$("#submit").click(function(){
@@ -314,7 +313,7 @@ ul, li {
 			 		</dl>
 					<dl>
 						<dt>작성일</dt>
-						<dd>${dto.postRegdate }</dd>
+						<dd><fmt:formatDate value="${dto.postRegdate}" pattern="yyyy-MM-dd HH:mm" /></dd>
 					</dl>
 				</div>
 				<div class="cont" name="postContent" contenteditable="true" style="width:97%; height:500px; overflow:auto; width:97%; height:500px;">
@@ -476,34 +475,14 @@ ul, li {
 						<td>
 							<p><em>달력을 클릭해주세요!</em></p>
 	<!-- 달력API -->			<div id='postMdate'></div>
-						 	<link href='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.css' rel='stylesheet' />
-						    <script src='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.js'></script>
-						    <script>
-						      document.addEventListener('DOMContentLoaded', function() {
-						        var calendarEl = document.getElementById('calendar');
-						        var calendar = new FullCalendar.Calendar(calendarEl, {
-						            selectable: true,
-						            headerToolbar: {
-						              left: 'prev,next today',
-						              center: 'title',
-						              right: 'dayGridMonth,timeGridWeek,timeGridDay'
-						            },
-						       		dateClick: function(info){
-										var postMdate = document.getElementById('postMdate');
-										postMdate.innerHTML = "약속일자 : " + info.dateStr;
-										document.getElementsByName("postMdate")[0].value = info.dateStr;
-						       		}
-						          });
-						        calendar.render();
-						      });
-						    </script>
+
 						    <input type="hidden" name="postMdate" value="" />
 					   	 <div id='calendar'></div>
 						</td>
 				</tr>
 				<tr>
-					<td colspan="3">
-						<textarea name="postContent">${dto.postContent }</textarea>
+					<td colspan="3" id="Board_writeContent">
+						<textarea rows="30" cols="100" id="summernote" name="postContent">${dto.postContent }</textarea>
 					</td>
 				</tr>
 				<tr>
@@ -519,5 +498,43 @@ ul, li {
 <%---	
 	<%@include file="../../views/common/footer.jsp" %>
 --%>
+<%-- summernote관련 부트스트랩, api, js --%>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+<script src="assets/js/summernote.js"></script>
+
+<link href='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.css'
+	rel='stylesheet' />
+<script src='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.js'></script>
+<script>
+	document.addEventListener(
+					'DOMContentLoaded',
+					function() {
+						var calendarEl = document
+								.getElementById('calendar');
+						var calendar = new FullCalendar.Calendar(
+								calendarEl,
+								{
+									selectable : true,
+									headerToolbar : {
+										left : 'prev,next today',
+										center : 'title',
+										right : 'dayGridMonth,timeGridWeek,timeGridDay'
+									},
+									dateClick : function(info) {
+										var postMdate = document
+												.getElementById('postMdate');
+										postMdate.innerHTML = "약속일자 : "
+												+ info.dateStr;
+										document
+												.getElementsByName("postMdate")[0].value = info.dateStr;
+									}
+								});
+						calendar.render();
+					});
+</script>
 </body>
 </html>

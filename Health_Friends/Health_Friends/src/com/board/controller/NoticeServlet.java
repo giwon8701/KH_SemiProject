@@ -36,7 +36,7 @@ public class NoticeServlet extends HttpServlet {
 		
 		try {
 			if(command.equals("insert")) {
-				response.sendRedirect("./views/board/noticeBoard_post.jsp");
+				dispatch(request, response, "./views/board/noticeBoard_post.jsp");
 				
 			} else if(command.equals("insertres")) {
 				int postUserNo = ldto.getMember_no();

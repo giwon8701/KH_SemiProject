@@ -21,42 +21,8 @@
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 
 <title>후기 게시판</title>
-<%
-	RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); 
-	BoardBiz biz = new BoardBizImpl();
-	
-	RegistBiz rbiz = new RegistBizImpl();
-	
-	List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
-
-	int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-	int totalCount = Integer.parseInt(request.getAttribute("totalCount") + "");
-	
-	Paging paging = new Paging();
-	paging.setPageNo(pageNum);
-	paging.setPageSize(10);
-	paging.setTotalCount(totalCount);
-%>
-<!-- 페이징 관련 JS -->
-<script type="text/javascript">
-
-	function loginChk() {
-		alert("로그인 이후 사용가능합니다");
-	}
 
 
-	$(document).ready(function(){
-		
-		var pageNum = <%=pageNum-1%>;
-		
-		if(pageNum >= 10){
-			pageNum %= 10;
-		}
-		
-		$(".pagination>a").eq(pageNum).addClass("on");
-		
-	})
-</script>
 <!-- 페이징 관련 CSS -->
 <style>
 	.pagination {
@@ -243,9 +209,24 @@ div .pagemove:hover {
 
 </head>
 <body>
-	<%--
+	
 	<%@include file="../../header.jsp" %>
---%>
+<%
+	//RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); 
+	BoardBiz biz = new BoardBizImpl();
+	
+	RegistBiz rbiz = new RegistBizImpl();
+	
+	List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
+
+	int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+	int totalCount = Integer.parseInt(request.getAttribute("totalCount") + "");
+	
+	Paging paging = new Paging();
+	paging.setPageNo(pageNum);
+	paging.setPageSize(10);
+	paging.setTotalCount(totalCount);
+%>
 <!-- 페이징 관련 JS -->
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -260,7 +241,26 @@ div .pagemove:hover {
 		
 	})
 </script>
+<!-- 페이징 관련 JS -->
+<script type="text/javascript">
 
+	function loginChk() {
+		alert("로그인 이후 사용가능합니다");
+	}
+
+
+	$(document).ready(function(){
+		
+		var pageNum = <%=pageNum-1%>;
+		
+		if(pageNum >= 10){
+			pageNum %= 10;
+		}
+		
+		$(".pagination>a").eq(pageNum).addClass("on");
+		
+	})
+</script>
 	<div class="main01">
 		<img
 			src="https://www.imgacademy.co.kr/sites/default/files/inline-images/coaching.jpg"
