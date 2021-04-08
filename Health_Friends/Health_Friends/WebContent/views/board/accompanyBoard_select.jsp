@@ -14,8 +14,24 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <link href="/Health_Friends/assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 <link href='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.css' rel='stylesheet' />
+<link href='fullcalendar/main.css' rel='stylesheet' />
 <script src='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.js'></script>
 <script type="text/javascript" src="/Health_Friends/assets/js/boardSelectCalendar.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+	var calendarEl = document.getElementById('calendar');
+	var calendar = new FullCalendar.Calendar(calendarEl, {
+		events: [
+               {
+                   title: '',
+                   start: "${dto.postMdate}"
+               }
+            ]
+	});	
+    calendar.render();
+});	
+
+</script>
 <style>
 .main img {
 	width: 100%;
@@ -291,13 +307,12 @@ vertical-align: 4px;
 		<div style="font-size: 40px; font-weight: bold">동행 게시판 글보기</div>
 		<br>
 		<p style="font-size: 16px">우리 동네 운동 친구를 만나보세요.</p>
-		<br> <br> <a href="./index.jsp" class="btn btn02"
-			style="font-size: 16px">메인 페이지</a> <a
-			href="./board.do?command=list  " class="btn btn01"
-			style="font-size: 16px">동행 구해요</a> <a
-			href="./review.do?command=list  " class="btn btn01"
-			style="font-size: 16px">사진 후기</a> <a href="./notice.do?command=list "
-			class="btn btn01" style="font-size: 16px">공지사항</a>
+		<br> <br> 
+			<a href="./index.jsp" class="btn btn02" style="font-size: 16px">메인 페이지</a> 
+			<a href="./board.do?command=list  " class="btn btn01" style="font-size: 16px">동행 구해요</a> 
+			<a href="./review.do?command=list  " class="btn btn01" style="font-size: 16px">사진 후기</a>
+			<a href="./notice.do?command=list " class="btn btn01" style="font-size: 16px">공지사항</a>
+	
 	</div>
 
 	<div class="board_wrap">
@@ -309,7 +324,7 @@ vertical-align: 4px;
 						<div class="info">
 							<dl>
 								<dt>작성자</dt>
-								<dd>${member_id }</dd>
+								<dd><a href="./follow.do?command=profile&member_id=${member_id}">${member_id }</a></dd>
 							</dl>
 							<dl>
 								<dt>작성일</dt>
@@ -351,7 +366,12 @@ vertical-align: 4px;
 								
 							</dl>
 							<dl>
-								<dt>약속시간</dt><dd> ${dto.postMdate}</dd>
+								<dt>약속시간 ${dto.postLatitude }</dt>
+								
+								<dd> 
+									<div id='postMdate'></div>
+							 		<div id='calendar'></div>
+								</dd>
 							</dl>
 
 							<dl>

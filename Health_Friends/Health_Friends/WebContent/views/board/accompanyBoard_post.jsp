@@ -373,9 +373,10 @@ margin-top:10px;
 					<td>
 						<p><em>달력을 클릭해주세요!</em></p>
 	<!-- 달력API -->		<div id='postMdate'></div>
-
 						    <input type="hidden" name="postMdate" value="" />
 					 	<div id='calendar'></div>
+					 	<p><em>시계아이콘을 클릭해 약속시간을 정해주세요</em></p>
+					 	<input type="time" name="postLatitude"/>
 					</td>
 				</tr> 
 				<tr>

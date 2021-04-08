@@ -18,12 +18,13 @@ public class BoardDto {
 	private String postDelflag;
 	private String postLatitude;
 	private String postLongitude;
+	private String postThumbNail;
 	
 	public BoardDto() {}
 	
 	public BoardDto(int postUserNo, int postId, int postNo, String postBoardName, String postCategoryName,
 			String postTitle, String postContent, String postMdate, Date postRegdate, int postHit, int postCommentHit,
-			int postLike, String postDelflag, String postLatitude, String postLongitude) {
+			int postLike, String postDelflag, String postLatitude, String postLongitude, String postThumbNail) {
 		this.postUserNo = postUserNo;
 		this.postId = postId;
 		this.postNo = postNo;
@@ -39,6 +40,7 @@ public class BoardDto {
 		this.postDelflag = postDelflag;
 		this.postLatitude = postLatitude;
 		this.postLongitude = postLongitude;
+		this.postThumbNail = postThumbNail;
 	}
 
 	public int getPostUserNo() {
@@ -168,5 +170,12 @@ public class BoardDto {
 	public void setPostDelflag(String postDelflag) {
 		this.postDelflag = postDelflag;
 	}
-	
+
+	public String getPostThumbNail() {
+		return postThumbNail;
+	}
+
+	public void setPostThumbNail(String postThumbNail) {
+		this.postThumbNail = postThumbNail;
+	}
 }
