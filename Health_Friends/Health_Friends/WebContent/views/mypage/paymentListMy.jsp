@@ -330,6 +330,6 @@ div .pagemove:hover {
 				location.href='payment.do?command=paymentListMyPaging&page='+page
 			}
 	</script>
-
+	<%@include file="../../footer.jsp" %>
 </body>
 </html>

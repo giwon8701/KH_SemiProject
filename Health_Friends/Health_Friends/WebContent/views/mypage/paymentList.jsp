@@ -380,7 +380,7 @@ div .pagemove:hover {
 			}
 	</script>
 
-
+	<%@include file="../../footer.jsp" %>
 	
 
 

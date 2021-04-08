@@ -134,5 +134,6 @@ vertical-align: 4px;
 			<input type="button" id="mpage02" onclick="location.href='./mypage.do?command=mypage'" value="돌아가기">
 			</div>
         </form>
+        	<%@include file="../../footer.jsp" %>
 </body>
 </html>

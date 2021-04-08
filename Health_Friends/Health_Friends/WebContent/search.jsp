@@ -15,6 +15,21 @@
 		height: 100px;
 		border-radius: 50%;
 	}
+	.goProfile{
+		text-decoration:none;
+	}
+	.goProfile:link{
+		color: #4481eb;
+	}
+	.goProfile:visited{
+		color: #4481eb;
+	}
+	.goProfile:hover{
+		color: #04befe;
+	}
+	.goProfile:active{
+		color: red;
+	}
 </style>
 </head>
 <%
@@ -51,10 +66,10 @@
 		</td>
 	            <c:choose>
 					<c:when test="${Ldto.getMember_id() == null}">
-						<td align="center"><%=list.get(i).getMember_id() %></a></td>
+						<td align="center"><%=list.get(i).getMember_id() %></td>
 					</c:when>
 					<c:otherwise>
-						<td align="center"><a href="follow.do?command=profile&member_id=<%=list.get(i).getMember_id()%>"><%=list.get(i).getMember_id() %></a></td>
+						<td align="center"><a class="goProfile" href="follow.do?command=profile&member_id=<%=list.get(i).getMember_id()%>"><%=list.get(i).getMember_id() %></a></td>
 					</c:otherwise>
 				</c:choose>
 		<td align="center"><%=list.get(i).getMember_name() %></td>

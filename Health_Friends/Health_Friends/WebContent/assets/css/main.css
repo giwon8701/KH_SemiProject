@@ -142,12 +142,12 @@
 	    margin: auto;
 	}
 
-	.header-search input{
+	.header-search .search-input{
 		background-image: url("https://d1unjqcospf8gs.cloudfront.net/assets/home/base/header/search-icon-7008edd4f9aaa32188f55e65258f1c1905d7a9d1a3ca2a07ae809b5535380f14.svg");
 		background-repeat: no-repeat;
 		background-position: right;
         margin-top: 15px;
-        margin-right: 20px;
+        margin-right: 0px;
 		border-radius: 5px;
 		border: solid 1px #e9ecef;
 		text-decoration: none;

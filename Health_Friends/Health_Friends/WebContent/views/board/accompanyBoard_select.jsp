@@ -408,34 +408,43 @@ vertical-align: 4px;
 				</c:forEach>
 			</div>
 			<div class="bt_wrap">
-				<a href="board.do?command=list" class="on">목록</a> <a
-					href="board.do?command=updateform&postId=${dto.postId}" class="off">수정</a>
-				<a href="board.do?command=delete&postId=${dto.postId}" class="off">삭제</a>
+				<c:set var="loginMemberId" value="${Ldto.getMember_id() }" />
+				<c:set var="boardMemberId" value="${member_id }"/>
+				<c:choose>
+					<c:when test="${loginMemberId eq boardMemberId }">
+						<a href="board.do?command=list" class="on">목록</a>
+						<a href="board.do?command=updateform&postId=${dto.postId}" class="off">수정</a>
+						<a href="board.do?command=delete&postId=${dto.postId}" class="off">삭제</a>
+					</c:when>
+					<c:otherwise>
+						<a href="board.do?command=list" class="on">목록</a>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</div>
 	<table>
-			<tr>
-				<td><input type="hidden" id="post_id" value="${dto.postId }">
-					<c:choose>
-						<c:when test="${res eq 1 }">
-							<button id="unscrapBttn" onclick="unscrap()">찜하기해제</button>
-							<button id="scrapBttn" onclick="scrap()" style="display: none;">찜하기</button>
-						</c:when>
-						<c:otherwise>
-							<button id="unscrapBttn" onclick="unscrap()"
-								style="display: none;">찜하기해제</button>
-							<button id="scrapBttn" onclick="scrap()">찜하기</button>
-						</c:otherwise>
-					</c:choose></td>
-			</tr>
-</table>
-	
+		<tr>
+			<td>
+				<input type="hidden" id="post_id" value="${dto.postId }">
+				<c:choose>
+					<c:when test="${res eq 1 }">
+						<button id="unscrapBttn" onclick="unscrap()">찜하기해제</button>
+						<button id="scrapBttn" onclick="scrap()" style="display: none;">찜하기</button>
+					</c:when>
+					<c:otherwise>
+						<button id="unscrapBttn" onclick="unscrap()"
+							style="display: none;">찜하기해제</button>
+						<button id="scrapBttn" onclick="scrap()">찜하기</button>
+					</c:otherwise>
+				</c:choose>
+			</td>
+		</tr>
+	</table>
 </div>
-		<%-- 
-	<%@include file="../../views/common/footer.jsp" %>
 
- --%>
+	<%@include file="../../footer.jsp" %>
+
  
 <script>
 	function scrap() {

@@ -315,8 +315,6 @@ ul, li {
 	</div>
 	</div>
 	
-<%---	
-	<%@include file="../../views/common/footer.jsp" %>
---%>
+	<%@include file="../../footer.jsp" %>
 </body>
 </html>
