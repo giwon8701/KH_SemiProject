@@ -67,11 +67,9 @@
 	#list {
 	margin: 20px 20px;
 	color: gray;
-	
+	border: 1px solid SkyBlue;
 	}
-	table > tbody > tr {
-	border-bottom: 1px solid SkyBlue;
-	}
+		
 	td {
 	padding: 20px;
 	font-size: 20px;

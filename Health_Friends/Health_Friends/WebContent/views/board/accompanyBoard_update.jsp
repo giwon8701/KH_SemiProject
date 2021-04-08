@@ -350,7 +350,7 @@ margin-top:10px;
 					<br/>
 						<input type="hidden" id="MapAddress" name="MapAddress" value="" /> 
 						<div class="map_wrap">
-						    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+						    <div id="map" style="width:100%;height:412px;position:relative;overflow:hidden;"></div>
 						    <div class="hAddr">
 						        <span class="title">지도중심기준 행정동 주소정보</span>
 						        <span id="centerAddr"></span>
