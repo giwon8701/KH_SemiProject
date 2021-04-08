@@ -49,7 +49,7 @@ public class ReviewServlet extends HttpServlet {
 		BoardBiz biz = new BoardBizImpl();
 		
 		if (command.equals("insert")) {
-			dispatch(request, response, "./views/board/photoReviewBoard_post2.jsp");				
+			dispatch(request, response, "./views/board/photoReviewBoard_post.jsp");				
 		} else if (command.equals("insertRes")) {
 			int postUserNo = Integer.parseInt(request.getParameter("userNo"));
 			String postTitle = request.getParameter("postTitle");
@@ -109,6 +109,11 @@ public class ReviewServlet extends HttpServlet {
 			request.setAttribute("dto", dto);
 			request.setAttribute("member_id", member_id);
 			dispatch(request, response, "./views/board/photoReviewBoard_select.jsp");
+		} else if (command.equals("update")) {
+			int postId = Integer.parseInt(request.getParameter("postId"));
+			BoardDto dto = biz.photo_selectOne(postId);
+			request.setAttribute("dto", dto);
+			dispatch(request, response, "./views/board/photoReviewBoard_update.jsp");
 		}
 	}
 	

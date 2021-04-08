@@ -258,7 +258,6 @@ ul, li {
 	BoardBiz biz = new BoardBizImpl();
 	RegistBiz rbiz = new RegistBizImpl();
 	
-	String member_id = Ldto.getMember_id();
 %>
 
 	
@@ -288,7 +287,7 @@ ul, li {
 				<div class="info">
 					<dl>
 						<dt>작성자</dt>
-						<dd><%=member_id%></dd>
+						<dd>${member_id}</dd>
 			 		</dl>
 					<dl>
 						<dt>작성일</dt>
@@ -315,42 +314,6 @@ ul, li {
 		</div>
 	</div>
 	</div>
-
-
-	
-	<section class="boardlist">
-		<a href="./board.do?command=list">동행 구해요</a>
-		<a href="./review.do?command=list">사진후기</a>
-		<a href="./notice.do?command=list">공지사항</a>
-	</section>
-	<table border="1">
-		<c:forEach items="dto">
-			<tr>
-				<th colspan="3">${dto.postTitle }</th>		
-			</tr>
-			<tr>
-				<td>${member_id } </td>
-				<td>${dto.postRegdate } </td>
-			</tr>
-			<tr>
-				<td colspan="3">${dto.postContent }</td>
-			</tr>
-			<tr>
-				<td colspan="3">
-				<c:choose>
-      				<c:when test="${Ldto.member_no eq 1 }">	
-      					<input type="button" class="button" value="목록" onclick="location.href='board.do?command=list'" />
-						<input type="button" class="button" value="수정" onclick="location.href='board.do?command=updateform&postId=${dto.postId}'" />
-						<input type="button" class="button" value="삭제" onclick="location.href='board.do?command=delete&postId=${dto.postId}'" />
-					 </c:when>
-	 				 <c:otherwise>
-	 				 	<input type="button" value="목록" onclick="location.href='board.do?command=list'" />
-	 				 </c:otherwise>
- 			   </c:choose>
-				</td>
-			</tr>
-		</c:forEach>
-	</table>
 	
 <%---	
 	<%@include file="../../views/common/footer.jsp" %>

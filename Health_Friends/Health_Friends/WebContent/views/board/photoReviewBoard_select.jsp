@@ -1,12 +1,8 @@
 <%@page import="com.login.dto.RegistDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
-<%
-	response.setContentType("text/html; charset=UTF-8");
-%>
+<%request.setCharacterEncoding("UTF-8");%>
+<%response.setContentType("text/html; charset=UTF-8");%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
 <!DOCTYPE html>
@@ -252,9 +248,7 @@ ul, li {
 	<%@include file="../../header.jsp" %>
 
 	<div class="main01">
-		<img
-			src="https://www.imgacademy.co.kr/sites/default/files/inline-images/coaching.jpg"
-			style="width: 100%; height: auto">
+		<img src="https://www.imgacademy.co.kr/sites/default/files/inline-images/coaching.jpg" style="width: 100%; height: auto">
 		<div class=text01 style="font-size: 40px; font-weight: bold">게시판
 			페이지입니다</div>
 		<br>
@@ -298,58 +292,14 @@ ul, li {
 					</c:forEach>
 				</div>
 				<div class="bt_wrap">
-					<a href="board.do?command=list" class="on">목록</a> <a
-						href="board.do?command=updateform&postId=${dto.postId}" class="off">수정</a>
+					<a href="review.do?command=list" class="on">목록</a> <a
+						href="review.do?command=update&postId=${dto.postId}" class="off">수정</a>
 					<a
-						href="board.do?command=delete&postId=${dto.postId}" class="off">삭제</a>
+						href="review.do?command=delete&postId=${dto.postId}" class="off">삭제</a>
 				</div>
 			</div>
 		</div>
 	</div>
-
-
-
-	<section class="boardlist">
-		<a href="./board.do?command=list">동행 구해요</a> <a
-			href="./review.do?command=list">사진후기</a> <a
-			href="./notice.do?command=list">공지사항</a>
-	</section>
-	<table border="1">
-		<c:forEach items="dto">
-			<tr>
-				<th colspan="3">${dto.postTitle }</th>
-			</tr>
-			<tr>
-				<td>${Ldto.member_id }</td>
-				<td>${dto.postRegdate }</td>
-				<td>
-					<input type="hidden" id="post_id" value="${dto.postId }">
-					<c:choose>
-						<c:when test="${res eq 1 }">
-							<button id="unscrapBttn" onclick="unscrap()">찜하기해제</button>
-							<button id="scrapBttn" onclick="scrap()" style="display: none;">찜하기</button>
-						</c:when>
-						<c:otherwise>
-							<button id="unscrapBttn" onclick="unscrap()" style="display: none;">찜하기해제</button>
-							<button id="scrapBttn" onclick="scrap()">찜하기</button>
-						</c:otherwise>
-					</c:choose>				
-				</td>
-			</tr>
-			<tr>
-				<td colspan="3">${dto.postContent }</td>
-			</tr>
-			<tr>
-				<td colspan="3"><input type="button" value="목록"
-					onclick="location.href='board.do?command=list'" /> <input
-					type="button" value="수정"
-					onclick="location.href='board.do?command=updateform&postId=${dto.postId}'" />
-					<input type="button" value="삭제"
-					onclick="location.href='board.do?command=delete&postId=${dto.postId}'" />
-				</td>
-			</tr>
-		</c:forEach>
-	</table>
 
 	<%---	
 	<%@include file="../../views/common/footer.jsp" %>

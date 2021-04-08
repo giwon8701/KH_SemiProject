@@ -16,31 +16,8 @@
 <title>우리동네 운동친구∴∵Heath Friends</title>
 
 <script type="text/javascript"
-	src="https://code.jquery.com/jquery-latest.js"></script>
-	<link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="/Health_Friends/assets/api/smarteditor2/js/HuskyEZCreator.js" charset="UTF-8"></script>
-<script type="text/javascript">
-	
-	$(function(){
-		
-		var oEditors = [];
-		
-		nhn.husky.EZCreator.createInIFrame({
-			oAppRef: oEditors,
-			elPlaceHolder : "postContent",
-			sSkinURI : "/Health_Friends/assets/api/smarteditor2/SmartEditor2Skin.html",
-			fCreator : "createSEditor2"
-		});
-		
-		//oEditors.getById["postContent"].exec("UPDATE_CONTENTS_FIELD",[]);
-		
-		$("#reviewsubmit").click(function(){
-			oEditors.getById["postContent"].exec("POST_CONTENT");
-			$("#reviewForm").submit();
-		});
-		
-	});
-</script>
+src="https://code.jquery.com/jquery-latest.js"></script>
+<link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 
 <style>
 .main img {
@@ -123,7 +100,6 @@ ul, li {
 	text-decoration: underline Royalblue;
 	border-radius: 100px;
 }
-
 
 .board_list {
 	width: 100%;
@@ -242,25 +218,23 @@ ul, li {
 	font-size: 1.4rem;
 }
 
-.title11
- {
-  border-bottom: 1px solid gray;
-  padding: 16px;
-  outline: none;
-  font-size:24px;
+.title11 {
+	border-bottom: 1px solid gray;
+	padding: 16px;
+	outline: none;
+	font-size: 24px;
 }
 
 .title11[contentEditable="true"]:empty:not(:focus):before {
-  content: attr(data-ph);
-  color: #D3D3D3;
+	content: attr(data-ph);
+	color: #D3D3D3;
 }
-
 </style>
 
 
 </head>
 <body>
-	<%@include file="../../header.jsp" %>
+	<%@include file="../../header.jsp"%>
 
 	<div class="main01">
 		<img
@@ -278,15 +252,16 @@ ul, li {
 		<div style="font-size: 40px; font-weight: bold">후기 게시판</div>
 		<br>
 		<p style="font-size: 16px">소중한 추억을 남겨보세요.</p>
-		<br> <a href="  " class="btn btn02" style="font-size:16px">메인 페이지</a> <a
-			href="./board.do?command=list  " class="btn btn01" style="font-size:16px">동행 구해요</a> <a
-			href="./review.do?command=list  " class="btn btn01" style="font-size:16px">사진 후기</a> <a
-			href="./notice.do?command=list " class="btn btn01" style="font-size:16px">공지사항</a>
+		<br> <a href="  " class="btn btn02" style="font-size: 16px">메인
+			페이지</a> <a href="./board.do?command=list  " class="btn btn01"
+			style="font-size: 16px">동행 구해요</a> <a
+			href="./review.do?command=list  " class="btn btn01"
+			style="font-size: 16px">사진 후기</a> <a href="./notice.do?command=list "
+			class="btn btn01" style="font-size: 16px">공지사항</a>
 	</div>
-<!-- 
 	<div class="board_wrap">
 		<section id="">
-			<form action="../../review.do" method="post">
+			<form action="review.do" method="post">
 				<input type="hidden" name="command" value="insertRes" /> <input
 					type="hidden" name="userNo" value="${Ldto.getMember_no() }">
 
@@ -294,22 +269,20 @@ ul, li {
 				<div class="board_title">
 					<div class="board_view_wrap">
 						<div class="board_view">
-							<div class="title11" name="postTitle" contenteditable="true" data-ph="제목을 입력하세요.">${dto.postTitle }</div>
+							<div class="title11" name="postTitle" contenteditable="true"
+								data-ph="제목을 입력하세요.">${dto.postTitle }</div>
 							<div class="info">
 								<dl>
 									<dt>작성자</dt>
 									<dd>${Ldto.member_id }</dd>
 								</dl>
 							</div>
-							<div class="cont" id="postContent" name="postContent"
-								contenteditable="true"
-								style="width: 97%; height: 500px; overflow: auto;">
-								${dto.postContent }</div>
-								
-							<div class="bt_wrap">
-								<a href="" class="off" type="submit">확인</a> <a
-									href="../../review.do?command=list" class="on">취소</a>
-							</div>
+							<textarea rows="30" cols="100" id="summernote" name="postContent"></textarea>
+						</div>
+
+						<div class="bt_wrap">
+							<button type="submit" id="submit">확인</button>
+							<a href="review.do?command=list" class="on">취소</a>
 						</div>
 					</div>
 				</div>
@@ -317,29 +290,26 @@ ul, li {
 		</section>
 
 	</div>
- -->
-	<section class="boardlist">
-		<a href="">동행 구해요</a> <a href="">후기</a> <a href="">공지사항</a>
-	</section>
-
-	<section id="">
-		<form id="reviewForm" action="../review.do" method="post">
-			<input type="hidden" name="command" value="insertRes" /> <input
-				type="hidden" name="userNo" value="${Ldto.getMember_no() }">
-			<table border="1" style="width: 580px;">
-				<tr>
-					<th colspan="3">사진후기</th>
-				</tr>
-				<tr>
-					<td colspan="3"><input type="text" id="postTitle" placeholder="게시글 제목을 적어주세요"
-						name="postTitle" /></td>
-				</tr>
-				<tr>
-					<td colspan="3"><textarea class="form-control" id="postContent" name="postContent" placeholder="내용을 입력해주세요"></textarea></td>
-				</tr>
-			</table>
-			<input type="submit" id="reviewsubmit" value="등록" /> <input type="button" value="취소" onclick="location.href='review.do?command=list'" />
-		</form>
-	</section>
+	<%-- summernote관련 부트스트랩, api, js --%>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+		crossorigin="anonymous">
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
+	<link
+		href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css"
+		rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+	<script src="assets/js/summernote.js"></script>
 </body>
 </html>

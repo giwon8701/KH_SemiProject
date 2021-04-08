@@ -295,7 +295,7 @@ div .pagemove:hover {
 		if(list.get(i).getpostDelflag().equals("Y")){
 %>
 				<tr>
-					<td colspan="4">========삭제된 게시글 입니다=========</td>
+					<td colspan="5">========삭제된 게시글 입니다=========</td>
 				</tr>
 
 <%			
@@ -351,68 +351,6 @@ div .pagemove:hover {
 			
 		</div>
 	</div>
-
-
-	<section class="boardlist">
-		<a href="./board.do?command=list">동행 구해요</a> <a
-			href="./review.do?command=list">후기</a> <a
-			href="./notice.do?command=list">공지사항</a>
-	</section>
-	<br />
-	<input type="button" value="글작성"
-		onclick="location.href='review.do?command=insert'" />
-
-	<h2>사진후기</h2>
-
-	<section id="photoReviewBoard_list">
-		<table border="1">
-			<c:choose>
-				<c:when test="${empty list }">
-					<tr>
-						<td>------------작성된 글이 없습니다-----------</td>
-					</tr>
-				</c:when>
-				<c:otherwise>
-					<c:forEach items="${list }" var="dto">
-						<tr>
-							<td><img src=""></td>
-							<td>${dto.postNo}</td>
-							<td>${dto.postTitle}</td>
-							<td>${dto.postContent}</td>
-							<td>${dto.postRegdate}</td>
-						</tr>
-					</c:forEach>
-				</c:otherwise>
-			</c:choose>
-		</table>
-	</section>
-
-
-
-	<!--  pagination -->
-	<div class="pagination">
-		<input type="button" onclick="pageMove(<%=paging.getFirstPageNo()%>)"
-			value="◀"> <input type="button"
-			onclick="pageMove(<%=paging.getPrevPageNo()%>)" value="◁">
-
-		<%
-			for (int i = paging.getStartPageNo(); i <= paging.getEndPageNo(); i++) {
-		%>
-		<a onclick="pageMove(<%=i%>)"><%=i%></a>
-		<%
-			}
-		%>
-
-		<input type="button" onclick="pageMove(<%=paging.getNextPageNo()%>)"
-			value="▷"> <input type="button"
-			onclick="pageMove(<%=paging.getFinalPageNo()%>)" value="▶">
-	</div>
-
-	<script>
-			function pageMove(page){
-				location.href='review.do?command=list&page='+page
-			}
-	</script>
 
 	<%--	
 	<%@include file="footer.jsp" %>

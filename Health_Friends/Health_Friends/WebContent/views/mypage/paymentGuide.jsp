@@ -133,7 +133,7 @@ vertical-align: 4px;
             </ul>
            <div style="text-align:center"><br>
            <input type="button" id="mpage01" onclick="location.href='payment.do?command=payment'" value="결제하기">
-			<input type="button" id="mpage02" onclick="location.href='mypage.jsp'" value="돌아가기">
+			<input type="button" id="mpage02" onclick="location.href='views/mypage/mypage.jsp'" value="돌아가기">
 			</div>
         </form>
 </body>

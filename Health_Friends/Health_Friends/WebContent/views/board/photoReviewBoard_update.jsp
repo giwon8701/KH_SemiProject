@@ -297,7 +297,7 @@ margin-top:10px;
 			href=" ./notice.do?command=list " class="btn btn01"  style="font-size:16px">공지사항</a>	
 </div>
 
-	<form action="board.do" method="post">
+	<form action="review.do" method="post">
 		<input type="hidden" name="command" value="updateres"/>
 		<c:forEach items="dto">
 			<input type="hidden" name="postId" value=${dto.postId } />
@@ -324,7 +324,7 @@ margin-top:10px;
 				</div>
 				<div class="bt_wrap"> 
 				<a href="" class="on" type="submit">확인</a>
-				<a href="./notice.do?command=list" class="off">취소</a>
+				<a href="./review.do?command=list" class="off">취소</a>
 			</div>
 		</div>
 		</div>
@@ -518,7 +518,7 @@ margin-top:10px;
 						<input type="submit" id="submit" value="확인"/>
 						<input type="button" id="cancel" value="취소" onclick="location.href='board.do?command=list'" />
 				
-	</div>
+				</div>
 	</form>
 </div>
 </div>
