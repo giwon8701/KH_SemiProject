@@ -57,9 +57,7 @@ public class BoardServlet extends HttpServlet {
 				dto.setPostTitle(postTitle);
 				dto.setPostContent(postContent);
 				dto.setPostMdate(postMdate);
-				System.out.println("postLongitude"+postLongitude);
 				int res = biz.accompany_insert(dto);
-				System.out.println("res"+res);
 				if(res > 0) {
 					response.sendRedirect("board.do?command=list");
 				} else {

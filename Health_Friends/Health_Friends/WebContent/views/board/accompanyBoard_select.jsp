@@ -11,12 +11,16 @@
 <head>
 <meta charset="UTF-8">
 <title>우리동네 운동친구∴∵Heath Friends</title>
-<link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
+<link href='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.css' rel='stylesheet' />
+<script src='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.js'></script>
+<script type="text/javascript" src="/Health_Friends/assets/js/boardSelectCalendar.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 var postPlace = document.getElementsByName("postPlace")[0];
 var afterString = postPlace.slice(0,2);
 postPlace.value = afterString;
+
 </script>
 <style>
 
@@ -287,16 +291,6 @@ ul, li {
 			}
 		});
 	}
-	
-	var calendar = new Calendar(calendarEl, {
-		  titleFormat: { // will produce something like "Tuesday, September 18, 2018"
-		    month: 'long',
-		    year: 'numeric',
-		    day: 'numeric',
-		    weekday: 'long'
-		  }
-		})
-	
 </script>
 
 </head>
@@ -349,8 +343,7 @@ ul, li {
 							<dl>
 								<dt>작성일</dt>
 								<dd>
-								<input type="text" id="postPlace" value=""/>
-								${dto.postRegdate}
+								<fmt:formatDate value="${dto.postRegdate}" pattern="yyyy-MM-dd HH:mm" />
 								</dd>
 							</dl>
 							<dl></dl>
@@ -409,32 +402,13 @@ ul, li {
 					</c:choose>
 				</td>
 				<td>약속시간<br/>
-					${dto.postMdate}
-						<link href='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.css' rel='stylesheet' />
-						    <script src='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.js'></script>
-						    <script>
-						      document.addEventListener('DOMContentLoaded', function() {
-						        var calendarEl = document.getElementById('calendar');
-						        var calendar = new FullCalendar.Calendar(calendarEl, {
-						            editable: false,
-						            events:[
-						            	{
-						            	title: '',
-						            	start: '${dto.postMdate}'
-						            	}
-						            ]
-						          });
-						        calendar.render();
-						      });
-						    </script>
-						    <input type="hidden" name="postMdate" value="" />
-					 	   <div id='calendar'></div>
+					 <div id='calendar'></div>
 				</td>
 				<td>약속장소<br/>
 					${dto.postLongitude}
 					<div id="map" style="width:100%;height:350px;"></div>
 						<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c6a1fbbb0976413a4f4996beefa8a351&libraries=services"></script>
-					<script>
+						<script>
 						var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 						    mapOption = {
 						        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
