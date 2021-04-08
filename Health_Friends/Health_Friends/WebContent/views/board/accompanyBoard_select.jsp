@@ -14,6 +14,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <link href="/Health_Friends/assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 <link href='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.css' rel='stylesheet' />
+<link href='fullcalendar/main.css' rel='stylesheet' />
 <script src='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.js'></script>
 <script type="text/javascript" src="/Health_Friends/assets/js/boardSelectCalendar.js"></script>
 <style>
@@ -351,7 +352,29 @@ vertical-align: 4px;
 								
 							</dl>
 							<dl>
-								<dt>약속시간</dt><dd> ${dto.postMdate}</dd>
+								<dt>약속시간</dt>
+								<dd> ${dto.postMdate }
+									<div id='postMdate'></div>
+							 		<div id='calendar'></div>
+							 		<script type="text/javascript">
+							 		$(function() {
+
+							 			  // page is now ready, initialize the calendar...
+
+							 			  $('#calendar').fullCalendar({
+							 			    events: [
+							 			               {
+							 			                   title: "Java seminar",
+							 			                   start: "2021-04-20",
+							 			                   end: new Date()
+							 			               }
+							 			            ]
+							 			  })
+
+							 			});
+
+							 		</script>
+								</dd>
 							</dl>
 
 							<dl>

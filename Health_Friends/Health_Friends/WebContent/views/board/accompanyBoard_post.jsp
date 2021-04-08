@@ -375,7 +375,6 @@ margin-top:10px;
 					<td>
 						<p><em>달력을 클릭해주세요!</em></p>
 	<!-- 달력API -->		<div id='postMdate'></div>
-
 						    <input type="hidden" name="postMdate" value="" />
 					 	<div id='calendar'></div>
 					</td>
