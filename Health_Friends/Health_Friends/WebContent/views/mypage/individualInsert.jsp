@@ -282,94 +282,90 @@ margin-top:10px;
 </div>
 	
 	<form action="individual.do" method="post">
-		<input type="hidden" name="command" value="individualInsert">
-		
-		
-		
- <div class="board">
-	<div class="board_list_wrap">
-		<table class="board_list">
-			<caption>일정 작성</caption>
-			<thead>
-		
-			<tr>
-				<th>아이디</th>
-				<td><input type="text" name="individual_id" style="font-size: 18px; text-align:left; background-color:transparent;border:0 solid black;" value="<%=Ldto.getMember_id() %>" readonly="readonly"></td>
-			</tr>
-			<tr>
-				<th>운동 날짜</th>
-				<td>
-					<select name="year">
+		<input type="hidden" name="command" value="individualInsertRes">
+				
+		 <div class="board">
+			<div class="board_list_wrap">
+				<table class="board_list">
+					<caption>일정 작성</caption>
+					<thead>
+				
+					<tr>
+						<th>아이디</th>
+						<td><input type="text" name="individual_id" style="font-size: 18px; text-align:left; background-color:transparent;border:0 solid black;" value="<%=Ldto.getMember_id() %>" readonly="readonly"></td>
+					</tr>
+					<tr>
+						<th>운동 날짜</th>
+						<td>
+							<select name="year">
 <%
-						for(int i = year-5; i <year+6; i++){
+								for(int i = year-5; i <year+6; i++){
 %>
-							<option value="<%=i %>" <%=(year==i)?"selected":"" %> ><%=i %></option>
+									<option value="<%=i %>" <%=(year==i)?"selected":"" %> ><%=i %></option>
 <%
-						}
+								}
 %>
-					</select>년
-					
-					<select name="month">
+							</select>년
+							
+							<select name="month">
 <%
-					for(int i = 1; i < 13; i++){
+							for(int i = 1; i < 13; i++){
 %>
-						<option value="<%=i %>" <%=(month==i)? "selected": "" %> > <%=i %></option>
+								<option value="<%=i %>" <%=(month==i)? "selected": "" %> > <%=i %></option>
 <%
-					}
+							}
 %>
-					</select>월
-					
-					<select name="date">
+							</select>월
+							
+							<select name="date">
 <%
-					for(int i = 1; i <=lastDay; i++){
+							for(int i = 1; i <=lastDay; i++){
 %>
-					<option value="<%=i %>" <%=(date == i)? "selected": "" %> ><%=i %></option>
+							<option value="<%=i %>" <%=(date == i)? "selected": "" %> ><%=i %></option>
 <%
-					}
+							}
 %>
-					</select>일
-					
-					<select name="hour">
+							</select>일
+							
+							<select name="hour">
 <%
-					for(int i = 0; i < 24; i++){
+							for(int i = 0; i < 24; i++){
 %>
-						<option value="<%=i %>" <%=(hour == i)? "selected": "" %> ><%=i %></option>
+								<option value="<%=i %>" <%=(hour == i)? "selected": "" %> ><%=i %></option>
 <%
-					}
+							}
 %>
-					</select>시
-					
-					<select name="min">
+							</select>시
+							
+							<select name="min">
 <%
-					for(int i = 0; i < 60; i++){
+							for(int i = 0; i < 60; i++){
 %>
-						<option value="<%=i%>" <%=(min == i)? "selected": "" %> ><%=i %></option>
+								<option value="<%=i%>" <%=(min == i)? "selected": "" %> ><%=i %></option>
 <%
-					}
+							}
 %>
-					</select>분
-				</td>
-			</tr>
-			<tr>
-				<th>운동 시간</th>
-				<td><input type="text" name="individual_time" style="background-color:transparent; border:0 solid black; text-align:left; font-size:18px;">분</td>
-			</tr>
-			<tr>
-				<th>요약</th>
-				<td><input type="text" name="individual_title" style="text-align:left; background-color:transparent; border:0 solid black; font-size:18px;"></td>
-			</tr>
-			<tr>
-				<td colspan="2"><textarea rows="10" cols="60" name="individual_content"  class="smarteditor2"></textarea></td>
-			</tr>
-		</table>
-		<div class="individual01" style="text-align:right">
-			
+							</select>분
+						</td>
+					</tr>
+					<tr>
+						<th>운동 시간</th>
+						<td><input type="text" name="individual_time" style="background-color:transparent; border:0 solid black; text-align:left; font-size:18px;">분</td>
+					</tr>
+					<tr>
+						<th>요약</th>
+						<td><input type="text" name="individual_title" style="text-align:left; background-color:transparent; border:0 solid black; font-size:18px;"></td>
+					</tr>
+					<tr>
+						<td colspan="2"><textarea rows="10" cols="60" name="individual_content"  class="smarteditor2"></textarea></td>
+					</tr>
+				</table>
+				<div class="individual01" style="text-align:right">
 					<input type="submit" id="mpage01" value="작성">
 					<input type="button" id="mpage02" value="취소" onclick="location.href='individual.do?command=individualList&year=<%=year%>&month=<%=month%>&date=<%=date%>'">
-			
+				</div>
 			</div>
-</div>
-</div>
+		</div>
 	</form>
 
 </body>

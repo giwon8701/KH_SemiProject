@@ -67,7 +67,7 @@ public class IndividualServlet extends HttpServlet {
 				
 				dispatch("./views/mypage/individualInsert.jsp", request, response);
 				
-			} else if(command.equals("individualInsertres")) {
+			} else if(command.equals("individualInsertRes")) {
 				
 				String year = request.getParameter("year");
 				String month = request.getParameter("month");
@@ -95,8 +95,7 @@ public class IndividualServlet extends HttpServlet {
 					dispatch("./views/mypage/mypage.jsp", request, response);
 					//response.sendRedirect("./views/mypage/mypage.jsp");
 				} else {
-					request.setAttribute("msg", "일정 추가 실패");
-					dispatch("error.jsp", request, response);
+					dispatch("./views/mypage/mypage.jsp", request, response);
 				}
 			}  else if(command.equals("individualUpdate")) {
 				int individual_no = Integer.parseInt(request.getParameter("individual_no"));
