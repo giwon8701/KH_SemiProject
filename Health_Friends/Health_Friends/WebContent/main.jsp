@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 <style>
 	html,body {width:100%;height:100%;margin:0px;padding:0px;overflow:hidden;font-family:sans-serif; }
 	

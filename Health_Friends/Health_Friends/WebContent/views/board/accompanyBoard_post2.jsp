@@ -32,14 +32,9 @@
 
 		<%--동행게시판 --%>
 
-<%--
-	<%@include file="header.jsp" %>
- --%>	
- 
- 
+	<%@include file="../../header.jsp" %>
  
 <jsp:useBean id="dto" class="com.board.dto.BoardDto" scope="request"></jsp:useBean>
-<% RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); %> 
  	
  	
 	<section class="boardlist">

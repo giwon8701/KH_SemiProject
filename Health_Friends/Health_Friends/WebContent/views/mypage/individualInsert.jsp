@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>인서트</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="/Health_Friends/assets/api/se2/js/HuskyEZCreator.js" type="text/javascript"></script>
 <script src="/Health_Friends/assets/api/se2/init.js" type="text/javascript"></script>
@@ -362,12 +362,6 @@ margin-top:10px;
 			</tr>
 			<tr>
 				<td colspan="2"><textarea rows="10" cols="60" name="individual_content"  class="smarteditor2"></textarea></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<input type="submit" value="일정작성">
-					<input type="button" value="취소" onclick="location.href='../../individual.do?command=individualList&year=<%=year%>&month=<%=month%>&date=<%=date%>'">
-				</td>
 			</tr>
 		</table>
 		<div class="individual01" style="text-align:right">

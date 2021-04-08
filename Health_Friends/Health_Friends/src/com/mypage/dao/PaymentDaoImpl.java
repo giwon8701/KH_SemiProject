@@ -131,13 +131,30 @@ public class PaymentDaoImpl extends SqlMapConfig implements PaymentDao{
 		System.out.println("다오"+map);
 		
 		try(SqlSession session = getSqlSessionFactory().openSession(true);){
-			list = session.selectList(namespace+"paymentListPaging", map);
+			list = session.selectList(namespace+"paymentListMyPaging", map);
 			System.out.println("다오"+list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
 		
 		return list;
+	}
+	
+	public int getMyTotalCount(String member_email) {
+		SqlSession session = null;
+
+		int res = 0;
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			res = session.selectOne(namespace+"getMyTotalCount", member_email);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	
+		return res;
 	}
 
 

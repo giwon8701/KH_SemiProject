@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 <script type="text/javascript">
 	function openChat() {
 		document.getElementById("chat").style.display = "block";

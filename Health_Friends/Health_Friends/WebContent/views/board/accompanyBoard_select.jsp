@@ -318,14 +318,8 @@ vertical-align: 4px;
 
 </head>
 <body>
-<%--  
-	<%@include file="../../header.jsp" %> 
---%> 
+	<%@include file="../../header.jsp" %>
 
-	<%
-		RegistDto Ldto = (RegistDto) session.getAttribute("Ldto");
-	%>
-	
 	<div class="main01">
 		<img
 			src="https://www.imgacademy.co.kr/sites/default/files/inline-images/coaching.jpg"

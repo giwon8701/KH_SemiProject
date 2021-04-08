@@ -20,7 +20,6 @@
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 <title>우리동네 운동친구∴∵Heath Friends</title>
 <%
-	RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); 
 	BoardBiz biz = new BoardBizImpl();
 	
 	RegistBiz rbiz = new RegistBizImpl();

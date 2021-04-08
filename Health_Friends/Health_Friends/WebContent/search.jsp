@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 <style type="text/css">
 	.profile-img{
 		width: 100px;
@@ -34,7 +34,7 @@
 	<% 
 		for(int i = 0; i < list.size(); i++){ 
 	%>
-	<tr id="profile">
+	<tr id="profile" style="border:1px soild black;">
 		<td align="center"><%=list.get(i).getMember_no() %></td>
 		<td align="center">
 	<%

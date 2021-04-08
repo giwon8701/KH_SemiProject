@@ -252,9 +252,6 @@ ul, li {
 
 </head>
 <body>
-<%--  
-	<%@include file="../../views/common/header.jsp" %>
---%>
 <%
 	List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
 	BoardBiz biz = new BoardBizImpl();
@@ -264,6 +261,7 @@ ul, li {
 	String member_id = rdto.getMember_id();
 %>
 
+	<%@include file="../../header.jsp" %>
 	
 <div class="main01">
 	<img src="https://www.imgacademy.co.kr/sites/default/files/inline-images/coaching.jpg" style="width:100% ;height:auto">

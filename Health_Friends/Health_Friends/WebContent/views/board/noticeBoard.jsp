@@ -304,10 +304,7 @@ cursor: pointer;
 </script>
 </head>
 <body>
-	
 	<%@include file="../../header.jsp" %>
-
-
 <%
 	BoardBiz biz = new BoardBizImpl();
 	RegistBiz rbiz = new RegistBizImpl();

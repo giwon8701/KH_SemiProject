@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>footer 영역</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 

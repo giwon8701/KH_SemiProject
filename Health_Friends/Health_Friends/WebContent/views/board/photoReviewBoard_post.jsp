@@ -260,10 +260,7 @@ ul, li {
 
 </head>
 <body>
-
-	<%
-		RegistDto Ldto = (RegistDto) session.getAttribute("Ldto");
-	%>
+	<%@include file="../../header.jsp" %>
 
 	<div class="main01">
 		<img

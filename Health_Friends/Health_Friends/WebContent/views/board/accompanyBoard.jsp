@@ -22,8 +22,14 @@
 	List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
 	RegistBiz rbiz = new RegistBizImpl();
 
-	int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-	int totalCount = Integer.parseInt(request.getAttribute("totalCount") + "");
+<title>우리동네 운동친구∴∵Heath Friends</title>
+	<%
+		List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
+		
+		RegistBiz rbiz = new RegistBizImpl();
+	
+		int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+		int totalCount = Integer.parseInt(request.getAttribute("totalCount") + "");
 		
 	Paging paging = new Paging();
 	paging.setPageNo(pageNum);

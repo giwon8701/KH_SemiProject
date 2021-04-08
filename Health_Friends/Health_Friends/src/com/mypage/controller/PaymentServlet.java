@@ -161,10 +161,11 @@ public class PaymentServlet extends HttpServlet {
 			dispatch(request, response, "./views/mypage/paymentList.jsp");
 		} else if(command.equals("paymentListMyPaging")) {
 			
-			String member_email = request.getParameter("member_email");
-			int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+			HttpSession session = request.getSession();
+			RegistDto Ldto = (RegistDto) session.getAttribute("Ldto");
 			
-			int totalCount = biz.getTotalCount();
+			int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+			int totalCount = biz.getMyTotalCount(Ldto.getMember_email());
 			
 			Paging paging = new Paging();
 			paging.setPageNo(pageNum);
@@ -176,8 +177,11 @@ public class PaymentServlet extends HttpServlet {
 			System.out.println(paging.getPageSize());
 			
 			// 어디부터 어디까지 가져올 건지 쓰는것 -> 쿼리 안쪽에서 계산해줌
-			List<PaymentDto> list = biz.paymentListMyPaging(member_email, pageNum, paging.getPageSize());
-			System.out.println("서블릿"+list);
+			List<PaymentDto> list = biz.paymentListMyPaging(Ldto.getMember_email(), pageNum, paging.getPageSize());
+			for(int i = 0; i<list.size(); i++) {
+				
+				System.out.println("서블릿"+list.get(i).getMember_email());
+			}
 			request.setAttribute("list", list);
 			request.setAttribute("pageNum", pageNum);
 			request.setAttribute("totalCount", totalCount);

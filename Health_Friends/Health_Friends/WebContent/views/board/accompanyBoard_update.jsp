@@ -280,11 +280,7 @@ margin-top:10px;
 
 </head>
 <body>
-<%--  
-	<%@include file="../../views/common/header.jsp" %>
---%>
-
-	<% RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); %> 
+	<%@include file="../../header.jsp" %>
 
 <div class="main01">
 	<img src="https://www.imgacademy.co.kr/sites/default/files/inline-images/coaching.jpg" style="width:100% ;height:auto">

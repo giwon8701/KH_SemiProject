@@ -11,17 +11,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 <link href="assets/css/main.css" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 $(window).scroll(function(evt) {
 	   var y = $(this).scrollTop();
 	   if (y > 10) {
-	      $('#header').css("background-color", "#5995fd")
+	      $('#header').css("background-color", "rgba(030,144,255,.8)")
 
 	   } else{
-	      $('#header').css("background-color", "rgba(102,153,255,.1)")
+	      $('#header').css("background-color", "rgba(0,0,0,0)")
 	   }
 	});
 </script>

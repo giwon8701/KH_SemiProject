@@ -236,9 +236,7 @@ vertical-align: 4px;
 </style>
 </head>
 <body>
-<%--  
-	<%@include file="../../views/common/header.jsp" %>
---%>	
+	<%@include file="../../header.jsp" %>
 
 <div class="main01">
 	<img src="https://www.imgacademy.co.kr/sites/default/files/inline-images/coaching.jpg" style="width:100% ;height:auto">

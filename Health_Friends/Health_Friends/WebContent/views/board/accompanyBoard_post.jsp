@@ -10,7 +10,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>우리동네 운동친구 Health Friends</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+<script src="/Health_Friends/assets/api/se2/js/HuskyEZCreator.js" type="text/javascript"></script>
+<script src="/Health_Friends/assets/api/se2/init.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+	$("#submit").click(function(){
+		oEditors.getById["postContent"].exec("POST_CONTENT");
+		$("Acform").submit();
+	})
+})
+
+$(function(){
+	$("#submit").click(function(){
+		oEditors.getById["postMdate"].exec("POST_MDATE");
+		$("Acform").submit();
+	})
+})
+</script>
+
 <style type="text/css">
 
 
@@ -268,12 +287,11 @@ margin-top:10px;
 
 		<%--동행게시판 --%>
 
-<%--  
-	<%@include file="../../header.jsp" %>--%>
-	
+
+	<%@include file="../../header.jsp" %>
+
  
 <jsp:useBean id="dto" class="com.board.dto.BoardDto" scope="request"></jsp:useBean>
-<% RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); %> 
  	
 	
 	<div class="main01">
