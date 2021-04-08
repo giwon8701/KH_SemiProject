@@ -66,8 +66,8 @@
 }
 
 .btn01 {
-	background: #FF4500;
-	border: 1px solid OrangeRed;
+	background: PaleVioletRed;
+	border: 1px solid PaleVioletRed;
 }
 
 .btn01:hover {
@@ -76,15 +76,15 @@
 	line-height: 40px;
 	text-align: center;
 	background: white;
-	text-decoration: underline OrangeRed;
-	color: OrangeRed;
+	text-decoration: underline PaleVioletRed;
+	color: PaleVioletRed;
 	display: inline-block;
-	border: 1px solid OrangeRed;
+	border: 1px solid PaleVioletRed;
 }
 
 .btn02 {
-	background: Tan;
-	border: 1px solid Tan;
+	background: Orange;
+	border: 1px solid Orange;
 }
 
 .btn02:hover {
@@ -93,10 +93,10 @@
 	line-height: 40px;
 	text-align: center;
 	background: white;
-	text-decoration: underline Tan;
-	color: Tan;
+	text-decoration: underline Orange;
+	color: Orange;
 	display: inline-block;
-	border: 1px solid Tan;
+	border: 1px solid Orange;
 }
 
 .board {
@@ -122,7 +122,7 @@ a {
 
 .board_list {
 	width: 100%;
-	border-top: 1px solid OrangeRed;
+	border-top: 1px solid PaleVioletRed;
 }
 
 .board_list tr {
@@ -156,7 +156,7 @@ a {
 	display: inline-block;
 	margin-left: 10px;
 	padding: 5px 10px;
-	border: 1px solid OrangeRed;
+	border: 1px solid PaleVioletRed;
 	border-radius: 100px;
 	font-size: 14px;
 }
@@ -171,13 +171,13 @@ a {
 }
 
 .board_list_wrap .paging a.num {
-	border: 1px solid OrangeRed;
+	border: 1px solid PaleVioletRed;
 	font-weight: 600;
-	color: OrangeRed;
+	color: PaleVioletRed;
 }
 
 .board_list_wrap .paging a.num.on {
-	background: OrangeRed;
+	background: PaleVioletRed;
 	color: #fff;
 }
 
@@ -186,41 +186,41 @@ a {
 	min-width: 80px;
 	margin-left: 10px;
 	padding: 8px;
-	border: 1px solid OrangeRed;
+	border: 1px solid PaleVioletRed;
 	border-radius: 2px;
 	font-size: 14px;
 }
 
 .bt_wrap a.on {
-	background: OrangeRed;
+	background: PaleVioletRed;
 	color: white;
 	border-radius: 100px;
 }
 
 .bt_wrap a.on:hover {
-	background: OrangeRed;
+	background: PaleVioletRed;
 	color: white;
 	border-radius: 100px;
 	text-decoration: underline white;
 }
 
 .bt_wrap a.off {
-	color: OrangeRed;
+	color: PaleVioletRed;
 	border-radius: 100px;
 }
 
 .bt_wrap a.off:hover {
-	color: OrangeRed;
+	color: PaleVioletRed;
 	border-radius: 100px;
-	text-decoration: underline OrangeRed;
+	text-decoration: underline PaleVioletRed;
 }
 
 div .pagemove {
 	width: 30px;
 	height: 30px;
-	border: 1px solid OrangeRed;
+	border: 1px solid PaleVioletRed;
 	border-radius: 100%;
-	color: OrangeRed;
+	color: PaleVioletRed;
 }
 
 div .pagemove:hover {
@@ -284,9 +284,9 @@ div .pagemove:hover {
 .pagination a.on {
 	width: 30px;
 	height: 30px;
-	border: 1px solid OrangeRed;
+	border: 1px solid PaleVioletRed;
 	border-radius: 100%;
-	background-color: OrangeRed;
+	background-color: PaleVioletRed;
 	color: white;
 }
 </style>
