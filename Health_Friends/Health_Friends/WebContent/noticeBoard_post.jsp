@@ -3,17 +3,18 @@
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항 글수정</title>
-
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+<script src="/Health_Friends/assets/api/se2/js/HuskyEZCreator.js" type="text/javascript"></script>
+<script src="/Health_Friends/assets/api/se2/init.js" type="text/javascript"></script>
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 
-<style>
+
+<style type="text/css">
 
 .main img {
 width: 100%;
@@ -23,9 +24,8 @@ vertical-align: middle;
 }
 
 .btn01 {
-background: royalblue;
-	border: 1px solid royalblue;
-
+	background: #FF4500;
+	border: 1px solid OrangeRed;
 }
 
 .btn01:hover {
@@ -34,15 +34,15 @@ background: royalblue;
 	line-height: 40px;
 	text-align: center;
 	background: white;
-	text-decoration: underline royalblue;
-	color: royalblue;
+	text-decoration: underline OrangeRed;
+	color: OrangeRed;
 	display: inline-block;
-	border: 1px solid royalblue;
+	border: 1px solid OrangeRed;
 }
 
 .btn02 {
-background : teal;
-	border: 1px solid teal;
+	background: Tan;
+	border: 1px solid Tan;
 }
 
 .btn02:hover {
@@ -51,10 +51,10 @@ background : teal;
 	line-height: 40px;
 	text-align: center;
 	background: white;
-	text-decoration: underline teal;
-	color: teal;
+	text-decoration: underline Tan;
+	color: Tan;
 	display: inline-block;
-	border: 1px solid teal;
+	border: 1px solid Tan;
 }
 
 html {
@@ -100,37 +100,27 @@ ul, li {
 	font-size: 1.4rem;
 }
 
-.bt_wrap input {
-	display: inline-block;
-	min-width: 80px;
-	margin-left: 10px;
-	padding: 10px;
-	border: 1px solid #FF4500;
-	border-radius: 2px;
-	font-size: 1.4rem;
-}
-
-.bt_wrap input.on {
+.bt_wrap a.off {
 	background: OrangeRed;
 	color: white;
 	border-radius: 100px;
 }
 
-.bt_wrap input.on:hover {
+.bt_wrap a.off:hover {
 	background: OrangeRed;
 	color: white;
-	border-radius: 100px;
+	border-radius: 100px;;
 	text-decoration: underline white;
 	border-radius: 100px;
 }
 
-.bt_wrap a.off {
+.bt_wrap a.on {
 	color: OrangeRed;
 	border-radius: 100px;
 	background:white;
 }
 
-.bt_wrap a.off:hover {
+.bt_wrap a.on:hover {
 	color: OrangeRed;
 	border-radius: 100px;
 	background:white;
@@ -254,16 +244,19 @@ ul, li {
 	line-height: 160%;
 	font-size: 1.4rem;
 }
-</style>
 
+	table{
+		width: 580px;
+	}
+	tr > th{
+		text-align: left;
+	}
+</style>
 </head>
 <body>
-
 <%--  
 	<%@include file="../../views/common/header.jsp" %>
---%>
-
-<% RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); %>
+--%>	
 
 <div class="main01">
 	<img src="https://www.imgacademy.co.kr/sites/default/files/inline-images/coaching.jpg" style="width:100% ;height:auto">
@@ -280,44 +273,58 @@ ul, li {
 			href=" ./notice.do?command=list " class="btn btn01"  style="font-size:16px">공지사항</a>	
 </div>
 
-	<form action="notice.do" method="post">
-		<input type="hidden" name="command" value="updateres"/>
-			<input type="hidden" name="postId" value=${dto.postId } />
-			<input type="hidden" name="postUserNo" value=${Ldto.member_no } />
-
-<div class="board_wrap">
-		<div class="board_title">
-		<div class="board_view_wrap">
-			<div class="board_view">
-				<div class="title">
-					<input type="text" name="postTitle" style="background-color:transparent; border:0 solid black; text-align:left; font-size:18px; width:970px" value="${dto.postTitle }"/>
-				</div>
-	<div class="info">
-					<dl>
-						<dt>작성자</dt>
-						<dd>${Ldto.member_id } </dd>
-			 		</dl>
-					<dl>
-						<dt>작성일</dt>
-						<dd>${dto.postRegdate }</dd>
-					</dl>
-				</div>
-				<div class="cont">
-					<textarea name="postContent" style="width:100%; height:450px; resize:none; border:none; font-size:16px">${dto.postContent }</textarea>
-				</div>
-				<div class="bt_wrap"> 
-					<input class="on" type="submit" value="확인" 	/>
-						<a href="./notice.do?command=list" class="off">취소</a>
-				</div>
-			</div>
-			</div>
-		</div>
-	</div>
-</form>
 
 
+
+
+
+
+
+
+
+	<section class="boardlist">
+		<a href="../../board.do?command=list">동행 구해요</a>
+		<a href="../../review.do?command=list">사진후기</a>
+		<a href="../../notice.do?command=list">공지사항</a>
+	</section>
+	
+	
+	
+	
+	
+	<section id="noticeBoard_post">
+		<form action="../../notice.do" method="post">
+			<input type="hidden" name="command" value="insertres"/>
+			<table border="1">
+				<tr>
+					<th colspan="2">
+						공지사항
+					</th>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<input type="text" name="postTitle" placeholder="제목을 적어주세요"/>
+					</td>
+				</tr>
+				<tr>	
+				
+				</tr>
+				<tr>
+					<td colspan="3">
+						<textarea id="se2" name="postContent" class="smarteditor2" ></textarea>
+					</td>
+				</tr>
+			</table>
+			<input type="submit" value="등록">
+			<input type="button" value="취소" onclick="location.href='../../notice.do?command=list'" />
+		</form>
+	</section>
 <%---	
 	<%@include file="../../views/common/footer.jsp" %>
 --%>
+
 </body>
 </html>
+
+
+

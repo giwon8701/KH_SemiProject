@@ -15,7 +15,7 @@ ul>li{list-style: none}
 a{text-decoration: none;}
 .fix::after{content: "";display: block;clear: both;}
 
-#join{width: 460px;margin: 80px auto;}
+#join{width: 460px;margin: 100px auto;}
 ul.box{border: 1px solid #ddd;background-color: #fff;}
 .checkBox,.checkBox>ul{position: relative;}
 .checkBox>ul>li{float: left;}
@@ -93,7 +93,7 @@ vertical-align: 4px;
 <body>
 
 <form action="" id="join">
-<h2 style="color:gray; text-align: center;">이용 약관입니다.</h2>
+<h2 style="color:gray; text-align: center;">프리미어 회원 등록 이용 약관입니다.</h2>
 <br>
             <ul class="box">
                 <li class="checkBox check01">

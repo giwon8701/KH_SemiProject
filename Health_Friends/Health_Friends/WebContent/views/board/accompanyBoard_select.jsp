@@ -14,22 +14,20 @@
 <head>
 <meta charset="UTF-8">
 <title>동행 게시판 글보기</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-latest.js"></script>
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 
 <style>
-
 .main img {
-width: 100%;
-height: 2000px;
-vertical-align: middle;
-
+	width: 100%;
+	height: 2000px;
+	vertical-align: middle;
 }
 
 .btn01 {
-background: teal;
+	background: teal;
 	border: 1px solid teal;
-
 }
 
 .btn01:hover {
@@ -45,7 +43,7 @@ background: teal;
 }
 
 .btn02 {
-background : royalblue;
+	background: royalblue;
 	border: 1px solid royalblue;
 }
 
@@ -68,7 +66,6 @@ html {
 ul, li {
 	list-style: none;
 }
-
 
 .board_wrap {
 	width: 1000px;
@@ -119,13 +116,13 @@ ul, li {
 
 .bt_wrap a.on {
 	color: teal;
-	background:white;
+	background: white;
 	border-radius: 100px;
 }
 
 .bt_wrap a.on:hover {
 	color: teal;
-	background:white;
+	background: white;
 	text-decoration: underline teal;
 	border-radius: 100px;
 }
@@ -246,42 +243,40 @@ ul, li {
 	line-height: 160%;
 	font-size: 1.4rem;
 }
-
-
 </style>
 
 <script>
-	function scrap(){
+	function scrap() {
 		var post_id = $("#post_id").val();
-		var queryString = "post_id="+ post_id;
+		var queryString = "post_id=" + post_id;
 		$.ajax({
-			url: "scrap.do?command=addScrap&" + queryString,
-			dataType: "text",
-			success: function(data){
-				if(data > 0){
+			url : "scrap.do?command=addScrap&" + queryString,
+			dataType : "text",
+			success : function(data) {
+				if (data > 0) {
 					$("#unscrapBttn").css("display", "");
 					$("#scrapBttn").css("display", "none");
 				}
 			},
-			error: function(err){
+			error : function(err) {
 				alert(err);
 			}
 		});
 	}
-					
-	function unscrap(){
+
+	function unscrap() {
 		var post_id = $("#post_id").val();
-		var queryString = "post_id="+ post_id;
+		var queryString = "post_id=" + post_id;
 		$.ajax({
-			url: "scrap.do?command=delScrap&" + queryString,
-			dataType: "text",
-			success: function(data){
-				if(data > 0){
+			url : "scrap.do?command=delScrap&" + queryString,
+			dataType : "text",
+			success : function(data) {
+				if (data > 0) {
 					$("#unscrapBttn").css("display", "none");
 					$("#scrapBttn").css("display", "");
 				}
 			},
-			error: function(err){
+			error : function(err) {
 				alert(err);
 			}
 		});
@@ -290,9 +285,9 @@ ul, li {
 
 </head>
 <body>
-	<%--  
-	<%@include file="../../views/common/header.jsp" %>
---%>
+<%--  
+	<%@include file="../../header.jsp" %> 
+--%> 
 
 	<%
 		RegistDto Ldto = (RegistDto) session.getAttribute("Ldto");
@@ -326,9 +321,7 @@ ul, li {
 		<div class="board_title">
 			<div class="board_view_wrap">
 				<div class="board_view">
-					<div class="title">
-					${dto.postTitle }
-					</div>
+					<div class="title">${dto.postTitle }</div>
 					<c:forEach items="dto">
 						<div class="info">
 							<dl>
@@ -341,19 +334,99 @@ ul, li {
 							</dl>
 							<dl></dl>
 						</div>
-						<div class="cont">${dto.postContent }</div>
-					</c:forEach>
-				</div>
-				<div class="bt_wrap">
-					<a href="board.do?command=list" class="on">목록</a> <a
-						href="board.do?command=updateform&postId=${dto.postId}" class="off">수정</a>
-					<a
-						href="board.do?command=delete&postId=${dto.postId}" class="off">삭제</a>
-				</div>
+						<div class="info">
+							<dl>
+								<dt>
+									운동종목 <br />
+									<c:choose>
+										<c:when test="${dto.postCategoryName eq 'walk'}">
+											<c:out value="걷기"></c:out>
+										</c:when>
+										<c:when test="${dto.postCategoryName eq 'running'}">
+											<c:out value="달리기"></c:out>
+										</c:when>
+										<c:when test="${dto.postCategoryName eq 'bike_riding'}">
+											<c:out value="자전거"></c:out>
+										</c:when>
+										<c:when test="${dto.postCategoryName eq 'inline_skating'}">
+											<c:out value="인라인스케이팅(롤러브레이드)"></c:out>
+										</c:when>
+										<c:when test="${dto.postCategoryName eq 'basketball'}">
+											<c:out value="농구"></c:out>
+										</c:when>
+										<c:when test="${dto.postCategoryName eq 'dodgeball'}">
+											<c:out value="피구"></c:out>
+										</c:when>
+										<c:when test="${dto.postCategoryName eq 'tennis'}">
+											<c:out value="테니스"></c:out>
+										</c:when>
+									</c:choose>
+								</dt>
+							</dl>
+							<dl>
+								<dt>약속시간&emsp; ${dto.postMdate}</dt>
+							</dl>
+
+							<dl>
+								<dt>약속장소&emsp; ${dto.postLongitude}</dt>
+							</dl>
+						</div>
+						<div id="map" style="width: 100%; height: 350px;"></div>
+						<script type="text/javascript"
+							src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c6a1fbbb0976413a4f4996beefa8a351&libraries=services"></script>
+						<script>
+							var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+							mapOption = {
+								center : new kakao.maps.LatLng(33.450701,
+										126.570667), // 지도의 중심좌표
+								level : 3
+							// 지도의 확대 레벨
+							};
+							// 지도를 생성합니다    
+							var map = new kakao.maps.Map(mapContainer,
+									mapOption);
+							// 주소-좌표 변환 객체를 생성합니다
+							var geocoder = new kakao.maps.services.Geocoder();
+							// 주소로 좌표를 검색합니다
+							geocoder
+									.addressSearch(
+											'${dto.postLongitude}',
+											function(result, status) {
+												// 정상적으로 검색이 완료됐으면 
+												if (status === kakao.maps.services.Status.OK) {
+													var coords = new kakao.maps.LatLng(
+															result[0].y,
+															result[0].x);
+													// 결과값으로 받은 위치를 마커로 표시합니다
+													var marker = new kakao.maps.Marker(
+															{
+																map : map,
+																position : coords
+															});
+													// 인포윈도우로 장소에 대한 설명을 표시합니다
+													var infowindow = new kakao.maps.InfoWindow(
+															{
+																content : '<div style="width:150px;text-align:center;paddin0g:6px 0;">여기서 만나요</div>'
+															});
+													infowindow
+															.open(map, marker);
+													// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+													map.setCenter(coords);
+												}
+											});
+						</script>
+
+
+				<div class="cont">${dto.postContent }</div>
+				</c:forEach>
+			</div>
+			<div class="bt_wrap">
+				<a href="board.do?command=list" class="on">목록</a> <a
+					href="board.do?command=updateform&postId=${dto.postId}" class="off">수정</a>
+				<a href="board.do?command=delete&postId=${dto.postId}" class="off">삭제</a>
 			</div>
 		</div>
 	</div>
-
 
 
 	<section class="boardlist">
@@ -371,9 +444,7 @@ ul, li {
 				<td colspan="2">작성일 ${dto.postRegdate }</td>
 			</tr>
 			<tr>
-				<td>
-					운동종목	<br/>
-					<c:choose>
+				<td>운동종목 <br /> <c:choose>
 						<c:when test="${dto.postCategoryName eq 'walk'}">
 							<c:out value="걷기"></c:out>
 						</c:when>
@@ -397,78 +468,49 @@ ul, li {
 						</c:when>
 					</c:choose>
 				</td>
-				<td>약속시간<br/>
-					${dto.postMdate}
+				<td>약속시간<br /> ${dto.postMdate}
 				</td>
-				<td>약속장소<br/>
-					${dto.postLongitude}
-					<div id="map" style="width:100%;height:350px;"></div>
-						<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c6a1fbbb0976413a4f4996beefa8a351&libraries=services"></script>
-					<script>
-						var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-						    mapOption = {
-						        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-						        level: 3 // 지도의 확대 레벨
-						    };  
-						// 지도를 생성합니다    
-						var map = new kakao.maps.Map(mapContainer, mapOption); 
-						// 주소-좌표 변환 객체를 생성합니다
-						var geocoder = new kakao.maps.services.Geocoder();
-						// 주소로 좌표를 검색합니다
-						geocoder.addressSearch('${dto.postLongitude}', function(result, status) {
-						    // 정상적으로 검색이 완료됐으면 
-						     if (status === kakao.maps.services.Status.OK) {
-						        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-						        // 결과값으로 받은 위치를 마커로 표시합니다
-						        var marker = new kakao.maps.Marker({
-						            map: map,
-						            position: coords
-						        });
-						        // 인포윈도우로 장소에 대한 설명을 표시합니다
-						        var infowindow = new kakao.maps.InfoWindow({
-						            content: '<div style="width:150px;text-align:center;paddin0g:6px 0;">여기서 만나요</div>'
-						        });
-						        infowindow.open(map, marker);
-						        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-						        map.setCenter(coords);
-						    } 
-						});    
-					</script>
-				</td>	
+				<td>약속장소<br /> ${dto.postLongitude}
+					<div id="map" style="width: 100%; height: 350px;"></div> <script
+						type="text/javascript"
+						src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c6a1fbbb0976413a4f4996beefa8a351&libraries=services"></script>
+					
+				</td>
 			</tr>
 			<tr>
-				<td>
-					<input type="hidden" id="post_id" value="${dto.postId }">
+				<td><input type="hidden" id="post_id" value="${dto.postId }">
 					<c:choose>
 						<c:when test="${res eq 1 }">
 							<button id="unscrapBttn" onclick="unscrap()">찜하기해제</button>
 							<button id="scrapBttn" onclick="scrap()" style="display: none;">찜하기</button>
 						</c:when>
 						<c:otherwise>
-							<button id="unscrapBttn" onclick="unscrap()" style="display: none;">찜하기해제</button>
+							<button id="unscrapBttn" onclick="unscrap()"
+								style="display: none;">찜하기해제</button>
 							<button id="scrapBttn" onclick="scrap()">찜하기</button>
 						</c:otherwise>
-					</c:choose>
-				</td>
+					</c:choose></td>
 			</tr>
-			
+
 			<tr>
 				<td colspan="3">${dto.postContent }</td>
 			</tr>
 			<tr>
-				<td colspan="3">
-					<input type="button" value="목록" onclick="location.href='board.do?command=list'" />
-					<input type="button" value="수정" onclick="location.href='board.do?command=updateform&postId=${dto.postId}'" />
-					<input type="button" value="삭제" onclick="location.href='board.do?command=delete&postId=${dto.postId}'" />
+				<td colspan="3"><input type="button" value="목록"
+					onclick="location.href='board.do?command=list'" /> <input
+					type="button" value="수정"
+					onclick="location.href='board.do?command=updateform&postId=${dto.postId}'" />
+					<input type="button" value="삭제"
+					onclick="location.href='board.do?command=delete&postId=${dto.postId}'" />
 				</td>
 			</tr>
 		</c:forEach>
 	</table>
-
-<%---	
+</div>
+		<%-- 
 	<%@include file="../../views/common/footer.jsp" %>
---%>
 
+ --%>
 </body>
 </html>
 

@@ -281,7 +281,7 @@ margin-top:10px;
 <div style="font-size: 40px; font-weight:bold">운동 기록</div><br>
 <p style="font-size: 16px;">자신의 운동 내용을 기록해보세요.</p><br> 
 
-</div>>
+</div>
 	
 	<form action="../../individual.do" method="post">
 		<input type="hidden" name="command" value="individualInsert">

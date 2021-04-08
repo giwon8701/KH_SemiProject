@@ -17,7 +17,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 
 <title>후기 게시판</title>
