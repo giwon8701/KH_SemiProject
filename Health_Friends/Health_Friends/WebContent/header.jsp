@@ -66,7 +66,6 @@ $(window).scroll(function(evt) {
                 <li class="border-li"><a href="board.do?command=list">동행게시판</a></li>
                 <li class="border-li"><a href="review.do?command=list">후기게시판</a></li>
                 <li class="border-li"><a href="shopping.do?command=shopping">쇼핑</a></li>
-                <li class="border-li"><a href="">고객센터</a></li>
             </ul>
         </div>
 
