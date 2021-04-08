@@ -9,19 +9,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("UTF-8");%>
-<%
-	response.setContentType("text/html; charset=UTF-8");
-%>
+<%response.setContentType("text/html; charset=UTF-8");%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
+<title>우리동네 운동친구∴∵Heath Friends</title>
+<%
+	RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); 
+	BoardBiz biz = new BoardBizImpl();
+	
+	RegistBiz rbiz = new RegistBizImpl();
+	
+	List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
 
-<title>후기 게시판</title>
-
+	int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+	int totalCount = Integer.parseInt(request.getAttribute("totalCount") + "");
+	
+	Paging paging = new Paging();
+	paging.setPageNo(pageNum);
+	paging.setPageSize(10);
+	paging.setTotalCount(totalCount);
+%>
+<!-- 페이징 관련 JS -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
 
 <!-- 페이징 관련 CSS -->
 <style>

@@ -160,7 +160,7 @@
 	<insert id="notice_insert" parameterType="BoardDto">
 		INSERT INTO POST VALUES
 		(#{postUserNo}, POST_ID_SEQ.NEXTVAL, POST_NOTICE_SEQ.NEXTVAL, 'NOTICE', 'walk', #{postTitle},#{postContent},
-		NULL, TO_CHAR(SYSDATE,'YYYY.MM.DD HH24:MI'),0,0,0,'N',0,0, NULL)
+		NULL, SYSDATE, 0,0,0,'N',0,0, NULL)
 	</insert>
 	
 	<update id="accompany_update" parameterType="BoardDto">

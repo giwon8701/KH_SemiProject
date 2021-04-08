@@ -10,30 +10,26 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>​
-<%
-request.setCharacterEncoding("UTF-8");
-response.setContentType("text/html; charset=UTF-8");
-%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%request.setCharacterEncoding("UTF-8");%>
+<%response.setContentType("text/html; charset=UTF-8");%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<title>우리동네 운동친구∴∵Heath Friends</title>
+<%
+	List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
+	RegistBiz rbiz = new RegistBizImpl();
 
-<title>동행 게시판</title>
-	<%
-		List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
+	int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+	int totalCount = Integer.parseInt(request.getAttribute("totalCount") + "");
 		
-		RegistBiz rbiz = new RegistBizImpl();
-	
-		int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-		int totalCount = Integer.parseInt(request.getAttribute("totalCount") + "");
-		
-		Paging paging = new Paging();
-		paging.setPageNo(pageNum);
-		paging.setPageSize(10);
-		paging.setTotalCount(totalCount);
-	%>
+	Paging paging = new Paging();
+	paging.setPageNo(pageNum);
+	paging.setPageSize(10);
+	paging.setTotalCount(totalCount);
+%>
 <style>
 
 * {
@@ -289,15 +285,13 @@ div .pagemove:hover {
 }
 
 </style>
-
 <title>동행 게시판</title>
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 	function loginChk() {
 		alert("로그인 이후 사용가능합니다");
 	}
 </script>
-
 </head>
 <body>
 
@@ -320,8 +314,8 @@ div .pagemove:hover {
 		<img
 			src="https://www.imgacademy.co.kr/sites/default/files/inline-images/coaching.jpg"
 			style="width: 100%; height: auto">
-		<div class=text01 style="font-size: 40px; font-weight: bold">게시판
-			입니다</div>
+		<div class=text01 style="font-size: 40px; font-weight: bold">게시판입니다</div>
+			
 		<br>
 		<div class=text02 style="font-size: 24px;">오늘도 즐거운 운동 즐기시길 바랍니다</div>
 		<br>
@@ -356,12 +350,11 @@ div .pagemove:hover {
 	for(int i = 0; i < list.size(); i++){
 		RegistDto rdto = rbiz.selectByNo(list.get(i).getPostUserNo());
 		String member_id = rdto.getMember_id();
-		if(list.get(i).getPostDelflag().equals('Y')){
+		if(list.get(i).getpostDelflag().equals("Y")){
 %>
 			<tr>
-				<td>======삭제된 게시글 입니다=========</td>
+				<td colspan="5">삭제된 게시글 입니다.</td>
 			</tr>
-
 <%			
 		} else{
 %>
@@ -382,9 +375,8 @@ div .pagemove:hover {
 				</td>
 				<td><%=rdto.getMember_gender() %>
 				<td><%=member_id%></td>
-				<td><%=list.get(i).getPostRegdate()%></td>
+				<td><fmt:formatDate value="<%=list.get(i).getPostRegdate()%>" pattern="yyyy-MM-dd HH:mm" /></td>
 			</tr>
-				
 <%	
 		}
 	}

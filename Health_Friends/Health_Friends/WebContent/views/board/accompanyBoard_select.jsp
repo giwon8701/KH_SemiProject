@@ -1,22 +1,27 @@
 <%@page import="com.login.dto.RegistDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
-<%
-	response.setContentType("text/html; charset=UTF-8");
-%>
+<%request.setCharacterEncoding("UTF-8");%>
+<%response.setContentType("text/html; charset=UTF-8");%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>동행 게시판 글보기</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
+<link href="/assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
+<link href='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.css' rel='stylesheet' />
+<script src='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.js'></script>
+<script type="text/javascript" src="/Health_Friends/assets/js/boardSelectCalendar.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
-<link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+var postPlace = document.getElementsByName("postPlace")[0];
+var afterString = postPlace.slice(0,2);
+postPlace.value = afterString;
 
+</script>
 <style>
 
 .main img {
@@ -297,7 +302,7 @@ ul, li {
 	<%
 		RegistDto Ldto = (RegistDto) session.getAttribute("Ldto");
 	%>
-
+	
 	<div class="main01">
 		<img
 			src="https://www.imgacademy.co.kr/sites/default/files/inline-images/coaching.jpg"
@@ -337,7 +342,9 @@ ul, li {
 							</dl>
 							<dl>
 								<dt>작성일</dt>
-								<dd>${dto.postRegdate }</dd>
+								<dd>
+								<fmt:formatDate value="${dto.postRegdate}" pattern="yyyy-MM-dd HH:mm" />
+								</dd>
 							</dl>
 							<dl></dl>
 						</div>
@@ -345,16 +352,13 @@ ul, li {
 					</c:forEach>
 				</div>
 				<div class="bt_wrap">
-					<a href="board.do?command=list" class="on">목록</a> <a
-						href="board.do?command=updateform&postId=${dto.postId}" class="off">수정</a>
-					<a
-						href="board.do?command=delete&postId=${dto.postId}" class="off">삭제</a>
+					<a href="board.do?command=list" class="on">목록</a> 
+					<a href="board.do?command=updateform&postId=${dto.postId}" class="off">수정</a>
+					<a href="board.do?command=delete&postId=${dto.postId}" class="off">삭제</a>
 				</div>
 			</div>
 		</div>
 	</div>
-
-
 
 	<section class="boardlist">
 		<a href="./board.do?command=list">동행 구해요</a> <a
@@ -398,13 +402,13 @@ ul, li {
 					</c:choose>
 				</td>
 				<td>약속시간<br/>
-					${dto.postMdate}
+					 <div id='calendar'></div>
 				</td>
 				<td>약속장소<br/>
 					${dto.postLongitude}
 					<div id="map" style="width:100%;height:350px;"></div>
 						<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c6a1fbbb0976413a4f4996beefa8a351&libraries=services"></script>
-					<script>
+						<script>
 						var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 						    mapOption = {
 						        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -457,9 +461,16 @@ ul, li {
 			</tr>
 			<tr>
 				<td colspan="3">
-					<input type="button" value="목록" onclick="location.href='board.do?command=list'" />
-					<input type="button" value="수정" onclick="location.href='board.do?command=updateform&postId=${dto.postId}'" />
-					<input type="button" value="삭제" onclick="location.href='board.do?command=delete&postId=${dto.postId}'" />
+					<c:choose>
+	      				<c:when test="${Ldto.member_no eq 1 || Ldto.member_no eq dto.postUserNo }">	
+							<input type="button" value="목록" onclick="location.href='board.do?command=list'" />
+							<input type="button" value="수정" onclick="location.href='board.do?command=updateform&postId=${dto.postId}'" />
+							<input type="button" value="삭제" onclick="location.href='board.do?command=delete&postId=${dto.postId}'" />
+						</c:when>
+						 <c:otherwise>
+						 	<input type="button" value="목록" onclick="location.href='board.do?command=list'" />
+		 				 </c:otherwise>
+					 </c:choose>		
 				</td>
 			</tr>
 		</c:forEach>
