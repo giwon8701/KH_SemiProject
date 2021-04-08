@@ -243,6 +243,35 @@ ul, li {
 	line-height: 160%;
 	font-size: 1.4rem;
 }
+
+
+button {
+border:none;
+background-Color:hotpink;
+border: 1px solid hotpink;  
+font-size:14px;     
+border-radius: 100px;   
+color: white;    
+width: 105px;height:40px; 
+cursor: pointer;
+vertical-align: 4px;
+}
+
+button:hover {
+border:none;
+background-Color:hotpink;
+border: 1px solid hotpink;  
+font-size:14px;     
+border-radius: 100px; 
+text-decoration: underline white;    
+color: white;    
+width: 105px;height:40px; 
+cursor: pointer;
+vertical-align: 4px;
+}
+
+
+
 </style>
 
 <script>
@@ -337,7 +366,8 @@ ul, li {
 						<div class="info">
 							<dl>
 								<dt>
-									운동종목 <br />
+									운동종목</dt>
+									<dd>
 									<c:choose>
 										<c:when test="${dto.postCategoryName eq 'walk'}">
 											<c:out value="걷기"></c:out>
@@ -361,14 +391,15 @@ ul, li {
 											<c:out value="테니스"></c:out>
 										</c:when>
 									</c:choose>
-								</dt>
+									</dd>
+								
 							</dl>
 							<dl>
-								<dt>약속시간&emsp; ${dto.postMdate}</dt>
+								<dt>약속시간</dt><dd> ${dto.postMdate}</dd>
 							</dl>
 
 							<dl>
-								<dt>약속장소&emsp; ${dto.postLongitude}</dt>
+								<dt>약속장소</dt><dd> ${dto.postLongitude}</dd>
 							</dl>
 						</div>
 						<div id="map" style="width: 100%; height: 350px;"></div>
@@ -427,56 +458,7 @@ ul, li {
 			</div>
 		</div>
 	</div>
-
-
-	<section class="boardlist">
-		<a href="./board.do?command=list">동행 구해요</a> <a
-			href="./review.do?command=list">사진후기</a> <a
-			href="./notice.do?command=list">공지사항</a>
-	</section>
-	<table border="1">
-		<c:forEach items="dto">
-			<tr>
-				<th colspan="3">${dto.postTitle }</th>
-			</tr>
-			<tr>
-				<td>${member_id }</td>
-				<td colspan="2">작성일 ${dto.postRegdate }</td>
-			</tr>
-			<tr>
-				<td>운동종목 <br /> <c:choose>
-						<c:when test="${dto.postCategoryName eq 'walk'}">
-							<c:out value="걷기"></c:out>
-						</c:when>
-						<c:when test="${dto.postCategoryName eq 'running'}">
-							<c:out value="달리기"></c:out>
-						</c:when>
-						<c:when test="${dto.postCategoryName eq 'bike_riding'}">
-							<c:out value="자전거"></c:out>
-						</c:when>
-						<c:when test="${dto.postCategoryName eq 'inline_skating'}">
-							<c:out value="인라인스케이팅(롤러브레이드)"></c:out>
-						</c:when>
-						<c:when test="${dto.postCategoryName eq 'basketball'}">
-							<c:out value="농구"></c:out>
-						</c:when>
-						<c:when test="${dto.postCategoryName eq 'dodgeball'}">
-							<c:out value="피구"></c:out>
-						</c:when>
-						<c:when test="${dto.postCategoryName eq 'tennis'}">
-							<c:out value="테니스"></c:out>
-						</c:when>
-					</c:choose>
-				</td>
-				<td>약속시간<br /> ${dto.postMdate}
-				</td>
-				<td>약속장소<br /> ${dto.postLongitude}
-					<div id="map" style="width: 100%; height: 350px;"></div> <script
-						type="text/javascript"
-						src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c6a1fbbb0976413a4f4996beefa8a351&libraries=services"></script>
-					
-				</td>
-			</tr>
+	<table>
 			<tr>
 				<td><input type="hidden" id="post_id" value="${dto.postId }">
 					<c:choose>
@@ -491,21 +473,8 @@ ul, li {
 						</c:otherwise>
 					</c:choose></td>
 			</tr>
-
-			<tr>
-				<td colspan="3">${dto.postContent }</td>
-			</tr>
-			<tr>
-				<td colspan="3"><input type="button" value="목록"
-					onclick="location.href='board.do?command=list'" /> <input
-					type="button" value="수정"
-					onclick="location.href='board.do?command=updateform&postId=${dto.postId}'" />
-					<input type="button" value="삭제"
-					onclick="location.href='board.do?command=delete&postId=${dto.postId}'" />
-				</td>
-			</tr>
-		</c:forEach>
-	</table>
+</table>
+	
 </div>
 		<%-- 
 	<%@include file="../../views/common/footer.jsp" %>
