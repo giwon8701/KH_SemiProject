@@ -247,7 +247,7 @@ div .pagemove {
 		
 }
 
-.board_list tbody tr td:nth-child(1) {
+.board_list tbody tr td:nth-child(2) {
 	text-align: left;
 }
 
@@ -444,9 +444,8 @@ div .pagemove:hover {
 	
 --%>
 
-	<%--
-	<%@include file="footer.jsp" %>
- --%>
+	
+	<%@include file="../../footer.jsp"%>
 
 </body>
 </html>

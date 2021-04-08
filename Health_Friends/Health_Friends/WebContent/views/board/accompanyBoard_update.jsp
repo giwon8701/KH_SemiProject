@@ -41,11 +41,51 @@ table{
 tr > th{
 	text-align: left;
 }
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.main01 {
+	width: 100%;
+	margin: 10px auto;
+	position: relative;
+}
+
 .main img {
 width: 100%;
 height: 2000px;
 vertical-align: middle;
 
+}
+.text01 {
+padding: 5px 10px;
+text-align: center;
+position: absolute;
+top: 37%;
+left: 50%;
+transform: translate( -63%, -50%);
+color: ghostwhite;
+}
+.text02 {
+padding: 5px 10px;
+text-align: center;
+position: absolute;
+top: 47%;
+left: 48%;
+transform: translate( -53%, -52%);
+color: ghostwhite;
+}
+
+.btn {
+	width: 130px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: #1f1f39;
+	color: #fff;
+	display: inline-block;
 }
 
 .btn01 {
@@ -82,51 +122,98 @@ background : royalblue;
 	display: inline-block;
 	border: 1px solid royalblue;
 }
-
-
-
-html {
-	font-size: 10px;
+.board {
+margin: 0 150px;
 }
 
-ul, li {
-	list-style: none;
+table {
+	border-collapse: collapse;
+}
+
+caption {
+	display: none;
 }
 
 
-.board_wrap {
-	width: 1000px;
-	margin: 100px auto;
+a {
+	text-decoration: none;
+	color: inherit;
 }
 
-.board_title {
-	margin-bottom: 30px;
+
+.board_list_wrap {
+	padding: 50px;
 }
 
-.board_title strong {
-	font-size: 3rem;
+.board_list {
+	width: 100%;
+	border-top: 1px solid teal;
 }
 
-.board_title p {
-	margin-yop: 5px;
-	font-size: 1.4rem;
+.board_list tr {
+	border-bottom: 1px solid #ccc
 }
 
-.bt_wrap {
-	margin-top: 30px;
+.board_list th, .board_list td {
+	padding: 15px;
+	font-size: 16px;
+}
+
+.board_list td {
+	text-align: left;
+}
+
+.board_list tbody tr td:nth-child(2) {
+	text-align: left;
+}
+
+.board_list .tit:hover {
+	text-decoration: underline;
+}
+
+.board_list_wrap .paging {
+	margin-top: 20px;
 	text-align: center;
 	font-size: 0;
 }
 
+.board_list_wrap .paging a {
+	display: inline-block;
+	margin-left: 10px;
+	padding: 5px 10px;
+	border: 1px solid teal;
+	border-radius: 100px;
+	font-size: 14px;
+}.board_list_wrap .paging a:first-child {
+	margin-left: 0;
+}
+
+.board_list_wrap .paging a.bt {
+border: 1px solid #eee;
+background: #eee;
+}
+
+
+.board_list_wrap .paging a.num {
+border: 1px solid teal;
+font-weight: 600;
+color: teal;
+}
+
+.board_list_wrap .paging a.num.on{
+background: teal;
+color: #fff;
+}
 .bt_wrap a {
 	display: inline-block;
 	min-width: 80px;
 	margin-left: 10px;
-	padding: 10px;
-	border: 1px solid teal;
+	padding: 8px;
+	border: 1px solid OrangRed;
 	border-radius: 2px;
-	font-size: 1.4rem;
+	font-size: 14px;
 }
+
 
 .bt_wrap a.on {
 	background: teal;
@@ -134,139 +221,59 @@ ul, li {
 	border-radius: 100px;
 }
 
-.bt_wrap a.on:hover {
-	background: teal;
-	color: white;
-	text-decoration: underline white;
-	border-radius: 100px;
+#submit {
+border:none;
+background-Color:teal;
+border: 1px solid teal;  
+font-size:14px;     
+border-radius: 100px;   
+color: white;    
+width: 86px;height:32px; 
+cursor: pointer;
+vertical-align: 4px;
 }
 
-.bt_wrap a.off {
-	color: teal;
-		border-radius: 100px;
+#submit:hover {
+border:none;
+background-Color:teal;
+border: 1px solid teal;  
+font-size:14px;     
+border-radius: 100px; 
+text-decoration: underline white;    
+color: white;    
+width: 86px;height:32px; 
+cursor: pointer;
+vertical-align: 4px;
 }
 
-.bt_wrap a.off:hover {
-	color: teal;
-	text-decoration: underline teal;
-	border-radius: 100px;
+#cancel {
+border:none;
+background-Color: white;
+border: 1px solid teal;  
+font-size:14px;     
+border-radius: 100px;   
+color: teal;    
+width: 86px;height:32px; 
+cursor: pointer;
+vertical-align: 4px;
 }
 
-.board_list {
-	width: 100%;
-	border-top: 2px solid #000;
+#cancel:hover {
+border:none;
+background-Color:white;
+border: 1px solid teal;  
+font-size:14px;     
+border-radius: 100px;
+text-decoration: underline teal;   
+color: teal;    
+width: 86px;height:32px; 
+cursor: pointer;
+vertical-align: 4px;
 }
 
-.board_list>div {
-	border-bottom: 1px solid #ddd;
-	font-size: 0;
-}
+.individual01 {
+margin-top:10px;
 
-.board_list>div.top {
-	border-bottom: 1px soild #999;
-}
-
-.board_list>div:last-child {
-	border-bottom: 1px solid #000;
-}
-
-.board_list>div>div {
-	display: inline-block;
-	padding: 15px 0;
-	text-align: center;
-	font-size: 1.4rem;
-}
-
-.board_list>div.top>div {
-	font-weight: 600;
-}
-
-.board_list .num {
-	width: 10%;
-}
-
-.board_list .title {
-	width: 60%;
-	text-align: left;
-}
-
-.board_list .top .title {
-	text-align: center;
-}
-
-.board_list .writer {
-	width: 10%;
-}
-
-.board_list .date {
-	width: 10%;
-}
-
-.board_list .count {
-	width: 10%;
-}
-
-.board_view {
-	width: 100%;
-	border-top: 2px solid #000;
-}
-
-.board_view .title {
-	padding: 20px 15px;
-	border-bottom: 1px dashed #ddd;
-	font-size: 2rem;
-}
-
-.board_view .info {
-	padding: 15px;
-	border-bottom: 1px solid #999;
-	font-size: 0;
-}
-
-.board_view .info dl {
-	position: relative;
-	display: inline-block;
-	padding: 0 20px;
-}
-
-.board_view .info dl:first-child {
-	padding-left: 0;
-}
-
-.board_view .info dl::before {
-	content: "";
-	position: absolute;
-	top: 1px;
-	left: 0;
-	display: block;
-	width: 1px;
-	height: 13px;
-	background: #ddd;
-}
-
-.board_view .info dl:first-child::before {
-	display: none;
-}
-
-.board_view .info dl dt, .board_view .info dl dd {
-	display: inline-block;
-	font-size: 1.4rem;
-}
-
-.board_view .info dl dt {
-	
-}
-
-.board_view .info dl dd {
-	margin-left: 10px;
-	color: #777;
-}
-
-.board_view .cont {
-	padding: 15px;
-	border-bottom: 1px solid #000;
-	line-height: 160%;
-	font-size: 1.4rem;
 }
 
 </style>
@@ -330,30 +337,42 @@ ul, li {
 </c:forEach>
 </form>
 
+
+<%-- 
 	<section class="boardlist">
 		<a href="./board.do?command=list">동행 구해요</a>
 		<a href="./review.do?command=list">사진후기</a>
 		<a href="./notice.do?command=list">공지사항</a>
 	</section>
+	--%>
+	
+	
+	
+	  <div class="board">
+	<div class="board_list_wrap">
+	
 	<form action="board.do" method="post">
 		<input type="hidden" name="command" value="updateres"/>
 		<c:forEach items="dto">
 			<input type="hidden" name="postId" value=${dto.postId } />
 			<input type="hidden" name="postUserNo" value=${dto.postUserNo } />
-		<table border="1">
+		<table class="board_list">
+			<caption>일정 작성</caption>
+			<thead>
 				<tr>
-					<th colspan="3">
-						<input type="text" name="postTitle" value="${dto.postTitle }"/>
+					<th colspan="2">
+						<input type="text" name="postTitle" style="background-color:transparent; border:0 solid black; text-align:left; font-size:18px; width:1200px;" value="${dto.postTitle }"/>
 					</th>		
 				</tr>
 				<tr>
-					<td colspan="2">${Ldto.member_id }</td>
-					<td>${dto.postRegdate } </td>
+					<td>작성자 <span style="color:lightgray">&emsp;|&emsp;</span> ${Ldto.member_id }</td>
+					
+					<td>작성일 <span style="color:lightgray">&emsp;|&emsp;</span> ${dto.postRegdate } </td>
 				</tr>
 				<tr>
 					<td>
-						운동종류	<br/>
-						<select name="postCategoryName">
+						운동종류	&emsp;
+						<select name="postCategoryName" style="font-size:16px;">
 							<optgroup label="맨발운동">
 								<option value="walk">걷기</option>
 								<option value="running">달리기</option>
@@ -369,14 +388,17 @@ ul, li {
 							</optgroup>
 						</select>
 					</td>
+					</tr>
+					<tr>
 					<td>
+				
 						<!-- 지도API : c6a1fbbb0976413a4f4996beefa8a351 -->
 						<p><em>지도를 클릭해주세요!</em></p>
 						약속장소	<br/>
 						<div id="makerSpace" >
-					 지번주소<input type="text" name="postLongitude" value=""/>
+					 지번주소&emsp;<input type="text" name="postLongitude" value=""/>
 						</div>
-					
+					<br/>
 						<input type="hidden" id="MapAddress" name="MapAddress" value="" /> 
 						<div class="map_wrap">
 						    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
@@ -384,8 +406,9 @@ ul, li {
 						        <span class="title">지도중심기준 행정동 주소정보</span>
 						        <span id="centerAddr"></span>
 						    </div>
+						   
 						</div>
-					
+					 <br><br><br><br>
 						<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c6a1fbbb0976413a4f4996beefa8a351&libraries=services"></script>
 						<script>
 							var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -472,7 +495,8 @@ ul, li {
 							
 						</script>
 						</td>
-						<td>
+						
+						<td style="width:600px; height:400px">
 							<p><em>달력을 클릭해주세요!</em></p>
 	<!-- 달력API -->			<div id='postMdate'></div>
 
@@ -493,8 +517,16 @@ ul, li {
 				</tr>
 		</table>
 		</c:forEach>
+	<div class="individual01" style="text-align:right">
+				
+						<input type="submit" id="submit" value="확인"/>
+						<input type="button" id="cancel" value="취소" onclick="location.href='board.do?command=list'" />
+				
+				</div>
 	</form>
-	
+</div>
+</div>
+
 <%---	
 	<%@include file="../../views/common/footer.jsp" %>
 --%>

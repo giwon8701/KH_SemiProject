@@ -3,18 +3,18 @@
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>우리동네 운동친구∴∵Heath Friends</title>
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+<script src="/Health_Friends/assets/api/se2/js/HuskyEZCreator.js" type="text/javascript"></script>
+<script src="/Health_Friends/assets/api/se2/init.js" type="text/javascript"></script>
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 
-<style>
+
+<style type="text/css">
 
 .main img {
 width: 100%;
@@ -24,9 +24,8 @@ vertical-align: middle;
 }
 
 .btn01 {
-background: royalblue;
-	border: 1px solid royalblue;
-
+	background: #FF4500;
+	border: 1px solid OrangeRed;
 }
 
 .btn01:hover {
@@ -35,15 +34,15 @@ background: royalblue;
 	line-height: 40px;
 	text-align: center;
 	background: white;
-	text-decoration: underline royalblue;
-	color: royalblue;
+	text-decoration: underline OrangeRed;
+	color: OrangeRed;
 	display: inline-block;
-	border: 1px solid royalblue;
+	border: 1px solid OrangeRed;
 }
 
 .btn02 {
-background : teal;
-	border: 1px solid teal;
+	background: Tan;
+	border: 1px solid Tan;
 }
 
 .btn02:hover {
@@ -52,10 +51,10 @@ background : teal;
 	line-height: 40px;
 	text-align: center;
 	background: white;
-	text-decoration: underline teal;
-	color: teal;
+	text-decoration: underline Tan;
+	color: Tan;
 	display: inline-block;
-	border: 1px solid teal;
+	border: 1px solid Tan;
 }
 
 html {
@@ -101,37 +100,27 @@ ul, li {
 	font-size: 1.4rem;
 }
 
-.bt_wrap input {
-	display: inline-block;
-	min-width: 80px;
-	margin-left: 10px;
-	padding: 10px;
-	border: 1px solid #FF4500;
-	border-radius: 2px;
-	font-size: 1.4rem;
-}
-
-.bt_wrap input.on {
+.bt_wrap a.off {
 	background: OrangeRed;
 	color: white;
 	border-radius: 100px;
 }
 
-.bt_wrap input.on:hover {
+.bt_wrap a.off:hover {
 	background: OrangeRed;
 	color: white;
-	border-radius: 100px;
+	border-radius: 100px;;
 	text-decoration: underline white;
 	border-radius: 100px;
 }
 
-.bt_wrap a.off {
+.bt_wrap a.on {
 	color: OrangeRed;
 	border-radius: 100px;
 	background:white;
 }
 
-.bt_wrap a.off:hover {
+.bt_wrap a.on:hover {
 	color: OrangeRed;
 	border-radius: 100px;
 	background:white;
@@ -255,16 +244,19 @@ ul, li {
 	line-height: 160%;
 	font-size: 1.4rem;
 }
-</style>
 
+	table{
+		width: 580px;
+	}
+	tr > th{
+		text-align: left;
+	}
+</style>
 </head>
 <body>
-
 <%--  
 	<%@include file="../../views/common/header.jsp" %>
---%>
-
-<% RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); %>
+--%>	
 
 <div class="main01">
 	<img src="https://www.imgacademy.co.kr/sites/default/files/inline-images/coaching.jpg" style="width:100% ;height:auto">
@@ -281,52 +273,58 @@ ul, li {
 			href=" ./notice.do?command=list " class="btn btn01"  style="font-size:16px">공지사항</a>	
 </div>
 
-	<form action="notice.do" method="post">
-		<input type="hidden" name="command" value="updateres"/>
-			<input type="hidden" name="postId" value=${dto.postId } />
-			<input type="hidden" name="postUserNo" value=${Ldto.member_no } />
-
-<div class="board_wrap">
-		<div class="board_title">
-		<div class="board_view_wrap">
-			<div class="board_view">
-				<div class="title">
-					<input type="text" name="postTitle" style="background-color:transparent; border:0 solid black; text-align:left; font-size:18px; width:970px" value="${dto.postTitle }"/>
-				</div>
-	<div class="info">
-					<dl>
-						<dt>작성자</dt>
-						<dd>${Ldto.member_id } </dd>
-			 		</dl>
-					<dl>
-						<dt>작성일</dt>
-						<dd><fmt:formatDate value="${dto.postRegdate}" pattern="yyyy-MM-dd HH:mm" /></dd>
-					</dl>
-				</div>
-				<div class="cont" contenteditable="true" style="width:97%; height:500px; overflow:auto; width:97%; height:500px;">
-					<textarea rows="30" cols="100" id="summernote" name="postContent">${dto.postContent }</textarea>
-				</div>
-				<div class="bt_wrap"> 
-					<input class="on" type="submit" value="확인" />
-						<a href="./notice.do?command=list" class="off">취소</a>
-				</div>
-			</div>
-			</div>
-		</div>
-	</div>
-</form>
 
 
+
+
+
+
+
+
+
+	<section class="boardlist">
+		<a href="../../board.do?command=list">동행 구해요</a>
+		<a href="../../review.do?command=list">사진후기</a>
+		<a href="../../notice.do?command=list">공지사항</a>
+	</section>
+	
+	
+	
+	
+	
+	<section id="noticeBoard_post">
+		<form action="../../notice.do" method="post">
+			<input type="hidden" name="command" value="insertres"/>
+			<table border="1">
+				<tr>
+					<th colspan="2">
+						공지사항
+					</th>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<input type="text" name="postTitle" placeholder="제목을 적어주세요"/>
+					</td>
+				</tr>
+				<tr>	
+				
+				</tr>
+				<tr>
+					<td colspan="3">
+						<textarea id="se2" name="postContent" class="smarteditor2" ></textarea>
+					</td>
+				</tr>
+			</table>
+			<input type="submit" value="등록">
+			<input type="button" value="취소" onclick="location.href='../../notice.do?command=list'" />
+		</form>
+	</section>
 <%---	
 	<%@include file="../../views/common/footer.jsp" %>
 --%>
-<%-- summernote관련 부트스트랩, api, js --%>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-<script src="assets/js/summernote.js"></script>
+
 </body>
 </html>
+
+
+
