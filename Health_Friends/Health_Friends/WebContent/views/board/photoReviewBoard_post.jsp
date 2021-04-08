@@ -281,16 +281,14 @@ text-decoration:underline white;
 		<section id="">
 			<form action="review.do" method="post">
 				<input type="hidden" name="command" value="insertRes" />
-				<input type="hidden" name="userNo" value="${Ldto.getMember_no() }">
-				<input type="hidden" name="postThumbNail"/>
+				<input type="hidden" name="userNo" value="${Ldto.member_no }">
+				<input type="hidden" name="postThumbNail" id="postThumbNail"/>
 
 
 				<div class="board_title">
 					<div class="board_view_wrap">
 						<div class="board_view">
-							<div class="title11" name="postTitle" contenteditable="true" data-ph="제목을 입력하세요.">
-								${dto.postTitle }
-							</div>
+							<input type="text" name="postTitle"/>
 							<div class="info">
 								<dl>
 									<dt>작성자</dt>

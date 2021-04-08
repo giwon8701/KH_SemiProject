@@ -311,7 +311,7 @@ div .pagemove:hover {
 <%
 			} else{
 %>
-				<td><a href="./review.do?command=select&postId=<%=list.get(i).getPostId()%>"><img src=""></a></td>
+				<td><a href="./review.do?command=select&postId=<%=list.get(i).getPostId()%>"><img src="uploadImages/<%=list.get(i).getPostThumbNail()%>"></a></td>
 				<td><a href="./review.do?command=select&postId=<%=list.get(i).getPostId()%>"><%=list.get(i).getPostTitle()%></a></td>		
 <%
 			}

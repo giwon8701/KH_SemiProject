@@ -34,10 +34,9 @@ function sendFile(file) {
 			var image = $('<img>').attr('src', res.imagePath);
 			// 에디터에 이미지 출력
 			$('#summernote').summernote('insertNode', image[0]);
+			console.log(res.postThumbNail)
 			
-			if ($(tag_name[name=postThumbNail]).val() === null) {
-				$(tag_name[name=postThumbNail]).val(res.postThumbNail);
-			}
+				$("#postThumbNail").attr('value', res.postThumbNail);
 		}
 	});
 	/// 이 기능이 완료 되면 html 에 출력되용 그게 서버로 날라감~

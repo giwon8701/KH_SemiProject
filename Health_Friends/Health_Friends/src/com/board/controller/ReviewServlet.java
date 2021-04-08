@@ -55,7 +55,6 @@ public class ReviewServlet extends HttpServlet {
 			String postTitle = request.getParameter("postTitle");
 			String postContent = request.getParameter("postContent");
 			String postThumbNail = request.getParameter("postThumbNail");
-			
 			BoardDto dto = new BoardDto();
 			dto.setPostUserNo(postUserNo);
 			dto.setPostTitle(postTitle);
@@ -114,6 +113,7 @@ public class ReviewServlet extends HttpServlet {
 		} else if (command.equals("update")) {
 			int postId = Integer.parseInt(request.getParameter("postId"));
 			BoardDto dto = biz.photo_selectOne(postId);
+			System.out.println("리뷰dto: " + dto.getPostTitle());
 			request.setAttribute("dto", dto);
 			dispatch(request, response, "./views/board/photoReviewBoard_update.jsp");
 		} else if (command.equals("updateres")) {

@@ -78,6 +78,7 @@ public class NoticeServlet extends HttpServlet {
 				int postId = Integer.parseInt(request.getParameter("postId"));
 				String postTitle = request.getParameter("postTitle");
 				String postContent = request.getParameter("postContent");
+				System.out.println("컨텐츠: " + postContent);
 				BoardDto dto = new BoardDto();
 				int postUserNo = Integer.parseInt(request.getParameter("postUserNo"));; 
 				dto.setPostUserNo(postUserNo);

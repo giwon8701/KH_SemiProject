@@ -299,9 +299,8 @@ ul, li {
 						<dd><fmt:formatDate value="${dto.postRegdate}" pattern="yyyy-MM-dd HH:mm" /></dd>
 					</dl>
 				</div>
-				<div class="cont" contenteditable="true" style="width:97%; height:500px; overflow:auto; width:97%; height:500px;">
 					<textarea rows="30" cols="100" id="summernote" name="postContent">${dto.postContent }</textarea>
-				</div>
+
 				<div class="bt_wrap"> 
 					<input class="on" type="submit" value="확인" />
 						<a href="./notice.do?command=list" class="off">취소</a>
