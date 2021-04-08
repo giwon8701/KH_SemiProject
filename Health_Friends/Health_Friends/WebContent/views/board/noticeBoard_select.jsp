@@ -258,7 +258,6 @@ ul, li {
 	BoardBiz biz = new BoardBizImpl();
 	RegistBiz rbiz = new RegistBizImpl();
 	
-	String member_id = Ldto.getMember_id();
 %>
 
 	
@@ -288,7 +287,7 @@ ul, li {
 				<div class="info">
 					<dl>
 						<dt>작성자</dt>
-						<dd><%=member_id%></dd>
+						<dd>${member_id }</dd>
 			 		</dl>
 					<dl>
 						<dt>작성일</dt>
