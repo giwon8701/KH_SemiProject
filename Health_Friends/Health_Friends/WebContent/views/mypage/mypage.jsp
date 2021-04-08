@@ -148,14 +148,13 @@ tbody {
 
 #calendar {
 	font-size: 20px;
-	text-align: center;
 }
 
 .mypage-second-div2 {
 	
 }
 .mypage-chart-div {
-
+width:900px; float: left; margin: 30px 30px; 
 }
 #filename {
 width: 50px;
@@ -176,6 +175,8 @@ cursor: pointer;
 outline: 0;
 }
 
+table#calendar {
+margin: 10px 95px;
 
 </style>
 <script>
@@ -244,7 +245,7 @@ outline: 0;
 
 			</div>
 		
-			<div class="mypage-calendar-div">	<br>
+			<div class="mypage-calendar-div"><br>	
 			<h1 style="font-size:30px; text-align:center">날짜 선택</h1>
 				<table id="calendar">
 					<col width="40px">
@@ -331,7 +332,8 @@ outline: 0;
 			</div>
 		</div>
 			<div class="mypage-second-div2" >
-			<div class="mypage-chart-div" style="width:800px; float: left;">
+	
+			<div class="mypage-chart-div">
 				<canvas id="myChart"></canvas>
 			</div>
 		</div>
