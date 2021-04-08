@@ -120,7 +120,8 @@ public class BoardDaoImpl extends SqlMapConfig implements BoardDao {
 		
 		try {
 			session = getSqlSessionFactory().openSession(true);
-			dto = session.selectOne("BoardMapper.notice_selectOne", postId);
+			dto = session.selectOne("BoardMapper.photo_selectOne", postId);
+			System.out.println(dto.getPostTitle());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

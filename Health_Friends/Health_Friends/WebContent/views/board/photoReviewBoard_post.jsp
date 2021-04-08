@@ -1,12 +1,7 @@
 <%@page import="com.login.dto.RegistDto"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
-<%
-	response.setContentType("text/html; charset=UTF-8");
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%request.setCharacterEncoding("UTF-8");%>
+<%response.setContentType("text/html; charset=UTF-8");%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -15,8 +10,7 @@
 <meta charset="UTF-8">
 <title>우리동네 운동친구∴∵Heath Friends</title>
 
-<script type="text/javascript"
-src="https://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 
 <style>
@@ -237,11 +231,10 @@ ul, li {
 	<%@include file="../../header.jsp"%>
 
 	<div class="main01">
-		<img
-			src="https://www.imgacademy.co.kr/sites/default/files/inline-images/coaching.jpg"
-			style="width: 100%; height: auto">
-		<div class=text01 style="font-size: 40px; font-weight: bold">게시판
-			입니다</div>
+		<img src="https://www.imgacademy.co.kr/sites/default/files/inline-images/coaching.jpg" style="width: 100%; height: auto">
+		<div class=text01 style="font-size: 40px; font-weight: bold">
+			게시판 입니다
+		</div>
 		<br>
 		<div class=text02 style="font-size: 24px;">오늘도 즐거운 운동 즐기시길 바랍니다</div>
 		<br>
@@ -252,25 +245,34 @@ ul, li {
 		<div style="font-size: 40px; font-weight: bold">후기 게시판</div>
 		<br>
 		<p style="font-size: 16px">소중한 추억을 남겨보세요.</p>
-		<br> <a href="  " class="btn btn02" style="font-size: 16px">메인
-			페이지</a> <a href="./board.do?command=list  " class="btn btn01"
-			style="font-size: 16px">동행 구해요</a> <a
-			href="./review.do?command=list  " class="btn btn01"
-			style="font-size: 16px">사진 후기</a> <a href="./notice.do?command=list "
-			class="btn btn01" style="font-size: 16px">공지사항</a>
+		<br>
+		<a href="  " class="btn btn02" style="font-size: 16px">
+			메인 페이지
+		</a>
+		<a href="./board.do?command=list  " class="btn btn01" style="font-size: 16px">
+			동행 구해요
+		</a>
+		<a href="./review.do?command=list  " class="btn btn01" style="font-size: 16px">
+			사진 후기
+		</a>
+		<a href="./notice.do?command=list " class="btn btn01" style="font-size: 16px">
+			공지사항
+		</a>
 	</div>
 	<div class="board_wrap">
 		<section id="">
 			<form action="review.do" method="post">
-				<input type="hidden" name="command" value="insertRes" /> <input
-					type="hidden" name="userNo" value="${Ldto.getMember_no() }">
+				<input type="hidden" name="command" value="insertRes" />
+				<input type="hidden" name="userNo" value="${Ldto.getMember_no() }">
+				<input type="hidden" name="postThumbNail"/>
 
 
 				<div class="board_title">
 					<div class="board_view_wrap">
 						<div class="board_view">
-							<div class="title11" name="postTitle" contenteditable="true"
-								data-ph="제목을 입력하세요.">${dto.postTitle }</div>
+							<div class="title11" name="postTitle" contenteditable="true" data-ph="제목을 입력하세요.">
+								${dto.postTitle }
+							</div>
 							<div class="info">
 								<dl>
 									<dt>작성자</dt>
@@ -281,35 +283,22 @@ ul, li {
 						</div>
 
 						<div class="bt_wrap">
-							<button type="submit" id="submit">확인</button>
+							<input type="submit" id="submit">확인</button>
 							<a href="review.do?command=list" class="on">취소</a>
 						</div>
 					</div>
 				</div>
 			</form>
 		</section>
-
-	</div>
+		</div>
+	
 	<%-- summernote관련 부트스트랩, api, js --%>
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
-	<link rel="stylesheet"
-		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-		crossorigin="anonymous">
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-		crossorigin="anonymous"></script>
-	<link
-		href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css"
-		rel="stylesheet">
-	<script
-		src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 	<script src="assets/js/summernote.js"></script>
 </body>
 </html>

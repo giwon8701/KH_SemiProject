@@ -64,8 +64,7 @@ public class FileUploadServlet extends HttpServlet {
 		
 		JSONObject jobj = new JSONObject();
 		jobj.put("imagePath", imagePath);
-		jobj.put("thumbnail", originFileName);
-
+		jobj.put("postThumbNail", originFileName);
 		System.out.println("root = " + root);
 		response.getWriter().print(jobj.toJSONString()); // 값을 json형태로 변환해줌
 

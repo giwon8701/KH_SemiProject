@@ -54,11 +54,13 @@ public class ReviewServlet extends HttpServlet {
 			int postUserNo = Integer.parseInt(request.getParameter("userNo"));
 			String postTitle = request.getParameter("postTitle");
 			String postContent = request.getParameter("postContent");
+			String postThumbNail = request.getParameter("postThumbNail");
 			
 			BoardDto dto = new BoardDto();
 			dto.setPostUserNo(postUserNo);
 			dto.setPostTitle(postTitle);
 			dto.setPostContent(postContent);
+			dto.setPostThumbNail(postThumbNail);
 			
 			int res = biz.photo_insert(dto);
 			if(res > 0) {
@@ -114,6 +116,24 @@ public class ReviewServlet extends HttpServlet {
 			BoardDto dto = biz.photo_selectOne(postId);
 			request.setAttribute("dto", dto);
 			dispatch(request, response, "./views/board/photoReviewBoard_update.jsp");
+		} else if (command.equals("updateres")) {
+			int postId = Integer.parseInt(request.getParameter("postId"));
+			String postTitle = request.getParameter("postTitle");
+			String postContent = request.getParameter("postContent");
+			BoardDto dto = new BoardDto();
+			int postUserNo = Integer.parseInt(request.getParameter("postUserNo"));; 
+			dto.setPostUserNo(postUserNo);
+			dto.setPostId(postId);
+			dto.setPostTitle(postTitle);
+			dto.setPostContent(postContent);
+			
+			int res = biz.photo_update(dto);
+			if (res > 0) {
+				response.sendRedirect("review.do?command=list&postId=" + postId);
+			} else {
+				response.sendRedirect("review.do?command=select&postId=" + postId);
+			}
+			
 		}
 	}
 	

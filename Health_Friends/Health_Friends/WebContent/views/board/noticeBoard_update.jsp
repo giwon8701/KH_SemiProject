@@ -271,7 +271,7 @@ ul, li {
 <div class="main02" style="text-align: center">
 <div style="font-size: 40px; font-weight:bold">공지사항 글수정</div><br>
 <p style="font-size: 16px">웹 이용 전 반드시 공지사항을 확인하시기 바랍니다.</p><br> 	
-		<br> <a href="../../index.jsp" class="btn btn02"  style="font-size:16px">메인 페이지</a> <a
+		<br> <a href="index.jsp" class="btn btn02"  style="font-size:16px">메인 페이지</a> <a
 			href="./board.do?command=list  " class="btn btn01"  style="font-size:16px">동행 구해요</a> <a
 			href="./review.do?command=list  " class="btn btn01"  style="font-size:16px">사진 후기</a> <a
 			href=" ./notice.do?command=list " class="btn btn01"  style="font-size:16px">공지사항</a>	

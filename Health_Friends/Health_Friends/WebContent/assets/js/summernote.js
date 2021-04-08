@@ -35,8 +35,8 @@ function sendFile(file) {
 			// 에디터에 이미지 출력
 			$('#summernote').summernote('insertNode', image[0]);
 			
-			if ($('#mainImage').val() === null) {
-				$('#mainImage').val(res.thumbnail);
+			if ($(tag_name[name=postThumbNail]).val() === null) {
+				$(tag_name[name=postThumbNail]).val(res.postThumbNail);
 			}
 		}
 	});
