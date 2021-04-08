@@ -57,7 +57,7 @@ ul, li {
 .bt_wrap {
 	margin-top: 30px;
 	text-align: center;
-	font-size: 0;
+	font-size: 16px;
 }
 
 .bt_wrap a {
@@ -67,19 +67,19 @@ ul, li {
 	padding: 10px;
 	border: 1px solid royalblue;
 	border-radius: 2px;
-	font-size: 1.4rem;
+	font-size: 16px;
 }
 
 .bt_wrap a.on {
-	background: Royalblue;
-	color: white;
+	background: white;
+	color: royalblue;
 	border-radius: 100px;
 }
 
 .bt_wrap a.on:hover {
-	background: Royalblue;
-	color: white;
-	text-decoration: underline white;
+	background: white;
+	color: royalblue;
+	text-decoration: underline royalblue;
 	border-radius: 100px;
 }
 
@@ -88,7 +88,7 @@ ul, li {
 	border-radius: 100px;
 }
 
-.bt_wrap a.off:hover {
+.bt_wrap a.off.:hover {
 	color: Royalblue;
 	border-radius: 100px;
 	text-decoration: underline Royalblue;
@@ -223,6 +223,24 @@ ul, li {
 	content: attr(data-ph);
 	color: #D3D3D3;
 }
+
+button {
+border: 1px solid royalblue;
+width: 80px;
+height: 50px;
+background : royalblue;
+color: white;
+}
+
+button:hover{
+border: 1px solid royalblue;
+width: 80px;
+height: 50px;
+background : royalblue;
+color: white;
+text-decoration:underline white;
+
+
 </style>
 
 
@@ -283,7 +301,7 @@ ul, li {
 						</div>
 
 						<div class="bt_wrap">
-							<input type="submit" id="submit">확인</button>
+							<button type="submit" id="submit" style="border-radius: 100px;" >확인</button>
 							<a href="review.do?command=list" class="on">취소</a>
 						</div>
 					</div>

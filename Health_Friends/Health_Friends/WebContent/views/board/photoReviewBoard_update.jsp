@@ -269,51 +269,191 @@ ul, li {
 </div>
 	
 <div class="main02" style="text-align: center">
-<div style="font-size: 40px; font-weight:bold">공지사항 글수정</div><br>
-<p style="font-size: 16px">웹 이용 전 반드시 공지사항을 확인하시기 바랍니다.</p><br> 	
+<div style="font-size: 40px; font-weight:bold">후기 게시판 글수정</div><br>
+<p style="font-size: 16px">우리 동네 운동 친구를 만나보세요.</p><br> 	
 		<br> <a href="index.jsp" class="btn btn02"  style="font-size:16px">메인 페이지</a> <a
 			href="./board.do?command=list  " class="btn btn01"  style="font-size:16px">동행 구해요</a> <a
 			href="./review.do?command=list  " class="btn btn01"  style="font-size:16px">사진 후기</a> <a
 			href=" ./notice.do?command=list " class="btn btn01"  style="font-size:16px">공지사항</a>	
 </div>
 
-	<form action="review.do" method="post">
+
+	  <div class="board">
+	<div class="board_list_wrap">
+	
+	<form action="board.do" method="post">
 		<input type="hidden" name="command" value="updateres"/>
+		<c:forEach items="dto">
 			<input type="hidden" name="postId" value=${dto.postId } />
-			<input type="hidden" name="postUserNo" value=${Ldto.member_no } />
+			<input type="hidden" name="postUserNo" value=${dto.postUserNo } />
+		<table class="board_list">
+			<caption>일정 작성</caption>
+			<thead>
+				<tr>
+					<th colspan="2">
+						<input type="text" name="postTitle" style="background-color:transparent; border:0 solid black; text-align:left; font-size:18px; width:1200px;" value="${dto.postTitle }"/>
+					</th>		
+				</tr>
+				<tr>
+					<td>작성자 <span style="color:lightgray">&emsp;|&emsp;</span> ${Ldto.member_id }</td>
+					
+					<td>작성일 <span style="color:lightgray">&emsp;|&emsp;</span> ${dto.postRegdate } </td>
+				</tr>
+				<tr>
+					<td>
+						운동종류	&emsp;
+						<select name="postCategoryName" style="font-size:16px;">
+							<optgroup label="맨발운동">
+								<option value="walk">걷기</option>
+								<option value="running">달리기</option>
+							</optgroup>
+							<optgroup label="라이딩">
+								<option value="bike_riding">자전거</option>
+								<option value="inline_skating">인라인스케이트(롤러브레이드)</option>
+							</optgroup>
+							<optgroup label="구기운동">
+								<option value="basketball">농구</option>
+								<option value="dodgeball">피구</option>
+								<option value="tennis">테니스</option>
+							</optgroup>
+						</select>
+					</td>
+					</tr>
+					<tr>
+					<td>
+				
+						<!-- 지도API : c6a1fbbb0976413a4f4996beefa8a351 -->
+						<p><em>지도를 클릭해주세요!</em></p>
+						약속장소	<br/>
+						<div id="makerSpace" >
+					 지번주소&emsp;<input type="text" name="postLongitude" value=""/>
+						</div>
+					<br/>
+						<input type="hidden" id="MapAddress" name="MapAddress" value="" /> 
+						<div class="map_wrap">
+						    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+						    <div class="hAddr">
+						        <span class="title">지도중심기준 행정동 주소정보</span>
+						        <span id="centerAddr"></span>
+						    </div>
+						   
+						</div>
+					 <br><br><br><br>
+						<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c6a1fbbb0976413a4f4996beefa8a351&libraries=services"></script>
+						<script>
+							var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+							    mapOption = {
+							        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+							        level: 1 // 지도의 확대 레벨
+							    };  
+							
+							// 지도를 생성합니다    
+							var map = new kakao.maps.Map(mapContainer, mapOption); 
+							
+							// 주소-좌표 변환 객체를 생성합니다
+							var geocoder = new kakao.maps.services.Geocoder();
+							
+							var marker = new kakao.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
+							    infowindow = new kakao.maps.InfoWindow({zindex:1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
+							
+							    
+							// 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
+							searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+							
+							// 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
+							kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+							    searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
+							        if (status === kakao.maps.services.Status.OK) {
+							        	
+							            var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+							            detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+							            
+							            var MapAddresss = '<div class="bAddr">' +  '<span class="title">법정동 주소정보</span>' + detailAddr + '</div>';
+							                    
+							            var roadAddr = !!result[0].road_address ? '<div>' + result[0].road_address.address_name + '</div>' : '';
+							            var Addr = '<div>' + result[0].address.address_name + '</div>';
+							            
+							            $("#MapAddress").val(mouseEvent)
+										
+							           // var markerSpace = document.getElementById("makerSpace");
+							           // makerSpace.innerHTML = detailAddr;
+							         	
+							         	var test2 = document.getElementsByName("postLongitude")[0];
+								        var afterString2 = Addr.slice(Addr.indexOf(">")+1, Addr.lastIndexOf("<"));
+								        test2.value = afterString2;
+							            
+							            // 마커를 클릭한 위치에 표시합니다 
+							            marker.setPosition(mouseEvent.latLng);
+							            marker.setMap(map);
+							            
+							            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+							            infowindow.setContent(MapAddress);
+							            
+							        }   
+							    });
+							});
+							
+							// 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
+							kakao.maps.event.addListener(map, 'idle', function() {
+							    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+							});
+							
+							function searchAddrFromCoords(coords, callback) {
+							    // 좌표로 행정동 주소 정보를 요청합니다
+							    geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);         
+							}
+							
+							function searchDetailAddrFromCoords(coords, callback) {
+							    // 좌표로 법정동 상세 주소 정보를 요청합니다
+							    geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+							}
+							
+							// 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
+							function displayCenterInfo(result, status) {
+							    if (status === kakao.maps.services.Status.OK) {
+							        var infoDiv = document.getElementById('centerAddr');
+							
+							        for(var i = 0; i < result.length; i++) {
+							            // 행정동의 region_type 값은 'H' 이므로
+							            if (result[i].region_type === 'H') {
+							                infoDiv.innerHTML = result[i].address_name;
+							                break;
+							            }
+							        }
+							    }    
+							}
+							
+						</script>
+						</td>
+						
+						<td style="width:600px; height:400px">
+							<p><em>달력을 클릭해주세요!</em></p>
+	<!-- 달력API -->			<div id='postMdate'></div>
 
-<div class="board_wrap">
-		<div class="board_title">
-		<div class="board_view_wrap">
-			<div class="board_view">
-				<div class="title">
-					<input type="text" name="postTitle" style="background-color:transparent; border:0 solid black; text-align:left; font-size:18px; width:970px" value="${dto.postTitle }"/>
+						    <input type="hidden" name="postMdate" value="" />
+					   	 <div id='calendar'></div>
+						</td>
+				</tr>
+				<tr>
+					<td colspan="3" id="Board_writeContent">
+						<textarea rows="30" cols="100" id="summernote" name="postContent">${dto.postContent }</textarea>
+					</td>
+				</tr>
+		</table>
+		</c:forEach>
+	<div class="individual01" style="text-align:right">
+				
+						<input type="submit" id="submit" value="확인"/>
+						<input type="button" id="cancel" value="취소" onclick="location.href='board.do?command=list'" />
+				
 				</div>
-	<div class="info">
-					<dl>
-						<dt>작성자</dt>
-						<dd>${Ldto.member_id } </dd>
-			 		</dl>
-					<dl>
-						<dt>작성일</dt>
-						<dd><fmt:formatDate value="${dto.postRegdate}" pattern="yyyy-MM-dd HH:mm" /></dd>
-					</dl>
-				</div>
-				<div class="cont" contenteditable="true" style="width:97%; height:500px; overflow:auto; width:97%; height:500px;">
-					<textarea rows="30" cols="100" id="summernote" name="postContent">${dto.postContent }</textarea>
-				</div>
-				<div class="bt_wrap"> 
-					<input class="on" type="submit" value="확인" />
-						<a href="./review.do?command=list" class="off">취소</a>
-				</div>
-			</div>
-			</div>
-		</div>
-	</div>
-</form>
+	</form>
+</div>
+</div>
 
-
-	<%@include file="../../footer.jsp" %>
+<%---	
+	<%@include file="../../views/common/footer.jsp" %>
+--%>
 <%-- summernote관련 부트스트랩, api, js --%>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

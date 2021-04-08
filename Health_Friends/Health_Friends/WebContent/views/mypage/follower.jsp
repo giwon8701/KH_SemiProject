@@ -52,7 +52,7 @@
 	width: 50%;
 	float: right;
 	box-sizing: border-box;
-		border-bottom: 1px solid SkyBlue;
+		border: 1px solid SkyBlue;
 	}
 	
 	#follower:hover {
@@ -67,8 +67,9 @@
 	#list {
 	margin: 20px 20px;
 	color: gray;
-	
+	border: 1px solid SkyBlue;
 	}
+		
 	td {
 	padding: 20px;
 	font-size: 20px;
@@ -95,8 +96,8 @@
 				if(data.length < 1) {
 					$("#list").empty();
 					$("#list").text('내가 팔로잉 하는 사람이 아직 없습니다.');
-					$("#list").css("background-color", "skyblue");
-					$("#following").css("background-color", "skyblue");
+					$("#list").css("background-color", "");
+					$("#following").css("background-color", "");
 					$("#follower").css("background-color", "");
 					
 				} else {
@@ -113,7 +114,7 @@
 					}
 					$("#list").append($table);
 					$("#list").css("background-color", "");
-					$("#following").css("background-color", "skyblue");
+					$("#following").css("background-color", "");
 					$("#follower").css("background-color", "");
 				}
 			},
@@ -132,7 +133,7 @@
 					$("#list").empty();
 					$("#list").text('나를 팔로우 하는 사람이 아직 없습니다.');
 					$("#list").css("background-color", "");
-					$("#follower").css("background-color", "skyblue");
+					$("#follower").css("background-color", "");
 					$("#following").css("background-color", "");
 				} else {
 					$("#list").empty();
@@ -147,7 +148,7 @@
 						$table.append($tr);
 					}
 					$("#list").append($table);
-					$("#list").css("background-color", "skyblue");
+					$("#list").css("background-color", "");
 					$("#follower").css("background-color", "skyblue");
 					$("#following").css("background-color", "");
 				}

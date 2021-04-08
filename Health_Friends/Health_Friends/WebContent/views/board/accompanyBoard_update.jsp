@@ -296,54 +296,7 @@ margin-top:10px;
 			href="./review.do?command=list  " class="btn btn01"  style="font-size:16px">사진 후기</a> <a
 			href=" ./notice.do?command=list " class="btn btn01"  style="font-size:16px">공지사항</a>	
 </div>
-
-	<form action="board.do" method="post">
-		<input type="hidden" name="command" value="updateres"/>
-		<c:forEach items="dto">
-			<input type="hidden" name="postId" value=${dto.postId } />
-			<input type="hidden" name="postUserNo" value=${dto.postUserNo } />
-			
-	<div class="board_wrap">
-		<div class="board_title">
-		<div class="board_view_wrap">
-			<div class="board_view">
-				<div class="title" name="postTitle" contenteditable="true">${dto.postTitle }
-		</div>
-	<div class="info">
-					<dl>
-						<dt>작성자</dt>
-						<dd>${Ldto.member_id } </dd>
-			 		</dl>
-					<dl>
-						<dt>작성일</dt>
-						<dd><fmt:formatDate value="${dto.postRegdate}" pattern="yyyy-MM-dd HH:mm" /></dd>
-					</dl>
-				</div>
-				<div class="cont" name="postContent" contenteditable="true" style="width:97%; height:500px; overflow:auto; width:97%; height:500px;">
-					${dto.postContent }
-				</div>
-				<div class="bt_wrap"> 
-				<a href="" class="on" type="submit">확인</a>
-				<a href="./notice.do?command=list" class="off">취소</a>
-			</div>
-		</div>
-		</div>
-	</div>
-</div>
-</c:forEach>
-</form>
-
-
-<%-- 
-	<section class="boardlist">
-		<a href="./board.do?command=list">동행 구해요</a>
-		<a href="./review.do?command=list">사진후기</a>
-		<a href="./notice.do?command=list">공지사항</a>
-	</section>
-	--%>
-	
-	
-	
+		
 	  <div class="board">
 	<div class="board_list_wrap">
 	
@@ -397,7 +350,7 @@ margin-top:10px;
 					<br/>
 						<input type="hidden" id="MapAddress" name="MapAddress" value="" /> 
 						<div class="map_wrap">
-						    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+						    <div id="map" style="width:100%;height:412px;position:relative;overflow:hidden;"></div>
 						    <div class="hAddr">
 						        <span class="title">지도중심기준 행정동 주소정보</span>
 						        <span id="centerAddr"></span>
@@ -504,12 +457,6 @@ margin-top:10px;
 				<tr>
 					<td colspan="3" id="Board_writeContent">
 						<textarea rows="30" cols="100" id="summernote" name="postContent">${dto.postContent }</textarea>
-					</td>
-				</tr>
-				<tr>
-					<td>	
-						<input type="submit" value="확인"/>
-						<input type="button" value="취소" onclick="location.href='board.do?command=list'" />
 					</td>
 				</tr>
 		</table>

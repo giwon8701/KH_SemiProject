@@ -82,7 +82,7 @@ ul, li {
 }
 
 .board_wrap {
-	width: 1000px;
+	width: 1300px;
 	margin: 100px auto;
 }
 
@@ -370,7 +370,7 @@ vertical-align: 4px;
 								
 								<dd> 
 									<div id='postMdate'></div>
-							 		<div id='calendar'></div>
+							 		
 								</dd>
 							</dl>
 
@@ -378,7 +378,9 @@ vertical-align: 4px;
 								<dt>약속장소</dt><dd> ${dto.postLongitude}</dd>
 							</dl>
 						</div>
-						<div id="map" style="width: 100%; height: 350px;"></div>
+					
+						<div id="map" style="width: 48%; height: 510px; float:left; margin: 15px 25px" ></div>
+						
 						<script type="text/javascript"
 							src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c6a1fbbb0976413a4f4996beefa8a351&libraries=services"></script>
 						<script>
@@ -422,7 +424,8 @@ vertical-align: 4px;
 												}
 											});
 						</script>
-
+						<br>
+					<div id='calendar' style="width:48%; height:auto; float:left"></div>
 
 				<div class="cont">${dto.postContent }</div>
 				</c:forEach>
