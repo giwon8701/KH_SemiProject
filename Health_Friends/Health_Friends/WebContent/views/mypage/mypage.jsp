@@ -322,7 +322,6 @@ outline: 0;
 								<li><a
 									href="payment.do?command=paymentListMyPaging&member_email=<%=Ldto.getMember_email()%>">나의
 										결제내역</a></li>
-								<li><a href="payment.do?command=paymentListPaging">모든회원결제내역(admin)</a></li>
 							</ul>
 						</td>
 					</tr>

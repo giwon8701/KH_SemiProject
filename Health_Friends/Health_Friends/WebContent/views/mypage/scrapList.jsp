@@ -10,12 +10,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
-<%
-	response.setContentType("text/html; charset=UTF-8");
-%>
+<% request.setCharacterEncoding("UTF-8");%>
+<%response.setContentType("text/html; charset=UTF-8");%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -296,16 +292,12 @@ div .pagemove:hover {
 </style>
 
 <title>우리동네 운동친구∴∵Heath Friends</title>
-<%
-	RegistDto Ldto = (RegistDto) session.getAttribute("Ldto");
-%>
 
 </head>
 
 <body>
-	<%--
-	<%@include file="../../views/common/header.jsp" %>
- --%>
+	
+	<%@include file="../../header.jsp" %>
 
 	<div class="main01">
 		<img
@@ -348,17 +340,19 @@ div .pagemove:hover {
 					<c:choose>
 						<c:when test="${empty list }">
 							<tr>
-								<td colspan="4">----------찜한 게시글이 없습니다------------</td>
+								<td colspan="3">----------찜한 게시글이 없습니다------------</td>
 							</tr>
 						</c:when>
 						<c:otherwise>
 							<c:forEach items="${list }" var="dto">
+								<c:if test="${dto.postDelflag eq 'N'}">
 								<tr>
 									<td>${dto.postBoardName }</td>
 									<td><a
 										href="./board.do?command=scrapSelect&postid=${dto.postId }">${dto.postTitle }</a></td>
 									<td>${dto.postRegdate }</td>
 								</tr>
+								</c:if>
 							</c:forEach>
 						</c:otherwise>
 					</c:choose>
@@ -366,11 +360,7 @@ div .pagemove:hover {
 			</table>
 		</div>
 	</div>
-
-
-
-
-	<!-- 
+<%-- 
 	
 		<h2>찜한 게시글</h2>
  
@@ -405,11 +395,9 @@ div .pagemove:hover {
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
-	</table>
-	 -->
-	<%---	
-	<%@include file="../../views/common/footer.jsp" %>
---%>
+	</table> --%>
+	<%@include file="../../footer.jsp" %>
+
 </body>
 </html>
 
