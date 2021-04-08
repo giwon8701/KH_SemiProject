@@ -305,8 +305,8 @@ div .pagemove:hover {
 					<caption>게시판 목록</caption>
 					<thead>
 						<tr>
-							<th>사진</th>
 							<th>글번호</th>
+							<th>사진</th>
 							<th>제목</th>
 							<th>작성자</th>
 							<th>작성일</th>
@@ -324,31 +324,30 @@ div .pagemove:hover {
 	for(int i = 0; i < list.size(); i++){
 		RegistDto rdto = rbiz.selectByNo(list.get(i).getPostUserNo());
 		String member_id = rdto.getMember_id();
-		if(list.get(i).getPostDelflag().equals('Y')){
+		if(list.get(i).getpostDelflag().equals("Y")){
 %>
 				<tr>
-					<td>======삭제된 게시글 입니다=========</td>
+					<td colspan="4">========삭제된 게시글 입니다=========</td>
 				</tr>
 
 <%			
 		} else{
 %>
 			<tr>
-				<td><img src=""></td>
 				<td><%=list.get(i).getPostNo()%></td>
-				<td>
 <%
 			if(Ldto == null){
 %>
-					<a href="javascript:loginChk();"><%=list.get(i).getPostTitle()%></a>
+				<td><a href="javascript:loginChk();"><img src=""></a></td>
+				<td><a href="javascript:loginChk();"><%=list.get(i).getPostTitle()%></a></td>
 <%
 			} else{
 %>
-					<a href="./review.do?command=select&postId=<%=list.get(i).getPostId()%>"><%=list.get(i).getPostTitle()%></a>		
+				<td><a href="./review.do?command=select&postId=<%=list.get(i).getPostId()%>"><img src=""></a></td>
+				<td><a href="./review.do?command=select&postId=<%=list.get(i).getPostId()%>"><%=list.get(i).getPostTitle()%></a></td>		
 <%
 			}
 %>
-				</td>
 				<td><%=member_id%></td>
 				<td><%=list.get(i).getPostRegdate()%></td>
 			</tr>

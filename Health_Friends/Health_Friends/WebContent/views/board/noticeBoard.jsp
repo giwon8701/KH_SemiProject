@@ -304,12 +304,11 @@ cursor: pointer;
 </script>
 </head>
 <body>
-	<%--
+	
 	<%@include file="../../header.jsp" %>
- --%>
+
 
 <%
-	RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); 
 	BoardBiz biz = new BoardBizImpl();
 	RegistBiz rbiz = new RegistBizImpl();
 	
