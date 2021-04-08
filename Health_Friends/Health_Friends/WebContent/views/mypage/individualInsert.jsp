@@ -350,14 +350,14 @@ margin-top:10px;
 					</tr>
 					<tr>
 						<th>운동 시간</th>
-						<td><input type="text" name="individual_time" style="background-color:transparent; border:0 solid black; text-align:left; font-size:18px;">분</td>
+						<td><input type="text" size="3px" name="individual_time" style="background-color:transparent; border:0 solid black; text-align:left; font-size:18px;">분</td>
 					</tr>
 					<tr>
 						<th>요약</th>
 						<td><input type="text" name="individual_title" style="text-align:left; background-color:transparent; border:0 solid black; font-size:18px;"></td>
 					</tr>
 					<tr>
-						<td colspan="2"><textarea rows="10" cols="60" name="individual_content"  class="smarteditor2"></textarea></td>
+						<td colspan="2" align="center"><textarea rows="5" cols="150" name="individual_content" style="text-align:left; background-color:transparent; border:0 solid black; font-size:18px;" class="smarteditor2"></textarea></td>
 					</tr>
 				</table>
 				<div class="individual01" style="text-align:right">

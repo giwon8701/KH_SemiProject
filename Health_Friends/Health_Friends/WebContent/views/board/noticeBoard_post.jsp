@@ -266,7 +266,7 @@ vertical-align: 4px;
 	<div class="board_list_wrap">
 	
 	<section id="noticeBoard_post">
-		<form action="../../notice.do" method="post">
+		<form action="notice.do" method="post">
 			<input type="hidden" name="command" value="insertres"/>
 				<table class="board_list">
 				<tr>

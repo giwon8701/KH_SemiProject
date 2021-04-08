@@ -69,10 +69,25 @@ z-index:1;
 
 }
 
-
+	.mypage-list-li{
+		text-decoration:none;
+		color: #4481eb;
+	}
+	.mypage-list-li:link{
+		color: #4481eb;
+	}
+	.mypage-list-li:visited{
+		color: #4481eb;
+	}
+	.mypage-list-li:hover{
+		color: #04befe;
+	}
+	.mypage-list-li:active{
+		color: red;
+	}
 
 .mypage-main-div {
-position: absolute;
+	position: absolute;
 	width: 100%;
 	height: 1200px;
 	padding: 100px 170px;
@@ -340,18 +355,18 @@ margin: 10px 95px;
 					<tr>
 						<td>
 							<ul class="list-ul">
-								<li><a href="mypage.do?command=registUpdate">회원정보 수정</a></li><br/>
-								<li><a href="scrap.do?command=scrapList">찜한게시물</a></li><br/>
-								<li><div class="mypage-follw-div" onclick="follow();"
+								<li><a href="mypage.do?command=registUpdate" class="mypage-list-li">회원정보 수정</a></li><br/>
+								<li><a href="scrap.do?command=scrapList" class="mypage-list-li">찜한게시물</a></li><br/>
+								<li><div class="mypage-follw-div mypage-list-li" onclick="follow();"
 										id="follow">팔로우</div></li><br/>
 								<li><a
-									href="payment.do?command=paymentRoleUp&member_role=<%=Ldto.getMember_role()%>">프리미엄
+									href="payment.do?command=paymentRoleUp&member_role=<%=Ldto.getMember_role()%>" class="mypage-list-li">프리미엄
 										등록</a></li><br/>
 								<li><a
-									href="payment.do?command=paymentRoleDown&member_role=<%=Ldto.getMember_role()%>">프리미엄
+									href="payment.do?command=paymentRoleDown&member_role=<%=Ldto.getMember_role()%>" class="mypage-list-li">프리미엄
 										탈퇴</a></li><br/>
 								<li><a
-									href="payment.do?command=paymentListMyPaging&member_email=<%=Ldto.getMember_email()%>">나의
+									href="payment.do?command=paymentListMyPaging&member_email=<%=Ldto.getMember_email()%>" class="mypage-list-li">나의
 										결제내역</a></li><br/>
 							</ul>
 						</td>
