@@ -13,12 +13,10 @@
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 
 	function getSearch() {
@@ -111,7 +109,6 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width" initial-scale="1">
-
 <link href="assets/css/main.css" rel="stylesheet" type="text/css">
 <link href="assets/css/shopping.css" rel="stylesheet" type="text/css" />
 <title>우리동네 운동친구∴∵Heath Friends</title>
