@@ -375,7 +375,7 @@ div .pagemove:hover {
 %>
 				</td>
 				<td><%=rdto.getMember_gender() %>
-				<td><%=member_id%></td>
+				<td><a href="./follow.do?command=profile&member_id=<%=member_id%>"><%=member_id%></a></td>
 				<td><fmt:formatDate value="<%=list.get(i).getPostRegdate()%>" pattern="yyyy-MM-dd HH:mm" /></td>
 			</tr>
 <%	

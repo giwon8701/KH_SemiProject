@@ -14,6 +14,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="/Health_Friends/assets/api/se2/js/HuskyEZCreator.js" type="text/javascript"></script>
 <script src="/Health_Friends/assets/api/se2/init.js" type="text/javascript"></script>
+<link href='fullcalendar/main.css' rel='stylesheet' />
 <script type="text/javascript">
 $(function(){
 	$("#submit").click(function(){
@@ -377,6 +378,8 @@ margin-top:10px;
 	<!-- 달력API -->		<div id='postMdate'></div>
 						    <input type="hidden" name="postMdate" value="" />
 					 	<div id='calendar'></div>
+					 	<p><em>시계아이콘을 클릭해 약속시간을 정해주세요</em></p>
+					 	<input type="time" name="postLatitude"/>
 					</td>
 				</tr> 
 				<tr>

@@ -1,13 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
 	var calendarEl = document.getElementById('calendar');
 	var calendar = new FullCalendar.Calendar(calendarEl, {
-    events: [
+		events: [
                {
-                   title: "우리동네 운동친구∴∵Heath Friends",
-                   start: "${dto.postMdate},
+                   title: '약속일',
+                   start: "${dto.postMdate}"
                }
             ]
 	});	
     calendar.render();
 });	
 
+
+
+/***
+events: [
+               {
+                   title: '약속일',
+                   start: "${dto.postMdate}"
+               }
+            ]
+
+ */

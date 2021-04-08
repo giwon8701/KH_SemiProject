@@ -47,16 +47,17 @@ public class BoardServlet extends HttpServlet {
 				String postTitle = request.getParameter("postTitle");
 				String postCategoryName = request.getParameter("postCategoryName");
 				String postContent = request.getParameter("postContent");
-				System.out.println("postContent : " + postContent);
 				int postUserNo = ldto.getMember_no();
 				String postMdate = request.getParameter("postMdate");
+				String postLatitude = request.getParameter("postLatitude");
 				BoardDto dto = new BoardDto();
 				dto.setPostUserNo(postUserNo);
-				dto.setPostLongitude(postLongitude);
 				dto.setPostCategoryName(postCategoryName);
 				dto.setPostTitle(postTitle);
 				dto.setPostContent(postContent);
 				dto.setPostMdate(postMdate);
+				dto.setPostLatitude(postLatitude);
+				dto.setPostLongitude(postLongitude);
 				int res = biz.accompany_insert(dto);
 				if(res > 0) {
 					response.sendRedirect("board.do?command=list");
@@ -102,6 +103,7 @@ public class BoardServlet extends HttpServlet {
 				String postCategoryName = request.getParameter("postCategoryName");
 				String postContent = request.getParameter("postContent");
 				String postMdate = request.getParameter("postMdate");
+				String postLatitude = request.getParameter("postLatitude");
 				BoardDto dto = new BoardDto();
 				dto.setPostLongitude(postLongitude);
 				dto.setPostCategoryName(postCategoryName);
@@ -109,7 +111,7 @@ public class BoardServlet extends HttpServlet {
 				dto.setPostContent(postContent);
 				dto.setPostMdate(postMdate);
 				dto.setPostId(postId);
-				
+				dto.setPostLatitude(postLatitude);
 				int res = biz.accompany_update(dto);
 				if (res > 0) {
 					response.sendRedirect("board.do?command=list&postId=" + postId);
