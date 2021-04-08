@@ -9,20 +9,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("UTF-8");%>
-<%
-	response.setContentType("text/html; charset=UTF-8");
-%>
+<%response.setContentType("text/html; charset=UTF-8");%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
-
-<title>후기 게시판</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 <%
-	RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); 
 	BoardBiz biz = new BoardBizImpl();
 	
 	RegistBiz rbiz = new RegistBizImpl();
@@ -38,25 +35,9 @@
 	paging.setTotalCount(totalCount);
 %>
 <!-- 페이징 관련 JS -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 
-	function loginChk() {
-		alert("로그인 이후 사용가능합니다");
-	}
-
-
-	$(document).ready(function(){
-		
-		var pageNum = <%=pageNum-1%>;
-		
-		if(pageNum >= 10){
-			pageNum %= 10;
-		}
-		
-		$(".pagination>a").eq(pageNum).addClass("on");
-		
-	})
-</script>
 <!-- 페이징 관련 CSS -->
 <style>
 	.pagination {
@@ -243,9 +224,24 @@ div .pagemove:hover {
 
 </head>
 <body>
-	<%--
+	
 	<%@include file="../../header.jsp" %>
---%>
+<%
+	//RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); 
+	BoardBiz biz = new BoardBizImpl();
+	
+	RegistBiz rbiz = new RegistBizImpl();
+	
+	List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
+
+	int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+	int totalCount = Integer.parseInt(request.getAttribute("totalCount") + "");
+	
+	Paging paging = new Paging();
+	paging.setPageNo(pageNum);
+	paging.setPageSize(10);
+	paging.setTotalCount(totalCount);
+%>
 <!-- 페이징 관련 JS -->
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -260,7 +256,26 @@ div .pagemove:hover {
 		
 	})
 </script>
+<!-- 페이징 관련 JS -->
+<script type="text/javascript">
 
+	function loginChk() {
+		alert("로그인 이후 사용가능합니다");
+	}
+
+
+	$(document).ready(function(){
+		
+		var pageNum = <%=pageNum-1%>;
+		
+		if(pageNum >= 10){
+			pageNum %= 10;
+		}
+		
+		$(".pagination>a").eq(pageNum).addClass("on");
+		
+	})
+</script>
 	<div class="main01">
 		<img
 			src="https://www.imgacademy.co.kr/sites/default/files/inline-images/coaching.jpg"
@@ -289,8 +304,8 @@ div .pagemove:hover {
 					<caption>게시판 목록</caption>
 					<thead>
 						<tr>
-							<th>사진</th>
 							<th>글번호</th>
+							<th>사진</th>
 							<th>제목</th>
 							<th>작성자</th>
 							<th>작성일</th>
@@ -308,31 +323,30 @@ div .pagemove:hover {
 	for(int i = 0; i < list.size(); i++){
 		RegistDto rdto = rbiz.selectByNo(list.get(i).getPostUserNo());
 		String member_id = rdto.getMember_id();
-		if(list.get(i).getPostDelflag().equals('Y')){
+		if(list.get(i).getpostDelflag().equals("Y")){
 %>
 				<tr>
-					<td>======삭제된 게시글 입니다=========</td>
+					<td colspan="4">========삭제된 게시글 입니다=========</td>
 				</tr>
 
 <%			
 		} else{
 %>
 			<tr>
-				<td><img src=""></td>
 				<td><%=list.get(i).getPostNo()%></td>
-				<td>
 <%
 			if(Ldto == null){
 %>
-					<a href="javascript:loginChk();"><%=list.get(i).getPostTitle()%></a>
+				<td><a href="javascript:loginChk();"><img src=""></a></td>
+				<td><a href="javascript:loginChk();"><%=list.get(i).getPostTitle()%></a></td>
 <%
 			} else{
 %>
-					<a href="./review.do?command=select&postId=<%=list.get(i).getPostId()%>"><%=list.get(i).getPostTitle()%></a>		
+				<td><a href="./review.do?command=select&postId=<%=list.get(i).getPostId()%>"><img src=""></a></td>
+				<td><a href="./review.do?command=select&postId=<%=list.get(i).getPostId()%>"><%=list.get(i).getPostTitle()%></a></td>		
 <%
 			}
 %>
-				</td>
 				<td><%=member_id%></td>
 				<td><%=list.get(i).getPostRegdate()%></td>
 			</tr>

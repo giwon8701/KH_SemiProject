@@ -107,7 +107,7 @@
 	.login-ul{
 	    float: right;
 	    list-style-type: none; 
-	    margin-top: 5px;
+	    margin-top: 6px;
 	}
 	
 	.login-ul .login-li{
@@ -133,8 +133,8 @@
 	.logo img{
 		margin-top: 5px;
 	    float: left;
-	    width: 70px;
-	    height: 40px;
+	    width: 55px;
+	    height: 55px;
 	}
 	
 	.main{
@@ -162,9 +162,34 @@
 		src: url("../fonts/BMEuljiro10yearslater.ttf") format("truetype");
 	}
 	
+	@font-face{
+		font-family: "서울남산 장체B";
+		src: url("../fonts/서울남산 장체B.ttf") format("truetype");
+	}
+	
+	@font-face{
+		font-family: "서울남산 장체BL";
+		src: url("../fonts/서울남산 장체BL.ttf") format("truetype");
+	}
+	
+	@font-face{
+		font-family: "서울남산 장체EB";
+		src: url("../fonts/서울남산 장체EB.ttf") format("truetype");
+	}
+	
+	@font-face{
+		font-family: "서울남산 장체L";
+		src: url("../fonts/서울남산 장체L.ttf") format("truetype");
+	}
+	
+	@font-face{
+		font-family: "서울남산 장체M";
+		src: url("../fonts/서울남산 장체M.ttf") format("truetype");
+	}
+	
 	.border-ul .border-li a, .login-ul .login-li a{
-		font-family: "BMEuljiro10yearslater";
-		font-size: 14pt;
+		font-family: "서울남산 장체BL";
+		font-size: 15pt;
 	}
 
 

@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 전체 결제 목록</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 
 <style>
 
@@ -309,7 +309,7 @@ div .pagemove:hover {
 		</tbody>
 		</table>
 		<br>
-<br>
+		<br>
 
 				<div class="pagination board_list_warp02">
 				<input type="button" onclick="pageMove(<%=paging.getFirstPageNo()%>)" value="첫 페이지" class="bt" id="paging">
@@ -329,7 +329,7 @@ div .pagemove:hover {
 	</div>
 		
 	
-<!--
+<%--
 	<table border="1">
 		<tr>
 			<th>결제번호</th>
@@ -352,10 +352,10 @@ div .pagemove:hover {
 		%>
 	</table>
 
--->
+--%>
 	
 	
-	<!--  pagination
+	<%--  pagination
 	<div class="pagination">
 		<input type="button" onclick="pageMove(<%=paging.getFirstPageNo()%>)"
 			value="◀"> <input type="button"
@@ -373,7 +373,7 @@ div .pagemove:hover {
 			value="▷"> <input type="button"
 			onclick="pageMove(<%=paging.getFinalPageNo()%>)" value="▶">
 	</div>
--->
+--%>
 	<script>
 			function pageMove(page){
 				location.href='payment.do?command=paymentListPaging&page='+page

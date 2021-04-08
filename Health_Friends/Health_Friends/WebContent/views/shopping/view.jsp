@@ -114,7 +114,7 @@
 
 <link href="assets/css/main.css" rel="stylesheet" type="text/css">
 <link href="assets/css/shopping.css" rel="stylesheet" type="text/css" />
-<title>쇼핑 검색 페이지</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 
 </head>
 

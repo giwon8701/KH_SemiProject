@@ -5,12 +5,13 @@
 <% response.setContentType("text/html; charset=UTF-8"); %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항 글수정</title>
-
+<title>우리동네 운동친구∴∵Heath Friends</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 
 <style>
@@ -259,11 +260,7 @@ ul, li {
 </head>
 <body>
 
-<%--  
-	<%@include file="../../views/common/header.jsp" %>
---%>
-
-<% RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); %>
+	<%@include file="../../header.jsp" %>
 
 <div class="main01">
 	<img src="https://www.imgacademy.co.kr/sites/default/files/inline-images/coaching.jpg" style="width:100% ;height:auto">
@@ -299,14 +296,14 @@ ul, li {
 			 		</dl>
 					<dl>
 						<dt>작성일</dt>
-						<dd>${dto.postRegdate }</dd>
+						<dd><fmt:formatDate value="${dto.postRegdate}" pattern="yyyy-MM-dd HH:mm" /></dd>
 					</dl>
 				</div>
-				<div class="cont">
-					<textarea name="postContent" style="width:100%; height:450px; resize:none; border:none; font-size:16px">${dto.postContent }</textarea>
+				<div class="cont" contenteditable="true" style="width:97%; height:500px; overflow:auto; width:97%; height:500px;">
+					<textarea rows="30" cols="100" id="summernote" name="postContent">${dto.postContent }</textarea>
 				</div>
 				<div class="bt_wrap"> 
-					<input class="on" type="submit" value="확인" 	/>
+					<input class="on" type="submit" value="확인" />
 						<a href="./notice.do?command=list" class="off">취소</a>
 				</div>
 			</div>
@@ -319,5 +316,13 @@ ul, li {
 <%---	
 	<%@include file="../../views/common/footer.jsp" %>
 --%>
+<%-- summernote관련 부트스트랩, api, js --%>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+<script src="assets/js/summernote.js"></script>
 </body>
 </html>

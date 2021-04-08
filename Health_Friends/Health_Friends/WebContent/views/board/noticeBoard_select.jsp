@@ -1,3 +1,9 @@
+<%@page import="com.login.biz.RegistBizImpl"%>
+<%@page import="com.login.biz.RegistBiz"%>
+<%@page import="com.board.biz.BoardBiz"%>
+<%@page import="com.board.biz.BoardBizImpl"%>
+<%@page import="com.board.dto.BoardDto"%>
+<%@page import="java.util.List"%>
 <%@page import="com.login.dto.RegistDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -5,15 +11,14 @@
 <% response.setContentType("text/html; charset=UTF-8"); %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
-
-<title>공지 사항 글보기</title>
-
+<title>우리동네 운동친구∴∵Heath Friends</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <style>
 
 .main img {
@@ -247,10 +252,16 @@ ul, li {
 
 </head>
 <body>
-<%--  
-	<%@include file="../../views/common/header.jsp" %>
---%>
-<% RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); %>
+<%
+	List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
+	BoardBiz biz = new BoardBizImpl();
+	RegistBiz rbiz = new RegistBizImpl();
+	RegistDto rdto = (RegistDto)session.getAttribute("Ldto");
+	
+	String member_id = rdto.getMember_id();
+%>
+
+	<%@include file="../../header.jsp" %>
 	
 <div class="main01">
 	<img src="https://www.imgacademy.co.kr/sites/default/files/inline-images/coaching.jpg" style="width:100% ;height:auto">
@@ -278,11 +289,11 @@ ul, li {
 				<div class="info">
 					<dl>
 						<dt>작성자</dt>
-						<dd>${member_id } </dd>
+						<dd><%=member_id%></dd>
 			 		</dl>
 					<dl>
 						<dt>작성일</dt>
-						<dd>${dto.postRegdate }</dd>
+						<dd><fmt:formatDate value="${dto.postRegdate}" pattern="yyyy-MM-dd HH:mm" /></dd>
 					</dl>
 				</div>
 				<div class="cont">
@@ -291,10 +302,16 @@ ul, li {
 					</c:forEach>
 			</div>
 			<div class="bt_wrap">
-			
-				<a href="./notice.do?command=list" class="on">목록</a> 
-				<a href="./notice.do?command=updateform&postId=${dto.postId}" class="off">수정</a>
-				<a href="./notice.do?command=delete&postId=${dto.postId}" class="off">삭제</a>
+				<c:choose>
+	      			<c:when test="${Ldto.member_no eq 1 }">	
+						<a href="./notice.do?command=list" class="on">목록</a> 
+						<a href="./notice.do?command=updateform&postId=${dto.postId}" class="off">수정</a>
+						<a href="./notice.do?command=delete&postId=${dto.postId}" class="off">삭제</a>
+					</c:when>
+					 <c:otherwise>
+					 	<a href="./notice.do?command=list" class="on">목록</a> 
+	 				 </c:otherwise>
+				 </c:choose>	
 			</div>
 		</div>
 	</div>

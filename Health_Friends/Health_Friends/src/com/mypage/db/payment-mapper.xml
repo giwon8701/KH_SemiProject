@@ -70,4 +70,8 @@
 	]]>
 	</select>
 	
+	<select id="getMyTotalCount" resultType="int">
+		SELECT COUNT(*) FROM PAYMENT WHERE MEMBER_EMAIL = #{member_email}
+	</select>
+	
 </mapper>

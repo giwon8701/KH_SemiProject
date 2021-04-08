@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-latest.js"></script>
@@ -260,10 +260,7 @@ ul, li {
 
 </head>
 <body>
-
-	<%
-		RegistDto Ldto = (RegistDto) session.getAttribute("Ldto");
-	%>
+	<%@include file="../../header.jsp" %>
 
 	<div class="main01">
 		<img
@@ -341,23 +338,8 @@ ul, li {
 					<td colspan="3"><textarea class="form-control" id="postContent" name="postContent" placeholder="내용을 입력해주세요"></textarea></td>
 				</tr>
 			</table>
-			<input type="submit" id="reviewsubmit" value="등록" /> <input type="button" value="취소" onclick="location.href='../../review.do?command=list'" />
+			<input type="submit" id="reviewsubmit" value="등록" /> <input type="button" value="취소" onclick="location.href='review.do?command=list'" />
 		</form>
 	</section>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

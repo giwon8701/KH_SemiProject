@@ -64,6 +64,14 @@ public class IndividualServlet extends HttpServlet {
 				String year = request.getParameter("year");
 				String month = request.getParameter("month");
 				String date = request.getParameter("date");
+				
+				dispatch("./views/mypage/individualInsert.jsp", request, response);
+				
+			} else if(command.equals("individualInsertres")) {
+				
+				String year = request.getParameter("year");
+				String month = request.getParameter("month");
+				String date = request.getParameter("date");
 				String lastDay = request.getParameter("lastDay");
 				String hour = request.getParameter("hour");
 				String min = request.getParameter("min");

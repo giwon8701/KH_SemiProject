@@ -1,23 +1,27 @@
 <%@page import="com.login.dto.RegistDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
-<%
-	response.setContentType("text/html; charset=UTF-8");
-%>
+<%request.setCharacterEncoding("UTF-8");%>
+<%response.setContentType("text/html; charset=UTF-8");%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>동행 게시판 글보기</title>
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-latest.js"></script>
-<link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
+<title>우리동네 운동친구∴∵Heath Friends</title>
+<link href="/assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
+<link href='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.css' rel='stylesheet' />
+<script src='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.js'></script>
+<script type="text/javascript" src="/Health_Friends/assets/js/boardSelectCalendar.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+var postPlace = document.getElementsByName("postPlace")[0];
+var afterString = postPlace.slice(0,2);
+postPlace.value = afterString;
 
+</script>
 <style>
 .main img {
 	width: 100%;
@@ -314,13 +318,7 @@ vertical-align: 4px;
 
 </head>
 <body>
-<%--  
-	<%@include file="../../header.jsp" %> 
---%> 
-
-	<%
-		RegistDto Ldto = (RegistDto) session.getAttribute("Ldto");
-	%>
+	<%@include file="../../header.jsp" %>
 
 	<div class="main01">
 		<img
@@ -337,7 +335,7 @@ vertical-align: 4px;
 		<div style="font-size: 40px; font-weight: bold">동행 게시판 글보기</div>
 		<br>
 		<p style="font-size: 16px">우리 동네 운동 친구를 만나보세요.</p>
-		<br> <br> <a href="../../index.jsp" class="btn btn02"
+		<br> <br> <a href="./index.jsp" class="btn btn02"
 			style="font-size: 16px">메인 페이지</a> <a
 			href="./board.do?command=list  " class="btn btn01"
 			style="font-size: 16px">동행 구해요</a> <a
@@ -359,7 +357,9 @@ vertical-align: 4px;
 							</dl>
 							<dl>
 								<dt>작성일</dt>
-								<dd>${dto.postRegdate }</dd>
+								<dd>
+								<fmt:formatDate value="${dto.postRegdate}" pattern="yyyy-MM-dd HH:mm" />
+								</dd>
 							</dl>
 							<dl></dl>
 						</div>

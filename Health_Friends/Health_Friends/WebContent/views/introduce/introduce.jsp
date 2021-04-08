@@ -15,7 +15,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width" , initial-scale="1">
 
-<title>우리 동네 운동 메이트 소개하기</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script

@@ -191,6 +191,8 @@ public class RegistServlet extends HttpServlet {
 				jsResponse(response, "regist.do?command=idSearch", "아이디와 이메일을 다시 확인해주세요.");
 			}
 		} else if(command.equals("pwSearch")) {
+			
+			//dispatch(request, response, "./views/login/pwSearchForm.jsp");
 			response.sendRedirect("./views/login/pwSearchForm.jsp");
 		} else if(command.equals("pwSearchRes")) {
 			String member_name = URLDecoder.decode(request.getParameter("member_name"), "UTF-8");

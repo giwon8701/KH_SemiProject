@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.RequestContext;
@@ -89,6 +90,9 @@ public class ReviewServlet extends HttpServlet {
 			BoardDto dto = biz.selectOneByPostId(postId);
 			int post_user_no = dto.getPostUserNo();
 			
+			HttpSession session = request.getSession();
+			int scrap_user_no = ((RegistDto)session.getAttribute("Ldto")).getMember_no();
+			
 			RegistBiz rbiz = new RegistBizImpl();
 			RegistDto rdto = rbiz.selectByNo(post_user_no);
 			String member_id = rdto.getMember_id();
@@ -97,7 +101,7 @@ public class ReviewServlet extends HttpServlet {
 			
 			ScrapDto sdto = new ScrapDto();
 			sdto.setScrap_post_id(postId);
-			sdto.setScrap_user_no(post_user_no);
+			sdto.setScrap_user_no(scrap_user_no);
 			
 			int res = sbiz.scrapChk(sdto);
 			

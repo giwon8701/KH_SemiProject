@@ -7,12 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>우리동네 운동친구 Health Friends</title>
-<!-- 
-	kakao map javascript key :  c6a1fbbb0976413a4f4996beefa8a351
-	naver calendar : id: p6N_JsQoah3hCrLJR428
-					 pw: Ekh0RH5rfu
--->
+<title>우리동네 운동친구∴∵Heath Friends</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="/Health_Friends/assets/api/se2/js/HuskyEZCreator.js" type="text/javascript"></script>
 <script src="/Health_Friends/assets/api/se2/init.js" type="text/javascript"></script>
@@ -37,14 +32,9 @@
 
 		<%--동행게시판 --%>
 
-<%--
-	<%@include file="header.jsp" %>
- --%>	
- 
- 
+	<%@include file="../../header.jsp" %>
  
 <jsp:useBean id="dto" class="com.board.dto.BoardDto" scope="request"></jsp:useBean>
-<% RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); %> 
  	
  	
 	<section class="boardlist">

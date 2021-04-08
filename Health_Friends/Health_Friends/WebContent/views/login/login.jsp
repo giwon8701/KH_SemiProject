@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Insert title here</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 <link rel="stylesheet" href="assets/css/login.css">
 <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>	<!-- 도로명주소 API -->
@@ -19,6 +19,24 @@
 <script type="text/javascript" src="assets/js/login.js"></script> <!-- 로그인 관련 -->
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 </head>
+<style>
+	.lostMy{
+		text-decoration:none;
+	}
+	.lostMy:link{
+		color: #4481eb;
+	}
+	.lostMy:visited{
+		color: #4481eb;
+	}
+	.lostMy:hover{
+		color: #04befe;
+	}
+	.lostMy:active{
+		color: red;
+	}
+	
+</style>
 <body>
 	<div class="container">
 		<div class="forms-container">
@@ -43,10 +61,15 @@
 								<input type="button" value="로그인" class="btn solid g-recaptcha" data-sitekey="6LdY0Y0aAAAAAC55f1G3fyahKgyATLdZ1BZq_yt5" data-callback='onSubmitLogin' data-action='submit'>
 							</td>
 							<td>
-								<input type="button" value="아이디 찾기" class="btn solid g-recaptcha" onclick="location.href='regist.do?command=idSearch'">
+								<input type="button" value="메인으로" class="btn solid g-recaptcha" onclick="location.href='index.jsp'">
 							</td>
 						</tr>
 					</table>
+					
+
+					
+					<p class="social-text">회원정보를 잃어버리셨나요? &nbsp;<a href="regist.do?command=idSearch" class="lostMy">아이디</a>&nbsp;/&nbsp;<a href="regist.do?command=pwSearch" class="lostMy">비밀번호</a>&nbsp;찾기</p>
+					
 					<p class="social-text">SNS를 이용하여 간편로그인 해보세요!</p>
 					<div class="social-media">
 						&nbsp;<div id="naver_id_login"></div>&nbsp;&nbsp;  <!-- 네이버 로그인 버튼 (맨밑에 javascript 있음) -->

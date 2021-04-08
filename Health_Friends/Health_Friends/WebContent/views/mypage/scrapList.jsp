@@ -20,11 +20,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>우리동네 운동친구 Health Friends</title>
 
 <style>
-<
-style>* {
+* {
 	margin: 0;
 	padding: 0;
 }
@@ -297,6 +295,7 @@ div .pagemove:hover {
 }
 </style>
 
+<title>우리동네 운동친구∴∵Heath Friends</title>
 <%
 	RegistDto Ldto = (RegistDto) session.getAttribute("Ldto");
 %>
@@ -391,16 +390,18 @@ div .pagemove:hover {
 			<c:choose>
 				<c:when test="${empty list }">
 					<tr>
-						<td colspan="4">----------찜한 게시글이 없습니다------------</td>
+						<td colspan="3">----------찜한 게시글이 없습니다------------</td>
 					</tr>
 				</c:when>
 				<c:otherwise>
 					<c:forEach items="${list }" var="dto">
+						<c:if test="${dto.postDelflag eq 'N'}">
 						<tr>
 							<td>${dto.postBoardName }</td>
 							<td><a href="./board.do?command=scrapSelect&postid=${dto.postId }">${dto.postTitle }</a></td>
 							<td>${dto.postRegdate }</td>
 						</tr>
+						</c:if>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>

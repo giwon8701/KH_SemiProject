@@ -11,6 +11,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
 <!DOCTYPE html>
@@ -19,8 +20,7 @@
 <meta charset="UTF-8">
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <link href="assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
-
-<title>우리동네 운동친구 Health Friends</title>
+<title>우리동네 운동친구∴∵Heath Friends</title>
 <style>
 * {
 	margin: 0;
@@ -294,28 +294,18 @@ cursor: pointer;
 }
 
 </style>
-
 <script type="text/javascript">
 	function loginChk() {
 		alert("로그인 이후 사용가능합니다");
 	}
-</script>
-<script type="text/javascript">
 	function loginChk2() {
 		alert("관리자로그인 이후 사용가능합니다");
 	}
-	
 </script>
-
 </head>
-
 <body>
-	<%--
 	<%@include file="../../header.jsp" %>
- --%>
-
 <%
-	RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); 
 	BoardBiz biz = new BoardBizImpl();
 	RegistBiz rbiz = new RegistBizImpl();
 	
@@ -329,7 +319,6 @@ cursor: pointer;
 	paging.setPageSize(10);
 	paging.setTotalCount(totalCount);
 %>	
-		
 	<script>
 	$(document).ready(function(){
 		
@@ -354,7 +343,6 @@ cursor: pointer;
 		<div class=text02 style="font-size: 24px;">오늘도 즐거운 운동 즐기시길 바랍니다</div>
 		<br>
 	</div>
-
 
 	<div class="main02" style="text-align: center">
 		<div style="font-size: 40px; font-weight: bold">공지사항</div>
@@ -382,15 +370,17 @@ cursor: pointer;
 					</tr>
 				</thead>
 				<tbody>
-					<%
+<%
 	for(int i = 0; i < list.size(); i++){
+		
 		System.out.println("list.get(i).getPostUserNo() : " + list.get(i).getPostUserNo());
 		RegistDto rdto = rbiz.selectByNo(list.get(i).getPostUserNo());
 		String member_id = rdto.getMember_id();
-		if(list.get(i).getPostDelflag().equals('Y')){
+		
+		if(list.get(i).getPostDelflag().equals("Y")){
 %>
 			<tr>
-				<td>======삭제된 게시글 입니다=========</td>
+				<td colspan="4">삭제된 게시글 입니다.</td>
 			</tr>
 <%			
 		} else{
@@ -411,7 +401,7 @@ cursor: pointer;
 %>
 				</td>
 				<td><%=member_id%></td>
-				<td><%=list.get(i).getPostRegdate()%></td>
+				<td><fmt:formatDate value="<%=list.get(i).getPostRegdate()%>" pattern="yyyy-MM-dd HH:mm" /></td>
 			</tr>
 				
 <%	
@@ -422,7 +412,13 @@ cursor: pointer;
 
 			</table>
 			<div class="bt_wrap">
-				<a href="./notice.do?command=insert" class="on" value="글작성">글작성</a>
+				<c:choose>
+	      			<c:when test="${Ldto.member_no eq 1 }">	
+						<a href="./notice.do?command=insert" class="on" value="글작성">글작성</a>
+					</c:when>
+					 <c:otherwise>
+	 				 </c:otherwise>
+				 </c:choose>		
 			</div>
 			<br> <br>
 
