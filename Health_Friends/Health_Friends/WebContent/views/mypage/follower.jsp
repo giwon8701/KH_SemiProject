@@ -9,14 +9,75 @@
 <meta charset="UTF-8">
 <title>우리동네 운동친구∴∵Heath Friends</title>
 <style type="text/css">
+
+	.line {
+		border: 2px solid SkyBlue;
+	margin: 20px 20px;
+	}
+	
 	#follow {
 		display :flex;
 	}
 	
 	#follow > div {
 		display : inline-block;
-		padding : 20px;
+		padding: 16px ;
+		text-align:center;
+		height: 50px;
+		
+	}	
+	table {
+	width:100%;
+	height: 100%;
+	
+	}	
+	#following {
+	width: 50%;
+	float: left;
+	box-sizing: border-box;
+		border-bottom: 1px solid SkyBlue;
+	
 	}
+	
+	#following:hover {
+	width: 50%;
+	float: left;
+	box-sizing: border-box;
+	text-decoration: underline black;
+	cursor: pointer;
+		border-bottom: 1px solid SkyBlue;
+	}
+	
+	#follower {
+	width: 50%;
+	float: right;
+	box-sizing: border-box;
+		border-bottom: 1px solid SkyBlue;
+	}
+	
+	#follower:hover {
+	width: 50%;
+	float: right;
+	box-sizing: border-box;
+	text-decoration: underline black;
+	cursor: pointer;
+	border-bottom: 1px solid SkyBlue;
+	}
+	
+	#list {
+	margin: 20px 20px;
+	color: gray;
+	
+	}
+	td {
+	padding: 20px;
+	font-size: 20px;
+
+	}
+	tbody > tr > td:nth-child(2) {
+	text-align: center;
+	}
+	
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
@@ -44,14 +105,14 @@
 					
 					for(var i = 0; i < data.length; i++){
 						$tr = $("<tr>");
-						$td01 = $("<td>").append("<a href='../../follow.do?command=profile&member_id="+data[i].member_id+"'><img src='../../profileimg/"+data[i].member_picture_path +"' style='width:100px; height:100px'>");
+						$td01 = $("<td>").append("<a href='../../follow.do?command=profile&member_id="+data[i].member_id+"'><img src='../../profileimg/"+data[i].member_picture_path +"' style='width:150px; height:150px'>");
 						$td02 = $("<td>").append(data[i].member_id);
 						$tr.append($td01).append($td02);
 						
 						$table.append($tr);
 					}
 					$("#list").append($table);
-					$("#list").css("background-color", "skyblue");
+					$("#list").css("background-color", "");
 					$("#following").css("background-color", "skyblue");
 					$("#follower").css("background-color", "");
 				}
@@ -70,7 +131,7 @@
 				if(data.length < 1) {
 					$("#list").empty();
 					$("#list").text('나를 팔로우 하는 사람이 아직 없습니다.');
-					$("#list").css("background-color", "skyblue");
+					$("#list").css("background-color", "");
 					$("#follower").css("background-color", "skyblue");
 					$("#following").css("background-color", "");
 				} else {
@@ -79,7 +140,7 @@
 					
 					for(var i = 0; i < data.length; i++){
 						$tr = $("<tr>");
-						$td01 = $("<td>").append("<a class='profile' href='../../follow.do?command=profile&member_id="+data[i].member_id+"'><img src='../../profileimg/"+data[i].member_picture_path +"' style='width:100px; height:100px'>");
+						$td01 = $("<td>").append("<a class='profile' href='../../follow.do?command=profile&member_id="+data[i].member_id+"'><img src='../../profileimg/"+data[i].member_picture_path +"' style='width:200px; height:200px'>");
 						$td02 = $("<td>").append(data[i].member_id);
 						$tr.append($td01).append($td02);
 						
@@ -102,13 +163,13 @@
 </head>
 <body>
 		
-		
+	<div class="line">
 		<div id="follow">
 			<div id="following" onclick="following()">팔로잉</div>
 			<div id="follower" onclick="follower()">팔로워</div>
 		</div>
 		<div id="list"></div>
-		
+	</div>
 		
 		<!--  
 			<div>

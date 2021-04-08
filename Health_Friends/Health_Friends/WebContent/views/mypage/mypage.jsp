@@ -61,27 +61,40 @@ int lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 
 <style type="text/css">
 
+board {
+background-image:url("https://t1.daumcdn.net/cfile/blog/211E8D35567787D102");
+position:relative;
+z-index:1;
+
+
+}
+
+
+
 .mypage-main-div {
-	position: absolute;
+position: absolute;
 	width: 100%;
-	height: 800x;
-	padding: 120px 172px;
+	height: 1200px;
+	padding: 100px 170px;
 	text-align:center;
+	background: ghostwhite;
 
 }
 
-.mypage-second-div1 {
-	
-}
+
 
 .mypage-profile-div {
 	float:left;
+	background: white;
+	border: 1px solid #c5d9ed;
+	
 }
 
 .profile-border {
 	width: 290px;
-	height: 50px;
+	height: 70px;
 	text-align: left;
+	
 	
 }
 
@@ -94,20 +107,24 @@ int lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 	width: 700px;
 	height: 400px;
 
+
 }
 
 .mypage-list-div {
 	float: right;
 	text-align: right;
 	width: 250px;
-	height: 400px;
+	height: 450px;
+		border: 1px solid #c5d9ed;
+		box-shodow: 5px 5px 5px;
+		background: white;
 
 	
 }
 .list-border {
 float: right;
 	text-align: right;
-	width: 250px;
+	width: 220px;
 	height: 400px;
 
 
@@ -121,12 +138,12 @@ table {
 form {
 	border: 1px soild red;
 	width: 290px;
-	height: 150px;
+	height: 130px;
 }
 
 #profile-img {
-	width: 280px;
-	height: 280px;
+	width: 250px;
+	height: 250px;
 	border-radius: 50%;
 }
 
@@ -137,24 +154,31 @@ form {
 
 .list-ul>li {
 	list-style: none;
-	font-size: 18px;
+	font-size: 20px;
 	text-align: right;
 }
 
 tbody {
-	margin: 10px;
 }
 
 #calendar {
 	font-size: 20px;
-	text-align: center;
+	border: 1px solid #c5d9ed;
+	background:white;
 }
+.countBackground:hover {
+color:hotpink;
+}
+.countview:hover
+{ color:hotpink; }
 
 .mypage-second-div2 {
 	
 }
 .mypage-chart-div {
-
+width:869px; float: right; margin: 50px 0px;
+border: 1px solid #c5d9ed;
+background: white;
 }
 #filename {
 width: 50px;
@@ -175,6 +199,10 @@ cursor: pointer;
 outline: 0;
 }
 
+table#calendar {
+margin: 10px 95px;
+
+}
 
 </style>
 <script>
@@ -185,19 +213,20 @@ outline: 0;
 	}
 </script>
 </head>
-<body>
+<body >
 	<%--마이페이지! --%>
 	<%@ include file="../../header.jsp"%>
 
-	<div class="mypage-main-div">
+	<div class="mypage-main-div" >
+	
 		<div class="mypage-second-div1">
-			<div class="mypage-profile-div">
+			<div class="mypage-profile-div" >
 				<table class="profile-border">
 				<tr>
-						<th style="text-align: center; font-size: 30px;">회원정보</th>
+						<th style="text-align: left; font-size: 30px; font-weight:bold;">회원정보</th>
 					</tr>
 					<tr>
-						<td colspan="2" align="center" class="profile-border"><c:choose>
+						<td colspan="2" style="text-align:center" class="profile-border"><c:choose>
 								<c:when test="${Ldto.getMember_picture_path() == null}">
 									<img src="images/icon/nonprofile.png" id="profile-img">
 								</c:when>
@@ -207,8 +236,8 @@ outline: 0;
 								</c:otherwise>
 							</c:choose></td>
 					</tr>
-					<tr>
-						<td colspan="2">
+					<tr	>
+						<td colspan="2" >
 							<form
 								action="profile.do?member_email=<%=Ldto.getMember_email()%>"
 								method="post" enctype="multipart/form-data"><br>
@@ -218,19 +247,20 @@ outline: 0;
 						</td>
 					</tr>
 					<tr>
-						<td align="center" class="profile-font">회원정보</td>
+						<td style="align:left; " class="profile-font">이메일(아이디)</td>
+					</tr>
+					<br>
+					<tr>
+						<td colspan="2" class="profile-border" >이메일 : <%=Ldto.getMember_email()%><br><span
+							style="font-weight: bold; color: darkblue">아이디 : <%=Ldto.getMember_id()%></span></td>
+					</tr>
+					<tr >
+						<td style="text-align:left" class="profile-font">회원등급</td>
+						<td style="text-align:left" class="profile-font">매너점수</td>
 					</tr>
 					<tr>
-						<td colspan="2" align="center" class="profile-border"><%=Ldto.getMember_email()%>(<span
-							style="font-weight: bold;"><%=Ldto.getMember_id()%></span>)</td>
-					</tr>
-					<tr>
-						<td align="center" class="profile-font">회원등급</td>
-						<td align="center" class="profile-font">매너점수</td>
-					</tr>
-					<tr>
-						<td align="center" class="" style="color: blue;"><%=Ldto.getMember_role()%></td>
-						<td align="center" class=""><c:choose>
+						<td style="color: blue; text-align:left" class=""><%=Ldto.getMember_role()%></td>
+						<td style="text-align:left" class=""><c:choose>
 								<c:when test="${Ldto.getMember_review() == 0}">
 									----------
 								</c:when>
@@ -242,9 +272,10 @@ outline: 0;
 				</table>
 
 			</div>
-		
-			<div class="mypage-calendar-div">	<br>
-			<h1 style="font-size:30px; text-align:center">날짜 선택</h1>
+			
+			<div class="mypage-calendar-div"><br>	
+			
+			<h1 style="font-size:30px; text-align:center; font-weight:bold;">운동 기록 확인</h1>
 				<table id="calendar">
 					<col width="40px">
 					<col width="40px">
@@ -302,26 +333,26 @@ outline: 0;
 				</table>
 			</div>
 			<div class="mypage-list-div">
-				<table class="list-border">
+				<table class="list-border"><br>
 					<tr>
-						<th style="font-size: 30px;" >계정 관리</th>
+						<th style="font-size: 30px; font-weight:bold;">계정 관리</th>
 					</tr>
 					<tr>
 						<td>
 							<ul class="list-ul">
-								<li><a href="mypage.do?command=registUpdate">회원정보 수정</a></li>
-								<li><a href="scrap.do?command=scrapList">찜한게시물</a></li>
+								<li><a href="mypage.do?command=registUpdate">회원정보 수정</a></li><br/>
+								<li><a href="scrap.do?command=scrapList">찜한게시물</a></li><br/>
 								<li><div class="mypage-follw-div" onclick="follow();"
-										id="follow">팔로우</div></li>
+										id="follow">팔로우</div></li><br/>
 								<li><a
 									href="payment.do?command=paymentRoleUp&member_role=<%=Ldto.getMember_role()%>">프리미엄
-										등록</a></li>
+										등록</a></li><br/>
 								<li><a
 									href="payment.do?command=paymentRoleDown&member_role=<%=Ldto.getMember_role()%>">프리미엄
-										탈퇴</a></li>
+										탈퇴</a></li><br/>
 								<li><a
 									href="payment.do?command=paymentListMyPaging&member_email=<%=Ldto.getMember_email()%>">나의
-										결제내역</a></li>
+										결제내역</a></li><br/>
 							</ul>
 						</td>
 					</tr>
@@ -329,7 +360,9 @@ outline: 0;
 			</div>
 		</div>
 			<div class="mypage-second-div2" >
-			<div class="mypage-chart-div" style="width:800px; float: left;">
+	
+			<div class="mypage-chart-div"><br><br>
+			<h1 style="text-align:center; font-size:30px; font-weight:bold;">최근 일주일 간 운동 기록</h1><br>
 				<canvas id="myChart"></canvas>
 			</div>
 		</div>
