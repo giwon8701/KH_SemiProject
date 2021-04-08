@@ -36,7 +36,6 @@
 %>
 <!-- 페이징 관련 JS -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript">
 
 <!-- 페이징 관련 CSS -->
 <style>
@@ -226,36 +225,6 @@ div .pagemove:hover {
 <body>
 	
 	<%@include file="../../header.jsp" %>
-<%
-	//RegistDto Ldto = (RegistDto)session.getAttribute("Ldto"); 
-	BoardBiz biz = new BoardBizImpl();
-	
-	RegistBiz rbiz = new RegistBizImpl();
-	
-	List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
-
-	int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-	int totalCount = Integer.parseInt(request.getAttribute("totalCount") + "");
-	
-	Paging paging = new Paging();
-	paging.setPageNo(pageNum);
-	paging.setPageSize(10);
-	paging.setTotalCount(totalCount);
-%>
-<!-- 페이징 관련 JS -->
-<script type="text/javascript">
-	$(document).ready(function(){
-		
-		var pageNum = <%=pageNum-1%>;
-		
-		if(pageNum >= 10){
-			pageNum %= 10;
-		}
-		
-		$(".pagination>a").eq(pageNum).addClass("on");
-		
-	})
-</script>
 <!-- 페이징 관련 JS -->
 <script type="text/javascript">
 
@@ -361,7 +330,7 @@ div .pagemove:hover {
 				</table>
 			</section>
 				<div class="bt_wrap">
-						<a href="review.do?command=insert" class="on" value="글작성">글작성</a>
+						<a href="review.do?command=insert" class="on">글작성</a>
 				</div>
 <br>
 <br>

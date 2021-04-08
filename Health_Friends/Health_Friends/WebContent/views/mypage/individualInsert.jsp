@@ -10,8 +10,6 @@
 <meta charset="UTF-8">
 <title>우리동네 운동친구∴∵Heath Friends</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
-<script src="/Health_Friends/assets/api/se2/js/HuskyEZCreator.js" type="text/javascript"></script>
-<script src="/Health_Friends/assets/api/se2/init.js" type="text/javascript"></script>
 
 <style>
 
@@ -283,7 +281,7 @@ margin-top:10px;
 
 </div>
 	
-	<form action="../../individual.do" method="post">
+	<form action="individual.do" method="post">
 		<input type="hidden" name="command" value="individualInsert">
 		
 		
@@ -367,7 +365,7 @@ margin-top:10px;
 		<div class="individual01" style="text-align:right">
 			
 					<input type="submit" id="mpage01" value="작성">
-					<input type="button" id="mpage02" value="취소" onclick="location.href='../../individual.do?command=individualList&year=<%=year%>&month=<%=month%>&date=<%=date%>'">
+					<input type="button" id="mpage02" value="취소" onclick="location.href='individual.do?command=individualList&year=<%=year%>&month=<%=month%>&date=<%=date%>'">
 			
 			</div>
 </div>

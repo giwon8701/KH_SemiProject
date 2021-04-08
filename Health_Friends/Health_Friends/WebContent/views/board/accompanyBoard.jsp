@@ -19,11 +19,6 @@
 <meta charset="UTF-8">
 <title>우리동네 운동친구∴∵Heath Friends</title>
 <%
-	List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
-	RegistBiz rbiz = new RegistBizImpl();
-
-<title>우리동네 운동친구∴∵Heath Friends</title>
-	<%
 		List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
 		
 		RegistBiz rbiz = new RegistBizImpl();

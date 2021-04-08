@@ -380,7 +380,7 @@ cursor: pointer;
 		if(list.get(i).getPostDelflag().equals("Y")){
 %>
 			<tr>
-				<td colspan="4">삭제된 게시글 입니다.</td>
+				<td colspan="5">삭제된 게시글 입니다.</td>
 			</tr>
 <%			
 		} else{

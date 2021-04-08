@@ -18,20 +18,16 @@
 <title>우리동네 운동친구∴∵Heath Friends</title>
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <!-- 슬라이드 라이브러리 -->
 <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 	
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<link href="https://fonts.googleapis.com/css?family=Jua"
-	rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 
 <link href="assets/css/main.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="assets/css/introduce.css">
@@ -134,8 +130,6 @@
 	<br>
 	<br>
 	
-<!-- 사진 전환 기능 시작 -->
-<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
 	<div class="slider">
 		<div><img src="images/workhappy.png" alt="슬라이드 사진" style="width:1000px; height:500px"></div>
@@ -495,5 +489,7 @@
 
 <!-- footer 끝 -->
 	
+<!-- 사진 전환 기능 시작 -->
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 </body>
 </html>

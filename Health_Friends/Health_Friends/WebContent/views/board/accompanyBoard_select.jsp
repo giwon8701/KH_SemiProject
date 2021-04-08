@@ -11,17 +11,11 @@
 <head>
 <meta charset="UTF-8">
 <title>우리동네 운동친구∴∵Heath Friends</title>
-<link href="/assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<link href="/Health_Friends/assets/css/commonBoard.css" rel="stylesheet" type="text/css" />
 <link href='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.css' rel='stylesheet' />
 <script src='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.js'></script>
 <script type="text/javascript" src="/Health_Friends/assets/js/boardSelectCalendar.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript">
-var postPlace = document.getElementsByName("postPlace")[0];
-var afterString = postPlace.slice(0,2);
-postPlace.value = afterString;
-
-</script>
 <style>
 .main img {
 	width: 100%;
@@ -278,48 +272,10 @@ vertical-align: 4px;
 
 </style>
 
-<script>
-	function scrap() {
-		var post_id = $("#post_id").val();
-		var queryString = "post_id=" + post_id;
-		$.ajax({
-			url : "scrap.do?command=addScrap&" + queryString,
-			dataType : "text",
-			success : function(data) {
-				if (data > 0) {
-					$("#unscrapBttn").css("display", "");
-					$("#scrapBttn").css("display", "none");
-				}
-			},
-			error : function(err) {
-				alert(err);
-			}
-		});
-	}
-
-	function unscrap() {
-		var post_id = $("#post_id").val();
-		var queryString = "post_id=" + post_id;
-		$.ajax({
-			url : "scrap.do?command=delScrap&" + queryString,
-			dataType : "text",
-			success : function(data) {
-				if (data > 0) {
-					$("#unscrapBttn").css("display", "none");
-					$("#scrapBttn").css("display", "");
-				}
-			},
-			error : function(err) {
-				alert(err);
-			}
-		});
-	}
-</script>
-
 </head>
 <body>
-	<%@include file="../../header.jsp" %>
 
+	<%@include file="../../header.jsp" %>
 	<div class="main01">
 		<img
 			src="https://www.imgacademy.co.kr/sites/default/files/inline-images/coaching.jpg"
@@ -480,6 +436,45 @@ vertical-align: 4px;
 	<%@include file="../../views/common/footer.jsp" %>
 
  --%>
+ 
+<script>
+	function scrap() {
+		var post_id = $("#post_id").val();
+		var queryString = "post_id=" + post_id;
+		$.ajax({
+			url : "scrap.do?command=addScrap&" + queryString,
+			dataType : "text",
+			success : function(data) {
+				if (data > 0) {
+					$("#unscrapBttn").css("display", "");
+					$("#scrapBttn").css("display", "none");
+				}
+			},
+			error : function(err) {
+				alert(err);
+			}
+		});
+	}
+
+	function unscrap() {
+		var post_id = $("#post_id").val();
+		var queryString = "post_id=" + post_id;
+		$.ajax({
+			url : "scrap.do?command=delScrap&" + queryString,
+			dataType : "text",
+			success : function(data) {
+				if (data > 0) {
+					$("#unscrapBttn").css("display", "none");
+					$("#scrapBttn").css("display", "");
+				}
+			},
+			error : function(err) {
+				alert(err);
+			}
+		});
+	}
+</script>
+ 
 </body>
 </html>
 
