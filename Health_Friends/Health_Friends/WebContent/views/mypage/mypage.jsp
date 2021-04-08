@@ -59,20 +59,23 @@ int lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<style type="text/css">
 
+<style type="text/css">
 
 .mypage-main-div {
 	position: absolute;
 	width: 100%;
-	height: 1300px;
-	padding: 100px 100px;
-	background: white;
+	height: 800x;
+	padding: 120px 172px;
 	text-align:center;
 
 }
 
-.mypage-profile-div, .mypage-chart-div {
+.mypage-second-div1 {
+	
+}
+
+.mypage-profile-div {
 	float:left;
 }
 
@@ -80,7 +83,7 @@ int lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 	width: 290px;
 	height: 50px;
 	text-align: left;
-	background: lightgray;
+	
 }
 
 .mypage-calendar-div {
@@ -89,17 +92,26 @@ int lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-top: 10px;
-	float: middle;
 	width: 700px;
 	height: 400px;
+
 }
 
 .mypage-list-div {
 	float: right;
 	text-align: right;
-width: 290px;
-	height: 30px;
+	width: 250px;
+	height: 400px;
+
 	
+}
+.list-border {
+float: right;
+	text-align: right;
+	width: 250px;
+	height: 400px;
+
+
 }
 
 table {
@@ -135,16 +147,36 @@ tbody {
 }
 
 #calendar {
-	font-size: 25px;
+	font-size: 20px;
+	text-align: center;
 }
 
-th {
-	height: 10px;
+.mypage-second-div2 {
+	
+}
+.mypage-chart-div {
+
+}
+#filename {
+width: 50px;
+
 }
 
-p {
-	font-size: 36px;
+#profilename {
+padding: 0;
+border: none;
+font: inherit;
+color: inherit;
+background-color: transparent;
+cursor: pointer;
+
 }
+
+#profilename {
+outline: 0;
+}
+
+
 </style>
 <script>
 	function follow(){
@@ -163,7 +195,7 @@ p {
 			<div class="mypage-profile-div">
 				<table class="profile-border">
 				<tr>
-						<th style="font-size: 30px;">회원정보</th>
+						<th style="text-align: center; font-size: 30px;">회원정보</th>
 					</tr>
 					<tr>
 						<td colspan="2" align="center" class="profile-border"><c:choose>
@@ -180,8 +212,8 @@ p {
 						<td colspan="2">
 							<form
 								action="profile.do?member_email=<%=Ldto.getMember_email()%>"
-								method="post" enctype="multipart/form-data">
-								<input type="file" name="filename" size='20'> <input
+								method="post" enctype="multipart/form-data"><br>
+								<input type="file" name="filename" size='20'> <input name="profilename" 
 									type="submit" value="프로필 사진 변경 하기">
 							</form>
 						</td>
@@ -211,17 +243,17 @@ p {
 				</table>
 
 			</div>
-			
-			<div class="mypage-calendar-div">
-				<table id="calendar"
-					style="float: center">
-					<col width="80px">
-					<col width="80px">
-					<col width="80px">
-					<col width="80px">
-					<col width="80px">
-					<col width="80px">
-					<col width="80px">
+		
+			<div class="mypage-calendar-div">	<br>
+			<h1 style="font-size:30px; text-align:center">날짜 선택</h1>
+				<table id="calendar">
+					<col width="40px">
+					<col width="40px">
+					<col width="40px">
+					<col width="40px">
+					<col width="40px">
+					<col width="40px">
+					<col width="40px">
 
 					<tr>
 						<td colspan="7"><a
@@ -271,7 +303,7 @@ p {
 				</table>
 			</div>
 			<div class="mypage-list-div">
-				<table>
+				<table class="list-border">
 					<tr>
 						<th style="font-size: 30px;" >계정 관리</th>
 					</tr>
@@ -298,133 +330,107 @@ p {
 				</table>
 			</div>
 		</div>
-		<div class="mypage-second-div2">
-			<div class="mypage-chart-div" style="width: 850px"
-				style="float: left;">
+			<div class="mypage-second-div2" >
+			<div class="mypage-chart-div" style="width:800px; float: left;">
 				<canvas id="myChart"></canvas>
 			</div>
 		</div>
 	</div>
-
-	<script type="text/javascript">
+	
+<script type="text/javascript">
 function isTwo(n){
 	n = n+'';
 	return (n.length<2)?"0"+n:n;
 }
 
 $(function(){
-	var individual_id = "<%=Ldto.getMember_id()%>
-		";
+	var individual_id = "<%=Ldto.getMember_id()%>";
+	var today = new Date();
+	var date = today.getDate();
+	var month = today.getMonth()+1 ;
+	var year = today.getFullYear();
+	var yyyyMMdd = '' + year + isTwo(month) + isTwo(date);
+	
+	$.ajax({
+		type: "post",
+		url: "chart.do?command=healthRecord&individual_id="+individual_id,
+		dataType: "json",
+		success: function(msg){
+			var todayHealth = msg.todayHealth;
+			var yesterdayHealth = msg.yesterdayHealth;
+			var twoAgodayHealth = msg.twoAgodayHealth;
+			var threeAogdayHealth = msg.threeAogdayHealth;
+			var fourAgodayHealth = msg.fourAgodayHealth;
+			var fiveAgodayHealth = msg.fiveAgodayHealth;
+			var sixAgodayHealth = msg.sixAgodayHealth;
+			
+			console.log(todayHealth);
+			console.log(yesterdayHealth);
+
 			var today = new Date();
-			var date = today.getDate();
-			var month = today.getMonth() + 1;
-			var year = today.getFullYear();
-			var yyyyMMdd = '' + year + isTwo(month) + isTwo(date);
+			var todayDate = today.getFullYear()+'.'+(today.getMonth()+1)+'.'+today.getDate();
 
-			$
-					.ajax({
-						type : "post",
-						url : "chart.do?command=healthRecord&individual_id="
-								+ individual_id,
-						dataType : "json",
-						success : function(msg) {
-							var todayHealth = msg.todayHealth;
-							var yesterdayHealth = msg.yesterdayHealth;
-							var twoAgodayHealth = msg.twoAgodayHealth;
-							var threeAogdayHealth = msg.threeAogdayHealth;
-							var fourAgodayHealth = msg.fourAgodayHealth;
-							var fiveAgodayHealth = msg.fiveAgodayHealth;
-							var sixAgodayHealth = msg.sixAgodayHealth;
+			new Date(today.setDate(today.getDate() - 1));
+			var yesterdayDate = today.getFullYear()+'.'+(today.getMonth()+1)+'.'+today.getDate();
 
-							console.log(todayHealth);
-							console.log(yesterdayHealth);
+			new Date(today.setDate(today.getDate() - 1));
+			var twoAgoDate = today.getFullYear()+'.'+(today.getMonth()+1)+'.'+today.getDate();
+			
+			new Date(today.setDate(today.getDate() - 1));
+			var threeAgoDate = today.getFullYear()+'.'+(today.getMonth()+1)+'.'+today.getDate();
+			
+			new Date(today.setDate(today.getDate() - 1));
+			var fourAgoDate = today.getFullYear()+'.'+(today.getMonth()+1)+'.'+today.getDate();
+			
+			new Date(today.setDate(today.getDate() - 1));
+			var fiveAgoDate = today.getFullYear()+'.'+(today.getMonth()+1)+'.'+today.getDate();
+			
+			new Date(today.setDate(today.getDate() - 1));
+			var sixAgoDate = today.getFullYear()+'.'+(today.getMonth()+1)+'.'+today.getDate();
+			
+			var ctx = document.getElementById("myChart").getContext('2d');
+			/*
+			- Chart를 생성하면서, 
+			- ctx를 첫번째 argument로 넘겨주고, 
+			- 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줌
+			*/
+			var myChart = new Chart(ctx, {
+			    type: 'line',
+			    data: {
+			        labels: [sixAgoDate, fiveAgoDate, fourAgoDate, threeAgoDate, twoAgoDate, yesterdayDate, todayDate],
+			        datasets: [{
+			            label: '운동시간(분)',
+			            data: [sixAgodayHealth, fiveAgodayHealth, fourAgodayHealth, threeAogdayHealth, twoAgodayHealth, yesterdayHealth, todayHealth],
+			            backgroundColor: [
+			                'rgba(92, 209, 229, 0.2)'
+			            ],
+			            borderColor: [
+			                'rgba(61, 183, 204, 1)'
+			            ],
+			            borderWidth: 1
+			        }]
+			    },
+			    options: {
+			        maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+			        scales: {
+			            yAxes: [{
+			                ticks: {
+			                    beginAtZero:true
+			                }
+			            }]
+			        }
+			    }
+			});
+			
+		},
+		error: function(){
+			alert("통신실패");
+		}
+	});
+});
+</script>
 
-							var today = new Date();
-							var todayDate = today.getFullYear() + '.'
-									+ (today.getMonth() + 1) + '.'
-									+ today.getDate();
-
-							new Date(today.setDate(today.getDate() - 1));
-							var yesterdayDate = today.getFullYear() + '.'
-									+ (today.getMonth() + 1) + '.'
-									+ today.getDate();
-
-							new Date(today.setDate(today.getDate() - 1));
-							var twoAgoDate = today.getFullYear() + '.'
-									+ (today.getMonth() + 1) + '.'
-									+ today.getDate();
-
-							new Date(today.setDate(today.getDate() - 1));
-							var threeAgoDate = today.getFullYear() + '.'
-									+ (today.getMonth() + 1) + '.'
-									+ today.getDate();
-
-							new Date(today.setDate(today.getDate() - 1));
-							var fourAgoDate = today.getFullYear() + '.'
-									+ (today.getMonth() + 1) + '.'
-									+ today.getDate();
-
-							new Date(today.setDate(today.getDate() - 1));
-							var fiveAgoDate = today.getFullYear() + '.'
-									+ (today.getMonth() + 1) + '.'
-									+ today.getDate();
-
-							new Date(today.setDate(today.getDate() - 1));
-							var sixAgoDate = today.getFullYear() + '.'
-									+ (today.getMonth() + 1) + '.'
-									+ today.getDate();
-
-							var ctx = document.getElementById("myChart")
-									.getContext('2d');
-							/*
-							- Chart를 생성하면서, 
-							- ctx를 첫번째 argument로 넘겨주고, 
-							- 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줌
-							 */
-							var myChart = new Chart(
-									ctx,
-									{
-										type : 'line',
-										data : {
-											labels : [ sixAgoDate, fiveAgoDate,
-													fourAgoDate, threeAgoDate,
-													twoAgoDate, yesterdayDate,
-													todayDate ],
-											datasets : [ {
-												label : '운동시간(분)',
-												data : [ sixAgodayHealth,
-														fiveAgodayHealth,
-														fourAgodayHealth,
-														threeAogdayHealth,
-														twoAgodayHealth,
-														yesterdayHealth,
-														todayHealth ],
-												backgroundColor : [ 'rgba(92, 209, 229, 0.2)' ],
-												borderColor : [ 'rgba(61, 183, 204, 1)' ],
-												borderWidth : 1
-											} ]
-										},
-										options : {
-											maintainAspectRatio : true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
-											scales : {
-												yAxes : [ {
-													ticks : {
-														beginAtZero : true
-													}
-												} ]
-											}
-										}
-									});
-
-						},
-						error : function() {
-							alert("통신실패");
-						}
-					});
-		});
-	</script>
-
-	<%--
+<%--
 	<%@ include file="../common/footer.jsp" %>
  --%>
 </body>
