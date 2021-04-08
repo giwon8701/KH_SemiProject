@@ -298,7 +298,7 @@ vertical-align: 4px;
 		</form>
 		</div>
 		</div>
-		
+			<%@include file="../../footer.jsp" %>
 		<script>
       $('#summernote').summernote({
         placeholder: 'postContent',

@@ -413,9 +413,6 @@ div .pagemove:hover {
 				location.href='review.do?command=list&page='+page
 			}
 	</script>
-
-	<%--	
-	<%@include file="footer.jsp" %>
---%>
+	<%@include file="../../footer.jsp" %>
 </body>
 </html>

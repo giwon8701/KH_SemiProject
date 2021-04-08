@@ -196,9 +196,7 @@
 			<input type="button" value="취소" onclick="location.href='../../board.do?command=list'" />
 		</form>
 	</section>
-<%--	
-	<%@include file="footer.jsp" %>
---%>
+	<%@include file="../../footer.jsp" %>
 </body>
 </html>
 

@@ -341,5 +341,6 @@ ul, li {
 			<input type="submit" id="reviewsubmit" value="등록" /> <input type="button" value="취소" onclick="location.href='review.do?command=list'" />
 		</form>
 	</section>
+		<%@include file="../../footer.jsp" %>
 </body>
 </html>

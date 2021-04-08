@@ -303,9 +303,7 @@ vertical-align: 4px;
 	
  -->
 	
-<%---	
-	<%@include file="../../views/common/footer.jsp" %>
---%>
+	<%@include file="../../footer.jsp" %>
 
 <%-- summernote관련 부트스트랩, api, js --%>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>

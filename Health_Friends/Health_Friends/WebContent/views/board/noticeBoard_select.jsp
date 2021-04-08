@@ -352,8 +352,6 @@ ul, li {
 		</c:forEach>
 	</table>
 	
-<%---	
-	<%@include file="../../views/common/footer.jsp" %>
---%>
+	<%@include file="../../footer.jsp" %>
 </body>
 </html>

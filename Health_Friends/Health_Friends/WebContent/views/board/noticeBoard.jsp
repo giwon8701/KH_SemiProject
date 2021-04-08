@@ -456,9 +456,7 @@ cursor: pointer;
 				location.href='notice.do?command=list&page='+page
 			}
 	</script>
-	<%---	
 	<%@include file="../../footer.jsp" %>
---%>
 </body>
 </html>
 
