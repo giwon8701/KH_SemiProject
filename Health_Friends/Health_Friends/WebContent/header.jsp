@@ -57,7 +57,7 @@ $(window).scroll(function(evt) {
             </ul>
             
            	<span class="header-search">
-				<input type="text" size="25" class="search-input" placeholder="유저를 검색해 보세요!" id="search" onkeyup="if(window.event.keyCode==13){filter()}" />
+				<input type="text" size="30" class="search-input" placeholder="찾을 유저를 검색해 보세요!" id="search" onkeyup="if(window.event.keyCode==13){filter()}" />
 			</span>
             
             <ul class="border-ul">
