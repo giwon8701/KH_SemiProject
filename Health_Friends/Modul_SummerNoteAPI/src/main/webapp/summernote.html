@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SummerNote</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+<!-- SummerNote UI 가져옴  -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<!-- 부트스트랩 관련 js, css -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- summernote 관련 js, css -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+</head>
+<body>
+
+	<!-- summernote를 불러오는 textarea 태그 -->
+	<textarea rows="30" cols="100" id="summernote" name="postContent"></textarea>
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#summernote').summernote({ // summernote를 사용하기 위한 선언
+			height : 700, // 에디터 높이
+			minHeight : 500, // 최소 높이
+			maxHeight : 700, // 최대 높이
+			focus : true, // 에디터 로딩후 포커스를 맞출지 여부
+			lang : "ko-KR", // 한글 설정
+			placeholder : '글 내용을 입력해 주세요.', //placeholder 설정
+			callbacks : { // 콜백을 사용 (이미지업로드 등 여러 기능 사용가능)
+			}
+		});
+	});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

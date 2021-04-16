@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>우리동네 운동친구∴∵Heath Friends</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>	<!-- jQuery API -->
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+</head>
+<script type="text/javascript">
+	// 로그인 객체 다시 선언해줌
+	var naver_id_login = new naver_id_login("cdrAbeUZ9fz5jOIt90Bj", "http://localhost:8787/Modul_NaverLoginAPI/naver_popup.html");
+
+	naver_id_login.get_naver_userprofile("naverSignInCallback()");
+	
+	function naverSignInCallback() {
+		let name = naver_id_login.getProfileData("name");	// 이름 가져옴
+		let email = naver_id_login.getProfileData("email");	// 이메일 가져옴
+		let gender = naver_id_login.getProfileData("gender");	// 성별 가져옴
+		let birthday = naver_id_login.getProfileData("birthday");	// 생일 가져옴
+		
+		// 로그인 페이지의 input에 값을 넣어줌
+		opener.document.getElementById("name").value = name;
+		opener.document.getElementById("email").value = email;
+		opener.document.getElementById("gender").value = gender;
+		opener.document.getElementById("birthday").value = birthday;
+		
+		// 팝업창을 닫아줌
+		window.close();
+	}
+	
+</script>
+<body>
+
+</body>
+</html>

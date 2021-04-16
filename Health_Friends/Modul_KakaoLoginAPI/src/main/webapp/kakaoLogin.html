@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KakaoLogin</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>	<!-- jQuery API -->
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>	<!--  카카오 로그인 API -->
+<script type="text/javascript">
+
+// Javascript 키 넣어줌
+Kakao.init('5e1e72c05e9caaabaf28934113f4c19c');
+
+function loginWithKakao() {
+	Kakao.Auth.login({
+		success: function(authObj) {
+			
+			Kakao.API.request({
+				url: '/v2/user/me',
+				success: function(res) {	// res로 정보가 넘어옴
+					let kakao = res.kakao_account;	// res중에 account정보를 따로 끄집어냄
+					
+					// account정보에서 필요한것들을 가져옴
+					document.getElementById("name").value = kakao.profile.nickname;
+					document.getElementById("email").value = kakao.email;
+					document.getElementById("birthday").value = kakao.birthday;
+					document.getElementById("gender").value = kakao.gender;
+				},
+				fail: function(error) {
+					alert(
+						'login success, but failed to request user information: ' +
+						JSON.stringify(error)
+					)
+				},
+			});
+		},
+		fail: function(err) {
+			alert(JSON.stringify(err))
+		},
+	})
+}
+</script>
+</head>
+<body>
+   	<a id="kakaologin" href="javascript:loginWithKakao()" class="kakao-icon">
+   		<img src="https://t1.kakaocdn.net/kakaocorp/admin/main-banner/123" class="kakao-icon">
+	</a>
+	<br>
+			
+	이름(name) : <input type="text" id="name"><br>
+	이메일(email) : <input type="text" id="email"><br>
+	성별(gender) : <input type="text" id="gender"><br>
+	생일(birthday) : <input type="text" id="birthday"><br>
+						
+
+</body>
+</html>
