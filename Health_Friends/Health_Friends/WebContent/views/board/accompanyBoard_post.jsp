@@ -404,6 +404,7 @@ margin-top:10px;
 <script src="assets/js/summernote.js"></script>
 <%-- 글쓰기에 들어가는 캘린더 api, js --%>
 <link href='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.css' rel='stylesheet' />
+
 <script src='/Health_Friends/assets/api/fullcalendar-5.6.0/lib/main.js'></script>
 <script src='/Health_Friends/assets/js/boardCalendar.js'></script>
 </body>
